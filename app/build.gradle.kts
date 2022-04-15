@@ -8,8 +8,7 @@ android {
     buildToolsVersion = "31.0.0"
 
     defaultConfig {
-        // TODO: Change the applicationId
-        applicationId = "com.github.whyrising.app"
+        applicationId = "com.vkondrav.playground.app"
         minSdk = 22
         targetSdk = 31
         versionCode = 1
@@ -81,11 +80,6 @@ dependencies {
     implementation(Libs.Lifecycle.lifecycles)
 
     implementation(Libs.Activity.compose)
-
-    implementation(Libs.Recompose.recompose)
-    implementation(Libs.Y.core)
-    implementation(Libs.Y.concurrency)
-    implementation(Libs.Y.collections)
 
     implementation(Libs.Androidx.coreSplashscreen)
 

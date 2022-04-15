@@ -1,3 +1,2 @@
-// TODO: Change the project name
-rootProject.name = "Jetpack Compose Template"
+rootProject.name = "Playground"
 include(":app")

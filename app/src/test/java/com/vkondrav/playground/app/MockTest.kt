@@ -1,4 +1,4 @@
-package com.github.whyrising.app
+package com.vkondrav.playground.app
 
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.ints.shouldBeExactly

@@ -93,20 +93,6 @@ object Libs {
         const val property = "io.kotest:kotest-property:$version"
     }
 
-    object Y {
-        private const val group = "com.github.whyrising.y"
-        private const val version = "0.0.7"
-
-        const val core = "$group:y-core:$version"
-        const val collections = "$group:y-collections:$version"
-        const val concurrency = "$group:y-concurrency:$version"
-    }
-
-    object Recompose {
-        private const val v = "0.0.6"
-        const val recompose = "com.github.whyrising.recompose:recompose:$v"
-    }
-
     object Coroutines {
         private const val group = "org.jetbrains.kotlinx"
         private const val version = "1.5.2"

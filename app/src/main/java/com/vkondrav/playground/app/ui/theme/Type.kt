@@ -1,4 +1,4 @@
-package com.github.whyrising.app.ui.theme
+package com.vkondrav.playground.app.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

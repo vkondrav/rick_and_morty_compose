@@ -1,4 +1,4 @@
-package com.github.whyrising.app.ui.theme
+package com.vkondrav.playground.app.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

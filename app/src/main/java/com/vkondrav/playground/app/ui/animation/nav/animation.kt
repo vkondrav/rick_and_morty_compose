@@ -1,4 +1,4 @@
-package com.github.whyrising.app.ui.animation.nav
+package com.vkondrav.playground.app.ui.animation.nav
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
