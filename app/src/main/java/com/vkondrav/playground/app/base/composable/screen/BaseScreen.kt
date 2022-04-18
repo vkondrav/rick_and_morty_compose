@@ -1,9 +1,9 @@
-package com.vkondrav.playground.app.common.composable.screen
+package com.vkondrav.playground.app.base.composable.screen
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import com.vkondrav.playground.app.common.viewmodel.BaseViewModel
+import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 
 @Composable
 fun BaseScreen(viewModel: BaseViewModel) {

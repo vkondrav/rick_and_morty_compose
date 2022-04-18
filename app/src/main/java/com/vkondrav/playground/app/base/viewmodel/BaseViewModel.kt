@@ -1,8 +1,8 @@
-package com.vkondrav.playground.app.common.viewmodel
+package com.vkondrav.playground.app.base.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.vkondrav.playground.app.common.item.ComposableAction
-import com.vkondrav.playground.app.common.item.ComposableItem
+import com.vkondrav.playground.app.base.item.ComposableAction
+import com.vkondrav.playground.app.base.item.ComposableItem
 
 abstract class BaseViewModel : ViewModel() {
     abstract val columnItems: List<ComposableItem>

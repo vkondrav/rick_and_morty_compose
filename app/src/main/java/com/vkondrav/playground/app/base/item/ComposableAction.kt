@@ -1,4 +1,4 @@
-package com.vkondrav.playground.app.common.item
+package com.vkondrav.playground.app.base.item
 
 interface ComposableAction
 

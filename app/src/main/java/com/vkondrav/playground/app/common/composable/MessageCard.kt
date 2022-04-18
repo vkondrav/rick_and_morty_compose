@@ -1,4 +1,4 @@
-package com.vkondrav.playground.app.home.composable
+package com.vkondrav.playground.app.common.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,9 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.vkondrav.playground.app.home.action.MessageCardAction
-import com.vkondrav.playground.app.common.item.ComposableItem
-import com.vkondrav.playground.app.common.item.OnComposableAction
+import com.vkondrav.playground.app.common.action.MessageCardAction
+import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.base.item.OnComposableAction
 
 @Composable
 fun MessageCard(

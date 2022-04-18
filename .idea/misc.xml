@@ -6,10 +6,13 @@
         <entry key="app/src/main/java/com/github/whyrising/app/global/composables.kt" value="0.25" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/common/composable/MessageCard.kt" value="0.5" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/home/composable/ImageCard.kt" value="0.5" />
+        <entry key="app/src/main/java/com/vkondrav/playground/app/home/composable/ViewBindingCard.kt" value="0.335" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/home/composables.kt" value="0.55" />
+        <entry key="app/src/main/java/com/vkondrav/playground/app/page3/composable/Page2Screen.kt" value="0.12953586497890296" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1525" />
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/ic_anim_splash.xml" value="0.1305" />
+        <entry key="app/src/main/res/layout/item_xml_layout.xml" value="0.5" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1525" />
       </map>
     </option>

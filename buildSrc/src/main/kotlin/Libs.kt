@@ -1,10 +1,10 @@
 object Libs {
-    const val kotlinVersion = "1.5.31"
+    const val kotlinVersion = "1.6.10"
     const val jvmTarget = "1.8"
 
     object Compose {
         private const val gr = "androidx.compose"
-        const val version = "1.1.0-beta03"
+        const val version = "1.1.1"
 
         const val ui = "$gr.ui:ui:$version"
 
@@ -20,6 +20,9 @@ object Libs {
         // Material design icons
         const val iconsCore = "$gr.material:material-icons-core:$version"
         const val iconsExt = "$gr.material:material-icons-extended:$version"
+
+        //ViewBinding
+        const val viewBinding = "$gr.ui:ui-viewbinding:$version"
 
         // UI Testing
         const val uiTestJUnit = "$gr.ui:ui-test-junit4:$version"
@@ -50,7 +53,7 @@ object Libs {
     }
 
     object Navigation {
-        private const val version = "2.4.0-beta02"
+        private const val version = "2.4.2"
 
         const val compose = "androidx.navigation:navigation-compose:$version"
     }
@@ -59,11 +62,8 @@ object Libs {
         // Appcompat is needed for themes.xml resource
         const val appcompat = "androidx.appcompat:appcompat:1.4.0"
 
-        const val constraintLayoutCompose =
-            "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02"
-
         const val coreSplashscreen =
-            "androidx.core:core-splashscreen:1.0.0-alpha02"
+            "androidx.core:core-splashscreen:1.0.0-beta02"
 
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
     }
