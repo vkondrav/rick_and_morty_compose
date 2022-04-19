@@ -85,6 +85,9 @@ dependencies {
 
     implementation(Libs.Androidx.coreSplashscreen)
 
+    implementation(Libs.Koin.core)
+    implementation(Libs.Koin.compose)
+
     testImplementation(Libs.Kotest.runner)
     testImplementation(Libs.Kotest.assertions)
     testImplementation(Libs.Kotest.property)

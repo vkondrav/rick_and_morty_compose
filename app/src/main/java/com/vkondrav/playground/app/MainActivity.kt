@@ -6,15 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
 import com.vkondrav.playground.app.common.navigation.Route
 import com.vkondrav.playground.app.common.navigation.basicGraph
+import com.vkondrav.playground.app.common.navigation.loadIntoKoin
+import org.koin.core.context.loadKoinModules
+import org.koin.dsl.module
 
 @ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             val navController = rememberNavController()
+            navController.loadIntoKoin()
 
             MaterialTheme {
                 Column {
@@ -33,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = Route.Screen1.id
                     ) {
-                        basicGraph(navController)
+                        basicGraph()
                     }
                 }
             }

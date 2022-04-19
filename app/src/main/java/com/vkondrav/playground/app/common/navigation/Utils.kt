@@ -6,6 +6,8 @@ import androidx.navigation.compose.composable
 import com.vkondrav.playground.app.page1.composable.Page1Screen
 import com.vkondrav.playground.app.page2.composable.Page2Screen
 import com.vkondrav.playground.app.page3.composable.Page3Screen
+import org.koin.core.context.loadKoinModules
+import org.koin.dsl.module
 
 
 data class Screen(
@@ -19,8 +21,14 @@ object Route {
     val Screen3 = Screen("screen3", "Screen 3")
 }
 
-fun NavGraphBuilder.basicGraph(navController: NavController) {
-    composable(Route.Screen1.id) { Page1Screen(navController) }
-    composable(Route.Screen2.id) { Page2Screen(navController) }
-    composable(Route.Screen3.id) { Page3Screen(navController) }
+fun NavGraphBuilder.basicGraph() {
+    composable(Route.Screen1.id) { Page1Screen() }
+    composable(Route.Screen2.id) { Page2Screen() }
+    composable(Route.Screen3.id) { Page3Screen() }
+}
+
+fun NavController.loadIntoKoin() {
+    loadKoinModules(module {
+        single { this@loadIntoKoin }
+    })
 }

@@ -68,6 +68,12 @@ object Libs {
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
     }
 
+    object Koin {
+        private const val version = "3.1.6"
+        const val core = "io.insert-koin:koin-android:$version"
+        const val compose = "io.insert-koin:koin-androidx-compose:$version"
+    }
+
     object Material {
         private const val version = "1.5.0-beta01"
 
