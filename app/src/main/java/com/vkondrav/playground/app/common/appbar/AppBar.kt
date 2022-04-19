@@ -1,25 +1,32 @@
 package com.vkondrav.playground.app.common.appbar
 
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.vkondrav.playground.app.common.action.NavigateBackAction
+import com.vkondrav.playground.app.common.action.OpenDrawerAction
+import com.vkondrav.playground.app.common.navigation.Route
+import com.vkondrav.playground.app.drawer.viewmodel.DrawerViewModel
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun CustomAppBar(navController: NavController) {
+fun CustomAppBar() {
+    val viewModel = getViewModel<DrawerViewModel>()
 
-    val backStackEntryState = navController
+    val backStackEntryState = viewModel.navController
         .currentBackStackEntryAsState()
-        .let {
+        .let { state ->
+
+            val title = Route.allScreens.find { screen ->
+                screen.id == state.value?.destination?.route
+            }?.title ?: ""
+
             BackStackEntryState(
-                showBackButton = navController.backQueue.size > 2,
-                title = it.value?.destination?.route ?: ""
+                showBackButton = viewModel.navController.backQueue.size > 2,
+                title = title
             )
         }
 
@@ -32,10 +39,12 @@ fun CustomAppBar(navController: NavController) {
         navigationIcon = {
             if (backStackEntryState.showBackButton) {
                 IconButton(
-                    onClick = { navController.popBackStack() }
+                    onClick = { viewModel.onAction(NavigateBackAction) }
                 ) { Icon(Icons.Default.ArrowBack, "Back") }
             } else {
-                IconButton(onClick = { }) {
+                IconButton(onClick = {
+                    viewModel.onAction(OpenDrawerAction)
+                }) {
                     Icon(Icons.Default.Menu, "Menu")
                 }
             }

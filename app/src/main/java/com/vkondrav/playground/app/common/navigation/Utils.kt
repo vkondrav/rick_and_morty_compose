@@ -19,16 +19,12 @@ object Route {
     val Screen1 = Screen("screen1", "Screen 1")
     val Screen2 = Screen("screen2", "Screen 2")
     val Screen3 = Screen("screen3", "Screen 3")
+
+    val allScreens = listOf(Screen1, Screen2, Screen3)
 }
 
 fun NavGraphBuilder.basicGraph() {
     composable(Route.Screen1.id) { Page1Screen() }
     composable(Route.Screen2.id) { Page2Screen() }
     composable(Route.Screen3.id) { Page3Screen() }
-}
-
-fun NavController.loadIntoKoin() {
-    loadKoinModules(module {
-        single { this@loadIntoKoin }
-    })
 }
