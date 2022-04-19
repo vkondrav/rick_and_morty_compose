@@ -6,3 +6,10 @@ interface ComposableItem {
     @Composable
     fun Composable(action: OnComposableAction)
 }
+
+@Composable
+fun List<ComposableItem>.Composable(action: OnComposableAction) {
+    forEach { item ->
+        item.Composable(action = action)
+    }
+}

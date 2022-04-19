@@ -24,6 +24,9 @@ object Libs {
         //ViewBinding
         const val viewBinding = "$gr.ui:ui-viewbinding:$version"
 
+        //Constraint-Layout
+        const val constrainLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
+
         // UI Testing
         const val uiTestJUnit = "$gr.ui:ui-test-junit4:$version"
     }

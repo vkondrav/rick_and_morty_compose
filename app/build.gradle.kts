@@ -75,6 +75,7 @@ dependencies {
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
+    implementation(Libs.Compose.constrainLayout)
 
     implementation(Libs.Navigation.compose)
     implementation(Libs.Accompanist.navAnimation)

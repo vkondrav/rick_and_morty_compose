@@ -10,6 +10,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun Page3Screen() {
     val viewModel = getViewModel<Page3ScreenViewModel>()
+    viewModel.fetchData()
     BaseScreen(viewModel)
 }
 

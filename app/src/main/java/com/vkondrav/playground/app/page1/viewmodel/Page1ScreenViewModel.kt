@@ -8,10 +8,12 @@ import com.vkondrav.playground.app.base.item.ComposableAction
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.common.action.MessageCardAction
+import com.vkondrav.playground.app.common.composable.CollapsableCardItem
 import com.vkondrav.playground.app.common.composable.MessageCardItem
 import com.vkondrav.playground.app.common.navigation.Route
 
-class Page1ScreenViewModel(private val navController: NavController) : BaseViewModel() {
+class Page1ScreenViewModel(private val navController: NavController) :
+    BaseViewModel() {
 
     private val _columnItems = mutableStateListOf<ComposableItem>()
     override val columnItems: List<ComposableItem> = _columnItems
@@ -21,9 +23,19 @@ class Page1ScreenViewModel(private val navController: NavController) : BaseViewM
         (1..1_000).forEach { i ->
             mutableListOf<ComposableItem>().apply {
                 _columnItems.add(
-                    MessageCardItem(
-                        message = "Item $i",
-                        image = Icons.Default.AccountCircle
+                    CollapsableCardItem(
+                        title = "Drawer $i",
+                        open = i % 2 == 0,
+                        items = mutableListOf<ComposableItem>().apply {
+                            (1..5).forEach { j ->
+                                add(
+                                    MessageCardItem(
+                                        message = "Title $j",
+                                        image = Icons.Default.AccountCircle,
+                                    )
+                                )
+                            }
+                        },
                     )
                 )
             }
