@@ -4,10 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.vkondrav.playground.app.common.appbar.CustomAppBar
 import com.vkondrav.playground.app.common.navigation.Route
 import com.vkondrav.playground.app.common.navigation.basicGraph
 
@@ -18,9 +23,18 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             val navController = rememberNavController()
+
             MaterialTheme {
-                NavHost(navController = navController, startDestination = Route.Screen1) {
-                    basicGraph(navController)
+                Column {
+                    CustomAppBar(
+                        navController = navController,
+                    )
+                    NavHost(
+                        navController = navController,
+                        startDestination = Route.Screen1.id
+                    ) {
+                        basicGraph(navController)
+                    }
                 }
             }
         }

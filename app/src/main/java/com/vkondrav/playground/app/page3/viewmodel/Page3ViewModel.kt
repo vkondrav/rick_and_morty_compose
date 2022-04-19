@@ -30,7 +30,7 @@ class Page3ScreenViewModel(private val navController: NavController) :
 
     override fun onAction(action: ComposableAction) {
         when (action) {
-            is ViewBindingAction -> navController.navigate(Route.Screen1)
+            is ViewBindingAction -> navController.navigate(Route.Screen1.id)
         }
     }
 }

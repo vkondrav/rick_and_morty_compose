@@ -36,7 +36,7 @@ class Page2ScreenViewModel(private val navController: NavController) :
 
     override fun onAction(action: ComposableAction) {
         when (action) {
-            is ImageCardAction -> navController.navigate(Route.Screen3)
+            is ImageCardAction -> navController.navigate(Route.Screen3.id)
         }
     }
 }

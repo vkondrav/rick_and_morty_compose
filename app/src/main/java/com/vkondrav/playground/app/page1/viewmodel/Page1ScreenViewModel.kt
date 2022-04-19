@@ -32,7 +32,7 @@ class Page1ScreenViewModel(private val navController: NavController) : BaseViewM
 
     override fun onAction(action: ComposableAction) {
         when (action) {
-            is MessageCardAction -> navController.navigate(Route.Screen2)
+            is MessageCardAction -> navController.navigate(Route.Screen2.id)
         }
     }
 }
