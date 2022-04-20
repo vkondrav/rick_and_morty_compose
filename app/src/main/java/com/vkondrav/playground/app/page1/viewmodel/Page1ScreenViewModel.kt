@@ -11,15 +11,16 @@ import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.common.action.MessageCardAction
 import com.vkondrav.playground.app.common.composable.CollapsableCardItem
 import com.vkondrav.playground.app.common.composable.MessageCardItem
+import com.vkondrav.playground.app.common.scope.ComposableScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class Page1ScreenViewModel(
     private val snackbarHostState: SnackbarHostState,
-    private val composableScope: CoroutineScope,
+    override val composableScope: CoroutineScope,
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel(dispatcher) {
+) : BaseViewModel(dispatcher), ComposableScope {
 
     private val _columnItems = mutableStateListOf<ComposableItem>()
     override val columnItems: List<ComposableItem> = _columnItems
@@ -59,7 +60,7 @@ class Page1ScreenViewModel(
     override fun onAction(action: ComposableAction) {
         when (action) {
             is FetchDataAction -> fetchData()
-            is MessageCardAction -> composableScope.launch {
+            is MessageCardAction -> launchComposable {
                 snackbarHostState.showSnackbar("Message: ${action.message}")
             }
         }

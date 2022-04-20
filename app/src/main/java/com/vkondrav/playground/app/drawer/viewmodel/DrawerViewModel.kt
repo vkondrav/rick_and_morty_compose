@@ -12,16 +12,17 @@ import com.vkondrav.playground.app.common.action.NavigateBackAction
 import com.vkondrav.playground.app.common.action.OpenDrawerAction
 import com.vkondrav.playground.app.common.composable.MenuItemItem
 import com.vkondrav.playground.app.common.navigation.Route
+import com.vkondrav.playground.app.common.scope.ComposableScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class DrawerViewModel(
-    val navController: NavController,
+    private val navController: NavController,
     private val drawerState: DrawerState,
-    private val composableScope: CoroutineScope,
+    override val composableScope: CoroutineScope,
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel(dispatcher) {
+) : BaseViewModel(dispatcher), ComposableScope {
 
     private val _columnItems = mutableStateListOf<ComposableItem>()
     override val columnItems: List<ComposableItem> = _columnItems
@@ -46,10 +47,10 @@ class DrawerViewModel(
             is FetchDataAction -> fetchData()
             is NavigateAction -> {
                 navController.navigate(action.route)
-                composableScope.launch { drawerState.close() }
+                launchComposable { drawerState.close() }
             }
             is OpenDrawerAction -> {
-                composableScope.launch { drawerState.open() }
+                launchComposable { drawerState.open() }
             }
             is NavigateBackAction -> navController.popBackStack()
         }

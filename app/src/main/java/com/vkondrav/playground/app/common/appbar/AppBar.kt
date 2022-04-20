@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.vkondrav.playground.app.common.action.NavigateBackAction
 import com.vkondrav.playground.app.common.action.OpenDrawerAction
@@ -13,10 +14,10 @@ import com.vkondrav.playground.app.drawer.viewmodel.DrawerViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun CustomAppBar() {
+fun CustomAppBar(navController: NavController) {
     val viewModel = getViewModel<DrawerViewModel>()
 
-    val backStackEntryState = viewModel.navController
+    val backStackEntryState = navController
         .currentBackStackEntryAsState()
         .let { state ->
 
@@ -25,7 +26,7 @@ fun CustomAppBar() {
             }?.title ?: ""
 
             BackStackEntryState(
-                showBackButton = viewModel.navController.backQueue.size > 2,
+                showBackButton = navController.backQueue.size > 2,
                 title = title
             )
         }
