@@ -6,10 +6,10 @@ import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import com.vkondrav.playground.app.base.composable.screen.BaseScreen
+import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.common.di.loadIntoKoin
 import com.vkondrav.playground.app.drawer.viewmodel.DrawerViewModel
 import org.koin.androidx.compose.getViewModel
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 @Composable
 fun Drawer(content: @Composable () -> Unit) {
@@ -19,8 +19,9 @@ fun Drawer(content: @Composable () -> Unit) {
     val scope = rememberCoroutineScope()
     scope.loadIntoKoin()
 
-    val viewModel = getViewModel<DrawerViewModel>()
-    viewModel.fetchData()
+    val viewModel = getViewModel<DrawerViewModel>().also {
+        it.onAction(FetchDataAction)
+    }
 
     ModalDrawer(
         drawerState = drawerState,

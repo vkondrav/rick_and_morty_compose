@@ -4,13 +4,15 @@ import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.vkondrav.playground.app.base.composable.screen.BaseScreen
+import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.page2.viewmodel.Page2ScreenViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun Page2Screen() {
-    val viewModel = getViewModel<Page2ScreenViewModel>()
-    viewModel.fetchData()
+    val viewModel = getViewModel<Page2ScreenViewModel>().also {
+        it.onAction(FetchDataAction)
+    }
     BaseScreen(viewModel)
 }
 

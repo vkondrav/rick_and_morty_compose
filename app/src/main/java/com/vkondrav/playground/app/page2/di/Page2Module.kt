@@ -8,6 +8,7 @@ val page2Module = module {
     viewModel {
         Page2ScreenViewModel(
             navController = get(),
+            dispatcher = get(),
         )
     }
 }

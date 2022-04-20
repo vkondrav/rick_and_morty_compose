@@ -7,6 +7,7 @@ import com.vkondrav.playground.app.page3.di.page3Module
 import org.koin.core.KoinApplication
 
 fun KoinApplication.appModules() = modules(
+    coreModule,
     page1Module,
     page2Module,
     page3Module,

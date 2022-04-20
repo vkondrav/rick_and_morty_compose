@@ -9,7 +9,8 @@ val drawerModule =  module {
         DrawerViewModel(
             navController = get(),
             drawerState = get(),
-            scope = get(),
+            composableScope = get(),
+            dispatcher = get(),
         )
     }
 }
