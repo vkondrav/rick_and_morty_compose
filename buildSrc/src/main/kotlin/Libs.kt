@@ -1,6 +1,8 @@
 object Libs {
     const val kotlinVersion = "1.6.10"
     const val jvmTarget = "1.8"
+    const val gradlePluginVersion = "1.5.21"
+    const val androidVersion = "7.1.0"
 
     object Compose {
         private const val gr = "androidx.compose"
@@ -25,7 +27,8 @@ object Libs {
         const val viewBinding = "$gr.ui:ui-viewbinding:$version"
 
         //Constraint-Layout
-        const val constrainLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
+        const val constrainLayout =
+            "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 
         // UI Testing
         const val uiTestJUnit = "$gr.ui:ui-test-junit4:$version"
@@ -84,9 +87,11 @@ object Libs {
     }
 
     object Accompanist {
-        private const val version = "0.21.2-beta"
-        const val navAnimation =
-            "com.google.accompanist:accompanist-navigation-animation:$version"
+        private const val version = "0.23.1"
+        private const val gr = "com.google.accompanist"
+        const val navAnimation = "$gr:accompanist-navigation-animation:$version"
+        const val pager = "$gr:accompanist-pager:$version"
+        const val indicators = "$gr:accompanist-pager-indicators:$version"
     }
 
     object LayoutInspector {

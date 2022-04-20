@@ -1,3 +1,5 @@
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+
 buildscript {
     repositories {
         gradlePluginPortal()
@@ -8,7 +10,7 @@ buildscript {
     dependencies {
         classpath(Plugins.Android.gradle)
         classpath(Plugins.Kotlin.gradle)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
+        classpath(Plugins.Gradle.gradle)
     }
 }
 
@@ -27,7 +29,7 @@ allprojects {
 subprojects {
     apply(plugin = Plugins.Ktlint.id)
 
-    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    configure<KtlintExtension> {
         debug.set(true)
     }
 }

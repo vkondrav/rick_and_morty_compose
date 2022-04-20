@@ -1,9 +1,9 @@
 package com.vkondrav.playground.app.page1.viewmodel
 
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.mutableStateListOf
-import androidx.navigation.NavController
 import com.vkondrav.playground.app.base.item.ComposableAction
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
@@ -11,12 +11,13 @@ import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.common.action.MessageCardAction
 import com.vkondrav.playground.app.common.composable.CollapsableCardItem
 import com.vkondrav.playground.app.common.composable.MessageCardItem
-import com.vkondrav.playground.app.common.navigation.Route
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class Page1ScreenViewModel(
-    private val navController: NavController,
+    private val snackbarHostState: SnackbarHostState,
+    private val composableScope: CoroutineScope,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher) {
 
@@ -58,7 +59,9 @@ class Page1ScreenViewModel(
     override fun onAction(action: ComposableAction) {
         when (action) {
             is FetchDataAction -> fetchData()
-            is MessageCardAction -> navController.navigate(Route.Screen2.id)
+            is MessageCardAction -> composableScope.launch {
+                snackbarHostState.showSnackbar("Message: ${action.message}")
+            }
         }
     }
 }

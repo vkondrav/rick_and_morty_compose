@@ -1,6 +1,7 @@
 package com.vkondrav.playground.app.common.di
 
 import androidx.compose.material.DrawerState
+import androidx.compose.material.SnackbarHostState
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.context.loadKoinModules
@@ -15,6 +16,10 @@ fun DrawerState.loadIntoKoin() {
 }
 
 fun CoroutineScope.loadIntoKoin() {
+    loadIntoKoin(this)
+}
+
+fun SnackbarHostState.loadIntoKoin() {
     loadIntoKoin(this)
 }
 

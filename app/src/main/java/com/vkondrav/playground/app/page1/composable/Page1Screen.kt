@@ -16,7 +16,6 @@ fun Page1Screen() {
     BaseScreen(viewModel)
 }
 
-// -- Previews -----------------------------------------------------------------
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun ScreenDarkPreview() {

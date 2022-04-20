@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.page3.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.navigation.NavController
 import com.vkondrav.playground.app.base.item.ComposableAction
@@ -13,7 +14,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class Page3ScreenViewModel(
-    private val navController: NavController,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher) {
 
@@ -43,7 +43,7 @@ class Page3ScreenViewModel(
     override fun onAction(action: ComposableAction) {
         when (action) {
             is FetchDataAction -> fetchData()
-            is ViewBindingAction -> navController.navigate(Route.Screen1.id)
+            is ViewBindingAction -> Log.i("Action", action.toString())
         }
     }
 }

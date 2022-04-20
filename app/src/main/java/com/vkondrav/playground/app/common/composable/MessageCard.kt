@@ -27,7 +27,7 @@ fun MessageCard(
     Row(
         modifier = Modifier
             .background(Color.White)
-            .clickable { action.invoke(MessageCardAction) }
+            .clickable { action.invoke(MessageCardAction(item.message)) }
     ) {
         Icon(
             item.image,

@@ -7,7 +7,8 @@ import org.koin.dsl.module
 val page1Module = module {
     viewModel {
         Page1ScreenViewModel(
-            navController = get(),
+            snackbarHostState = get(),
+            composableScope = get(),
             dispatcher = get(),
         )
     }

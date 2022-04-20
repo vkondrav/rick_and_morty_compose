@@ -40,7 +40,9 @@ fun CustomAppBar() {
             if (backStackEntryState.showBackButton) {
                 IconButton(
                     onClick = { viewModel.onAction(NavigateBackAction) }
-                ) { Icon(Icons.Default.ArrowBack, "Back") }
+                ) {
+                    Icon(Icons.Default.ArrowBack, "Back")
+                }
             } else {
                 IconButton(onClick = {
                     viewModel.onAction(OpenDrawerAction)

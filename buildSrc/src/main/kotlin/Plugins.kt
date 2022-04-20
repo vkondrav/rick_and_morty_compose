@@ -10,6 +10,12 @@ object Plugins {
     }
 
     object Android {
-        const val gradle = "com.android.tools.build:gradle:7.1.0"
+        const val gradle =
+            "com.android.tools.build:gradle:${Libs.androidVersion}"
+    }
+
+    object Gradle {
+        const val gradle =
+            "org.jetbrains.kotlin:kotlin-gradle-plugin:${Libs.gradlePluginVersion}"
     }
 }

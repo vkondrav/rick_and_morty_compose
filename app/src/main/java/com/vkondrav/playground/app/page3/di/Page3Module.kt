@@ -7,7 +7,6 @@ import org.koin.dsl.module
 val page3Module = module {
     viewModel {
         Page3ScreenViewModel(
-            navController = get(),
             dispatcher = get(),
         )
     }

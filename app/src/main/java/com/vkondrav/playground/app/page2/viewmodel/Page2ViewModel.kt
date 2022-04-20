@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.page2.viewmodel
 
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.PersonAdd
@@ -16,7 +17,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class Page2ScreenViewModel(
-    private val navController: NavController,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher) {
 
@@ -50,7 +50,7 @@ class Page2ScreenViewModel(
     override fun onAction(action: ComposableAction) {
         when (action) {
             is FetchDataAction -> fetchData()
-            is ImageCardAction -> navController.navigate(Route.Screen3.id)
+            is ImageCardAction -> Log.i("Action", action.toString())
         }
     }
 }

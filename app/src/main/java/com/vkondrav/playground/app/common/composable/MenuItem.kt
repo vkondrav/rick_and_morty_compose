@@ -40,7 +40,7 @@ fun MenuItem(item: MenuItemItem, action: OnComposableAction) {
 @Preview
 @Composable
 private fun Preview() {
-    MenuItemItem(screen = Screen("1", "1")).Composable(action = { })
+    MenuItemItem(screen = Screen("1", "1") { }).Composable(action = { })
 }
 
 data class MenuItemItem(

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -61,6 +63,12 @@ android {
         useJUnitPlatform()
         testLogging { events("passed", "skipped", "failed") }
     }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.freeCompilerArgs = listOf(
+            "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+        )
+    }
 }
 
 dependencies {
@@ -79,6 +87,8 @@ dependencies {
 
     implementation(Libs.Navigation.compose)
     implementation(Libs.Accompanist.navAnimation)
+    implementation(Libs.Accompanist.pager)
+    implementation(Libs.Accompanist.indicators)
 
     implementation(Libs.Lifecycle.lifecycles)
 
