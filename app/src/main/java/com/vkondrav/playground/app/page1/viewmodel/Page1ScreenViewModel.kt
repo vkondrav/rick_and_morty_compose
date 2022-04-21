@@ -9,8 +9,8 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.common.action.MessageCardAction
-import com.vkondrav.playground.app.common.composable.CollapsableCardItem
-import com.vkondrav.playground.app.common.composable.MessageCardItem
+import com.vkondrav.playground.app.common.composable.CollapsableViewItem
+import com.vkondrav.playground.app.common.composable.MessageViewItem
 import com.vkondrav.playground.app.common.scope.ComposableScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -32,13 +32,13 @@ class Page1ScreenViewModel(
             (1..1_000).forEach { i ->
                 mutableListOf<ComposableItem>().apply {
                     tempItems.add(
-                        CollapsableCardItem(
+                        CollapsableViewItem(
                             title = "Drawer $i",
                             open = i % 2 == 0,
                             items = mutableListOf<ComposableItem>().apply {
                                 (1..5).forEach { j ->
                                     add(
-                                        MessageCardItem(
+                                        MessageViewItem(
                                             message = "Title $j",
                                             image = Icons.Default.AccountCircle,
                                         )

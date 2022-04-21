@@ -16,7 +16,7 @@ import com.vkondrav.playground.app.common.action.NavigateAction
 import com.vkondrav.playground.app.common.navigation.Screen
 
 @Composable
-fun MenuItem(item: MenuItemItem, action: OnComposableAction) {
+fun MenuView(item: MenuViewItem, action: OnComposableAction) {
     Column {
         Row(
             modifier = Modifier
@@ -40,12 +40,12 @@ fun MenuItem(item: MenuItemItem, action: OnComposableAction) {
 @Preview
 @Composable
 private fun Preview() {
-    MenuItemItem(screen = Screen("1", "1") { }).Composable(action = { })
+    MenuViewItem(screen = Screen("1", "1") { }).Composable(action = { })
 }
 
-data class MenuItemItem(
+data class MenuViewItem(
     val screen: Screen,
 ) : ComposableItem {
     @Composable
-    override fun Composable(action: OnComposableAction) = MenuItem(this, action)
+    override fun Composable(action: OnComposableAction) = MenuView(this, action)
 }

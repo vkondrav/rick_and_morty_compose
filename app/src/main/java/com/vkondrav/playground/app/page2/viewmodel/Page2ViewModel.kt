@@ -5,14 +5,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.PersonAdd
 import androidx.compose.runtime.mutableStateListOf
-import androidx.navigation.NavController
 import com.vkondrav.playground.app.base.item.ComposableAction
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.common.action.ImageCardAction
-import com.vkondrav.playground.app.common.composable.ImageCardItem
-import com.vkondrav.playground.app.common.navigation.Route
+import com.vkondrav.playground.app.common.composable.DoubleImageViewItem
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
@@ -30,7 +28,7 @@ class Page2ScreenViewModel(
             (1..1_000).forEach { i ->
                 mutableListOf<ComposableItem>().apply {
                     tempItems.add(
-                        ImageCardItem(
+                        DoubleImageViewItem(
                             image1Title = "Person $i-a",
                             image1 = Icons.Rounded.PersonAdd,
                             image2Title = "Person $i-b",

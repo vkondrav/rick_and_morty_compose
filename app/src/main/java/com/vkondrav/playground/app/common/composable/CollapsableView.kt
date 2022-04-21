@@ -21,7 +21,7 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.item.OnComposableAction
 
 @Composable
-fun CollapsableCard(item: CollapsableCardItem, action: OnComposableAction) {
+fun CollapsableView(item: CollapsableViewItem, action: OnComposableAction) {
     var drawerOpen by remember { mutableStateOf(item.open) }
 
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -75,19 +75,19 @@ fun CollapsableCard(item: CollapsableCardItem, action: OnComposableAction) {
 @Preview
 @Composable
 private fun Preview() {
-    CollapsableCardItem(
+    CollapsableViewItem(
         title = "Collapsable",
         open = true,
         items = emptyList(),
     )
 }
 
-data class CollapsableCardItem(
+data class CollapsableViewItem(
     val title: String,
     val open: Boolean,
     val items: List<ComposableItem>
 ) : ComposableItem {
     @Composable
     override fun Composable(action: OnComposableAction) =
-        CollapsableCard(this, action)
+        CollapsableView(this, action)
 }

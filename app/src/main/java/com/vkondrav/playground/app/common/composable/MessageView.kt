@@ -19,8 +19,8 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.item.OnComposableAction
 
 @Composable
-fun MessageCard(
-    item: MessageCardItem,
+fun MessageView(
+    item: MessageViewItem,
     action: OnComposableAction,
 ) {
 
@@ -46,12 +46,12 @@ fun MessageCard(
     }
 }
 
-data class MessageCardItem(
+data class MessageViewItem(
     val message: String,
     val image: ImageVector,
 ): ComposableItem {
     @Composable
-    override fun Composable(action: OnComposableAction) = MessageCard(
+    override fun Composable(action: OnComposableAction) = MessageView(
         item = this,
         action = action,
     )
@@ -60,7 +60,7 @@ data class MessageCardItem(
 @Preview
 @Composable
 private fun Preview() {
-    MessageCardItem(
+    MessageViewItem(
         "Test",
         Icons.Default.AccountCircle
     ).Composable(action = { })

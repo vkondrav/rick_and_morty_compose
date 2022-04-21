@@ -9,7 +9,7 @@ import com.vkondrav.playground.app.databinding.ItemXmlLayoutBinding
 import com.vkondrav.playground.app.common.action.ViewBindingAction
 
 @Composable
-fun ViewBindingCard(item: ViewBindingCardItem, action: OnComposableAction) {
+fun SampleViewBindingView(item: SampleViewBindingViewItem, action: OnComposableAction) {
     AndroidViewBinding(ItemXmlLayoutBinding::inflate) {
         textView.text = item.text
         textView.setOnClickListener {
@@ -21,11 +21,11 @@ fun ViewBindingCard(item: ViewBindingCardItem, action: OnComposableAction) {
 @Preview
 @Composable
 private fun Preview() {
-    ViewBindingCardItem("I am text").Composable(action = { })
+    SampleViewBindingViewItem("I am text").Composable(action = { })
 }
 
-data class ViewBindingCardItem(val text: String) : ComposableItem {
+data class SampleViewBindingViewItem(val text: String) : ComposableItem {
     @Composable
     override fun Composable(action: OnComposableAction) =
-        ViewBindingCard(this, action)
+        SampleViewBindingView(this, action)
 }

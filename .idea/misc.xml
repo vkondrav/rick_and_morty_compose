@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/java/com/github/whyrising/app/global/composables.kt" value="0.25" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/common/composable/CollapsableCard.kt" value="1.5" />
+        <entry key="app/src/main/java/com/vkondrav/playground/app/common/composable/ImageCard.kt" value="0.18333333333333332" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/common/composable/MenuItem.kt" value="0.375" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/common/composable/MessageCard.kt" value="0.5" />
         <entry key="app/src/main/java/com/vkondrav/playground/app/common/composable/ViewBindingCard.kt" value="0.37222222222222223" />

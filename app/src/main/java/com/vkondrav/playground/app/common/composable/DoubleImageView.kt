@@ -20,7 +20,7 @@ import com.vkondrav.playground.app.base.item.OnComposableAction
 import com.vkondrav.playground.app.common.action.ImageCardAction
 
 @Composable
-fun ImageCard(item: ImageCardItem, action: OnComposableAction) {
+fun DoubleImageView(item: DoubleImageViewItem, action: OnComposableAction) {
     Row(
         modifier = Modifier
             .background(Color.LightGray)
@@ -65,7 +65,7 @@ private fun RowScope.Icon(
     }
 }
 
-data class ImageCardItem(
+data class DoubleImageViewItem(
     val image1Title: String,
     val image1: ImageVector,
     val image2Title: String,
@@ -73,13 +73,13 @@ data class ImageCardItem(
 ) : ComposableItem {
     @Composable
     override fun Composable(action: OnComposableAction) =
-        ImageCard(this, action)
+        DoubleImageView(this, action)
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    ImageCardItem(
+    DoubleImageViewItem(
         image1Title = "Person 1",
         image1 = Icons.Rounded.PersonAdd,
         image2Title = "Person 2",

@@ -15,9 +15,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
-import com.vkondrav.playground.app.common.navigation.Route
-import com.vkondrav.playground.app.common.navigation.basicGraph
+import com.vkondrav.playground.app.common.navigation.defineGraph
+import com.vkondrav.playground.app.core.composableScopeQualifier
 import com.vkondrav.playground.app.drawer.composable.Drawer
+import com.vkondrav.playground.app.page1.nav.page1Screen
 import com.vkondrav.playground.app.snackbar.SnackbarHost
 import org.koin.android.ext.android.get
 import org.koin.core.context.loadKoinModules
@@ -41,9 +42,9 @@ class MainActivity : ComponentActivity() {
                             )
                             NavHost(
                                 navController = get(),
-                                startDestination = Route.Screen1.id
+                                startDestination = page1Screen.id,
                             ) {
-                                basicGraph()
+                                defineGraph()
                             }
                         }
                         SnackbarHost(
@@ -76,7 +77,7 @@ private fun LoadStatesIntoKoin() {
         single {
             drawerState
         }
-        single {
+        single(qualifier = composableScopeQualifier) {
             composableScope
         }
     })

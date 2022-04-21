@@ -9,7 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.vkondrav.playground.app.common.action.NavigateBackAction
 import com.vkondrav.playground.app.common.action.OpenDrawerAction
-import com.vkondrav.playground.app.common.navigation.Route
+import com.vkondrav.playground.app.common.navigation.allScreens
 import com.vkondrav.playground.app.drawer.viewmodel.DrawerViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -21,7 +21,7 @@ fun CustomAppBar(navController: NavController) {
         .currentBackStackEntryAsState()
         .let { state ->
 
-            val title = Route.allScreens.find { screen ->
+            val title = allScreens.find { screen ->
                 screen.id == state.value?.destination?.route
             }?.title ?: ""
 

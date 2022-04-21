@@ -14,7 +14,7 @@ android {
         minSdk = 22
         targetSdk = 31
         versionCode = 1
-        versionName = Ci.publishVersion
+        versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -65,15 +65,17 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions.freeCompilerArgs = listOf(
-            "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi"
-        )
+        kotlinOptions.freeCompilerArgs +=
+            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
     }
 }
 
 dependencies {
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.appcompat)
+    implementation(Libs.Androidx.constrainLayoutCompose)
+    implementation(Libs.Androidx.coreSplashscreen)
+
     implementation(Libs.Material.material)
 
     implementation(Libs.Compose.ui)
@@ -83,9 +85,9 @@ dependencies {
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
-    implementation(Libs.Compose.constrainLayout)
 
     implementation(Libs.Navigation.compose)
+
     implementation(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.pager)
     implementation(Libs.Accompanist.indicators)
@@ -94,15 +96,6 @@ dependencies {
 
     implementation(Libs.Activity.compose)
 
-    implementation(Libs.Androidx.coreSplashscreen)
-
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
-
-    testImplementation(Libs.Kotest.runner)
-    testImplementation(Libs.Kotest.assertions)
-    testImplementation(Libs.Kotest.property)
-
-    debugImplementation(Libs.LayoutInspector.uiTooling)
-    debugImplementation(Libs.LayoutInspector.reflect)
 }

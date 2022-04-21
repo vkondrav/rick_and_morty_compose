@@ -10,8 +10,8 @@ import com.vkondrav.playground.app.common.action.FetchDataAction
 import com.vkondrav.playground.app.common.action.NavigateAction
 import com.vkondrav.playground.app.common.action.NavigateBackAction
 import com.vkondrav.playground.app.common.action.OpenDrawerAction
-import com.vkondrav.playground.app.common.composable.MenuItemItem
-import com.vkondrav.playground.app.common.navigation.Route
+import com.vkondrav.playground.app.common.composable.MenuViewItem
+import com.vkondrav.playground.app.common.navigation.allScreens
 import com.vkondrav.playground.app.common.scope.ComposableScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -31,8 +31,8 @@ class DrawerViewModel(
         launch {
             val tempItems = mutableListOf<ComposableItem>()
 
-            Route.allScreens.forEach { screen ->
-                tempItems.add(MenuItemItem(screen))
+            allScreens.forEach { screen ->
+                tempItems.add(MenuViewItem(screen))
             }
 
             launchMain {
