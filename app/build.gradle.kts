@@ -1,20 +1,22 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    application()
+    kotlin()
 }
 
 android {
-    compileSdk = 31
-    buildToolsVersion = "31.0.0"
+    compileSdk = Build.compileSdk
+    buildToolsVersion = Build.buildTools
 
     defaultConfig {
         applicationId = "com.vkondrav.playground.app"
-        minSdk = 22
-        targetSdk = 31
-        versionCode = 1
-        versionName = "0.0.1"
+
+        minSdk = Build.minSkd
+        targetSdk = Build.targetSdk
+
+        versionCode = Build.Version.code
+        versionName = Build.Version.name
 
         vectorDrawables {
             useSupportLibrary = true

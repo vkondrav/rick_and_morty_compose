@@ -67,4 +67,10 @@ object Libs {
         const val pager = "$gr:accompanist-pager:$version"
         const val indicators = "$gr:accompanist-pager-indicators:$version"
     }
+
+    object Apollo {
+        const val version = "3.3.0"
+
+        const val runtime = "com.apollographql.apollo3:apollo-runtime:$version"
+    }
 }
