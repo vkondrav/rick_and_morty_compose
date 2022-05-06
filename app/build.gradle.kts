@@ -16,8 +16,6 @@ android {
         versionCode = 1
         versionName = "0.0.1"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -52,16 +50,14 @@ android {
     }
 
     testOptions {
-        unitTests.isReturnDefaultValues = true
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
     }
 
     packagingOptions {
         resources.excludes.add("META-INF/*")
-    }
-
-    tasks.withType<Test> {
-        useJUnitPlatform()
-        testLogging { events("passed", "skipped", "failed") }
     }
 
     tasks.withType<KotlinCompile> {
@@ -98,4 +94,11 @@ dependencies {
 
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
+
+    testImplementation(TestLibs.JUnit.core)
+    testImplementation(TestLibs.Robolectric.core)
+    testImplementation(TestLibs.Compose.jUnit)
+    testImplementation(TestLibs.Mockito.core)
+
+    debugImplementation(TestLibs.Compose.manifest)
 }
