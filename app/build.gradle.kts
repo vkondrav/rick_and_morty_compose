@@ -69,6 +69,8 @@ android {
 }
 
 dependencies {
+    implementation(project(Module.graphqlRam))
+
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.appcompat)
     implementation(Libs.Androidx.constrainLayoutCompose)

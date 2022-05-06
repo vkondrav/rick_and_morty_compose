@@ -1,5 +1,5 @@
 object Build {
-    const val minSkd = 31
+    const val minSkd = 29
     const val compileSdk = 31
     const val targetSdk = 31
     const val buildTools = "31.0.0"

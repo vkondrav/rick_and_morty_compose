@@ -1,3 +1,4 @@
 rootProject.name = "Playground"
 include(":app")
-include(":graphql")
+include(":graphql_ram")
+include(":apollo")

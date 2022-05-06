@@ -5,6 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.item.OnComposableAction
+import com.vkondrav.playground.app.characters.nav.charactersScreen
 import com.vkondrav.playground.app.page1.nav.page1Screen
 import com.vkondrav.playground.app.page2.nav.page2Screen
 import com.vkondrav.playground.app.tabs.nav.tabsScreen
@@ -23,6 +24,7 @@ val allScreens = listOf(
     page2Screen,
     page2Screen,
     tabsScreen,
+    charactersScreen,
 )
 
 fun NavGraphBuilder.defineGraph() {

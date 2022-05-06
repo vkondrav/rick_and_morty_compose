@@ -70,7 +70,10 @@ object Libs {
 
     object Apollo {
         const val version = "3.3.0"
+        const val packageName = "packageName"
+        const val gr = "com.apollographql.apollo3"
 
-        const val runtime = "com.apollographql.apollo3:apollo-runtime:$version"
+        const val runtime = "$gr:apollo-runtime:$version"
+        const val api = "$gr:apollo-api:$version"
     }
 }

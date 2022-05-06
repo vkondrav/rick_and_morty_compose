@@ -1,11 +1,11 @@
 plugins {
     library()
     kotlin()
-    apollo()
 }
 
 android {
-    namespace = "com.vkondrav.playground.graphql"
+    namespace = "com.vkondrav.playground.apollo"
+    compileSdk = 32
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -25,12 +25,9 @@ android {
     kotlinOptions {
         jvmTarget = Libs.jvmTarget
     }
-
-    apollo {
-        packageName.set("com.vkondrav.graphql")
-    }
 }
 
 dependencies {
-    implementation(Libs.Apollo.runtime)
+    api(Libs.Apollo.runtime)
+    api(Libs.Koin.core)
 }
