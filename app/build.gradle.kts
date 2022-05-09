@@ -86,6 +86,9 @@ dependencies {
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
 
+    implementation(Libs.Paging.core)
+    implementation(Libs.Paging.compose)
+
     implementation(Libs.Navigation.compose)
 
     implementation(Libs.Accompanist.navAnimation)

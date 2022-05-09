@@ -13,7 +13,10 @@ fun Page3Screen() {
     val viewModel = getViewModel<Page3ScreenViewModel>().also {
         it.onAction(FetchDataAction)
     }
-    BaseScreen(viewModel)
+    BaseScreen(
+        screenEventViewModel = viewModel,
+        onActionViewModel = viewModel,
+    )
 }
 
 // -- Previews -----------------------------------------------------------------

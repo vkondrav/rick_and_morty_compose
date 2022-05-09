@@ -13,7 +13,11 @@ fun Page1Screen() {
     val viewModel = getViewModel<Page1ScreenViewModel>().also {
         it.onAction(FetchDataAction)
     }
-    BaseScreen(viewModel)
+
+    BaseScreen(
+        screenEventViewModel = viewModel,
+        onActionViewModel = viewModel,
+    )
 }
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)

@@ -19,7 +19,10 @@ fun Drawer(drawerState: DrawerState, content: @Composable () -> Unit) {
         drawerState = drawerState,
         gesturesEnabled = drawerState.isOpen,
         drawerContent = {
-            BaseScreen(viewModel)
+            BaseScreen(
+                screenEventViewModel = viewModel,
+                onActionViewModel = viewModel,
+            )
         },
         content = content,
     )

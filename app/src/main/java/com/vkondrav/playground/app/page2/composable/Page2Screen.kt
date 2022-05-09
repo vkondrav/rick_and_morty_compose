@@ -13,7 +13,10 @@ fun Page2Screen() {
     val viewModel = getViewModel<Page2ScreenViewModel>().also {
         it.onAction(FetchDataAction)
     }
-    BaseScreen(viewModel)
+    BaseScreen(
+        screenEventViewModel = viewModel,
+        onActionViewModel = viewModel,
+    )
 }
 
 // -- Previews -----------------------------------------------------------------

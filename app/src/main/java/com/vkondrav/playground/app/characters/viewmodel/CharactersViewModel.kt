@@ -1,35 +1,24 @@
 package com.vkondrav.playground.app.characters.viewmodel
 
-import androidx.compose.runtime.mutableStateListOf
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.vkondrav.playground.app.base.item.ComposableAction
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
-import com.vkondrav.playground.app.characters.composable.CharacterViewItem
+import com.vkondrav.playground.app.base.viewmodel.OnActionViewModel
 import com.vkondrav.playground.app.common.action.FetchDataAction
-import com.vkondrav.playground.graphql.ram.RamRepository
+import com.vkondrav.playground.app.page1.source.CharacterSource
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 
 class CharactersViewModel(
-    private val ramRepository: RamRepository,
+    private val characterSource: CharacterSource,
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel(dispatcher) {
+) : BaseViewModel(dispatcher), OnActionViewModel {
 
-    private val _columnItems = mutableStateListOf<ComposableItem>()
-    override val columnItems: List<ComposableItem> = _columnItems
-
-    private fun fetchData() {
-        launch {
-            val characters = ramRepository.fetchCharacters(page = 1).map {
-                CharacterViewItem(it)
-            }
-
-            launchMain {
-                _columnItems.clear()
-                _columnItems.addAll(characters)
-            }
-        }
-    }
+    fun fetchData(): Flow<PagingData<ComposableItem>>
+        = Pager(PagingConfig(50)) { characterSource }.flow
 
     override fun onAction(action: ComposableAction) {
         when (action) {

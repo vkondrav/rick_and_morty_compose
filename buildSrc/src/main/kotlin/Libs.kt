@@ -76,4 +76,10 @@ object Libs {
         const val runtime = "$gr:apollo-runtime:$version"
         const val api = "$gr:apollo-api:$version"
     }
+
+    object Paging {
+        private const val version = "3.1.1"
+        const val compose = "androidx.paging:paging-compose:1.0.0-alpha14"
+        const val core = "androidx.paging:paging-runtime:$version"
+    }
 }
