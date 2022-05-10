@@ -60,7 +60,7 @@ object Libs {
     }
 
     object Accompanist {
-        private const val version = "0.23.1"
+        private const val version = "0.24.7-alpha"
         private const val gr = "com.google.accompanist"
 
         const val navAnimation = "$gr:accompanist-navigation-animation:$version"

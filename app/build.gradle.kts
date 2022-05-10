@@ -63,8 +63,13 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions.freeCompilerArgs +=
-            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+
+        val optIns = listOf(
+            "com.google.accompanist.pager.ExperimentalPagerApi",
+            "androidx.compose.animation.ExperimentalAnimationApi",
+        ).joinToString(separator = ",")
+
+        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
     }
 }
 

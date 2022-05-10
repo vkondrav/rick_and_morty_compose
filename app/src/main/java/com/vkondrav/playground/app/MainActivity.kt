@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandIn
+import androidx.compose.animation.shrinkOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
@@ -12,8 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
 import com.vkondrav.playground.app.common.navigation.defineGraph
 import com.vkondrav.playground.app.common.state.AppState
@@ -31,7 +34,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
 
-            val navController = rememberNavController()
+            val navController = rememberAnimatedNavController()
             val snackbarHostState = remember { SnackbarHostState() }
             val drawerState =
                 rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -44,7 +47,7 @@ class MainActivity : ComponentActivity() {
                     Box {
                         Column {
                             CustomAppBar(navController)
-                            NavHost(
+                            AnimatedNavHost(
                                 navController = navController,
                                 startDestination = page1Screen.id,
                             ) {
