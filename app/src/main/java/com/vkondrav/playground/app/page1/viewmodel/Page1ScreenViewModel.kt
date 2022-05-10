@@ -1,6 +1,5 @@
 package com.vkondrav.playground.app.page1.viewmodel
 
-import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import com.vkondrav.playground.app.base.item.ComposableAction
@@ -14,9 +13,8 @@ import com.vkondrav.playground.app.common.composable.CollapsableViewItem
 import com.vkondrav.playground.app.common.composable.MessageViewItem
 import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.common.scope.ComposableScope
+import com.vkondrav.playground.app.common.state.AppState
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,11 +22,9 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
 class Page1ScreenViewModel(
-    private val snackbarHostState: SnackbarHostState,
-    override val composableScope: CoroutineScope,
+    private val appState: AppState,
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel(dispatcher), ScreenEventViewModel, ComposableScope,
-    OnActionViewModel {
+) : BaseViewModel(dispatcher), ScreenEventViewModel, OnActionViewModel {
 
     private val _screenEvent = MutableStateFlow<ScreenEvent?>(null)
     override val screenEvent: Flow<ScreenEvent> = _screenEvent.filterNotNull()
@@ -67,8 +63,8 @@ class Page1ScreenViewModel(
     override fun onAction(action: ComposableAction) {
         when (action) {
             is FetchDataAction -> fetchData()
-            is MessageCardAction -> launchComposable {
-                snackbarHostState.showSnackbar("Message: ${action.message}")
+            is MessageCardAction -> {
+                appState.showSnackbar("Message: ${action.message}")
             }
         }
     }

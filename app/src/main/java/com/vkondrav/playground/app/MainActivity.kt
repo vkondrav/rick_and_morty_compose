@@ -4,23 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
 import com.vkondrav.playground.app.common.navigation.defineGraph
-import com.vkondrav.playground.app.core.composableScopeQualifier
+import com.vkondrav.playground.app.common.state.AppState
+import com.vkondrav.playground.app.common.state.AppStateImpl
 import com.vkondrav.playground.app.drawer.composable.Drawer
 import com.vkondrav.playground.app.page1.nav.page1Screen
 import com.vkondrav.playground.app.snackbar.SnackbarHost
-import org.koin.android.ext.android.get
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 
@@ -30,26 +30,28 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
-            LoadStatesIntoKoin()
+
+            val navController = rememberNavController()
+            val snackbarHostState = remember { SnackbarHostState() }
+            val drawerState =
+                rememberDrawerState(initialValue = DrawerValue.Closed)
+
+            LoadAppStateIntoKoin(
+                navController, snackbarHostState, drawerState,
+            )
             MaterialTheme {
-                Drawer(
-                    drawerState = get(),
-                ) {
+                Drawer(drawerState) {
                     Box {
                         Column {
-                            CustomAppBar(
-                                navController = get(),
-                            )
+                            CustomAppBar(navController)
                             NavHost(
-                                navController = get(),
+                                navController = navController,
                                 startDestination = page1Screen.id,
                             ) {
                                 defineGraph()
                             }
                         }
-                        SnackbarHost(
-                            snackbarHostState = get(),
-                        )
+                        SnackbarHost(snackbarHostState)
                     }
                 }
             }
@@ -58,27 +60,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun LoadStatesIntoKoin() {
-    val navController = rememberNavController()
-    val snackbarHostState = remember { SnackbarHostState() }
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val composableScope = rememberCoroutineScope()
+private fun LoadAppStateIntoKoin(
+    navController: NavController,
+    snackbarHostState: SnackbarHostState,
+    drawerState: DrawerState,
+) {
+    val coroutineScope = rememberCoroutineScope()
 
     loadKoinModules(module {
-        single<NavHostController> {
-            navController
-        }
-        single<NavController> {
-            navController
-        }
-        single {
-            snackbarHostState
-        }
-        single {
-            drawerState
-        }
-        single(qualifier = composableScopeQualifier) {
-            composableScope
+        single<AppState> {
+            AppStateImpl(
+                navController = navController,
+                snackbarHostState = snackbarHostState,
+                drawerState = drawerState,
+                coroutineScope = coroutineScope,
+            )
         }
     })
 }

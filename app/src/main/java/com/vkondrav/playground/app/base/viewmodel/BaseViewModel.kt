@@ -14,7 +14,4 @@ abstract class BaseViewModel(private val dispatcher: CoroutineDispatcher) :
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Log.e("BaseViewModel", throwable.message, throwable)
     }
-
-    protected fun launchMain(block: suspend CoroutineScope.() -> Unit) =
-        launch(Dispatchers.Main + exceptionHandler, block = block)
 }
