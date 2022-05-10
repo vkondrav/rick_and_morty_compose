@@ -64,6 +64,7 @@ object Libs {
         private const val gr = "com.google.accompanist"
 
         const val navAnimation = "$gr:accompanist-navigation-animation:$version"
+        const val navMaterial = "$gr:accompanist-navigation-material:$version"
         const val pager = "$gr:accompanist-pager:$version"
         const val indicators = "$gr:accompanist-pager-indicators:$version"
     }

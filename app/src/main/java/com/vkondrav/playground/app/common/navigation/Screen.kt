@@ -5,9 +5,11 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.material.bottomSheet
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.item.OnComposableAction
 import com.vkondrav.playground.app.characters.nav.charactersScreen
@@ -36,7 +38,7 @@ val allScreens = listOf(
 fun NavGraphBuilder.defineGraph() {
     allScreens.forEach { screen ->
         composable(
-            screen.id,
+            route = screen.id,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentScope.SlideDirection.Left,
@@ -55,5 +57,8 @@ fun NavGraphBuilder.defineGraph() {
                 )
             },
         ) { screen.Composable(action = { }) }
+    }
+    bottomSheet("bottom_sheet") {
+        page3Screen.Composable(action = { })
     }
 }

@@ -67,6 +67,8 @@ android {
         val optIns = listOf(
             "com.google.accompanist.pager.ExperimentalPagerApi",
             "androidx.compose.animation.ExperimentalAnimationApi",
+            "com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi",
+            "androidx.compose.metrial.ExperimentalMaterialApi",
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
@@ -97,6 +99,7 @@ dependencies {
     implementation(Libs.Navigation.compose)
 
     implementation(Libs.Accompanist.navAnimation)
+    implementation(Libs.Accompanist.navMaterial)
     implementation(Libs.Accompanist.pager)
     implementation(Libs.Accompanist.indicators)
 
