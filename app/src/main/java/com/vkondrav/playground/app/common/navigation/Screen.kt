@@ -58,7 +58,6 @@ fun NavGraphBuilder.defineGraph() {
             },
         ) { screen.Composable(action = { }) }
     }
-    bottomSheet("bottom_sheet") {
-        page3Screen.Composable(action = { })
-    }
 }
+
+const val BOTTOM_SHEET_NAV = "bottom_sheet"

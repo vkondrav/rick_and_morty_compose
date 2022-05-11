@@ -27,7 +27,6 @@ fun MessageView(
 
     Row(
         modifier = Modifier
-            .background(Color.White)
             .clickable { action.invoke(MessageCardAction(item.message)) }
             .testTag("row")
     ) {

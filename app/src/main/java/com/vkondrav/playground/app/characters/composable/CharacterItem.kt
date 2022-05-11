@@ -19,7 +19,6 @@ import com.vkondrav.playground.graphql.ram.domain.RamCharacter
 fun CharacterView(item: CharacterViewItem, action: OnComposableAction) {
     Row(
         modifier = Modifier
-            .background(Color.White)
             .fillMaxWidth()
     ) {
         Text(

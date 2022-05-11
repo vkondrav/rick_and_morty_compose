@@ -68,7 +68,7 @@ android {
             "com.google.accompanist.pager.ExperimentalPagerApi",
             "androidx.compose.animation.ExperimentalAnimationApi",
             "com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi",
-            "androidx.compose.metrial.ExperimentalMaterialApi",
+            "androidx.compose.material.ExperimentalMaterialApi",
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"

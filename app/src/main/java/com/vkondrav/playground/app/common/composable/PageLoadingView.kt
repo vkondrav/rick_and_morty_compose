@@ -17,7 +17,6 @@ import com.vkondrav.playground.app.base.item.OnComposableAction
 fun PageLoadingView(action: OnComposableAction) {
     Box(
         Modifier
-            .background(Color.White)
             .fillMaxHeight()
             .fillMaxWidth()
     ) {

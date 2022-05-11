@@ -1,6 +1,7 @@
 package com.vkondrav.playground.app.common.state
 
 import android.util.Log
+import androidx.compose.material.BottomSheetScaffoldState
 import androidx.compose.material.DrawerState
 import androidx.compose.material.SnackbarHostState
 import androidx.navigation.NavController
@@ -14,12 +15,14 @@ interface AppState {
     fun showSnackbar(message: String)
     fun navigate(route: String)
     fun navigateBack()
+    fun openBottomSheet()
 }
 
 internal class AppStateImpl(
     private val navController: NavController,
     private val snackbarHostState: SnackbarHostState,
     private val drawerState: DrawerState,
+    private val bottomSheetScaffoldState: BottomSheetScaffoldState,
     private val coroutineScope: CoroutineScope,
 ) : AppState {
 
@@ -45,6 +48,10 @@ internal class AppStateImpl(
 
     override fun navigateBack() {
         navController.popBackStack()
+    }
+
+    override fun openBottomSheet() {
+        launch { bottomSheetScaffoldState.bottomSheetState.expand() }
     }
 
     private fun launch(block: suspend CoroutineScope.() -> Unit) =
