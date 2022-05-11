@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.vkondrav.playground.app.base.composable.screen.BaseScreen
 import com.vkondrav.playground.app.characters.viewmodel.CharactersViewModel
 import com.vkondrav.playground.app.common.action.FetchDataAction
 import org.koin.androidx.compose.getViewModel
@@ -23,30 +24,9 @@ fun CharactersScreen() {
         it.onAction(FetchDataAction)
     }
 
-    val lazyItems = viewModel.fetchData().collectAsLazyPagingItems()
-
-    LazyColumn(
-        content = {
-            items(lazyItems.itemCount) { index ->
-                lazyItems[index]?.let { item ->
-                    item.Composable(viewModel::onAction)
-                }
-                lazyItems.apply {
-                    when {
-                        loadState.refresh is LoadState.Loading -> {
-                            this@LazyColumn.item { LoadingItem() }
-                            this@LazyColumn.item { LoadingItem() }
-                        }
-                        loadState.append is LoadState.Loading -> {
-                            this@LazyColumn.item { LoadingItem() }
-                            this@LazyColumn.item { LoadingItem() }
-                        }
-                        loadState.refresh is LoadState.Error -> {}
-                        loadState.append is LoadState.Error -> {}
-                    }
-                }
-            }
-        }
+    BaseScreen(
+        screenEventViewModel = viewModel,
+        onActionViewModel = viewModel
     )
 }
 

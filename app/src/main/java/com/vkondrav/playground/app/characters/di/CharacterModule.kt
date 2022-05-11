@@ -13,7 +13,7 @@ val charactersModule = module {
     }
     viewModel {
         CharactersViewModel(
-            characterSource = get(),
+            ramRepository = get(),
             dispatcher = get(),
         )
     }
