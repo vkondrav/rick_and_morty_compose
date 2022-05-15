@@ -48,7 +48,7 @@ fun MainActivityScreen() {
                     CustomAppBar(navController)
                     AnimatedNavHost(
                         navController = navController,
-                        startDestination = charactersScreen.id,
+                        startDestination = charactersScreen.route,
                     ) {
                         defineGraph()
                     }

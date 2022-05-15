@@ -14,8 +14,7 @@ import com.vkondrav.playground.app.screen.character_details.nav.characterDetails
 import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
 
 data class Screen(
-    val id: String,
-    val title: String,
+    val route: String,
     val arguments: List<NamedNavArgument> = emptyList(),
     val compose: @Composable (Bundle?) -> Unit,
 )
@@ -28,7 +27,7 @@ val allScreens = listOf(
 fun NavGraphBuilder.defineGraph() {
     allScreens.forEach { screen ->
         composable(
-            route = screen.id,
+            route = screen.route,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentScope.SlideDirection.Left,

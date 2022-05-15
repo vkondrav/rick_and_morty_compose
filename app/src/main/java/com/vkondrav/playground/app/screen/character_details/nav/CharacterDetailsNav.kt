@@ -1,25 +1,24 @@
 package com.vkondrav.playground.app.screen.character_details.nav
 
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
+import android.os.Bundle
 import com.vkondrav.playground.app.common.navigation.NavigationException
 import com.vkondrav.playground.app.common.navigation.Screen
 import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsScreen
 
 private const val CHARACTER_DETAILS = "character_details"
 private const val ID = "id"
+private const val TITLE = "title"
 
 val characterDetailsScreen = Screen(
-    id = "$CHARACTER_DETAILS/{$ID}",
-    title = "Characters Details",
-    arguments = listOf(
-        navArgument(ID) { type = NavType.StringType },
-    ),
+    route = "$CHARACTER_DETAILS/{$ID}?$TITLE={$TITLE}",
 ) { bundle ->
     CharacterDetailsScreen(
-        id = bundle?.getString(ID)
+        id = bundle?.id
             ?: throw NavigationException("Navigating to character details screen with no id")
     )
 }
 
-fun routeToCharacterDetailsScreen(id: String) = "$CHARACTER_DETAILS/$id"
+val Bundle.id get() = this.getString(ID)
+val Bundle.title get() = this.getString(TITLE)
+
+fun toCharacterDetailsScreen(id: String, title: String) = "$CHARACTER_DETAILS/$id?$TITLE=$title"

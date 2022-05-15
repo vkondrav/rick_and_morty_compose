@@ -1,14 +1,17 @@
 package com.vkondrav.playground.app.common.appbar
 
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.vkondrav.playground.app.common.navigation.allScreens
 import com.vkondrav.playground.app.common.state.AppState
+import com.vkondrav.playground.app.screen.character_details.nav.title
 import org.koin.androidx.compose.get
 
 @Composable
@@ -19,9 +22,7 @@ fun CustomAppBar(navController: NavController) {
         .currentBackStackEntryAsState()
         .let { state ->
 
-            val title = allScreens.find { screen ->
-                screen.id == state.value?.destination?.route
-            }?.title ?: ""
+            val title = state.value?.arguments?.title ?: ""
 
             BackStackEntryState(
                 showBackButton = navController.backQueue.size > 2,

@@ -31,7 +31,7 @@ fun TabsScreen() {
             tabs.forEachIndexed { index, screen ->
                 Tab(selected = tabIndex == index,
                     onClick = { tabIndex = index },
-                    text = { Text(text = screen.title) })
+                    text = { Text(text = "") })
             }
         }
         HorizontalPager(

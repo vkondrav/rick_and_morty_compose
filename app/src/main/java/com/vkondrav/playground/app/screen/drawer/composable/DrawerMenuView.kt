@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.common.navigation.Screen
 
 @Composable
 fun DrawerMenuView(item: DrawerMenuViewItem) {
@@ -25,7 +24,7 @@ fun DrawerMenuView(item: DrawerMenuViewItem) {
                 }
         ) {
             Text(
-                text = item.screen.title,
+                text = item.title,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
                     .padding(8.dp)
@@ -35,19 +34,19 @@ fun DrawerMenuView(item: DrawerMenuViewItem) {
     }
 }
 
-@Preview
-@Composable
-private fun Preview() {
-    DrawerMenuViewItem(
-        screen = Screen("1", "1", emptyList()) { },
-        onClickAction = { }
-    ).Composable()
-}
-
 data class DrawerMenuViewItem(
-    val screen: Screen,
+    val title: String,
     val onClickAction: () -> Unit,
 ) : ComposableItem {
     @Composable
     override fun Composable() = DrawerMenuView(this)
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    DrawerMenuViewItem(
+        title = "Title",
+        onClickAction = { }
+    ).Composable()
 }
