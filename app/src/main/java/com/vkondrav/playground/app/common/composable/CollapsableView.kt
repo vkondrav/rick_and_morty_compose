@@ -18,10 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.vkondrav.playground.app.base.item.Composable
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.base.item.OnComposableAction
 
 @Composable
-fun CollapsableView(item: CollapsableViewItem, action: OnComposableAction) {
+fun CollapsableView(item: CollapsableViewItem) {
     var drawerOpen by remember { mutableStateOf(item.open) }
 
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -65,7 +64,7 @@ fun CollapsableView(item: CollapsableViewItem, action: OnComposableAction) {
         }
         AnimatedVisibility(visible = drawerOpen) {
             Column {
-                item.items.Composable(action = action)
+                item.items.Composable()
             }
         }
         Divider(color = Color.Black, thickness = 1.dp)
@@ -88,6 +87,6 @@ data class CollapsableViewItem(
     val items: List<ComposableItem>
 ) : ComposableItem {
     @Composable
-    override fun Composable(action: OnComposableAction) =
-        CollapsableView(this, action)
+    override fun Composable() =
+        CollapsableView(this)
 }

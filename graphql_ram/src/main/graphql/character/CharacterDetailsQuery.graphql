@@ -1,0 +1,11 @@
+query CharacterDetails($id: ID!) {
+    character(id: $id) {
+        ... CharacterFragment
+        location {
+            ... LocationFragment
+        }
+        origin {
+            ... LocationFragment
+        }
+    }
+}

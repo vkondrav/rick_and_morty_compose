@@ -1,0 +1,7 @@
+query Locations {
+    locations {
+        results {
+            ... LocationFragment
+        }
+    }
+}

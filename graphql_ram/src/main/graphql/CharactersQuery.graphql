@@ -1,7 +1,0 @@
-query CharactersQuery($page: Int!) {
-    characters(page: $page) {
-        results {
-            name
-        }
-    }
-}

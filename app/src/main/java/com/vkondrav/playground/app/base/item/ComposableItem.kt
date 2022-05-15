@@ -4,12 +4,12 @@ import androidx.compose.runtime.Composable
 
 interface ComposableItem {
     @Composable
-    fun Composable(action: OnComposableAction)
+    fun Composable()
 }
 
 @Composable
-fun List<ComposableItem>.Composable(action: OnComposableAction) {
+fun List<ComposableItem>.Composable() {
     forEach { item ->
-        item.Composable(action = action)
+        item.Composable()
     }
 }

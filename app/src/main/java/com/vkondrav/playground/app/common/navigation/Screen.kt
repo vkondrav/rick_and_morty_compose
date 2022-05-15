@@ -1,38 +1,28 @@
 package com.vkondrav.playground.app.common.navigation
 
+import android.os.Bundle
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavGraphBuilder
 import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.material.bottomSheet
-import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.base.item.OnComposableAction
-import com.vkondrav.playground.app.characters.nav.charactersScreen
-import com.vkondrav.playground.app.page1.nav.page1Screen
-import com.vkondrav.playground.app.page2.nav.page2Screen
-import com.vkondrav.playground.app.page3.nav.page3Screen
-import com.vkondrav.playground.app.tabs.nav.tabsScreen
+import com.vkondrav.playground.app.screen.character_details.nav.characterDetailsScreen
+import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
 
 data class Screen(
     val id: String,
     val title: String,
-    private val compose: @Composable () -> Unit,
-) : ComposableItem {
-    @Composable
-    override fun Composable(action: OnComposableAction) = compose()
-}
+    val arguments: List<NamedNavArgument> = emptyList(),
+    val compose: @Composable (Bundle?) -> Unit,
+)
 
 val allScreens = listOf(
-    page1Screen,
-    page2Screen,
-    page3Screen,
-    tabsScreen,
     charactersScreen,
+    characterDetailsScreen,
 )
 
 fun NavGraphBuilder.defineGraph() {
@@ -56,8 +46,9 @@ fun NavGraphBuilder.defineGraph() {
                     animationSpec = spring(stiffness = Spring.StiffnessMedium),
                 )
             },
-        ) { screen.Composable(action = { }) }
+            arguments = screen.arguments,
+        ) {
+            screen.compose(it.arguments)
+        }
     }
 }
-
-const val BOTTOM_SHEET_NAV = "bottom_sheet"

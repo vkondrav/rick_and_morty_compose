@@ -1,0 +1,5 @@
+fragment LocationFragment on Location {
+    id
+    name
+    dimension
+}

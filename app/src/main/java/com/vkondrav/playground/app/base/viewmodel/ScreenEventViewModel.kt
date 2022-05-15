@@ -10,7 +10,7 @@ interface ScreenEventViewModel {
 }
 
 @Composable
-fun ScreenEventViewModel.collectEvent() = screenEvent.collectAsState()
+fun ScreenEventViewModel.collect() = screenEvent.collectAsState()
 
 @Composable
 private fun Flow<ScreenEvent>.collectAsState() =

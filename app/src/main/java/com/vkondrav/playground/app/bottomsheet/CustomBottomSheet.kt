@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterialApi::class)
-
 package com.vkondrav.playground.app.bottomsheet
 
 import androidx.compose.foundation.background
@@ -9,12 +7,10 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetScaffoldState
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.vkondrav.playground.app.page3.nav.page3Screen
 
 @Composable
 fun CustomBottomSheet(
@@ -35,7 +31,7 @@ fun CustomBottomSheet(
                     .background(Color.Cyan)
                     .heightIn(min = 100.dp, max = 500.dp)
             ) {
-                page3Screen.Composable(action = { })
+                //TODO: add composable
             }
         },
         sheetElevation = 8.dp,

@@ -10,18 +10,12 @@ import androidx.compose.ui.Modifier
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.vkondrav.playground.app.page1.nav.page1Screen
-import com.vkondrav.playground.app.page2.nav.page2Screen
-import com.vkondrav.playground.app.page3.nav.page3Screen
+import com.vkondrav.playground.app.common.navigation.Screen
 
 @Composable
 fun TabsScreen() {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabs = listOf(
-        page1Screen,
-        page2Screen,
-        page3Screen,
-    )
+    val tabs = emptyList<Screen>()
     val pagerState = rememberPagerState()
 
     Column {
@@ -44,7 +38,7 @@ fun TabsScreen() {
             count = tabs.size,
             state = pagerState,
         ) { index ->
-            tabs[index].Composable(action = { })
+            tabs[index].compose(null)
         }
     }
 }
