@@ -1,0 +1,8 @@
+query EpisodeDetailsQuery($id: ID!) {
+    episode(id: $id) {
+        ... EpisodeFragment
+        characters {
+            ... CharacterFragment
+        }
+    }
+}
