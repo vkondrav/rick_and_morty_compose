@@ -1,16 +1,16 @@
 package com.vkondrav.playground.app.screen.character_details.nav
 
-import android.os.Bundle
+import com.vkondrav.playground.app.common.nav.NAV_ID
+import com.vkondrav.playground.app.common.nav.NAV_TITLE
+import com.vkondrav.playground.app.common.nav.id
 import com.vkondrav.playground.app.common.navigation.NavigationException
 import com.vkondrav.playground.app.common.navigation.Screen
 import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsScreen
 
-private const val CHARACTER_DETAILS = "character_details"
-private const val ID = "id"
-private const val TITLE = "title"
+private const val NAV_CHARACTER_DETAILS = "character_details"
 
 val characterDetailsScreen = Screen(
-    route = "$CHARACTER_DETAILS/{$ID}?$TITLE={$TITLE}",
+    route = "$NAV_CHARACTER_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
 ) { bundle ->
     CharacterDetailsScreen(
         id = bundle?.id
@@ -18,7 +18,4 @@ val characterDetailsScreen = Screen(
     )
 }
 
-val Bundle.id get() = this.getString(ID)
-val Bundle.title get() = this.getString(TITLE)
-
-fun toCharacterDetailsScreen(id: String, title: String) = "$CHARACTER_DETAILS/$id?$TITLE=$title"
+fun toCharacterDetailsScreen(id: String, title: String) = "$NAV_CHARACTER_DETAILS/$id?$NAV_TITLE=$title"

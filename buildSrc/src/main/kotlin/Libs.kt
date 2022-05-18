@@ -1,12 +1,12 @@
 object Libs {
-    const val kotlinVersion = "1.6.10"
+    const val kotlinVersion = "1.6.21"
     const val jvmTarget = "1.8"
     const val gradlePluginVersion = "1.5.21"
-    const val androidVersion = "7.1.0"
+    const val androidVersion = "7.2.0"
 
     object Compose {
         private const val gr = "androidx.compose"
-        const val version = "1.1.1"
+        const val version = "1.2.0-beta01"
 
         const val ui = "$gr.ui:ui:$version"
         const val uiTooling = "$gr.ui:ui-tooling:$version"

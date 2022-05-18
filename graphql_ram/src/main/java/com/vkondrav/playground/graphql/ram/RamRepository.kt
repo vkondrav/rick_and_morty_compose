@@ -13,7 +13,7 @@ import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 interface RamRepository {
     suspend fun fetchCharacters(page: Int): List<RamCharacter>
     suspend fun fetchCharacterDetails(id: String): RamCharacterDetails
-    suspend fun fetchLocations(): List<RamLocation>
+    suspend fun fetchLocations(page: Int): List<RamLocation>
     suspend fun fetchLocationDetails(id: String): RamLocationDetails
     suspend fun fetchEpisodes(page: Int): List<RamEpisode>
     suspend fun fetchEpisodeDetails(id: String): RamEpisodeDetails
@@ -51,7 +51,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 
-    override suspend fun fetchLocations(): List<RamLocation> {
+    override suspend fun fetchLocations(page: Int): List<RamLocation> {
         val query = LocationsQuery()
         return service.query(query)
             .data

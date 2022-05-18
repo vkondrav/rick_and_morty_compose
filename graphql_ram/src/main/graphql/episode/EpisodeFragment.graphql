@@ -1,4 +1,5 @@
 fragment EpisodeFragment on Episode {
+    id
     name
     air_date
 }

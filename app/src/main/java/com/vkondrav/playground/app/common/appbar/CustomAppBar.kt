@@ -10,8 +10,8 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.vkondrav.playground.app.common.nav.title
 import com.vkondrav.playground.app.common.state.AppState
-import com.vkondrav.playground.app.screen.character_details.nav.title
 import org.koin.androidx.compose.get
 
 @Composable

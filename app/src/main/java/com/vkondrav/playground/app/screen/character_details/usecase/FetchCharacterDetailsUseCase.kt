@@ -1,15 +1,14 @@
 package com.vkondrav.playground.app.screen.character_details.usecase
 
-import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.graphql.ram.RamRepository
+import com.vkondrav.playground.graphql.ram.domain.RamCharacterDetails
 
 class FetchCharacterDetailsUseCase(
     private val ramRepository: RamRepository,
 ) {
     suspend operator fun invoke(
         id: String,
-    ): Result<List<ComposableItem>> = runCatching {
+    ): Result<RamCharacterDetails> = runCatching {
         ramRepository.fetchCharacterDetails(id)
-        emptyList()
     }
 }
