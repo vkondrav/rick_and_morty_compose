@@ -14,7 +14,7 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.graphql.ram.domain.RamCharacter
 
 @Composable
-fun CharacterDetailView(
+fun CharacterDetailsView(
     item: CharacterDetailsViewItem,
 ) {
     Column(
@@ -45,7 +45,7 @@ data class CharacterDetailsViewItem(
 ) : ComposableItem {
 
     @Composable
-    override fun Composable() = CharacterDetailView(this)
+    override fun Composable() = CharacterDetailsView(this)
 
 }
 
