@@ -5,7 +5,11 @@ import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
@@ -28,7 +32,7 @@ fun TabsScreen() {
                     )
                 )
             }) {
-            tabs.forEachIndexed { index, screen ->
+            tabs.forEachIndexed { index, _ ->
                 Tab(selected = tabIndex == index,
                     onClick = { tabIndex = index },
                     text = { Text(text = "") })

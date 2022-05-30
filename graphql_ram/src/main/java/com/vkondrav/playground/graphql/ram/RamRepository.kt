@@ -2,12 +2,18 @@ package com.vkondrav.playground.graphql.ram
 
 import android.util.Log
 import com.vkondrav.apollo.Service
-import com.vkondrav.graphql.ram.*
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
 import com.vkondrav.graphql.ram.CharactersQuery
+import com.vkondrav.graphql.ram.EpisodeDetailsQuery
+import com.vkondrav.graphql.ram.EpisodesQuery
 import com.vkondrav.graphql.ram.LocationDetailsQuery
 import com.vkondrav.graphql.ram.LocationsQuery
-import com.vkondrav.playground.graphql.ram.domain.*
+import com.vkondrav.playground.graphql.ram.domain.RamCharacter
+import com.vkondrav.playground.graphql.ram.domain.RamCharacterDetails
+import com.vkondrav.playground.graphql.ram.domain.RamEpisode
+import com.vkondrav.playground.graphql.ram.domain.RamEpisodeDetails
+import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.graphql.ram.domain.RamLocationDetails
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 
 interface RamRepository {
@@ -87,7 +93,6 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             ?.episodes
             ?.results
             ?.mapNotNull {
-
                 runCatching {
                     RamEpisode(it!!.episodeFragment)
                 }.onFailure {

@@ -9,6 +9,7 @@ data class RamEpisodeDetails(
     val characters: List<RamCharacter>,
 ) {
 
+    @SuppressWarnings("TooGenericExceptionCaught")
     @Throws(InvalidDataException::class)
     internal constructor(episode: EpisodeDetailsQuery.Episode): this(
         episode = RamEpisode(episode.episodeFragment),

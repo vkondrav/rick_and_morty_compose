@@ -6,24 +6,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun LazyColumnView(item: LazyColumnViewItem) {
-    LazyColumn {
+fun ContentView(item: ContentViewItem) {
+    LazyColumn { //TODO: configure to use grid when available
         items(item.items) { item ->
             item.Composable()
         }
     }
 }
 
-class LazyColumnViewItem(
+class ContentViewItem(
     val items: List<ComposableItem>,
 ) : ComposableItem {
 
     @Composable
-    override fun Composable() = LazyColumnView(this)
+    override fun Composable() = ContentView(this)
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    LazyColumnViewItem(emptyList()).Composable()
+    ContentViewItem(emptyList()).Composable()
 }

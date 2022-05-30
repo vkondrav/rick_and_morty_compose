@@ -56,7 +56,7 @@ object Libs {
     object Material {
         private const val version = "1.5.0"
 
-        const val material = "com.google.android.material:material:$version"
+        const val core = "com.google.android.material:material:$version"
     }
 
     object Accompanist {
@@ -82,5 +82,10 @@ object Libs {
         private const val version = "3.1.1"
         const val compose = "androidx.paging:paging-compose:1.0.0-alpha14"
         const val core = "androidx.paging:paging-runtime:$version"
+    }
+
+    object Timber {
+        private const val version = "5.0.1"
+        const val core = "com.jakewharton.timber:timber:$version"
     }
 }

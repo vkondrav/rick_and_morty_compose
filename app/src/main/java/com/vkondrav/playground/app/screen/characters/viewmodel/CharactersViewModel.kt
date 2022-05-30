@@ -1,6 +1,6 @@
 package com.vkondrav.playground.app.screen.characters.viewmodel
 
-import com.vkondrav.playground.app.base.item.LazyColumnViewItem
+import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
@@ -33,7 +33,7 @@ class CharactersViewModel(
                 return@launch
             }.let { characters ->
                 _screenEvent.value = ScreenEvent.Content(
-                    LazyColumnViewItem(
+                    ContentViewItem(
                         items = characters.viewItems,
                     )
                 )

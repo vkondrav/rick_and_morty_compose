@@ -9,7 +9,6 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun CustomDrawer(drawerState: DrawerState, content: @Composable () -> Unit) {
-
     val viewModel = getViewModel<DrawerViewModel>().also {
         it.fetchMenu()
     }

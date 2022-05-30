@@ -1,6 +1,4 @@
-import org.gradle.kotlin.dsl.PluginDependenciesSpecScope
-import org.gradle.kotlin.dsl.kotlin
-import org.gradle.plugin.use.PluginDependencySpec
+
 
 object Plugins {
     object Kotlin {
@@ -14,11 +12,12 @@ object Plugins {
     }
 
     object Gradle {
+        @SuppressWarnings("MemberNameEqualsClassName")
         const val gradle =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Libs.gradlePluginVersion}"
     }
 
     object Apollo {
-        const val apollo = "com.apollographql.apollo3:${Libs.Apollo.version}"
+        const val core = "com.apollographql.apollo3:${Libs.Apollo.version}"
     }
 }

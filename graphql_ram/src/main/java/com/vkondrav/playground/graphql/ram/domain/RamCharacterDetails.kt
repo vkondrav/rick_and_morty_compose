@@ -1,7 +1,6 @@
 package com.vkondrav.playground.graphql.ram.domain
 
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
-import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 
 data class RamCharacterDetails(

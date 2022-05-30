@@ -1,6 +1,6 @@
 package com.vkondrav.playground.app.screen.drawer.viewmodel
 
-import com.vkondrav.playground.app.base.item.LazyColumnViewItem
+import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.event.ScreenEvent
@@ -24,7 +24,7 @@ class DrawerViewModel(
 
     fun fetchMenu() {
         _screenEvent.value = ScreenEvent.Content(
-            LazyColumnViewItem(
+            ContentViewItem(
                 items = drawerMenuUseCase().viewItems,
             )
         )

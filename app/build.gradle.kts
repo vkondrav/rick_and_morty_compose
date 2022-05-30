@@ -62,6 +62,10 @@ android {
         resources.excludes.add("META-INF/*")
     }
 
+    lint {
+        ignoreWarnings = false
+    }
+
     tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
@@ -83,7 +87,7 @@ dependencies {
     implementation(Libs.Androidx.constrainLayoutCompose)
     implementation(Libs.Androidx.coreSplashscreen)
 
-    implementation(Libs.Material.material)
+    implementation(Libs.Material.core)
 
     implementation(Libs.Compose.ui)
     implementation(Libs.Compose.uiTooling)
@@ -109,6 +113,8 @@ dependencies {
 
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
+
+    implementation(Libs.Timber.core)
 
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Robolectric.core)

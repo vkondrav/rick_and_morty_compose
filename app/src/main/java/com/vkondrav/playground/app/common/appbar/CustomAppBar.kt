@@ -16,7 +16,6 @@ import org.koin.androidx.compose.get
 
 @Composable
 fun CustomAppBar(navController: NavController) {
-
     val appState: AppState = get()
     val backStackEntryState = navController
         .currentBackStackEntryAsState()

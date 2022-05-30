@@ -5,7 +5,6 @@ plugins {
 
 android {
     namespace = "com.vkondrav.playground.apollo"
-    compileSdk = 32
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools

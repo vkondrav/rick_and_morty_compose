@@ -32,6 +32,8 @@ val allScreens = listOf(
     episodeDetailsScreen,
 )
 
+private const val ANIMATION_TWEEN = 700
+
 fun NavGraphBuilder.defineGraph() {
     allScreens.forEach { screen ->
         composable(
@@ -39,13 +41,13 @@ fun NavGraphBuilder.defineGraph() {
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentScope.SlideDirection.Left,
-                    animationSpec = tween(700)
+                    animationSpec = tween(ANIMATION_TWEEN)
                 )
             },
             exitTransition = {
                 slideOutOfContainer(
                     AnimatedContentScope.SlideDirection.Right,
-                    animationSpec = tween(700)
+                    animationSpec = tween(ANIMATION_TWEEN)
                 )
             },
             popEnterTransition = {

@@ -3,7 +3,10 @@ package com.vkondrav.playground.app.screen.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.*
+import androidx.compose.material.DrawerValue
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.SnackbarHostState
+import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -20,7 +23,6 @@ import com.vkondrav.playground.app.snackbar.SnackbarHost
 
 @Composable
 fun MainActivityScreen() {
-
     val navController = rememberAnimatedNavController()
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -28,17 +30,10 @@ fun MainActivityScreen() {
         initialValue = DrawerValue.Closed,
     )
 
-    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed),
-        drawerState = drawerState,
-        snackbarHostState = snackbarHostState,
-    )
-
     LoadAppStateIntoKoin(
         navController,
         snackbarHostState,
         drawerState,
-        bottomSheetScaffoldState,
     )
 
     MaterialTheme {
