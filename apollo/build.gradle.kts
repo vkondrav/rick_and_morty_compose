@@ -24,6 +24,10 @@ android {
     kotlinOptions {
         jvmTarget = Libs.jvmTarget
     }
+
+    lint {
+        warningsAsErrors = true
+    }
 }
 
 dependencies {

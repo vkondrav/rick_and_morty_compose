@@ -1,5 +1,5 @@
 plugins {
-    id("io.gitlab.arturbosch.detekt").version("1.20.0")
+    detekt()
 }
 
 buildscript {
@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    apply(plugin = "io.gitlab.arturbosch.detekt")
+    apply(plugin = Libs.Detekt.gr)
 
     repositories {
         google()
@@ -30,17 +30,9 @@ allprojects {
             io.gitlab.arturbosch.detekt.extensions.DetektExtension.DEFAULT_TEST_SRC_DIR_KOTLIN,
         )
     }
+
     dependencies {
-        detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
-    }
-    tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-        jvmTarget = "1.8"
-        reports {
-            xml.required.set(true)
-            html.required.set(true)
-            txt.required.set(true)
-            sarif.required.set(true)
-        }
+        detektPlugins(Libs.Detekt.formatting)
     }
 }
 

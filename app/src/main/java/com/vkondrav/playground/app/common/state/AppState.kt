@@ -1,12 +1,12 @@
 package com.vkondrav.playground.app.common.state
 
-import android.util.Log
 import androidx.compose.material.DrawerState
 import androidx.compose.material.SnackbarHostState
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 interface AppState {
     fun openDrawer()
@@ -24,7 +24,7 @@ internal class AppStateImpl(
 ) : AppState {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("AppState", throwable.message, throwable)
+        Timber.e(throwable)
     }
 
     override fun openDrawer() {

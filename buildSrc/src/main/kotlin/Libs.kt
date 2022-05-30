@@ -72,7 +72,7 @@ object Libs {
     object Apollo {
         const val version = "3.3.0"
         const val packageName = "packageName"
-        const val gr = "com.apollographql.apollo3"
+        private const val gr = "com.apollographql.apollo3"
 
         const val runtime = "$gr:apollo-runtime:$version"
         const val api = "$gr:apollo-api:$version"
@@ -87,5 +87,11 @@ object Libs {
     object Timber {
         private const val version = "5.0.1"
         const val core = "com.jakewharton.timber:timber:$version"
+    }
+
+    object Detekt {
+        const val version = "1.20.0"
+        const val gr = "io.gitlab.arturbosch.detekt"
+        const val formatting = "$gr:detekt-formatting:$version"
     }
 }

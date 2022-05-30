@@ -58,12 +58,12 @@ android {
         }
     }
 
-    packagingOptions {
-        resources.excludes.add("META-INF/*")
+    lint {
+        warningsAsErrors = true
     }
 
-    lint {
-        ignoreWarnings = false
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
     }
 
     tasks.withType<KotlinCompile> {

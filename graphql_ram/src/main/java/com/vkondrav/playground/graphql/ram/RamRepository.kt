@@ -1,6 +1,5 @@
 package com.vkondrav.playground.graphql.ram
 
-import android.util.Log
 import com.vkondrav.apollo.Service
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
 import com.vkondrav.graphql.ram.CharactersQuery
@@ -15,6 +14,7 @@ import com.vkondrav.playground.graphql.ram.domain.RamEpisodeDetails
 import com.vkondrav.playground.graphql.ram.domain.RamLocation
 import com.vkondrav.playground.graphql.ram.domain.RamLocationDetails
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import timber.log.Timber
 
 interface RamRepository {
     suspend fun fetchCharacters(page: Int): List<RamCharacter>
@@ -39,7 +39,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
                 runCatching {
                     RamCharacter(result.characterFragment)
                 }.onFailure {
-                    Log.e("RamRepositoryImpl", it.message!!)
+                    Timber.e(it.message)
                 }.getOrNull()
 
             }
@@ -69,7 +69,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
                 runCatching {
                     RamLocation(result.locationFragment)
                 }.onFailure {
-                    Log.e("RamRepositoryImpl", it.message!!)
+                    Timber.e(it)
                 }.getOrNull()
 
             } ?: throw InvalidDataException("No result for ${query.name()} query")
@@ -96,7 +96,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
                 runCatching {
                     RamEpisode(it!!.episodeFragment)
                 }.onFailure {
-                    Log.e("RamRepositoryImpl", it.message!!)
+                    Timber.e(it)
                 }.getOrNull()
 
             }

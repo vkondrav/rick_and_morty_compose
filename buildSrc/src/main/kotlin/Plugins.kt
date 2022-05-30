@@ -1,5 +1,3 @@
-
-
 object Plugins {
     object Kotlin {
         const val gradle =
