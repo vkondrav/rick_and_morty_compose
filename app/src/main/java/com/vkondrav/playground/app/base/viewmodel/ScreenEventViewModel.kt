@@ -14,5 +14,5 @@ fun ScreenEventViewModel.collect() = screenEvent.collectAsState()
 
 @Composable
 private fun Flow<ScreenEvent>.collectAsState() =
-    collectAsState(initial = ScreenEvent.None)
+    collectAsState(initial = null)
         .value

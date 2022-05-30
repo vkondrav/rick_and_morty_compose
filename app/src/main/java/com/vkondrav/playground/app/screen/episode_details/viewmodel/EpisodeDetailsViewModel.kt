@@ -7,7 +7,6 @@ import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
 import com.vkondrav.playground.app.screen.episode_details.composable.EpisodeDetailsViewItem
 import com.vkondrav.playground.app.screen.episode_details.usecase.FetchEpisodeDetailsUseCase
-import com.vkondrav.playground.graphql.ram.domain.RamEpisodeDetails
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,17 +26,15 @@ class EpisodeDetailsViewModel(
             _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
             fetchEpisodeDetailsUseCase(id)
                 .onSuccess { details ->
-                    _screenEvent.value = ScreenEvent.Column(details.viewItems)
+                    _screenEvent.value = ScreenEvent.Content(
+                        EpisodeDetailsViewItem(
+                            episode = details.episode,
+                        )
+                    )
                 }
                 .onFailure { error ->
                     _screenEvent.value = ScreenEvent.Error(PageErrorViewItem(error))
                 }
         }
     }
-
-    private val RamEpisodeDetails.viewItems get() = listOf(
-        EpisodeDetailsViewItem(
-            episode = episode,
-        )
-    )
 }

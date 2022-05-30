@@ -7,7 +7,6 @@ import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
 import com.vkondrav.playground.app.screen.location_details.composable.LocationDetailsViewItem
 import com.vkondrav.playground.app.screen.location_details.usecase.FetchLocationDetailsUseCase
-import com.vkondrav.playground.graphql.ram.domain.RamLocationDetails
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,17 +26,15 @@ class LocationDetailsViewModel(
             _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
             fetchLocationDetailsUseCase(id)
                 .onSuccess { details ->
-                    _screenEvent.value = ScreenEvent.Column(details.viewItems)
+                    _screenEvent.value = ScreenEvent.Content(
+                        LocationDetailsViewItem(
+                            location = details.location,
+                        )
+                    )
                 }
                 .onFailure { error ->
                     _screenEvent.value = ScreenEvent.Error(PageErrorViewItem(error))
                 }
         }
     }
-
-    private val RamLocationDetails.viewItems get() = listOf(
-        LocationDetailsViewItem(
-            location = location,
-        )
-    )
 }

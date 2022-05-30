@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.screen.drawer.viewmodel
 
+import com.vkondrav.playground.app.base.item.LazyColumnViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.event.ScreenEvent
@@ -22,7 +23,11 @@ class DrawerViewModel(
     override val screenEvent: Flow<ScreenEvent> = _screenEvent.filterNotNull()
 
     fun fetchMenu() {
-        _screenEvent.value = ScreenEvent.Column(drawerMenuUseCase().viewItems)
+        _screenEvent.value = ScreenEvent.Content(
+            LazyColumnViewItem(
+                items = drawerMenuUseCase().viewItems,
+            )
+        )
     }
 
     private val List<DrawerMenuItem>.viewItems get() = map {
