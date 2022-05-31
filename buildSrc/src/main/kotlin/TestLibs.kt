@@ -20,4 +20,9 @@ object TestLibs {
         private const val version = "4.0.0"
         const val core = "org.mockito.kotlin:mockito-kotlin:$version"
     }
+
+    object Kotest {
+        private const val version = "5.3.0"
+        const val assertions = "io.kotest:kotest-assertions-core:$version"
+    }
 }

@@ -31,6 +31,7 @@ android {
         generateKotlinModels.set(true)
         codegenModels.set("operationBased")
         generateAsInternal.set(true)
+        generateTestBuilders.set(true)
     }
 
     lint {
@@ -43,4 +44,7 @@ dependencies {
     implementation(project(Module.apollo))
     implementation(Libs.Koin.core)
     implementation(Libs.Timber.core)
+
+    testImplementation(TestLibs.JUnit.core)
+    testImplementation(TestLibs.Kotest.assertions)
 }
