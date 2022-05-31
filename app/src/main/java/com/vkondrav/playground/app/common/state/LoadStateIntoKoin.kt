@@ -16,14 +16,16 @@ fun LoadAppStateIntoKoin(
 ) {
     val coroutineScope = rememberCoroutineScope()
 
-    loadKoinModules(module {
-        single<AppState> {
-            AppStateImpl(
-                navController = navController,
-                snackbarHostState = snackbarHostState,
-                drawerState = drawerState,
-                coroutineScope = coroutineScope,
-            )
-        }
-    })
+    loadKoinModules(
+        module {
+            single<AppState> {
+                AppStateImpl(
+                    navController = navController,
+                    snackbarHostState = snackbarHostState,
+                    drawerState = drawerState,
+                    coroutineScope = coroutineScope,
+                )
+            }
+        },
+    )
 }

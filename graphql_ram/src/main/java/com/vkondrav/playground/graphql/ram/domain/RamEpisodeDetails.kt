@@ -19,6 +19,6 @@ data class RamEpisodeDetails(
                 Timber.e(e)
                 null
             }
-        }.toList()
+        }.toList(),
     )
 }

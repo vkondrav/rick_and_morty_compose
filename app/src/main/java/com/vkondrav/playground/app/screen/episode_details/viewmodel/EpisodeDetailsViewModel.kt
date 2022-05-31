@@ -29,7 +29,7 @@ class EpisodeDetailsViewModel(
                     _screenEvent.value = ScreenEvent.Content(
                         EpisodeDetailsViewItem(
                             episode = details.episode,
-                        )
+                        ),
                     )
                 }
                 .onFailure { error ->

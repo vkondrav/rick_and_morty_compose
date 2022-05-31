@@ -41,13 +41,13 @@ fun NavGraphBuilder.defineGraph() {
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentScope.SlideDirection.Left,
-                    animationSpec = tween(ANIMATION_TWEEN)
+                    animationSpec = tween(ANIMATION_TWEEN),
                 )
             },
             exitTransition = {
                 slideOutOfContainer(
                     AnimatedContentScope.SlideDirection.Right,
-                    animationSpec = tween(ANIMATION_TWEEN)
+                    animationSpec = tween(ANIMATION_TWEEN),
                 )
             },
             popEnterTransition = {

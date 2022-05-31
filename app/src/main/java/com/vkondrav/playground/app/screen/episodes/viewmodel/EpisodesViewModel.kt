@@ -35,7 +35,7 @@ class EpisodesViewModel(
                 _screenEvent.value = ScreenEvent.Content(
                     ContentViewItem(
                         items = episodes.viewItems,
-                    )
+                    ),
                 )
             }
         }

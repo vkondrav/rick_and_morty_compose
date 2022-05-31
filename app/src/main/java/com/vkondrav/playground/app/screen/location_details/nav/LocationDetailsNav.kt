@@ -14,8 +14,9 @@ val locationDetailsScreen = Screen(
 ) { bundle ->
     LocationDetailsScreen(
         id = bundle?.id
-            ?: throw NavigationException("Navigating to location details screen with no id")
+            ?: throw NavigationException("Navigating to location details screen with no id"),
     )
 }
 
-fun toLocationDetailsScreen(id: String, title: String) = "$NAV_LOCATION_DETAILS/$id?$NAV_TITLE=$title"
+fun toLocationDetailsScreen(id: String, title: String) =
+    "$NAV_LOCATION_DETAILS/$id?$NAV_TITLE=$title"

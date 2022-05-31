@@ -14,7 +14,7 @@ val episodeDetailsScreen = Screen(
 ) { bundle ->
     EpisodeDetailsScreen(
         id = bundle?.id
-            ?: throw NavigationException("Navigating to episode details screen with no id")
+            ?: throw NavigationException("Navigating to episode details screen with no id"),
     )
 }
 

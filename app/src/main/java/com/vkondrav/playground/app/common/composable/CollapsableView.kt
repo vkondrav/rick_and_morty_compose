@@ -38,12 +38,12 @@ fun CollapsableView(item: CollapsableViewItem) {
                 .fillMaxWidth()
                 .height(48.dp)
                 .background(Color.Gray)
-                .clickable { drawerOpen = !drawerOpen }
+                .clickable { drawerOpen = !drawerOpen },
         ) {
             ConstraintLayout(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight()
+                    .fillMaxHeight(),
             ) {
                 val (title, icon) = createRefs()
 
@@ -53,7 +53,7 @@ fun CollapsableView(item: CollapsableViewItem) {
                         bottom.linkTo(parent.bottom)
                         start.linkTo(parent.start, margin = 8.dp)
                     },
-                    text = item.title
+                    text = item.title,
                 )
                 Icon(
                     modifier = Modifier
@@ -95,7 +95,7 @@ private fun Preview() {
 data class CollapsableViewItem(
     val title: String,
     val open: Boolean,
-    val items: List<ComposableItem>
+    val items: List<ComposableItem>,
 ) : ComposableItem {
     @Composable
     override fun Composable() =

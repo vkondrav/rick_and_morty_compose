@@ -12,7 +12,7 @@ fun BaseScreen(
     when(val screenEvent = screenEventViewModel.collect()) {
         is ScreenEvent.Loading,
         is ScreenEvent.Content,
-        is ScreenEvent.Error -> screenEvent.item.Composable()
+        is ScreenEvent.Error, -> screenEvent.item.Composable()
         null -> {
             //no-op
         }

@@ -15,10 +15,10 @@ fun PageLoadingView() {
     Box(
         Modifier
             .fillMaxHeight()
-            .fillMaxWidth()
+            .fillMaxWidth(),
     ) {
         CircularProgressIndicator(
-            Modifier.align(Alignment.Center)
+            Modifier.align(Alignment.Center),
         )
     }
 }

@@ -35,7 +35,7 @@ class CharactersViewModel(
                 _screenEvent.value = ScreenEvent.Content(
                     ContentViewItem(
                         items = characters.viewItems,
-                    )
+                    ),
                 )
             }
         }

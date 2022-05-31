@@ -33,6 +33,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             .data
             ?.characters
             ?.results
+            ?.asSequence()
             ?.filterNotNull()
             ?.mapNotNull { result ->
 
@@ -43,6 +44,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
                 }.getOrNull()
 
             }
+            ?.toList()
             ?: throw InvalidDataException("No results for ${query.name()} query")
     }
 
@@ -63,6 +65,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             .data
             ?.locations
             ?.results
+            ?.asSequence()
             ?.filterNotNull()
             ?.mapNotNull { result ->
 
@@ -72,7 +75,9 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
                     Timber.e(it)
                 }.getOrNull()
 
-            } ?: throw InvalidDataException("No result for ${query.name()} query")
+            }
+            ?.toList()
+            ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 
     override suspend fun fetchLocationDetails(id: String): RamLocationDetails {
@@ -92,14 +97,17 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             .data
             ?.episodes
             ?.results
+            ?.asSequence()
+            ?.filterNotNull()
             ?.mapNotNull {
                 runCatching {
-                    RamEpisode(it!!.episodeFragment)
+                    RamEpisode(it.episodeFragment)
                 }.onFailure {
                     Timber.e(it)
                 }.getOrNull()
 
             }
+            ?.toList()
             ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 

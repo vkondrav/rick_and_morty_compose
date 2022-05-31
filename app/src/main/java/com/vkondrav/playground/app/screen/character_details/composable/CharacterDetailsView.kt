@@ -25,7 +25,7 @@ fun CharacterDetailsView(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight()
+            .wrapContentHeight(),
     ) {
         Icon(
             imageVector = Icons.Default.AccountCircle,
@@ -33,14 +33,14 @@ fun CharacterDetailsView(
             modifier = Modifier
                 .width(48.dp)
                 .height(48.dp)
-                .align(CenterHorizontally)
+                .align(CenterHorizontally),
         )
         Text(
             text = item.character.name,
             modifier = Modifier
                 .wrapContentSize()
                 .wrapContentHeight()
-                .align(CenterHorizontally)
+                .align(CenterHorizontally),
         )
     }
 }
@@ -63,6 +63,6 @@ private fun Preview() {
             name = "Morty",
             status = null,
             species = null,
-        )
+        ),
     ).Composable()
 }

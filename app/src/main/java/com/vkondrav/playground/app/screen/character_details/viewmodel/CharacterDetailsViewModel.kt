@@ -29,7 +29,7 @@ class CharacterDetailsViewModel(
                     _screenEvent.value = ScreenEvent.Content(
                         CharacterDetailsViewItem(
                             character = details.character,
-                        )
+                        ),
                     )
                 }
                 .onFailure { error ->

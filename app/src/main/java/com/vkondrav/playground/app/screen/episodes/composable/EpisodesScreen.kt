@@ -8,7 +8,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun EpisodesScreen(
-    viewModel: EpisodesViewModel = getViewModel()
+    viewModel: EpisodesViewModel = getViewModel(),
 ) {
     viewModel.fetchEpisodes()
     BaseScreen(

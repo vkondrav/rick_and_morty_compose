@@ -25,7 +25,7 @@ fun LocationDetailsView(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight()
+            .wrapContentHeight(),
     ) {
         Icon(
             imageVector = Icons.Default.AccountCircle,
@@ -33,14 +33,14 @@ fun LocationDetailsView(
             modifier = Modifier
                 .width(48.dp)
                 .height(48.dp)
-                .align(CenterHorizontally)
+                .align(CenterHorizontally),
         )
         Text(
             text = item.location.name,
             modifier = Modifier
                 .wrapContentSize()
                 .wrapContentHeight()
-                .align(CenterHorizontally)
+                .align(CenterHorizontally),
         )
     }
 }
@@ -62,6 +62,6 @@ private fun Preview() {
             id = "1",
             name = "Morty",
             dimension = null,
-        )
+        ),
     ).Composable()
 }

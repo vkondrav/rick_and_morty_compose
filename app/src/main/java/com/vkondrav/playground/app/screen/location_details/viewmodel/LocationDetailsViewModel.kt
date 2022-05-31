@@ -29,7 +29,7 @@ class LocationDetailsViewModel(
                     _screenEvent.value = ScreenEvent.Content(
                         LocationDetailsViewItem(
                             location = details.location,
-                        )
+                        ),
                     )
                 }
                 .onFailure { error ->

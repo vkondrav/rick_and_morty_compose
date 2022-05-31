@@ -22,6 +22,6 @@ fun KoinApplication.appModules() = modules(
             episodesModule,
             episodeDetailsModule,
             drawerModule,
-        )
-    ).flatten()
+        ),
+    ).flatten(),
 )

@@ -32,20 +32,20 @@ fun BoxScope.SnackbarHost(snackbarHostState: SnackbarHostState) {
                 border = BorderStroke(2.dp, Color.LightGray),
                 modifier = Modifier
                     .padding(16.dp)
-                    .wrapContentSize()
+                    .wrapContentSize(),
             ) {
                 Column(
                     modifier = Modifier.padding(8.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Icon(
                         imageVector = Icons.Default.Notifications,
-                        contentDescription = "notification"
+                        contentDescription = "notification",
                     )
                     Text(text = snackbarData.message)
                 }
             }
-        }
+        },
     )
 }

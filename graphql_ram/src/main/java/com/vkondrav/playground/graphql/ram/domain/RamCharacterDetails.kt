@@ -13,7 +13,7 @@ data class RamCharacterDetails(
     internal constructor(character: CharacterDetailsQuery.Character) : this(
         character = RamCharacter(character.characterFragment),
         origin = character.origin?.locationFragment?.let { RamLocation(it) },
-        location = character.location?.locationFragment?.let { RamLocation(it) }
+        location = character.location?.locationFragment?.let { RamLocation(it) },
     )
 
 }

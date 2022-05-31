@@ -8,7 +8,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun CharactersScreen(
-    viewModel: CharactersViewModel = getViewModel()
+    viewModel: CharactersViewModel = getViewModel(),
 ) {
     viewModel.fetchCharacters()
 

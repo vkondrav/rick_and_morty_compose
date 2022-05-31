@@ -23,19 +23,23 @@ fun TabsScreen() {
     val pagerState = rememberPagerState()
 
     Column {
-        ScrollableTabRow(selectedTabIndex = tabIndex,
+        ScrollableTabRow(
+            selectedTabIndex = tabIndex,
             indicator = { tabPositions ->
                 TabRowDefaults.Indicator(
                     Modifier.pagerTabIndicatorOffset(
                         pagerState,
-                        tabPositions
-                    )
+                        tabPositions,
+                    ),
                 )
-            }) {
+            },
+        ) {
             tabs.forEachIndexed { index, _ ->
-                Tab(selected = tabIndex == index,
+                Tab(
+                    selected = tabIndex == index,
                     onClick = { tabIndex = index },
-                    text = { Text(text = "") })
+                    text = { Text(text = "") },
+                )
             }
         }
         HorizontalPager(

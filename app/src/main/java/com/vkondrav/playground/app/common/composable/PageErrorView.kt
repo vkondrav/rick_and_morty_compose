@@ -24,15 +24,15 @@ fun PageErrorView(item: PageErrorViewItem) {
     Box(
         modifier = Modifier
             .fillMaxHeight()
-            .fillMaxWidth()
+            .fillMaxWidth(),
     ) {
         Column(
             modifier = Modifier
                 .wrapContentWidth()
                 .wrapContentHeight()
                 .align(
-                    Alignment.Center
-                )
+                    Alignment.Center,
+                ),
         ) {
             Icon(
                 Icons.Default.Error,
@@ -43,7 +43,7 @@ fun PageErrorView(item: PageErrorViewItem) {
             )
             Text(
                 text = item.error.message ?: "Unknown Error",
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.CenterHorizontally),
             )
         }
     }

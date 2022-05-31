@@ -25,14 +25,14 @@ fun CustomAppBar(navController: NavController) {
 
             BackStackEntryState(
                 showBackButton = navController.backQueue.size > 2,
-                title = title
+                title = title,
             )
         }
 
     TopAppBar(
         title = {
             Text(
-                text = backStackEntryState.title
+                text = backStackEntryState.title,
             )
         },
         navigationIcon = {
@@ -40,18 +40,20 @@ fun CustomAppBar(navController: NavController) {
                 IconButton(
                     onClick = {
                         appState.navigateBack()
-                    }
+                    },
                 ) {
                     Icon(Icons.Default.ArrowBack, "Back")
                 }
             } else {
-                IconButton(onClick = {
-                    appState.openDrawer()
-                }) {
+                IconButton(
+                    onClick = {
+                        appState.openDrawer()
+                    },
+                ) {
                     Icon(Icons.Default.Menu, "Menu")
                 }
             }
-        }
+        },
     )
 }
 

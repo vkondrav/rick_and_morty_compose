@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.graphql.ram.domain.RamCharacter
 
 @Composable
@@ -19,13 +20,15 @@ fun CharacterView(item: CharacterViewItem) {
             .fillMaxWidth()
             .clickable {
                 item.onClickAction()
-            }
+            },
     ) {
         Text(
             text = item.character.name,
+            color = DlsTheme.colors.text,
+            style = DlsTheme.typography.headline4,
             modifier = Modifier
                 .padding(8.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         )
     }
 }

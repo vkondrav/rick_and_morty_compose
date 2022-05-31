@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.graphql.ram.domain.RamEpisode
 
 @Composable
@@ -19,13 +20,15 @@ fun EpisodeView(item: EpisodeViewItem) {
             .fillMaxWidth()
             .clickable {
                 item.onClickAction()
-            }
+            },
     ) {
         Text(
             text = item.episode.title,
+            color = DlsTheme.colors.text,
+            style = DlsTheme.typography.headline4,
             modifier = Modifier
                 .padding(8.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         )
     }
 }

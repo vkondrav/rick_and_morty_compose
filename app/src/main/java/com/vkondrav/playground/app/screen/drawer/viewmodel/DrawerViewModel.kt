@@ -26,7 +26,7 @@ class DrawerViewModel(
         _screenEvent.value = ScreenEvent.Content(
             ContentViewItem(
                 items = drawerMenuUseCase().viewItems,
-            )
+            ),
         )
     }
 
@@ -35,7 +35,7 @@ class DrawerViewModel(
             title = it.title,
             onClickAction = {
                 navigateToRouteUseCase(it.route)
-            }
+            },
         )
     }
 }

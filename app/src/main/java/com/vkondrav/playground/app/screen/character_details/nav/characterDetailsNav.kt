@@ -14,8 +14,9 @@ val characterDetailsScreen = Screen(
 ) { bundle ->
     CharacterDetailsScreen(
         id = bundle?.id
-            ?: throw NavigationException("Navigating to character details screen with no id")
+            ?: throw NavigationException("Navigating to character details screen with no id"),
     )
 }
 
-fun toCharacterDetailsScreen(id: String, title: String) = "$NAV_CHARACTER_DETAILS/$id?$NAV_TITLE=$title"
+fun toCharacterDetailsScreen(id: String, title: String) =
+    "$NAV_CHARACTER_DETAILS/$id?$NAV_TITLE=$title"

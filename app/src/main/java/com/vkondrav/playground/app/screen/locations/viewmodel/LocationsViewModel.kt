@@ -35,7 +35,7 @@ class LocationsViewModel(
                 _screenEvent.value = ScreenEvent.Content(
                     ContentViewItem(
                         items = locations.viewItems,
-                    )
+                    ),
                 )
             }
         }

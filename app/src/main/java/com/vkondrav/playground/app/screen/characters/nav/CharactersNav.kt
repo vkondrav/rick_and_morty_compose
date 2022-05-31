@@ -7,6 +7,6 @@ import com.vkondrav.playground.app.common.navigation.Screen
 val charactersScreen = Screen(
     route = "characters?title={title}",
     arguments = listOf(
-        navArgument("title") { defaultValue = "Characters" }
+        navArgument("title") { defaultValue = "Characters" },
     ),
 ) { CharactersScreen() }

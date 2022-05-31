@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.design.DlsTheme
 
 @Composable
 fun DrawerMenuView(item: DrawerMenuViewItem) {
@@ -22,19 +24,20 @@ fun DrawerMenuView(item: DrawerMenuViewItem) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp)
+                .wrapContentHeight()
                 .clickable {
                     item.onClickAction()
-                }
+                },
         ) {
             Text(
                 text = item.title,
+                color = DlsTheme.colors.text,
+                style = DlsTheme.typography.headline1,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
-                    .padding(8.dp)
+                    .padding(8.dp),
             )
         }
-        Divider(color = Color.LightGray)
     }
 }
 
@@ -51,6 +54,6 @@ data class DrawerMenuViewItem(
 private fun Preview() {
     DrawerMenuViewItem(
         title = "Title",
-        onClickAction = { }
+        onClickAction = { },
     ).Composable()
 }

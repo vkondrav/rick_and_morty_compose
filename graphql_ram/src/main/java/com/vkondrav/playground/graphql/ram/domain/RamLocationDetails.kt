@@ -18,6 +18,6 @@ data class RamLocationDetails(
                 Timber.e(e)
                 null
             }
-        }.toList()
+        }.toList(),
     )
 }
