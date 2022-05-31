@@ -1,4 +1,2 @@
-Playground
+Rick And Morty Compose
 =========
-
-Playground repo for testing and experimentation
