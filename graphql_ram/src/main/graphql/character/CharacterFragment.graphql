@@ -3,4 +3,5 @@ fragment CharacterFragment on Character {
     name
     status
     species
+    image
 }

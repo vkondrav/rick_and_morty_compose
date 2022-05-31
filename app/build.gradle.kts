@@ -116,6 +116,8 @@ dependencies {
 
     implementation(Libs.Timber.core)
 
+    implementation(Libs.Coil.core)
+
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.Compose.jUnit)

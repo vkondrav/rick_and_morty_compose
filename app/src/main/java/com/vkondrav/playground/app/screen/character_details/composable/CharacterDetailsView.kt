@@ -63,6 +63,7 @@ private fun Preview() {
             name = "Morty",
             status = null,
             species = null,
+            image = null,
         ),
     ).Composable()
 }

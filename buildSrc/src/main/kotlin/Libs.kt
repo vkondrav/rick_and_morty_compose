@@ -94,4 +94,9 @@ object Libs {
         const val gr = "io.gitlab.arturbosch.detekt"
         const val formatting = "$gr:detekt-formatting:$version"
     }
+
+    object Coil {
+        private const val version = "2.1.0"
+        const val core = "io.coil-kt:coil-compose:$version"
+    }
 }

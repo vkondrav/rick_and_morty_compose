@@ -8,6 +8,7 @@ data class RamCharacter(
     val name: String,
     val status: String?,
     val species: String?,
+    val image: String?,
 ) {
 
     @Throws(InvalidDataException::class)
@@ -16,6 +17,7 @@ data class RamCharacter(
         name = fragment.name ?: throw InvalidDataException("missing name"),
         status = fragment.status,
         species = fragment.species,
+        image = fragment.image,
     )
 
 }
