@@ -6,4 +6,4 @@ fun org.gradle.plugin.use.PluginDependenciesSpec.kotlin() = kotlin("android")
 fun org.gradle.plugin.use.PluginDependenciesSpec.apollo() =
     id("com.apollographql.apollo3").version(Libs.Apollo.version)
 fun org.gradle.plugin.use.PluginDependenciesSpec.detekt() =
-    id(Libs.Detekt.gr).version(Libs.Detekt.version)
+    id(Libs.Detekt.base).version(Libs.Detekt.version)
