@@ -81,6 +81,7 @@ android {
 
 dependencies {
     implementation(project(Module.graphqlRam))
+    implementation(project(Module.roomRam))
 
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.appcompat)

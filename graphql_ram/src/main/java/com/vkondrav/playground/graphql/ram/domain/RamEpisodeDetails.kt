@@ -14,7 +14,7 @@ data class RamEpisodeDetails(
         episode = RamEpisode(episode.episodeFragment),
         characters = episode.characters.asSequence().filterNotNull().mapNotNull {
             try {
-                RamCharacter(it.characterFragment, false)
+                RamCharacter(it.characterFragment, emptySet())
             } catch (e: InvalidDataException) {
                 Timber.e(e)
                 null

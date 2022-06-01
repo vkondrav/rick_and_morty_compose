@@ -13,7 +13,7 @@ data class RamLocationDetails(
         location = RamLocation(location.locationFragment),
         residents = location.residents.asSequence().filterNotNull().mapNotNull {
             try {
-                RamCharacter(it.characterFragment, false)
+                RamCharacter(it.characterFragment, emptySet())
             } catch (e: InvalidDataException) {
                 Timber.e(e)
                 null

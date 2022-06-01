@@ -11,7 +11,6 @@ class FetchCharacterDetailsUseCase(
     ): Result<RamCharacterDetails> = runCatching {
         RamCharacterDetails(
             ramRepository.fetchCharacterDetails(id),
-            favorite = false,
         )
     }
 }
