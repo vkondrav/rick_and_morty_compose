@@ -14,8 +14,4 @@ object Plugins {
         const val gradle =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Libs.gradlePluginVersion}"
     }
-
-    object Apollo {
-        const val core = "com.apollographql.apollo3:${Libs.Apollo.version}"
-    }
 }

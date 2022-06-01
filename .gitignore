@@ -115,3 +115,6 @@ lint/tmp/
 
 # Gradle
 /build
+
+# Release
+*.jks

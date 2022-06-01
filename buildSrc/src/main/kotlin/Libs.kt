@@ -19,9 +19,9 @@ object Libs {
 
     object Lifecycle {
         private const val version = "2.4.0"
-        private const val gr = "androidx.lifecycle"
+        private const val base = "androidx.lifecycle"
 
-        const val lifecycles = "$gr:lifecycle-runtime-ktx:$version"
+        const val lifecycles = "$base:lifecycle-runtime-ktx:$version"
     }
 
     object Activity {
@@ -37,13 +37,13 @@ object Libs {
     }
 
     object Androidx {
-        private const val gr = "androidx"
+        private const val base = "androidx"
 
-        const val appcompat = "$gr.appcompat:appcompat:1.4.1"
-        const val coreSplashscreen = "$gr.core:core-splashscreen:1.0.0-beta02"
-        const val coreKtx = "$gr.core:core-ktx:1.7.0"
+        const val appcompat = "$base.appcompat:appcompat:1.4.1"
+        const val coreSplashscreen = "$base.core:core-splashscreen:1.0.0-beta02"
+        const val coreKtx = "$base.core:core-ktx:1.7.0"
         const val constrainLayoutCompose =
-            "$gr.constraintlayout:constraintlayout-compose:1.0.0-beta02"
+            "$base.constraintlayout:constraintlayout-compose:1.0.0-beta02"
     }
 
     object Koin {
@@ -61,21 +61,21 @@ object Libs {
 
     object Accompanist {
         private const val version = "0.24.7-alpha"
-        private const val gr = "com.google.accompanist"
+        private const val base = "com.google.accompanist"
 
-        const val navAnimation = "$gr:accompanist-navigation-animation:$version"
-        const val navMaterial = "$gr:accompanist-navigation-material:$version"
-        const val pager = "$gr:accompanist-pager:$version"
-        const val indicators = "$gr:accompanist-pager-indicators:$version"
+        const val navAnimation = "$base:accompanist-navigation-animation:$version"
+        const val navMaterial = "$base:accompanist-navigation-material:$version"
+        const val pager = "$base:accompanist-pager:$version"
+        const val indicators = "$base:accompanist-pager-indicators:$version"
     }
 
     object Apollo {
         const val version = "3.3.0"
         const val packageName = "packageName"
-        private const val gr = "com.apollographql.apollo3"
+        const val base = "com.apollographql.apollo3"
 
-        const val runtime = "$gr:apollo-runtime:$version"
-        const val api = "$gr:apollo-api:$version"
+        const val runtime = "$base:apollo-runtime:$version"
+        const val api = "$base:apollo-api:$version"
     }
 
     object Paging {
@@ -91,12 +91,24 @@ object Libs {
 
     object Detekt {
         const val version = "1.20.0"
-        const val gr = "io.gitlab.arturbosch.detekt"
-        const val formatting = "$gr:detekt-formatting:$version"
+        const val base = "io.gitlab.arturbosch.detekt"
+        const val formatting = "$base:detekt-formatting:$version"
     }
 
     object Coil {
         private const val version = "2.1.0"
         const val core = "io.coil-kt:coil-compose:$version"
+    }
+
+    object Room {
+        private const val base = "androidx.room:"
+        private const val version = "2.4.2"
+        const val runtime = "${base}room-runtime:$version"
+        const val compiler = "${base}room-compiler:$version"
+    }
+
+    object Ksp {
+        const val version = "$kotlinVersion-1.0.5"
+        const val base = "com.google.devtools.ksp"
     }
 }

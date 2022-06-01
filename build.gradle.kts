@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    apply(plugin = Libs.Detekt.gr)
+    apply(plugin = Libs.Detekt.base)
 
     repositories {
         google()
