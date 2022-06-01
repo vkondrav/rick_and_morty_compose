@@ -29,13 +29,13 @@ fun CharacterView(item: CharacterViewItem) {
     ) {
         Avatar(
             source = item.character.image,
-            sizeVariant = Avatar.SizeVariant.Large,
+            sizeVariant = Avatar.SizeVariant.XLarge,
             modifier = Modifier.align(Alignment.CenterVertically),
         )
         Text(
             text = item.character.name,
             color = DlsTheme.colors.text,
-            style = DlsTheme.typography.headline4,
+            style = DlsTheme.typography.headline6,
             modifier = Modifier
                 .padding(8.dp)
                 .align(Alignment.CenterVertically)

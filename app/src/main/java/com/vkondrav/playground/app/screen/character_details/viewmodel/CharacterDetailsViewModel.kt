@@ -5,8 +5,8 @@ import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
 import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsViewItem
 import com.vkondrav.playground.app.screen.character_details.usecase.FetchCharacterDetailsUseCase
+import com.vkondrav.playground.app.screen.character_details.usecase.TransformCharacterDetailsUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 
 class CharacterDetailsViewModel(
     private val fetchCharacterDetailsUseCase: FetchCharacterDetailsUseCase,
+    private val transformCharacterDetailsUseCase: TransformCharacterDetailsUseCase,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher), ScreenEventViewModel {
 
@@ -27,9 +28,7 @@ class CharacterDetailsViewModel(
             fetchCharacterDetailsUseCase(id)
                 .onSuccess { details ->
                     _screenEvent.value = ScreenEvent.Content(
-                        CharacterDetailsViewItem(
-                            character = details.character,
-                        ),
+                        transformCharacterDetailsUseCase(details),
                     )
                 }
                 .onFailure { error ->

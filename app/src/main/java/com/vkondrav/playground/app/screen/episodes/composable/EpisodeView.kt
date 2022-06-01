@@ -25,7 +25,7 @@ fun EpisodeView(item: EpisodeViewItem) {
         Text(
             text = item.episode.title,
             color = DlsTheme.colors.text,
-            style = DlsTheme.typography.headline4,
+            style = DlsTheme.typography.headline6,
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),

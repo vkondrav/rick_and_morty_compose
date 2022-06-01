@@ -24,22 +24,16 @@ object Avatar {
         @get:Composable
         abstract val value: Dp
 
-        object Small : SizeVariant() {
+        object XLarge : SizeVariant() {
             override val value: Dp
                 @Composable
-                get() = DlsTheme.sizes.medium
+                get() = DlsTheme.sizes.xlarge
         }
 
-        object Medium : SizeVariant() {
+        object XXLarge : SizeVariant() {
             override val value: Dp
                 @Composable
-                get() = DlsTheme.sizes.large
-        }
-
-        object Large : SizeVariant() {
-            override val value: Dp
-                @Composable
-                get() = DlsTheme.sizes.larger
+                get() = DlsTheme.sizes.xxlarge
         }
     }
 }

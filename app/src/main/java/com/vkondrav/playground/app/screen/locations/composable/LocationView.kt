@@ -25,7 +25,7 @@ fun LocationView(item: LocationViewItem) {
         Text(
             text = item.location.name,
             color = DlsTheme.colors.text,
-            style = DlsTheme.typography.headline4,
+            style = DlsTheme.typography.headline6,
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
