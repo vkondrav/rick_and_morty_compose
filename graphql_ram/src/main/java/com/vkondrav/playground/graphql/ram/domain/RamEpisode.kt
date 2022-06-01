@@ -10,7 +10,7 @@ data class RamEpisode(
 ) {
 
     @Throws(InvalidDataException::class)
-    internal constructor(fragment: EpisodeFragment): this(
+    constructor(fragment: EpisodeFragment): this(
         id = fragment.id ?: throw InvalidDataException("missing id"),
         title = fragment.name ?: throw InvalidDataException("missing name"),
         airDate = fragment.air_date,

@@ -9,15 +9,17 @@ data class RamCharacter(
     val status: String?,
     val species: String?,
     val image: String?,
+    var favorite: Boolean,
 ) {
 
     @Throws(InvalidDataException::class)
-    internal constructor(fragment: CharacterFragment): this(
+    constructor(fragment: CharacterFragment, favorite: Boolean): this(
         id = fragment.id ?: throw InvalidDataException("missing id"),
         name = fragment.name ?: throw InvalidDataException("missing name"),
         status = fragment.status,
         species = fragment.species,
         image = fragment.image,
+        favorite = favorite,
     )
 
 }

@@ -1,124 +1,84 @@
 package com.vkondrav.playground.graphql.ram
 
+import com.apollographql.apollo3.exception.ApolloException
 import com.vkondrav.apollo.Service
+import com.vkondrav.apollo.dataOrThrow
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
 import com.vkondrav.graphql.ram.CharactersQuery
 import com.vkondrav.graphql.ram.EpisodeDetailsQuery
 import com.vkondrav.graphql.ram.EpisodesQuery
 import com.vkondrav.graphql.ram.LocationDetailsQuery
 import com.vkondrav.graphql.ram.LocationsQuery
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
-import com.vkondrav.playground.graphql.ram.domain.RamCharacterDetails
-import com.vkondrav.playground.graphql.ram.domain.RamEpisode
-import com.vkondrav.playground.graphql.ram.domain.RamEpisodeDetails
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
-import com.vkondrav.playground.graphql.ram.domain.RamLocationDetails
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
-import timber.log.Timber
 
 interface RamRepository {
-    suspend fun fetchCharacters(page: Int): List<RamCharacter>
-    suspend fun fetchCharacterDetails(id: String): RamCharacterDetails
-    suspend fun fetchLocations(page: Int): List<RamLocation>
-    suspend fun fetchLocationDetails(id: String): RamLocationDetails
-    suspend fun fetchEpisodes(page: Int): List<RamEpisode>
-    suspend fun fetchEpisodeDetails(id: String): RamEpisodeDetails
+    suspend fun fetchCharacters(page: Int): List<CharactersQuery.Result>
+    suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character
+    suspend fun fetchLocations(page: Int): List<LocationsQuery.Result>
+    suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
+    suspend fun fetchEpisodes(page: Int): List<EpisodesQuery.Result>
+    suspend fun fetchEpisodeDetails(id: String): EpisodeDetailsQuery.Episode
 }
 
 internal class RamRepositoryImp(private val service: Service) : RamRepository {
 
-    override suspend fun fetchCharacters(page: Int): List<RamCharacter> {
+    @Throws(ApolloException::class)
+    override suspend fun fetchCharacters(page: Int): List<CharactersQuery.Result> {
         val query = CharactersQuery(page)
         return service.query(query)
-            .data
-            ?.characters
+            .dataOrThrow
+            .characters
             ?.results
-            ?.asSequence()
             ?.filterNotNull()
-            ?.mapNotNull { result ->
-
-                runCatching {
-                    RamCharacter(result.characterFragment)
-                }.onFailure {
-                    Timber.e(it.message)
-                }.getOrNull()
-
-            }
-            ?.toList()
-            ?: throw InvalidDataException("No results for ${query.name()} query")
+            ?: throw ApolloException("No results for ${query.name()} query")
     }
 
-    override suspend fun fetchCharacterDetails(id: String): RamCharacterDetails {
+    @Throws(ApolloException::class)
+    override suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character {
         val query = CharacterDetailsQuery(id)
         return service.query(query)
-            .data
-            ?.character
-            ?.let { character ->
-                RamCharacterDetails(character)
-            }
-            ?: throw InvalidDataException("No result for ${query.name()} query")
+            .dataOrThrow
+            .character
+            ?: throw ApolloException("No result for ${query.name()} query")
     }
 
-    override suspend fun fetchLocations(page: Int): List<RamLocation> {
+    @Throws(ApolloException::class)
+    override suspend fun fetchLocations(page: Int): List<LocationsQuery.Result> {
         val query = LocationsQuery()
         return service.query(query)
-            .data
-            ?.locations
+            .dataOrThrow
+            .locations
             ?.results
-            ?.asSequence()
             ?.filterNotNull()
-            ?.mapNotNull { result ->
-
-                runCatching {
-                    RamLocation(result.locationFragment)
-                }.onFailure {
-                    Timber.e(it)
-                }.getOrNull()
-
-            }
-            ?.toList()
             ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 
-    override suspend fun fetchLocationDetails(id: String): RamLocationDetails {
+    @Throws(ApolloException::class)
+    override suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location {
         val query = LocationDetailsQuery(id)
         return service.query(query)
-            .data
-            ?.location
-            ?.let { location ->
-                RamLocationDetails(location)
-            }
+            .dataOrThrow
+            .location
             ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 
-    override suspend fun fetchEpisodes(page: Int): List<RamEpisode> {
+    @Throws(ApolloException::class)
+    override suspend fun fetchEpisodes(page: Int): List<EpisodesQuery.Result> {
         val query = EpisodesQuery(page)
         return service.query(query)
-            .data
-            ?.episodes
+            .dataOrThrow
+            .episodes
             ?.results
-            ?.asSequence()
             ?.filterNotNull()
-            ?.mapNotNull {
-                runCatching {
-                    RamEpisode(it.episodeFragment)
-                }.onFailure {
-                    Timber.e(it)
-                }.getOrNull()
-
-            }
-            ?.toList()
             ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 
-    override suspend fun fetchEpisodeDetails(id: String): RamEpisodeDetails {
+    @Throws(ApolloException::class)
+    override suspend fun fetchEpisodeDetails(id: String): EpisodeDetailsQuery.Episode {
         val query = EpisodeDetailsQuery(id)
         return service.query(query)
-            .data
-            ?.episode
-            ?.let { episode ->
-                RamEpisodeDetails(episode)
-            }
+            .dataOrThrow
+            .episode
             ?: throw InvalidDataException("No result for ${query.name()} query")
     }
 }

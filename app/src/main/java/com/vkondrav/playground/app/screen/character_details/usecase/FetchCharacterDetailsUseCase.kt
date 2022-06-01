@@ -9,6 +9,9 @@ class FetchCharacterDetailsUseCase(
     suspend operator fun invoke(
         id: String,
     ): Result<RamCharacterDetails> = runCatching {
-        ramRepository.fetchCharacterDetails(id)
+        RamCharacterDetails(
+            ramRepository.fetchCharacterDetails(id),
+            favorite = false,
+        )
     }
 }

@@ -10,11 +10,11 @@ data class RamEpisodeDetails(
 ) {
 
     @Throws(InvalidDataException::class)
-    internal constructor(episode: EpisodeDetailsQuery.Episode): this(
+    constructor(episode: EpisodeDetailsQuery.Episode): this(
         episode = RamEpisode(episode.episodeFragment),
         characters = episode.characters.asSequence().filterNotNull().mapNotNull {
             try {
-                RamCharacter(it.characterFragment)
+                RamCharacter(it.characterFragment, false)
             } catch (e: InvalidDataException) {
                 Timber.e(e)
                 null

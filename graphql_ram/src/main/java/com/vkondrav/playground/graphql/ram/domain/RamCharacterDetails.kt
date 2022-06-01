@@ -12,8 +12,8 @@ data class RamCharacterDetails(
 ) {
 
     @Throws(InvalidDataException::class)
-    internal constructor(character: CharacterDetailsQuery.Character) : this(
-        character = RamCharacter(character.characterFragment),
+    constructor(character: CharacterDetailsQuery.Character, favorite: Boolean) : this(
+        character = RamCharacter(character.characterFragment, favorite),
         origin = character.origin?.locationFragment?.let { RamLocation(it) },
         location = character.location?.locationFragment?.let { RamLocation(it) },
         episodes = character.episode.asSequence().filterNotNull().mapNotNull {

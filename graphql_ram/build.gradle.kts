@@ -30,7 +30,7 @@ android {
         packageName.set("com.vkondrav.graphql.ram")
         generateKotlinModels.set(true)
         codegenModels.set("operationBased")
-        generateAsInternal.set(true)
+        generateAsInternal.set(false)
         generateTestBuilders.set(true)
     }
 

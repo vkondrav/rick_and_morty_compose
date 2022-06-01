@@ -9,11 +9,11 @@ data class RamLocationDetails(
     val residents: List<RamCharacter>,
 ) {
     @Throws(InvalidDataException::class)
-    internal constructor(location: LocationDetailsQuery.Location) : this(
+    constructor(location: LocationDetailsQuery.Location) : this(
         location = RamLocation(location.locationFragment),
         residents = location.residents.asSequence().filterNotNull().mapNotNull {
             try {
-                RamCharacter(it.characterFragment)
+                RamCharacter(it.characterFragment, false)
             } catch (e: InvalidDataException) {
                 Timber.e(e)
                 null

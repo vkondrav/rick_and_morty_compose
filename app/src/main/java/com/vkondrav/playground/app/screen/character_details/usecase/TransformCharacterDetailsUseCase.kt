@@ -1,8 +1,10 @@
 package com.vkondrav.playground.app.screen.character_details.usecase
 
+import com.vkondrav.playground.app.R
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.common.composable.CollapsableViewItem
+import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsViewItem
 import com.vkondrav.playground.app.screen.episodes.composable.EpisodeViewItem
 import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
@@ -36,17 +38,17 @@ class TransformCharacterDetailsUseCase(
 
     private val RamCharacterDetails.currentLocation
         get() = location?.run {
-            locationItem("Current Location")
+            locationItem(TextResource.Resource(R.string.current_location))
         }
 
     private val RamCharacterDetails.originLocation
         get() = origin?.run {
-            locationItem("Origin")
+            locationItem(TextResource.Resource(R.string.origin))
         }
 
     private val RamCharacterDetails.episodesList
         get() = CollapsableViewItem(
-            title = "Episodes",
+            title = TextResource.Resource(R.string.episodes),
             items = episodes.takeLast(MAX_EPISODES).reversed().map {
                 EpisodeViewItem(episode = it,
                     onClickAction = {
@@ -60,7 +62,7 @@ class TransformCharacterDetailsUseCase(
             open = false,
         )
 
-    private fun RamLocation.locationItem(title: String) = CollapsableViewItem(
+    private fun RamLocation.locationItem(title: TextResource) = CollapsableViewItem(
         title = title,
         items = listOf(
             LocationViewItem(

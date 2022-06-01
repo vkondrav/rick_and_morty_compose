@@ -10,7 +10,7 @@ data class RamLocation(
 ) {
 
     @Throws(InvalidDataException::class)
-    internal constructor(fragment: LocationFragment) : this(
+    constructor(fragment: LocationFragment) : this(
         id = fragment.id ?: throw InvalidDataException("Missing Id"),
         name = fragment.name ?: throw InvalidDataException("Missing Name"),
         dimension = fragment.dimension,

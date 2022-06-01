@@ -9,6 +9,6 @@ class FetchLocationDetailsUseCase(
     suspend operator fun invoke(
         id: String,
     ): Result<RamLocationDetails> = runCatching {
-        ramRepository.fetchLocationDetails(id)
+        RamLocationDetails(ramRepository.fetchLocationDetails(id))
     }
 }

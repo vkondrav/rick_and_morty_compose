@@ -12,8 +12,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDownward
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.vkondrav.playground.app.base.item.Composable
 import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.design.DlsTheme
 
 @Composable
@@ -53,7 +52,7 @@ fun CollapsableView(item: CollapsableViewItem) {
                         bottom.linkTo(parent.bottom)
                         start.linkTo(parent.start, margin = 8.dp)
                     },
-                    text = item.title,
+                    text = item.title.string(),
                     style = DlsTheme.typography.headline3,
                     color = DlsTheme.colors.text,
                 )
@@ -87,18 +86,17 @@ fun CollapsableView(item: CollapsableViewItem) {
 @Composable
 private fun Preview() {
     CollapsableViewItem(
-        title = "Collapsable",
+        title = TextResource.Literal("Collapsable"),
         open = true,
         items = emptyList(),
     )
 }
 
 data class CollapsableViewItem(
-    val title: String,
+    val title: TextResource,
     val open: Boolean,
     val items: List<ComposableItem>,
 ) : ComposableItem {
     @Composable
-    override fun Composable() =
-        CollapsableView(this)
+    override fun Composable() = CollapsableView(this)
 }

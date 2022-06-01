@@ -9,6 +9,6 @@ class FetchEpisodeDetailsUseCase(
     suspend operator fun invoke(
         id: String,
     ): Result<RamEpisodeDetails> = runCatching {
-        ramRepository.fetchEpisodeDetails(id)
+        RamEpisodeDetails(ramRepository.fetchEpisodeDetails(id))
     }
 }
