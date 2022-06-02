@@ -27,7 +27,7 @@ class EpisodesViewModel(
 
     fun fetchEpisodes() {
         launch {
-            _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
+            _screenEvent.value = ScreenEvent.Loading()
             fetchEpisodesUseCase(page = 0).getOrElse { error ->
                 _screenEvent.value = ScreenEvent.Error(PageErrorViewItem(error))
                 return@launch

@@ -23,7 +23,7 @@ class LocationDetailsViewModel(
 
     fun fetchLocationDetails(id: String) {
         launch {
-            _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
+            _screenEvent.value = ScreenEvent.Loading()
             fetchLocationDetailsUseCase(id)
                 .onSuccess { details ->
                     _screenEvent.value = ScreenEvent.Content(

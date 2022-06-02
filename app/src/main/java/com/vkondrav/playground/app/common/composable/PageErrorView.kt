@@ -15,9 +15,12 @@ import androidx.compose.material.icons.filled.Error
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.vkondrav.playground.app.R
 import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.design.DlsTheme
 
 @Composable
 fun PageErrorView(item: PageErrorViewItem) {
@@ -36,14 +39,17 @@ fun PageErrorView(item: PageErrorViewItem) {
         ) {
             Icon(
                 Icons.Default.Error,
-                contentDescription = "error",
+                contentDescription = null,
+                tint = DlsTheme.colors.error,
                 modifier = Modifier
-                    .width(24.dp)
-                    .height(24.dp),
+                    .fillMaxWidth()
+                    .height(124.dp),
             )
             Text(
-                text = item.error.message ?: "Unknown Error",
+                text = item.error.message ?: stringResource(id = R.string.unknown_error),
                 modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = DlsTheme.typography.headline4,
+                color = DlsTheme.colors.text,
             )
         }
     }

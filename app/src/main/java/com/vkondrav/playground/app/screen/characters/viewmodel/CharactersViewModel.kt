@@ -24,7 +24,7 @@ class CharactersViewModel(
 
     fun fetchCharacters() {
         launch {
-            _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
+            _screenEvent.value = ScreenEvent.Loading()
             fetchCharactersUseCase(page = 0).getOrElse { error ->
                 _screenEvent.value = ScreenEvent.Error(PageErrorViewItem(error))
                 return@launch

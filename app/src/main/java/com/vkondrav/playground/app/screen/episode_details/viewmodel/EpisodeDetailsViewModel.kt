@@ -23,7 +23,7 @@ class EpisodeDetailsViewModel(
 
     fun fetchEpisodeDetails(id: String) {
         launch {
-            _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
+            _screenEvent.value = ScreenEvent.Loading()
             fetchEpisodeDetailsUseCase(id)
                 .onSuccess { details ->
                     _screenEvent.value = ScreenEvent.Content(

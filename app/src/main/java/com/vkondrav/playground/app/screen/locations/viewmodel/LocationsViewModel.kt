@@ -27,7 +27,7 @@ class LocationsViewModel(
 
     fun fetchCharacters() {
         launch {
-            _screenEvent.value = ScreenEvent.Loading(PageLoadingViewItem)
+            _screenEvent.value = ScreenEvent.Loading()
             fetchLocationsUseCase(page = 0).getOrElse { error ->
                 _screenEvent.value = ScreenEvent.Error(PageErrorViewItem(error))
                 return@launch
