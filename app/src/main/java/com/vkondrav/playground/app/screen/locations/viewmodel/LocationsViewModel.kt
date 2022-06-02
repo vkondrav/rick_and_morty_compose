@@ -4,7 +4,6 @@ import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
-import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
 import com.vkondrav.playground.app.screen.locations.composable.LocationViewItem
 import com.vkondrav.playground.app.screen.locations.usecase.FetchLocationsUseCase

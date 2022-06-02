@@ -3,7 +3,6 @@ package com.vkondrav.playground.app.screen.characters.viewmodel
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
-import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
 import com.vkondrav.playground.app.screen.characters.usecase.FetchCharactersUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.TransformCharactersUseCase
