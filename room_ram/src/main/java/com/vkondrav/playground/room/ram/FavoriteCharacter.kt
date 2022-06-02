@@ -11,5 +11,4 @@ data class FavoriteCharacter(
     @ColumnInfo(name = "status") val status: String?,
     @ColumnInfo(name = "species") val species: String?,
     @ColumnInfo(name = "image") val image: String?,
-    @ColumnInfo(name = "favorite") val favorite: Boolean,
 )

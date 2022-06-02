@@ -66,6 +66,7 @@ fun CharacterView(item: CharacterViewItem) {
                 .clickable {
                     item.character.favorite = !item.character.favorite
                     favorite = item.character.favorite
+                    item.onFavoriteAction(favorite)
                 },
         )
     }
@@ -74,6 +75,7 @@ fun CharacterView(item: CharacterViewItem) {
 data class CharacterViewItem(
     val character: RamCharacter,
     val onClickAction: () -> Unit,
+    val onFavoriteAction: (Boolean) -> Unit,
 ) : ComposableItem {
     @Composable
     override fun Composable() = CharacterView(this)
@@ -92,5 +94,6 @@ private fun Preview() {
             favorite = false,
         ),
         onClickAction = { },
+        onFavoriteAction = { },
     ).Composable()
 }

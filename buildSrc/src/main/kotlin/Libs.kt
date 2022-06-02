@@ -105,6 +105,7 @@ object Libs {
         private const val version = "2.4.2"
         const val runtime = "${base}room-runtime:$version"
         const val compiler = "${base}room-compiler:$version"
+        const val ktx = "${base}room-ktx:$version"
     }
 
     object Ksp {

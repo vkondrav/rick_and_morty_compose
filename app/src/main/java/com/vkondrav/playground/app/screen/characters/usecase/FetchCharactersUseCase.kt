@@ -13,8 +13,7 @@ class FetchCharactersUseCase(
     suspend operator fun invoke(
         page: Int,
     ): Result<List<RamCharacter>> = runCatching {
-
-        val favorites = favoritesDao.getAllFavoriteCharacters()
+        val favorites = favoritesDao.getCharacters()
             .map { it.id }.toSet()
 
         ramRepository.fetchCharacters(page)

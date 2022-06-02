@@ -1,15 +1,12 @@
 package com.vkondrav.playground.app.screen.characters.viewmodel
 
-import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
 import com.vkondrav.playground.app.common.composable.PageLoadingViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.screen.characters.composable.CharacterViewItem
 import com.vkondrav.playground.app.screen.characters.usecase.FetchCharactersUseCase
-import com.vkondrav.playground.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
+import com.vkondrav.playground.app.screen.characters.usecase.TransformCharactersUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class CharactersViewModel(
     private val fetchCharactersUseCase: FetchCharactersUseCase,
-    private val navigateToCharacterDetailsUseCase: NavigateToCharacterDetailsUseCase,
+    private val transformCharactersUseCase: TransformCharactersUseCase,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher), ScreenEventViewModel {
 
@@ -33,24 +30,9 @@ class CharactersViewModel(
                 return@launch
             }.let { characters ->
                 _screenEvent.value = ScreenEvent.Content(
-                    ContentViewItem(
-                        items = characters.viewItems,
-                    ),
+                    transformCharactersUseCase(characters),
                 )
             }
         }
     }
-
-    private val List<RamCharacter>.viewItems
-        get() = map { character ->
-            CharacterViewItem(
-                character = character,
-                onClickAction = {
-                    navigateToCharacterDetailsUseCase(
-                        id = character.id,
-                        title = character.name,
-                    )
-                },
-            )
-        }
 }

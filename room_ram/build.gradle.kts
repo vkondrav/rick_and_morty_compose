@@ -1,6 +1,7 @@
 plugins {
     library()
     kotlin()
+    ksp()
 }
 
 android {
@@ -14,6 +15,12 @@ android {
         targetSdk = Build.targetSdk
 
         consumerProguardFiles("consumer-rules.pro")
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
+            }
+        }
     }
 
     compileOptions {
@@ -44,5 +51,8 @@ dependencies {
     implementation(Libs.Timber.core)
 
     implementation(Libs.Room.runtime)
-    //annotationProcessor(Libs.Room.compiler)
+    implementation(Libs.Room.ktx)
+    annotationProcessor(Libs.Room.compiler)
+
+    ksp(Libs.Room.compiler)
 }
