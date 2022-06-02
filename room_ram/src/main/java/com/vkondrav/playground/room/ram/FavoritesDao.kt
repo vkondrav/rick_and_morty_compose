@@ -9,6 +9,9 @@ interface FavoritesDao {
     @Query("SELECT * FROM favorite_character")
     suspend fun getCharacters(): List<FavoriteCharacter>
 
+    @Query("SELECT id FROM favorite_character")
+    suspend fun getCharacterIds(): List<String>
+
     @Insert
     suspend fun insertCharacter(favoriteCharacter: FavoriteCharacter)
 
