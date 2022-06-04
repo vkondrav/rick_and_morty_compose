@@ -5,10 +5,10 @@ object TestLibs {
     }
 
     object Compose {
-        private const val gr = "androidx.compose.ui"
+        private const val base = "androidx.compose.ui"
         private const val version = "1.0.5"
-        const val jUnit = "$gr:ui-test-junit4:$version"
-        const val manifest = "$gr:ui-test-manifest:$version"
+        const val jUnit = "$base:ui-test-junit4:$version"
+        const val manifest = "$base:ui-test-manifest:$version"
     }
 
     object Robolectric {

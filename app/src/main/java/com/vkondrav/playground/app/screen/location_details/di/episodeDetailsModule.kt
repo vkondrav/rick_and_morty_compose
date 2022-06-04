@@ -9,6 +9,7 @@ val locationDetailsModule = module {
     factory {
         FetchLocationDetailsUseCase(
             ramRepository = get(),
+            favoriteLocationsDao = get(),
         )
     }
     viewModel {

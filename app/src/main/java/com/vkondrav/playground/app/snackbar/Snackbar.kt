@@ -19,6 +19,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.SnackbarHost
 import androidx.compose.material.Text
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import com.vkondrav.playground.app.design.DlsTheme
 
 @Composable
 fun BoxScope.SnackbarHost(snackbarHostState: SnackbarHostState) {
@@ -27,7 +29,6 @@ fun BoxScope.SnackbarHost(snackbarHostState: SnackbarHostState) {
         hostState = snackbarHostState,
         snackbar = { snackbarData ->
             Card(
-                backgroundColor = Color.LightGray,
                 shape = RoundedCornerShape(8.dp),
                 border = BorderStroke(2.dp, Color.LightGray),
                 modifier = Modifier
@@ -37,13 +38,18 @@ fun BoxScope.SnackbarHost(snackbarHostState: SnackbarHostState) {
                 Column(
                     modifier = Modifier.padding(8.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                    horizontalAlignment = CenterHorizontally,
                 ) {
                     Icon(
                         imageVector = Icons.Default.Notifications,
                         contentDescription = "notification",
                     )
-                    Text(text = snackbarData.message)
+                    Text(
+                        modifier = Modifier.align(CenterHorizontally),
+                        text = snackbarData.message,
+                        style = DlsTheme.typography.label,
+                        color = DlsTheme.colors.text,
+                    )
                 }
             }
         },

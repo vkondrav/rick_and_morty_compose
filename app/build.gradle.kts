@@ -123,6 +123,9 @@ dependencies {
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.Compose.jUnit)
     testImplementation(TestLibs.Mockito.core)
+    testImplementation(TestLibs.Kotest.assertions)
+
+    testApi(project(Module.apollo))
 
     debugImplementation(TestLibs.Compose.manifest)
 }

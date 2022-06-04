@@ -62,6 +62,7 @@ private fun Preview() {
             id = "1",
             name = "Morty",
             dimension = null,
+            favorite = false,
         ),
     ).Composable()
 }

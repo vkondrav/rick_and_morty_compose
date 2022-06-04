@@ -50,6 +50,9 @@ class LocationsViewModel(
                         title = location.name,
                     )
                 },
+                onFavoriteAction = { isFavorite ->
+                    //TODO handle me
+                },
             )
         }
 }

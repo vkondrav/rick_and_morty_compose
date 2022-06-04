@@ -9,8 +9,8 @@ data class RamLocationDetails(
     val residents: List<RamCharacter>,
 ) {
     @Throws(InvalidDataException::class)
-    constructor(location: LocationDetailsQuery.Location) : this(
-        location = RamLocation(location.locationFragment),
+    constructor(location: LocationDetailsQuery.Location, favorites: Set<String>) : this(
+        location = RamLocation(location.locationFragment, favorites),
         residents = location.residents.asSequence().filterNotNull().mapNotNull {
             try {
                 RamCharacter(it.characterFragment, emptySet())

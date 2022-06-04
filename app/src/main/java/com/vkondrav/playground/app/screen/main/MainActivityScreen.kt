@@ -1,6 +1,5 @@
 package com.vkondrav.playground.app.screen.main
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,12 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
 import com.vkondrav.playground.app.common.navigation.defineGraph
-import com.vkondrav.playground.app.screen.drawer.composable.CustomDrawer
 import com.vkondrav.playground.app.common.state.LoadAppStateIntoKoin
 import com.vkondrav.playground.app.design.DlsTheme
+import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
+import com.vkondrav.playground.app.screen.drawer.composable.CustomDrawer
 import com.vkondrav.playground.app.snackbar.SnackbarHost
 
 @Composable

@@ -12,10 +12,13 @@ data class RamCharacterDetails(
 ) {
 
     @Throws(InvalidDataException::class)
-    constructor(character: CharacterDetailsQuery.Character) : this(
+    constructor(
+        character: CharacterDetailsQuery.Character,
+        favoriteLocations: Set<String>,
+    ) : this(
         character = RamCharacter(character.characterFragment, emptySet()),
-        origin = character.origin?.locationFragment?.let { RamLocation(it) },
-        location = character.location?.locationFragment?.let { RamLocation(it) },
+        origin = character.origin?.locationFragment?.let { RamLocation(it, favoriteLocations) },
+        location = character.location?.locationFragment?.let { RamLocation(it, favoriteLocations) },
         episodes = character.episode.asSequence().filterNotNull().mapNotNull {
             try {
                 RamEpisode(it.episodeFragment)
@@ -26,4 +29,11 @@ data class RamCharacterDetails(
         }.toList(),
     )
 
+}
+
+object RamCharacterDetailsTransformer {
+    operator fun invoke(
+        character: CharacterDetailsQuery.Character,
+        favoriteLocations: Set<String>,
+    ) = RamCharacterDetails(character, favoriteLocations)
 }

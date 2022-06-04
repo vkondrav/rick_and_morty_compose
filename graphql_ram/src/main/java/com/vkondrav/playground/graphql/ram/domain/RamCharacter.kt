@@ -13,7 +13,7 @@ data class RamCharacter(
 ) {
 
     @Throws(InvalidDataException::class)
-    constructor(fragment: CharacterFragment, favorites: Set<String>): this(
+    constructor(fragment: CharacterFragment, favorites: Set<String>) : this(
         id = fragment.id ?: throw InvalidDataException("missing id"),
         name = fragment.name ?: throw InvalidDataException("missing name"),
         status = fragment.status,
@@ -22,4 +22,10 @@ data class RamCharacter(
         favorite = favorites.contains(fragment.id),
     )
 
+}
+
+object RamCharacterTransformer {
+    @Throws(InvalidDataException::class)
+    operator fun invoke(fragment: CharacterFragment, favorites: Set<String>) =
+        RamCharacter(fragment, favorites)
 }

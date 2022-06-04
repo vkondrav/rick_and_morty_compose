@@ -1,8 +1,8 @@
-package com.vkondrav.playground.app.screen.characters.usecase
+package com.vkondrav.playground.app.screen.locations.usecase
 
 import com.vkondrav.playground.app.common.state.AppState
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
-import com.vkondrav.playground.room.ram.FavoriteCharactersDao
+import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.room.ram.FavoriteLocationsDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -10,8 +10,8 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
-class RemoveCharacterFromFavoritesUseCase(
-    private val favoriteCharactersDao: FavoriteCharactersDao,
+class RemoveLocationFromFavoritesUseCase(
+    private val favoriteLocationsDao: FavoriteLocationsDao,
     private val appState: AppState,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
@@ -20,11 +20,11 @@ class RemoveCharacterFromFavoritesUseCase(
         get() = dispatcher + exceptionHandler
 
     operator fun invoke(
-        character: RamCharacter,
+        location: RamLocation,
     ) {
         launch {
-            favoriteCharactersDao.delete(character.id)
-            appState.showSnackbar("${character.name} removed from favorites")
+            favoriteLocationsDao.delete(location.id)
+            appState.showSnackbar("${location.name} removed from favorites")
         }
     }
 

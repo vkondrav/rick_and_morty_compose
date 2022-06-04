@@ -2,6 +2,7 @@ package com.vkondrav.playground.app.screen.characters.di
 
 import com.vkondrav.playground.app.screen.characters.usecase.AddCharacterToFavoritesUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.FetchCharactersUseCase
+import com.vkondrav.playground.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.RemoveCharacterFromFavoritesUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.TransformCharactersUseCase
@@ -13,7 +14,8 @@ val charactersModule = module {
     factory {
         FetchCharactersUseCase(
             ramRepository = get(),
-            favoritesDao = get(),
+            favoriteCharactersDao = get(),
+            transformer = get(),
         )
     }
     factory {
@@ -23,21 +25,28 @@ val charactersModule = module {
     }
     factory {
         AddCharacterToFavoritesUseCase(
-            favoritesDao = get(),
+            favoriteCharactersDao = get(),
+            appState = get(),
             dispatcher = get(),
         )
     }
     factory {
         RemoveCharacterFromFavoritesUseCase(
-            favoritesDao = get(),
+            favoriteCharactersDao = get(),
+            appState = get(),
             dispatcher = get(),
+        )
+    }
+    factory {
+        HandleCharacterFavoritesUseCase(
+            addCharacterToFavoritesUseCase = get(),
+            removeCharacterFromFavoritesUseCase = get(),
         )
     }
     factory {
         TransformCharactersUseCase(
             navigateToCharacterDetailsUseCase = get(),
-            addCharacterToFavoritesUseCase = get(),
-            removeCharacterFromFavoritesUseCase = get(),
+            handleCharacterFavoritesUseCase = get(),
         )
     }
     viewModel {

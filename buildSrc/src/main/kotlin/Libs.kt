@@ -5,16 +5,18 @@ object Libs {
     const val androidVersion = "7.2.0"
 
     object Compose {
-        private const val gr = "androidx.compose"
+        private const val base = "androidx.compose"
+
+        @SuppressWarnings("version used in app/build.gradle.kts and cannot be private")
         const val version = "1.2.0-beta01"
 
-        const val ui = "$gr.ui:ui:$version"
-        const val uiTooling = "$gr.ui:ui-tooling:$version"
-        const val foundation = "$gr.foundation:foundation:$version"
-        const val material = "$gr.material:material:$version"
-        const val iconsCore = "$gr.material:material-icons-core:$version"
-        const val iconsExt = "$gr.material:material-icons-extended:$version"
-        const val viewBinding = "$gr.ui:ui-viewbinding:$version"
+        const val ui = "$base.ui:ui:$version"
+        const val uiTooling = "$base.ui:ui-tooling:$version"
+        const val foundation = "$base.foundation:foundation:$version"
+        const val material = "$base.material:material:$version"
+        const val iconsCore = "$base.material:material-icons-core:$version"
+        const val iconsExt = "$base.material:material-icons-extended:$version"
+        const val viewBinding = "$base.ui:ui-viewbinding:$version"
     }
 
     object Lifecycle {

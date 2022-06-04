@@ -5,16 +5,16 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface FavoritesDao {
+interface FavoriteCharactersDao {
     @Query("SELECT * FROM favorite_character")
-    suspend fun getCharacters(): List<FavoriteCharacter>
+    suspend fun getAll(): List<FavoriteCharacter>
 
     @Query("SELECT id FROM favorite_character")
-    suspend fun getCharacterIds(): List<String>
+    suspend fun getIds(): List<String>
 
     @Insert
-    suspend fun insertCharacter(favoriteCharacter: FavoriteCharacter)
+    suspend fun insert(favoriteCharacter: FavoriteCharacter)
 
     @Query("DELETE FROM favorite_character WHERE id = :id")
-    suspend fun deleteCharacter(id: String)
+    suspend fun delete(id: String)
 }

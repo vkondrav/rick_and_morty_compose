@@ -9,6 +9,7 @@ import com.vkondrav.playground.app.screen.character_details.composable.Character
 import com.vkondrav.playground.app.screen.episodes.composable.EpisodeViewItem
 import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.playground.app.screen.locations.composable.LocationViewItem
+import com.vkondrav.playground.app.screen.locations.usecase.HandleLocationFavoriteUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.playground.graphql.ram.domain.RamCharacterDetails
 import com.vkondrav.playground.graphql.ram.domain.RamLocation
@@ -16,6 +17,7 @@ import com.vkondrav.playground.graphql.ram.domain.RamLocation
 class TransformCharacterDetailsUseCase(
     private val navigateToLocationDetailsUseCase: NavigateToLocationDetailsUseCase,
     private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,
+    private val handleLocationFavoriteUseCase: HandleLocationFavoriteUseCase,
 ) {
 
     operator fun invoke(
@@ -50,7 +52,8 @@ class TransformCharacterDetailsUseCase(
         get() = CollapsableViewItem(
             title = TextResource.Resource(R.string.episodes),
             items = episodes.takeLast(MAX_EPISODES).reversed().map {
-                EpisodeViewItem(episode = it,
+                EpisodeViewItem(
+                    episode = it,
                     onClickAction = {
                         navigateToEpisodeDetailsUseCase(
                             it.id,
@@ -72,6 +75,9 @@ class TransformCharacterDetailsUseCase(
                         id = id,
                         title = name,
                     )
+                },
+                onFavoriteAction = { isFavorite ->
+                    handleLocationFavoriteUseCase(isFavorite, location = this)
                 },
             ),
         ),

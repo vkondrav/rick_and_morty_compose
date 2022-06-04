@@ -7,8 +7,7 @@ import com.vkondrav.playground.graphql.ram.domain.RamCharacter
 
 class TransformCharactersUseCase(
     private val navigateToCharacterDetailsUseCase: NavigateToCharacterDetailsUseCase,
-    private val addCharacterToFavoritesUseCase: AddCharacterToFavoritesUseCase,
-    private val removeCharacterFromFavoritesUseCase: RemoveCharacterFromFavoritesUseCase,
+    private val handleCharacterFavoritesUseCase: HandleCharacterFavoritesUseCase,
 ) {
 
     operator fun invoke(
@@ -27,11 +26,8 @@ class TransformCharactersUseCase(
                         title = character.name,
                     )
                 },
-                onFavoriteAction = { favorite ->
-                    when (favorite) {
-                        true -> addCharacterToFavoritesUseCase(character)
-                        false -> removeCharacterFromFavoritesUseCase(character)
-                    }
+                onFavoriteAction = { isFavorite ->
+                    handleCharacterFavoritesUseCase(character, isFavorite)
                 },
             )
         }
