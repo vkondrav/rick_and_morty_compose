@@ -49,10 +49,11 @@ object Libs {
     }
 
     object Koin {
-        private const val version = "3.1.6"
+        private const val base = "io.insert-koin:"
+        private const val version = "3.2.0"
 
-        const val core = "io.insert-koin:koin-android:$version"
-        const val compose = "io.insert-koin:koin-androidx-compose:$version"
+        const val core = "${base}koin-android:$version"
+        const val compose = "${base}koin-androidx-compose:$version"
     }
 
     object Material {

@@ -1,14 +1,11 @@
 package com.vkondrav.playground.app.screen.locations.viewmodel
 
-import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.screen.locations.composable.LocationViewItem
 import com.vkondrav.playground.app.screen.locations.usecase.FetchLocationsUseCase
-import com.vkondrav.playground.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.app.screen.locations.usecase.TransformLocationsUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class LocationsViewModel(
     private val fetchLocationsUseCase: FetchLocationsUseCase,
-    private val navigateToLocationDetailsUseCase: NavigateToLocationDetailsUseCase,
+    private val transformLocationsUseCase: TransformLocationsUseCase,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher), ScreenEventViewModel {
 
@@ -32,27 +29,9 @@ class LocationsViewModel(
                 return@launch
             }.let { locations ->
                 _screenEvent.value = ScreenEvent.Content(
-                    ContentViewItem(
-                        items = locations.viewItems,
-                    ),
+                    transformLocationsUseCase(locations),
                 )
             }
         }
     }
-
-    private val List<RamLocation>.viewItems
-        get() = map { location ->
-            LocationViewItem(
-                location = location,
-                onClickAction = {
-                    navigateToLocationDetailsUseCase(
-                        id = location.id,
-                        title = location.name,
-                    )
-                },
-                onFavoriteAction = { isFavorite ->
-                    //TODO handle me
-                },
-            )
-        }
 }
