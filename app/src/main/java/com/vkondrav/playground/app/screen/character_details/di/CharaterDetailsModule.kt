@@ -15,14 +15,14 @@ val characterDetailsModule = module {
         FetchCharacterDetailsUseCase(
             ramRepository = get(),
             favoriteLocationsDao = get(),
+            favoriteEpisodesDao = get(),
             ramCharacterDetailsTransformer = get(),
         )
     }
     factory {
         TransformCharacterDetailsUseCase(
-            navigateToEpisodeDetailsUseCase = get(),
-            navigateToLocationDetailsUseCase = get(),
-            handleLocationFavoriteUseCase = get(),
+            transformLocationsUseCase = get(),
+            transformEpisodesUseCase = get(),
         )
     }
     viewModel {

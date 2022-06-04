@@ -7,10 +7,12 @@ import androidx.room.RoomDatabase
     entities = [
         FavoriteCharacter::class,
         FavoriteLocation::class,
+        FavoriteEpisode::class,
     ],
     version = 2,
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun favoriteCharactersDao(): FavoriteCharactersDao
     abstract fun favoriteLocationsDoa(): FavoriteLocationsDao
+    abstract fun favoriteEpisodeDao(): FavoriteEpisodesDao
 }

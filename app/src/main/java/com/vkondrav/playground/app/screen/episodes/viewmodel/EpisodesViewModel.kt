@@ -50,6 +50,9 @@ class EpisodesViewModel(
                         title = episode.title,
                     )
                 },
+                onFavoriteAction = { isFavorite ->
+                    //TODO: handle me
+                },
             )
         }
 }

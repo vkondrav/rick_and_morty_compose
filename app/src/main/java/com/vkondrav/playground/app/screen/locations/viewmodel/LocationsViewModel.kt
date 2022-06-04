@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.screen.locations.viewmodel
 
+import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
@@ -29,7 +30,7 @@ class LocationsViewModel(
                 return@launch
             }.let { locations ->
                 _screenEvent.value = ScreenEvent.Content(
-                    transformLocationsUseCase(locations),
+                    ContentViewItem(items = transformLocationsUseCase(locations)),
                 )
             }
         }

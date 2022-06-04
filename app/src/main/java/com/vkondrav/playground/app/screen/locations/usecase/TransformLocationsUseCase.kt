@@ -1,7 +1,6 @@
 package com.vkondrav.playground.app.screen.locations.usecase
 
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.screen.locations.composable.LocationViewItem
 import com.vkondrav.playground.graphql.ram.domain.RamLocation
 
@@ -11,24 +10,24 @@ class TransformLocationsUseCase(
 ) {
     operator fun invoke(
         locations: List<RamLocation>,
-    ): ComposableItem = ContentViewItem(
-        items = locations.viewItems,
+    ): List<ComposableItem> = locations.viewItems
+
+    operator fun invoke(
+        location: RamLocation,
+    ): ComposableItem = location.viewItem
+
+    private val RamLocation.viewItem get() = LocationViewItem(
+        location = this,
+        onClickAction = {
+            navigateToLocationDetailsUseCase(
+                id = id,
+                title = name,
+            )
+        },
+        onFavoriteAction = { isFavorite ->
+            handleLocationFavoriteUseCase(isFavorite, this)
+        },
     )
 
-    private val List<RamLocation>.viewItems
-        get() = map { location ->
-            LocationViewItem(
-                location = location,
-                onClickAction = {
-                    navigateToLocationDetailsUseCase(
-                        id = location.id,
-                        title = location.name,
-                    )
-                },
-                onFavoriteAction = { isFavorite ->
-                    handleLocationFavoriteUseCase(isFavorite, location)
-                },
-            )
-        }
-
+    private val List<RamLocation>.viewItems get() = map { it.viewItem }
 }

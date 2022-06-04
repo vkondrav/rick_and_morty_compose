@@ -11,7 +11,7 @@ data class RamEpisodeDetails(
 
     @Throws(InvalidDataException::class)
     constructor(episode: EpisodeDetailsQuery.Episode): this(
-        episode = RamEpisode(episode.episodeFragment),
+        episode = RamEpisode(episode.episodeFragment, emptySet()),
         characters = episode.characters.asSequence().filterNotNull().mapNotNull {
             try {
                 RamCharacter(it.characterFragment, emptySet())

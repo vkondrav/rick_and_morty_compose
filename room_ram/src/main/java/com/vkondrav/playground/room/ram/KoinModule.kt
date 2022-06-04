@@ -17,4 +17,7 @@ val roomModule = module {
     factory {
         get<AppDatabase>().favoriteLocationsDoa()
     }
+    factory {
+        get<AppDatabase>().favoriteEpisodeDao()
+    }
 }

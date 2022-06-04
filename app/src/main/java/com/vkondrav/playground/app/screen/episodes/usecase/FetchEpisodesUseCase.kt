@@ -11,7 +11,7 @@ class FetchEpisodesUseCase(
     suspend operator fun invoke(page: Int): Result<List<RamEpisode>> = runCatching {
         ramRepository.fetchEpisodes(page).mapNotNull {
             runCatching {
-                RamEpisode(it.episodeFragment)
+                RamEpisode(it.episodeFragment, emptySet())
             }.onFailure {
                 Timber.e(it)
             }.getOrNull()
