@@ -1,0 +1,4 @@
+fragment InfoFragment on Info {
+    prev
+    next
+}

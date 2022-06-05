@@ -9,10 +9,17 @@ import com.vkondrav.graphql.ram.EpisodeDetailsQuery
 import com.vkondrav.graphql.ram.EpisodesQuery
 import com.vkondrav.graphql.ram.LocationDetailsQuery
 import com.vkondrav.graphql.ram.LocationsQuery
+import com.vkondrav.graphql.ram.fragment.CharacterFragment
+import com.vkondrav.graphql.ram.fragment.InfoFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 
+data class CharactersResponse(
+    val info: InfoFragment,
+    val characters: List<CharacterFragment>,
+)
+
 interface RamRepository {
-    suspend fun fetchCharacters(page: Int): List<CharactersQuery.Result>
+    suspend fun fetchCharacters(page: Int): CharactersResponse
     suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character
     suspend fun fetchLocations(page: Int): List<LocationsQuery.Result>
     suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
@@ -23,14 +30,25 @@ interface RamRepository {
 internal class RamRepositoryImp(private val service: Service) : RamRepository {
 
     @Throws(ApolloException::class)
-    override suspend fun fetchCharacters(page: Int): List<CharactersQuery.Result> {
+    override suspend fun fetchCharacters(page: Int): CharactersResponse {
         val query = CharactersQuery(page)
-        return service.query(query)
+        val response = service.query(query)
             .dataOrThrow
             .characters
+
+        val characters = response
             ?.results
             ?.filterNotNull()
+            ?.map { it.characterFragment }
             ?: throw ApolloException("No results for ${query.name()} query")
+
+        val infoFragment = response.info?.infoFragment
+            ?: throw ApolloException("No info for ${query.name()} query")
+
+        return CharactersResponse(
+            info = infoFragment,
+            characters = characters,
+        )
     }
 
     @Throws(ApolloException::class)

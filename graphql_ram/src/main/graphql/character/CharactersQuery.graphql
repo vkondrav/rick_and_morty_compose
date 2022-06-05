@@ -1,5 +1,8 @@
 query CharactersQuery($page: Int!) {
     characters(page: $page) {
+        info {
+            ... InfoFragment
+        }
         results {
             ... CharacterFragment
         }

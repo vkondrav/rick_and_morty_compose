@@ -1,6 +1,7 @@
 package com.vkondrav.playground.app.screen.characters.di
 
 import com.vkondrav.playground.app.screen.characters.usecase.AddCharacterToFavoritesUseCase
+import com.vkondrav.playground.app.screen.characters.usecase.CharactersSource
 import com.vkondrav.playground.app.screen.characters.usecase.FetchCharactersUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
@@ -49,10 +50,17 @@ val charactersModule = module {
             handleCharacterFavoritesUseCase = get(),
         )
     }
+    factory {
+        CharactersSource(
+            fetchCharactersUseCase = get(),
+            transformCharactersUseCase = get(),
+        )
+    }
     viewModel {
         CharactersViewModel(
             fetchCharactersUseCase = get(),
             transformCharactersUseCase = get(),
+            charactersSource = get(),
             dispatcher = get(),
         )
     }
