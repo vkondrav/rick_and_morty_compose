@@ -11,11 +11,19 @@ data class RamEpisode(
 ) {
 
     @Throws(InvalidDataException::class)
-    constructor(fragment: EpisodeFragment, favorites: Set<String>): this(
+    constructor(fragment: EpisodeFragment, favorites: Set<String>) : this(
         id = fragment.id ?: throw InvalidDataException("missing id"),
         title = fragment.name ?: throw InvalidDataException("missing name"),
         airDate = fragment.air_date,
         favorite = favorites.contains(fragment.id),
     )
 
+}
+
+object RamEpisodeTransformer {
+    operator fun invoke(fragment: EpisodeFragment, favorites: Set<String>) =
+        RamEpisode(
+            fragment,
+            favorites,
+        )
 }

@@ -1,15 +1,25 @@
 package com.vkondrav.playground.app.screen.episodes.di
 
+import com.vkondrav.playground.app.screen.episodes.usecase.AddEpisodeToFavoritesUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.FetchEpisodesUseCase
+import com.vkondrav.playground.app.screen.episodes.usecase.HandleEpisodeFavoritesUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
+import com.vkondrav.playground.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
+import com.vkondrav.playground.app.screen.episodes.usecase.TransformEpisodesUseCase
 import com.vkondrav.playground.app.screen.episodes.viewmodel.EpisodesViewModel
+import com.vkondrav.playground.graphql.ram.domain.RamEpisodeTransformer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val episodesModule = module {
     factory {
+        RamEpisodeTransformer
+    }
+    factory {
         FetchEpisodesUseCase(
             ramRepository = get(),
+            favoriteEpisodesDao = get(),
+            transformer = get(),
         )
     }
     factory {
@@ -17,10 +27,36 @@ val episodesModule = module {
             appState = get(),
         )
     }
+    factory {
+        RemoveEpisodeFromFavoritesUseCase(
+            favoriteEpisodesDao = get(),
+            appState = get(),
+            dispatcher = get(),
+        )
+    }
+    factory {
+        AddEpisodeToFavoritesUseCase(
+            favoriteEpisodesDao = get(),
+            appState = get(),
+            dispatcher = get(),
+        )
+    }
+    factory {
+        HandleEpisodeFavoritesUseCase(
+            addEpisodeToFavoriteUseCase = get(),
+            removeEpisodeFromFavoritesUseCase = get(),
+        )
+    }
+    factory {
+        TransformEpisodesUseCase(
+            navigateToEpisodeDetailsUseCase = get(),
+            handleEpisodeFavoritesUseCase = get(),
+        )
+    }
     viewModel {
         EpisodesViewModel(
             fetchEpisodesUseCase = get(),
-            navigateToEpisodeDetailsUseCase = get(),
+            transformEpisodesUseCase = get(),
             dispatcher = get(),
         )
     }

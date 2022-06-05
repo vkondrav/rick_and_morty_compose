@@ -5,10 +5,8 @@ import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
 import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
 import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.screen.episodes.composable.EpisodeViewItem
 import com.vkondrav.playground.app.screen.episodes.usecase.FetchEpisodesUseCase
-import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
-import com.vkondrav.playground.graphql.ram.domain.RamEpisode
+import com.vkondrav.playground.app.screen.episodes.usecase.TransformEpisodesUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class EpisodesViewModel(
     private val fetchEpisodesUseCase: FetchEpisodesUseCase,
-    private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,
+    private val transformEpisodesUseCase: TransformEpisodesUseCase,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher), ScreenEventViewModel {
 
@@ -33,26 +31,10 @@ class EpisodesViewModel(
             }.let { episodes ->
                 _screenEvent.value = ScreenEvent.Content(
                     ContentViewItem(
-                        items = episodes.viewItems,
+                        items = transformEpisodesUseCase(episodes),
                     ),
                 )
             }
         }
     }
-
-    private val List<RamEpisode>.viewItems
-        get() = map { episode ->
-            EpisodeViewItem(
-                episode = episode,
-                onClickAction = {
-                    navigateToEpisodeDetailsUseCase(
-                        id = episode.id,
-                        title = episode.title,
-                    )
-                },
-                onFavoriteAction = { isFavorite ->
-                    //TODO: handle me
-                },
-            )
-        }
 }
