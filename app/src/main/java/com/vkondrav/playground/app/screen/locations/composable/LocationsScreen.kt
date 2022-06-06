@@ -1,7 +1,7 @@
 package com.vkondrav.playground.app.screen.locations.composable
 
 import androidx.compose.runtime.Composable
-import com.vkondrav.playground.app.base.composable.screen.BaseScreen
+import com.vkondrav.playground.app.base.composable.screen.BasePagingScreen
 import com.vkondrav.playground.app.screen.locations.viewmodel.LocationsViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -9,8 +9,7 @@ import org.koin.androidx.compose.getViewModel
 fun LocationsScreen(
     viewModel: LocationsViewModel = getViewModel(),
 ) {
-    viewModel.fetchCharacters()
-    BaseScreen(
-        screenEventViewModel = viewModel,
+    BasePagingScreen(
+        pagingViewModel = viewModel,
     )
 }

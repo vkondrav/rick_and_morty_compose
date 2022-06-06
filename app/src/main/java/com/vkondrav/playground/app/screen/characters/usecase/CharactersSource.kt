@@ -14,7 +14,7 @@ class CharactersSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ComposableItem> =
         runCatching {
-            val nextPage = params.key ?: 0
+            val nextPage = params.key ?: 1
             val page = fetchCharactersUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(

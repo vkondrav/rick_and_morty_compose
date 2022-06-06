@@ -2,25 +2,27 @@ package com.vkondrav.playground.app.screen.locations.usecase
 
 import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.domain.RamLocation
+import com.vkondrav.playground.domain.RamPage
 import com.vkondrav.playground.room.ram.FavoriteLocationsDao
-import timber.log.Timber
 
 class FetchLocationsUseCase(
     private val ramRepository: RamRepository,
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val sourceTransformer: RamLocation.SourceConstructor,
+    private val sourceConstructor: RamPage.SourceConstructor,
 ) {
 
-    suspend operator fun invoke(page: Int): Result<List<RamLocation>> = runCatching {
-        val favoriteLocations = favoriteLocationsDao.getIds().toSet()
+    private var favorites: Set<String>? = null
 
-        ramRepository.fetchLocations(page).mapNotNull { result ->
-            runCatching {
-                sourceTransformer(result.locationFragment, favoriteLocations)
-            }.onFailure {
-                Timber.e(it)
-            }.getOrNull()
-
+    suspend operator fun invoke(
+        page: Int,
+    ): Result<RamPage<RamLocation>> = runCatching {
+        val favorites = favorites ?: favoriteLocationsDao.getIds().toSet().also {
+            favorites = it
         }
+
+        sourceConstructor.locations(
+            ramRepository.fetchLocations(page),
+            favorites,
+        )
     }
 }

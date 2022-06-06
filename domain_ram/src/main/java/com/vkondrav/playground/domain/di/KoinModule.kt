@@ -42,6 +42,7 @@ val domainModule = module {
         RamPage.SourceConstructor(
             characterSourceConstructor = get(),
             episodeSourceConstructor = get(),
+            locationSourceConstructor = get(),
         )
     }
 }

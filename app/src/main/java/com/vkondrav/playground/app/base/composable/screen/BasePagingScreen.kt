@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,11 +26,12 @@ fun BasePagingScreen(
             item?.Composable()
         }
         items.apply {
-            when (loadState.append) {
+            when (val state = loadState.append) {
                 is LoadState.Loading -> {
                     item { PagingItemLoadingView() }
                 }
                 is LoadState.Error -> {
+                    item { PagingItemErrorView(exception = state.error) }
                 }
                 else -> {
                     //no-op
@@ -58,6 +60,20 @@ fun PagingItemLoadingView() {
     ) {
         CircularProgressIndicator(
             Modifier.align(Alignment.Center),
+        )
+    }
+}
+
+@Composable
+fun PagingItemErrorView(exception: Throwable) {
+    Box(
+        Modifier
+            .wrapContentSize()
+            .fillMaxWidth(),
+    ) {
+        Text(
+            text = exception.message ?: "unknown error has occurred",
+            modifier = Modifier.align(Alignment.Center),
         )
     }
 }

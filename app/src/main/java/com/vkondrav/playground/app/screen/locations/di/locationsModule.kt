@@ -6,6 +6,7 @@ import com.vkondrav.playground.app.screen.locations.usecase.RemoveLocationFromFa
 import com.vkondrav.playground.app.screen.locations.usecase.FetchLocationsUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.TransformLocationsUseCase
+import com.vkondrav.playground.app.screen.locations.usecase.LocationsSource
 import com.vkondrav.playground.app.screen.locations.viewmodel.LocationsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -15,7 +16,7 @@ val locationsModule = module {
         FetchLocationsUseCase(
             ramRepository = get(),
             favoriteLocationsDao = get(),
-            sourceTransformer = get(),
+            sourceConstructor = get(),
         )
     }
     factory {
@@ -49,10 +50,15 @@ val locationsModule = module {
             handleLocationFavoriteUseCase = get(),
         )
     }
-    viewModel {
-        LocationsViewModel(
+    factory {
+        LocationsSource(
             fetchLocationsUseCase = get(),
             transformLocationsUseCase = get(),
+        )
+    }
+    viewModel {
+        LocationsViewModel(
+            locationsSource = get(),
             dispatcher = get(),
         )
     }

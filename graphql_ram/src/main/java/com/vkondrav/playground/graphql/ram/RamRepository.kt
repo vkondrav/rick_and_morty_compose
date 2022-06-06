@@ -11,12 +11,13 @@ import com.vkondrav.graphql.ram.LocationDetailsQuery
 import com.vkondrav.graphql.ram.LocationsQuery
 import com.vkondrav.graphql.ram.fragment.CharacterFragment
 import com.vkondrav.graphql.ram.fragment.EpisodeFragment
+import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 
 interface RamRepository {
     suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment>
     suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character
-    suspend fun fetchLocations(page: Int): List<LocationsQuery.Result>
+    suspend fun fetchLocations(page: Int): PageResponse<LocationFragment>
     suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
     suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment>
     suspend fun fetchEpisodeDetails(id: String): EpisodeDetailsQuery.Episode
@@ -56,14 +57,25 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override suspend fun fetchLocations(page: Int): List<LocationsQuery.Result> {
-        val query = LocationsQuery()
-        return service.query(query)
+    override suspend fun fetchLocations(page: Int): PageResponse<LocationFragment> {
+        val query = LocationsQuery(page)
+        val response = service.query(query)
             .dataOrThrow
             .locations
+
+        val locations = response
             ?.results
             ?.filterNotNull()
-            ?: throw InvalidDataException("No result for ${query.name()} query")
+            ?.map { it.locationFragment }
+            ?: throw ApolloException("No results for ${query.name()} query")
+
+        val infoFragment = response.info?.infoFragment
+            ?: throw ApolloException("No info for ${query.name()} query")
+
+        return PageResponse(
+            info = infoFragment,
+            items = locations,
+        )
     }
 
     @Throws(ApolloException::class)
@@ -82,7 +94,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             .dataOrThrow
             .episodes
 
-        val characters = response
+        val episodes = response
             ?.results
             ?.filterNotNull()
             ?.map { it.episodeFragment }
@@ -93,7 +105,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
 
         return PageResponse(
             info = infoFragment,
-            items = characters,
+            items = episodes,
         )
     }
 

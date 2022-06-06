@@ -1,5 +1,8 @@
-query Locations {
-    locations {
+query Locations($page: Int!)  {
+    locations(page: $page) {
+        info {
+            ... InfoFragment
+        }
         results {
             ... LocationFragment
         }
