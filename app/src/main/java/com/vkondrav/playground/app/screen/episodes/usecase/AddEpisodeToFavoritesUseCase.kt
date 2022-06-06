@@ -1,7 +1,7 @@
 package com.vkondrav.playground.app.screen.episodes.usecase
 
 import com.vkondrav.playground.app.common.state.AppState
-import com.vkondrav.playground.graphql.ram.domain.RamEpisode
+import com.vkondrav.playground.domain.RamEpisode
 import com.vkondrav.playground.room.ram.FavoriteEpisode
 import com.vkondrav.playground.room.ram.FavoriteEpisodesDao
 import kotlinx.coroutines.CoroutineDispatcher

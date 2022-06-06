@@ -1,4 +1,4 @@
-package com.vkondrav.playground.graphql.ram.domain
+package com.vkondrav.playground.domain
 
 data class RamPage<T>(
     val previousPage: Int?,

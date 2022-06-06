@@ -8,8 +8,8 @@ import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsViewItem
 import com.vkondrav.playground.app.screen.episodes.usecase.TransformEpisodesUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.TransformLocationsUseCase
-import com.vkondrav.playground.graphql.ram.domain.RamCharacterDetails
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.domain.RamCharacterDetails
+import com.vkondrav.playground.domain.RamLocation
 
 class TransformCharacterDetailsUseCase(
     private val transformLocationsUseCase: TransformLocationsUseCase,

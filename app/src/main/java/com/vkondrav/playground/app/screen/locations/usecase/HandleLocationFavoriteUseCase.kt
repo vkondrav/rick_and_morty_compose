@@ -1,6 +1,6 @@
 package com.vkondrav.playground.app.screen.locations.usecase
 
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.domain.RamLocation
 
 class HandleLocationFavoriteUseCase(
     private val addLocationToFavoritesUseCase: AddLocationToFavoritesUseCase,

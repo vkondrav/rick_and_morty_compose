@@ -2,7 +2,7 @@ package com.vkondrav.playground.app.screen.episodes.usecase
 
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.screen.episodes.composable.EpisodeViewItem
-import com.vkondrav.playground.graphql.ram.domain.RamEpisode
+import com.vkondrav.playground.domain.RamEpisode
 
 class TransformEpisodesUseCase(
     private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,

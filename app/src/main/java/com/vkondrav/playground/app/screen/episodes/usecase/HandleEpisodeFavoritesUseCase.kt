@@ -1,6 +1,6 @@
 package com.vkondrav.playground.app.screen.episodes.usecase
 
-import com.vkondrav.playground.graphql.ram.domain.RamEpisode
+import com.vkondrav.playground.domain.RamEpisode
 
 class HandleEpisodeFavoritesUseCase(
     private val addEpisodeToFavoriteUseCase: AddEpisodeToFavoritesUseCase,

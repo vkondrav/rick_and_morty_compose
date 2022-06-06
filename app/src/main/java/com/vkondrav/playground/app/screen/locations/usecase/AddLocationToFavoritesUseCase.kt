@@ -1,7 +1,7 @@
 package com.vkondrav.playground.app.screen.locations.usecase
 
 import com.vkondrav.playground.app.common.state.AppState
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.domain.RamLocation
 import com.vkondrav.playground.room.ram.FavoriteLocation
 import com.vkondrav.playground.room.ram.FavoriteLocationsDao
 import kotlinx.coroutines.CoroutineDispatcher

@@ -17,7 +17,7 @@ import com.vkondrav.playground.app.common.composable.Favorite
 import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.app.design.dlsDarkColorPalette
 import com.vkondrav.playground.app.design.dlsLightColorPalette
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.domain.RamLocation
 
 @Composable
 fun LocationView(item: LocationViewItem) {

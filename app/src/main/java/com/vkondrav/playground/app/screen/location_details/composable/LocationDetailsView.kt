@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.graphql.ram.domain.RamLocation
+import com.vkondrav.playground.domain.RamLocation
 
 @Composable
 fun LocationDetailsView(

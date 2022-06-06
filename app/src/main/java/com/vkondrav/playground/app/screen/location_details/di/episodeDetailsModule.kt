@@ -10,6 +10,8 @@ val locationDetailsModule = module {
         FetchLocationDetailsUseCase(
             ramRepository = get(),
             favoriteLocationsDao = get(),
+            favoriteCharactersDao = get(),
+            sourceTransformer = get(),
         )
     }
     viewModel {

@@ -80,7 +80,8 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.graphqlRam))
+
+    implementation(project(Module.domainRam))
     implementation(project(Module.roomRam))
 
     implementation(Libs.Androidx.coreKtx)

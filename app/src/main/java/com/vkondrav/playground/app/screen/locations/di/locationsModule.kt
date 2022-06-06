@@ -7,19 +7,15 @@ import com.vkondrav.playground.app.screen.locations.usecase.FetchLocationsUseCas
 import com.vkondrav.playground.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.TransformLocationsUseCase
 import com.vkondrav.playground.app.screen.locations.viewmodel.LocationsViewModel
-import com.vkondrav.playground.graphql.ram.domain.RamLocationTransformer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val locationsModule = module {
     factory {
-        RamLocationTransformer
-    }
-    factory {
         FetchLocationsUseCase(
             ramRepository = get(),
-            ramLocationTransformer = get(),
             favoriteLocationsDao = get(),
+            sourceTransformer = get(),
         )
     }
     factory {

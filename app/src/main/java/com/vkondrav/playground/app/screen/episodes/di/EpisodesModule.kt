@@ -7,19 +7,15 @@ import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDeta
 import com.vkondrav.playground.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.TransformEpisodesUseCase
 import com.vkondrav.playground.app.screen.episodes.viewmodel.EpisodesViewModel
-import com.vkondrav.playground.graphql.ram.domain.RamEpisodeTransformer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val episodesModule = module {
     factory {
-        RamEpisodeTransformer
-    }
-    factory {
         FetchEpisodesUseCase(
             ramRepository = get(),
             favoriteEpisodesDao = get(),
-            transformer = get(),
+            sourceTransformer = get(),
         )
     }
     factory {

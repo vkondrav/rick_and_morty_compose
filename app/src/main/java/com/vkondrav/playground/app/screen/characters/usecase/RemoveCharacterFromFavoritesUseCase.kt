@@ -1,7 +1,7 @@
 package com.vkondrav.playground.app.screen.characters.usecase
 
 import com.vkondrav.playground.app.common.state.AppState
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
+import com.vkondrav.playground.domain.RamCharacter
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler

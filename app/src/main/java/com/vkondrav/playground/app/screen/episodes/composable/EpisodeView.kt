@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.common.composable.Favorite
 import com.vkondrav.playground.app.design.DlsTheme
-import com.vkondrav.playground.graphql.ram.domain.RamEpisode
+import com.vkondrav.playground.domain.RamEpisode
 
 @Composable
 fun EpisodeView(item: EpisodeViewItem) {

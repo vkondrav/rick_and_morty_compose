@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.common.composable.Avatar
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
+import com.vkondrav.playground.domain.RamCharacter
 
 @Composable
 fun CharacterDetailsView(

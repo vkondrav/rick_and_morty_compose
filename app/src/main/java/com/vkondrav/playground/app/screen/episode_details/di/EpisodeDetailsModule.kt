@@ -9,6 +9,9 @@ val episodeDetailsModule = module {
     factory {
         FetchEpisodeDetailsUseCase(
             ramRepository = get(),
+            favoriteCharactersDao = get(),
+            favoriteEpisodesDao = get(),
+            sourceTransformer = get(),
         )
     }
     viewModel {

@@ -19,7 +19,7 @@ import com.vkondrav.playground.app.common.composable.Favorite
 import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.app.design.dlsDarkColorPalette
 import com.vkondrav.playground.app.design.dlsLightColorPalette
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
+import com.vkondrav.playground.domain.RamCharacter
 
 @Composable
 fun CharacterView(item: CharacterViewItem) {

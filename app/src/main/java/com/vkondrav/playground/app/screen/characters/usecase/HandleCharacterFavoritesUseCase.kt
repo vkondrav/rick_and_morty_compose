@@ -1,6 +1,6 @@
 package com.vkondrav.playground.app.screen.characters.usecase
 
-import com.vkondrav.playground.graphql.ram.domain.RamCharacter
+import com.vkondrav.playground.domain.RamCharacter
 
 class HandleCharacterFavoritesUseCase(
     private val addCharacterToFavoritesUseCase: AddCharacterToFavoritesUseCase,
