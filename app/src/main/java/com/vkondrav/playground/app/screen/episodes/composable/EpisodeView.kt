@@ -47,8 +47,9 @@ fun EpisodeView(item: EpisodeViewItem) {
         }
 
         Favorite(
-            fav = item.episode.favorite,
+            fav = item.episode.isFavorite,
             onClickAction = { isFavorite ->
+                item.episode.isFavorite = isFavorite
                 item.onFavoriteAction(isFavorite)
             },
         )
@@ -72,7 +73,7 @@ private fun Preview() {
             id = "1",
             title = "Episode 1",
             airDate = "1/2/2022",
-            favorite = false,
+            isFavorite = false,
         ),
         onClickAction = { },
         onFavoriteAction = { },

@@ -51,7 +51,7 @@ private fun Preview() {
             status = null,
             species = null,
             image = null,
-            favorite = false,
+            isFavorite = false,
         ),
     ).Composable()
 }

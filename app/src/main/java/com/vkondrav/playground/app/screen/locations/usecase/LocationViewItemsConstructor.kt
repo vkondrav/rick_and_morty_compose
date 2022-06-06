@@ -4,7 +4,7 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.screen.locations.composable.LocationViewItem
 import com.vkondrav.playground.domain.RamLocation
 
-class TransformLocationsUseCase(
+class LocationViewItemsConstructor(
     private val navigateToLocationDetailsUseCase: NavigateToLocationDetailsUseCase,
     private val handleLocationFavoriteUseCase: HandleLocationFavoriteUseCase,
 ) {

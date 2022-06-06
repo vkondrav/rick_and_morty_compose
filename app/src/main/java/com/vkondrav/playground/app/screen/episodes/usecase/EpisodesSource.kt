@@ -7,7 +7,7 @@ import timber.log.Timber
 
 class EpisodesSource(
     private val fetchEpisodesUseCase: FetchEpisodesUseCase,
-    private val transformEpisodesUseCase: TransformEpisodesUseCase,
+    private val episodeViewItemsConstructor: EpisodeViewItemsConstructor,
 ) : PagingSource<Int, ComposableItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ComposableItem>): Int? = state.anchorPosition
@@ -18,7 +18,7 @@ class EpisodesSource(
             val page = fetchEpisodesUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(
-                data = transformEpisodesUseCase(page.items),
+                data = episodeViewItemsConstructor(page.items),
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )

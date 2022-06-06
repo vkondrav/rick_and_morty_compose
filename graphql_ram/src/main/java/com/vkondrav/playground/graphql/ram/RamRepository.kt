@@ -19,8 +19,7 @@ import kotlinx.coroutines.flow.map
 
 interface RamRepository {
     suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment>
-    suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character
-    fun fetchCharacterDetailsF(id: String): Flow<CharacterDetailsQuery.Character>
+    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
     suspend fun fetchLocations(page: Int): PageResponse<LocationFragment>
     suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
     suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment>
@@ -52,15 +51,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character {
-        val query = CharacterDetailsQuery(id)
-        return service.query(query)
-            .dataOrThrow
-            .character
-            ?: throw ApolloException("No result for ${query.name()} query")
-    }
-
-    override fun fetchCharacterDetailsF(id: String): Flow<CharacterDetailsQuery.Character> {
+    override fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character> {
         val query = CharacterDetailsQuery(id)
         return service.queryAsFlow(query)
             .map { it.dataOrThrow.character }

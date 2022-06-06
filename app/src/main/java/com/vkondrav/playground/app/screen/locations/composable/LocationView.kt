@@ -50,8 +50,9 @@ fun LocationView(item: LocationViewItem) {
         }
 
         Favorite(
-            fav = item.location.favorite,
+            fav = item.location.isFavorite,
             onClickAction = { isFavorite ->
+                item.location.isFavorite = isFavorite
                 item.onFavoriteAction(isFavorite)
             },
         )
@@ -77,7 +78,7 @@ private fun PreviewItem(isFavorite: Boolean) {
                 id = "0",
                 name = "Earth",
                 dimension = "C-137",
-                favorite = isFavorite,
+                isFavorite = isFavorite,
             ),
             onClickAction = { },
             onFavoriteAction = { },

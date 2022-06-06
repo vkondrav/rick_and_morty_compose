@@ -16,31 +16,24 @@ class FetchCharacterDetailsUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
     private val transformer: RamCharacterDetails.SourceConstructor,
 ) {
-    suspend operator fun invoke(
-        id: String,
-    ): Result<RamCharacterDetails> = runCatching {
-        val favoriteCharacters = favoriteCharactersDao.getIds().toSet()
-        val favoriteLocations = favoriteLocationsDao.getIds().toSet()
-        val favoriteEpisodes = favoriteEpisodesDao.getIds().toSet()
 
-        transformer(
-            ramRepository.fetchCharacterDetails(id),
-            favoriteCharacters,
-            favoriteLocations,
-            favoriteEpisodes,
-        )
-    }
+    operator fun invoke(id: String): Result<Flow<RamCharacterDetails>> = runCatching {
+        val favoriteCharactersFlow = favoriteCharactersDao.getIdsAsFlow().map { it.toSet() }
+        val favoriteEpisodesFlow = favoriteEpisodesDao.getIdsAsFlow().map { it.toSet() }
+        val favoriteLocationsFlow = favoriteLocationsDao.getIdsAsFlow().map { it.toSet() }
+        val characterDetailsFlow = ramRepository.fetchCharacterDetails(id)
 
-    fun flow(id: String): Result<Flow<RamCharacterDetails>> = runCatching {
-        val favoriteCharacters = favoriteCharactersDao.getIdsF().map { it.toSet() }
-        val characterDetails = ramRepository.fetchCharacterDetailsF(id)
-
-        combine(characterDetails, favoriteCharacters) { details, favoriteCharacters ->
+        combine(
+            characterDetailsFlow,
+            favoriteCharactersFlow,
+            favoriteEpisodesFlow,
+            favoriteLocationsFlow,
+        ) { details, favoriteCharacters, favoriteEpisodes, favoriteLocations ->
             transformer(
                 details,
                 favoriteCharacters,
-                emptySet(),
-                emptySet(),
+                favoriteEpisodes,
+                favoriteLocations,
             )
         }
     }

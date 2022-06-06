@@ -5,7 +5,7 @@ import com.vkondrav.playground.app.screen.locations.usecase.HandleLocationFavori
 import com.vkondrav.playground.app.screen.locations.usecase.RemoveLocationFromFavoritesUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.FetchLocationsUseCase
 import com.vkondrav.playground.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
-import com.vkondrav.playground.app.screen.locations.usecase.TransformLocationsUseCase
+import com.vkondrav.playground.app.screen.locations.usecase.LocationViewItemsConstructor
 import com.vkondrav.playground.app.screen.locations.usecase.LocationsSource
 import com.vkondrav.playground.app.screen.locations.viewmodel.LocationsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -45,7 +45,7 @@ val locationsModule = module {
         )
     }
     factory {
-        TransformLocationsUseCase(
+        LocationViewItemsConstructor(
             navigateToLocationDetailsUseCase = get(),
             handleLocationFavoriteUseCase = get(),
         )
@@ -53,7 +53,7 @@ val locationsModule = module {
     factory {
         LocationsSource(
             fetchLocationsUseCase = get(),
-            transformLocationsUseCase = get(),
+            locationViewItemsConstructor = get(),
         )
     }
     viewModel {

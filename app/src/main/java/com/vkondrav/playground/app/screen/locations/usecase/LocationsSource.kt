@@ -7,7 +7,7 @@ import timber.log.Timber
 
 class LocationsSource(
     private val fetchLocationsUseCase: FetchLocationsUseCase,
-    private val transformLocationsUseCase: TransformLocationsUseCase,
+    private val locationViewItemsConstructor: LocationViewItemsConstructor,
 ) : PagingSource<Int, ComposableItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ComposableItem>): Int? = state.anchorPosition
@@ -18,7 +18,7 @@ class LocationsSource(
             val page = fetchLocationsUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(
-                data = transformLocationsUseCase(page.items),
+                data = locationViewItemsConstructor(page.items),
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )

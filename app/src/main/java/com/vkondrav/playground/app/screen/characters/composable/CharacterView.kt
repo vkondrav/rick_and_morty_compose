@@ -59,10 +59,10 @@ fun CharacterView(item: CharacterViewItem) {
         }
 
         Favorite(
-            fav = item.character.favorite,
-            onClickAction = { favorite ->
-                item.character.favorite = favorite
-                item.onFavoriteAction(favorite)
+            fav = item.character.isFavorite,
+            onClickAction = { isFavorite ->
+                item.character.isFavorite = isFavorite
+                item.onFavoriteAction(isFavorite)
             },
         )
     }
@@ -89,7 +89,7 @@ private fun PreviewItem() {
                 status = "alive",
                 species = "human",
                 image = null,
-                favorite = false,
+                isFavorite = false,
             ),
             onClickAction = { },
             onFavoriteAction = { },

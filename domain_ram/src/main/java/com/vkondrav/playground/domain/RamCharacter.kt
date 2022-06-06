@@ -10,7 +10,7 @@ data class RamCharacter(
     val status: String?,
     val species: String?,
     val image: String?,
-    var favorite: Boolean,
+    var isFavorite: Boolean,
 ) {
 
     object SourceConstructor {
@@ -24,7 +24,7 @@ data class RamCharacter(
                     status = status,
                     species = species,
                     image = image,
-                    favorite = favorites.contains(id),
+                    isFavorite = favorites.contains(id),
                 )
             }
 
@@ -36,7 +36,7 @@ data class RamCharacter(
                     status = status,
                     species = species,
                     image = image,
-                    favorite = true,
+                    isFavorite = true,
                 )
             }
     }

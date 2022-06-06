@@ -7,7 +7,7 @@ data class RamLocation(
     val id: String,
     val name: String,
     val dimension: String?,
-    var favorite: Boolean,
+    var isFavorite: Boolean,
 ) {
 
     object SourceConstructor {
@@ -18,7 +18,7 @@ data class RamLocation(
                 id = fragment.id ?: throw InvalidDataException("Missing Id"),
                 name = fragment.name ?: throw InvalidDataException("Missing Name"),
                 dimension = fragment.dimension,
-                favorite = favorites.contains(fragment.id),
+                isFavorite = favorites.contains(fragment.id),
             )
     }
 }

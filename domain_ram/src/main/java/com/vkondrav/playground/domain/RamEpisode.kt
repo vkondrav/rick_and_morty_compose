@@ -7,7 +7,7 @@ data class RamEpisode(
     val id: String,
     val title: String,
     val airDate: String?,
-    val favorite: Boolean,
+    var isFavorite: Boolean,
 ) {
 
     object SourceConstructor {
@@ -18,7 +18,7 @@ data class RamEpisode(
                 id = fragment.id ?: throw InvalidDataException("missing id"),
                 title = fragment.name ?: throw InvalidDataException("missing name"),
                 airDate = fragment.air_date,
-                favorite = favorites.contains(fragment.id),
+                isFavorite = favorites.contains(fragment.id),
             )
     }
 }

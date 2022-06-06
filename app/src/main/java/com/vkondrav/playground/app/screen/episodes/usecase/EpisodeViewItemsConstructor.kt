@@ -4,7 +4,7 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.screen.episodes.composable.EpisodeViewItem
 import com.vkondrav.playground.domain.RamEpisode
 
-class TransformEpisodesUseCase(
+class EpisodeViewItemsConstructor(
     private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,
     private val handleEpisodeFavoritesUseCase: HandleEpisodeFavoritesUseCase,
 ) {

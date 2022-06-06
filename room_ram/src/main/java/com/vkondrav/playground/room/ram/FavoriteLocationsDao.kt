@@ -3,6 +3,7 @@ package com.vkondrav.playground.room.ram
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoriteLocationsDao {
@@ -11,6 +12,9 @@ interface FavoriteLocationsDao {
 
     @Query("SELECT id FROM favorite_location")
     suspend fun getIds(): List<String>
+
+    @Query("SELECT id FROM favorite_location")
+    fun getIdsAsFlow(): Flow<List<String>>
 
     @Insert
     suspend fun insert(favoriteLocation: FavoriteLocation)
