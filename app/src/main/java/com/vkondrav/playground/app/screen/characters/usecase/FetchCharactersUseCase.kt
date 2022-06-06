@@ -8,7 +8,7 @@ import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 class FetchCharactersUseCase(
     private val ramRepository: RamRepository,
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val transformer: RamCharacter.SourceTransformer,
+    private val transformer: RamPage.SourceConstructor,
 ) {
 
     private var favorites: Set<String>? = null

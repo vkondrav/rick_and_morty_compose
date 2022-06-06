@@ -11,7 +11,7 @@ val episodeDetailsModule = module {
             ramRepository = get(),
             favoriteCharactersDao = get(),
             favoriteEpisodesDao = get(),
-            sourceTransformer = get(),
+            sourceConstructor = get(),
         )
     }
     viewModel {

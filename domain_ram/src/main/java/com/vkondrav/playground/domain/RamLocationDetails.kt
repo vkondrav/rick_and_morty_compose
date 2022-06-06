@@ -10,8 +10,8 @@ data class RamLocationDetails(
 ) {
 
     class SourceTransformer(
-        private val characterSourceTransformer: RamCharacter.SourceTransformer,
-        private val locationSourceTransformer: RamLocation.SourceTransformer,
+        private val characterSourceConstructor: RamCharacter.SourceConstructor,
+        private val locationSourceConstructor: RamLocation.SourceConstructor,
     ) {
         @Throws(InvalidDataException::class)
         operator fun invoke(
@@ -19,10 +19,10 @@ data class RamLocationDetails(
             favoriteLocation: Set<String>,
             favoriteCharacters: Set<String>,
         ) = RamLocationDetails(
-            location = locationSourceTransformer(location.locationFragment, favoriteLocation),
+            location = locationSourceConstructor(location.locationFragment, favoriteLocation),
             residents = location.residents.asSequence().filterNotNull().mapNotNull {
                 try {
-                    characterSourceTransformer(it.characterFragment, favoriteCharacters)
+                    characterSourceConstructor(it.characterFragment, favoriteCharacters)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null

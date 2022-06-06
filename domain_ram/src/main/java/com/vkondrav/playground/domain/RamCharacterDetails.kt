@@ -11,10 +11,10 @@ data class RamCharacterDetails(
     val episodes: List<RamEpisode>,
 ) {
 
-    class SourceTransformer(
-        private val characterSourceTransformer: RamCharacter.SourceTransformer,
-        private val episodeSourceTransformer: RamEpisode.SourceTransformer,
-        private val locationSourceTransformer: RamLocation.SourceTransformer,
+    class SourceConstructor(
+        private val characterSourceConstructor: RamCharacter.SourceConstructor,
+        private val episodeSourceConstructor: RamEpisode.SourceConstructor,
+        private val locationSourceConstructor: RamLocation.SourceConstructor,
     ) {
 
         @Throws(InvalidDataException::class)
@@ -24,22 +24,22 @@ data class RamCharacterDetails(
             favoriteLocations: Set<String>,
             favoriteEpisodes: Set<String>,
         ) = RamCharacterDetails(
-            character = characterSourceTransformer(character.characterFragment, favoriteCharacters),
+            character = characterSourceConstructor(character.characterFragment, favoriteCharacters),
             origin = character.origin?.locationFragment?.let {
-                locationSourceTransformer(
+                locationSourceConstructor(
                     it,
                     favoriteLocations,
                 )
             },
             location = character.location?.locationFragment?.let {
-                locationSourceTransformer(
+                locationSourceConstructor(
                     it,
                     favoriteLocations,
                 )
             },
             episodes = character.episode.asSequence().filterNotNull().mapNotNull {
                 try {
-                    episodeSourceTransformer(it.episodeFragment, favoriteEpisodes)
+                    episodeSourceConstructor(it.episodeFragment, favoriteEpisodes)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null

@@ -9,19 +9,19 @@ data class RamEpisodeDetails(
     val characters: List<RamCharacter>,
 ) {
 
-    class SourceTransformer(
-        private val episodeSourceTransformer: RamEpisode.SourceTransformer,
-        private val characterSourceTransformer: RamCharacter.SourceTransformer,
+    class SourceConstructor(
+        private val episodeSourceConstructor: RamEpisode.SourceConstructor,
+        private val characterSourceConstructor: RamCharacter.SourceConstructor,
     ) {
         operator fun invoke(
             episode: EpisodeDetailsQuery.Episode,
             favoriteEpisodes: Set<String>,
             favoriteCharacters: Set<String>,
         ) = RamEpisodeDetails(
-            episode = episodeSourceTransformer(episode.episodeFragment, favoriteEpisodes),
+            episode = episodeSourceConstructor(episode.episodeFragment, favoriteEpisodes),
             characters = episode.characters.asSequence().filterNotNull().mapNotNull {
                 try {
-                    characterSourceTransformer(it.characterFragment, favoriteCharacters)
+                    characterSourceConstructor(it.characterFragment, favoriteCharacters)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null

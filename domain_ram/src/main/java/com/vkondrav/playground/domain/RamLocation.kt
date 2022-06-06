@@ -10,7 +10,7 @@ data class RamLocation(
     var favorite: Boolean,
 ) {
 
-    object SourceTransformer {
+    object SourceConstructor {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: LocationFragment, favorites: Set<String>) =

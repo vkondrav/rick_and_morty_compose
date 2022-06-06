@@ -10,7 +10,7 @@ data class RamEpisode(
     val favorite: Boolean,
 ) {
 
-    object SourceTransformer {
+    object SourceConstructor {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: EpisodeFragment, favorites: Set<String>) =

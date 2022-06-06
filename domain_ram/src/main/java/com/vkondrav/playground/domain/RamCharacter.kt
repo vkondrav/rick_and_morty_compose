@@ -1,9 +1,7 @@
 package com.vkondrav.playground.domain
 
 import com.vkondrav.graphql.ram.fragment.CharacterFragment
-import com.vkondrav.playground.graphql.ram.CharactersResponse
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
-import timber.log.Timber
 
 data class RamCharacter(
     val id: String,
@@ -14,7 +12,7 @@ data class RamCharacter(
     var favorite: Boolean,
 ) {
 
-    object SourceTransformer {
+    object SourceConstructor {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: CharacterFragment, favorites: Set<String>) =
@@ -26,20 +24,5 @@ data class RamCharacter(
                 image = fragment.image,
                 favorite = favorites.contains(fragment.id),
             )
-
-        operator fun invoke(response: CharactersResponse, favorites: Set<String>) =
-            with(response) {
-                RamPage(
-                    info.prev,
-                    info.next,
-                    characters.mapNotNull { fragment ->
-                        runCatching {
-                            invoke(fragment, favorites)
-                        }.onFailure {
-                            Timber.e(it)
-                        }.getOrNull()
-                    },
-                )
-            }
     }
 }

@@ -8,7 +8,7 @@ import timber.log.Timber
 class FetchEpisodesUseCase(
     private val ramRepository: RamRepository,
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val sourceTransformer: RamEpisode.SourceTransformer,
+    private val sourceTransformer: RamEpisode.SourceConstructor,
 ) {
 
     suspend operator fun invoke(page: Int): Result<List<RamEpisode>> = runCatching {

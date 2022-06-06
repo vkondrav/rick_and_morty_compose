@@ -7,7 +7,7 @@ import com.vkondrav.playground.app.screen.episode_details.di.episodeDetailsModul
 import com.vkondrav.playground.app.screen.episodes.di.episodesModule
 import com.vkondrav.playground.app.screen.location_details.di.locationDetailsModule
 import com.vkondrav.playground.app.screen.locations.di.locationsModule
-import com.vkondrav.playground.di.domainModule
+import com.vkondrav.playground.domain.di.domainModule
 import com.vkondrav.playground.graphql.ram.ramModules
 import com.vkondrav.playground.room.ram.roomModule
 import org.koin.core.KoinApplication
