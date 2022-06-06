@@ -6,7 +6,7 @@ import com.vkondrav.playground.app.screen.characters.usecase.FetchCharactersUseC
 import com.vkondrav.playground.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.RemoveCharacterFromFavoritesUseCase
-import com.vkondrav.playground.app.screen.characters.usecase.TransformCharactersUseCase
+import com.vkondrav.playground.app.screen.characters.usecase.CharactersViewItemConstructor
 import com.vkondrav.playground.app.screen.characters.viewmodel.CharactersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -45,7 +45,7 @@ val charactersModule = module {
         )
     }
     factory {
-        TransformCharactersUseCase(
+        CharactersViewItemConstructor(
             navigateToCharacterDetailsUseCase = get(),
             handleCharacterFavoritesUseCase = get(),
         )
@@ -53,7 +53,7 @@ val charactersModule = module {
     factory {
         CharactersSource(
             fetchCharactersUseCase = get(),
-            transformCharactersUseCase = get(),
+            charactersViewItemConstructor = get(),
         )
     }
     viewModel {

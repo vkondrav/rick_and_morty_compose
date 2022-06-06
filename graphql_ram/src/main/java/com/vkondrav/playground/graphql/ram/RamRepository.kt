@@ -23,7 +23,7 @@ interface RamRepository {
     suspend fun fetchLocations(page: Int): PageResponse<LocationFragment>
     suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
     suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment>
-    suspend fun fetchEpisodeDetails(id: String): EpisodeDetailsQuery.Episode
+    fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
 }
 
 internal class RamRepositoryImp(private val service: Service) : RamRepository {
@@ -51,12 +51,10 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character> {
-        val query = CharacterDetailsQuery(id)
-        return service.queryAsFlow(query)
+    override fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
+        = service.queryAsFlow(CharacterDetailsQuery(id))
             .map { it.dataOrThrow.character }
             .filterNotNull()
-    }
 
     @Throws(ApolloException::class)
     override suspend fun fetchLocations(page: Int): PageResponse<LocationFragment> {
@@ -112,11 +110,8 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override suspend fun fetchEpisodeDetails(id: String): EpisodeDetailsQuery.Episode {
-        val query = EpisodeDetailsQuery(id)
-        return service.query(query)
-            .dataOrThrow
-            .episode
-            ?: throw InvalidDataException("No result for ${query.name()} query")
-    }
+    override fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
+        = service.queryAsFlow(EpisodeDetailsQuery(id))
+            .map { it.dataOrThrow.episode }
+            .filterNotNull()
 }

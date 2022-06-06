@@ -11,8 +11,11 @@ import org.koin.core.parameter.parametersOf
 fun CharacterDetailsScreen(
     id: String,
 ) {
-    val viewModel: CharacterDetailsViewModel = getViewModel { parametersOf(id) }
-    BaseStateScreen(viewModel = viewModel)
+    BaseStateScreen(
+        viewModel = getViewModel<CharacterDetailsViewModel> {
+            parametersOf(id)
+        },
+    )
 }
 
 @Preview

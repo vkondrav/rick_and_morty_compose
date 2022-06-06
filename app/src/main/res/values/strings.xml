@@ -2,6 +2,7 @@
     <string name="app_name">Rick and Morty Compose</string>
     <string name="current_location">Current Location</string>
     <string name="episodes">Episodes</string>
+    <string name="characters">Characters</string>
     <string name="origin">Origin</string>
     <string name="unknown_error">Unknown Error</string>
 </resources>

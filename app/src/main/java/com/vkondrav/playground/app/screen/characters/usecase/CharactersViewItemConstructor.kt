@@ -4,7 +4,7 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.screen.characters.composable.CharacterViewItem
 import com.vkondrav.playground.domain.RamCharacter
 
-class TransformCharactersUseCase(
+class CharactersViewItemConstructor(
     private val navigateToCharacterDetailsUseCase: NavigateToCharacterDetailsUseCase,
     private val handleCharacterFavoritesUseCase: HandleCharacterFavoritesUseCase,
 ) {

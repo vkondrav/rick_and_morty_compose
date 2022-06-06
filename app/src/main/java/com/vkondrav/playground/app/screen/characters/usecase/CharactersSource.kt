@@ -7,7 +7,7 @@ import timber.log.Timber
 
 class CharactersSource(
     private val fetchCharactersUseCase: FetchCharactersUseCase,
-    private val transformCharactersUseCase: TransformCharactersUseCase,
+    private val charactersViewItemConstructor: CharactersViewItemConstructor,
 ) : PagingSource<Int, ComposableItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ComposableItem>): Int? = state.anchorPosition
@@ -18,7 +18,7 @@ class CharactersSource(
             val page = fetchCharactersUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(
-                data = transformCharactersUseCase(page.items),
+                data = charactersViewItemConstructor(page.items),
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )
