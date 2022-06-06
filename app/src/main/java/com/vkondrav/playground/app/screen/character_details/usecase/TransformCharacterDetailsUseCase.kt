@@ -2,7 +2,6 @@ package com.vkondrav.playground.app.screen.character_details.usecase
 
 import com.vkondrav.playground.app.R
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.base.item.ContentViewItem
 import com.vkondrav.playground.app.common.composable.CollapsableViewItem
 import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsViewItem
@@ -18,16 +17,14 @@ class TransformCharacterDetailsUseCase(
 
     operator fun invoke(
         details: RamCharacterDetails,
-    ): ComposableItem = ContentViewItem(
-        items = with(details) {
-            listOfNotNull(
-                header,
-                currentLocation,
-                originLocation,
-                episodesList,
-            )
-        },
-    )
+    ): List<ComposableItem> = with(details) {
+        listOfNotNull(
+            header,
+            currentLocation,
+            originLocation,
+            episodesList,
+        )
+    }
 
     private val RamCharacterDetails.header
         get() = CharacterDetailsViewItem(

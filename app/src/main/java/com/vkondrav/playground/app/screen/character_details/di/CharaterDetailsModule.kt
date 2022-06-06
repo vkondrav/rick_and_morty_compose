@@ -22,8 +22,9 @@ val characterDetailsModule = module {
             transformEpisodesUseCase = get(),
         )
     }
-    viewModel {
+    viewModel { params ->
         CharacterDetailsViewModel(
+            characterId = params.get(),
             fetchCharacterDetailsUseCase = get(),
             transformCharacterDetailsUseCase = get(),
             dispatcher = get(),

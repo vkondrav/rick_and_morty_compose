@@ -14,6 +14,7 @@ import com.vkondrav.playground.app.screen.character_details.nav.characterDetails
 import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
 import com.vkondrav.playground.app.screen.episode_details.nav.episodeDetailsScreen
 import com.vkondrav.playground.app.screen.episodes.nav.episodesScreen
+import com.vkondrav.playground.app.screen.favorite_characters.nav.favoriteCharactersScreen
 import com.vkondrav.playground.app.screen.location_details.nav.locationDetailsScreen
 import com.vkondrav.playground.app.screen.locations.nav.locationsScreen
 
@@ -30,6 +31,7 @@ val allScreens = listOf(
     locationDetailsScreen,
     episodesScreen,
     episodeDetailsScreen,
+    favoriteCharactersScreen,
 )
 
 private const val ANIMATION_TWEEN = 700

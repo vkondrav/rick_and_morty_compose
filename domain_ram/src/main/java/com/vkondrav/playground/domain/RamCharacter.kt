@@ -2,6 +2,7 @@ package com.vkondrav.playground.domain
 
 import com.vkondrav.graphql.ram.fragment.CharacterFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import com.vkondrav.playground.room.ram.FavoriteCharacter
 
 data class RamCharacter(
     val id: String,
@@ -16,13 +17,27 @@ data class RamCharacter(
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: CharacterFragment, favorites: Set<String>) =
-            RamCharacter(
-                id = fragment.id ?: throw InvalidDataException("missing id"),
-                name = fragment.name ?: throw InvalidDataException("missing name"),
-                status = fragment.status,
-                species = fragment.species,
-                image = fragment.image,
-                favorite = favorites.contains(fragment.id),
-            )
+            with(fragment) {
+                RamCharacter(
+                    id = id ?: throw InvalidDataException("missing id"),
+                    name = name ?: throw InvalidDataException("missing name"),
+                    status = status,
+                    species = species,
+                    image = image,
+                    favorite = favorites.contains(id),
+                )
+            }
+
+        operator fun invoke(favoriteCharacter: FavoriteCharacter) =
+            with(favoriteCharacter) {
+                RamCharacter(
+                    id = id,
+                    name = name,
+                    status = status,
+                    species = species,
+                    image = image,
+                    favorite = true,
+                )
+            }
     }
 }

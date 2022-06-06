@@ -5,6 +5,9 @@ import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 import com.vkondrav.playground.room.ram.FavoriteEpisodesDao
 import com.vkondrav.playground.room.ram.FavoriteLocationsDao
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 
 class FetchCharacterDetailsUseCase(
     private val ramRepository: RamRepository,
@@ -26,5 +29,19 @@ class FetchCharacterDetailsUseCase(
             favoriteLocations,
             favoriteEpisodes,
         )
+    }
+
+    fun flow(id: String): Result<Flow<RamCharacterDetails>> = runCatching {
+        val favoriteCharacters = favoriteCharactersDao.getIdsF().map { it.toSet() }
+        val characterDetails = ramRepository.fetchCharacterDetailsF(id)
+
+        combine(characterDetails, favoriteCharacters) { details, favoriteCharacters ->
+            transformer(
+                details,
+                favoriteCharacters,
+                emptySet(),
+                emptySet(),
+            )
+        }
     }
 }

@@ -13,10 +13,14 @@ import com.vkondrav.graphql.ram.fragment.CharacterFragment
 import com.vkondrav.graphql.ram.fragment.EpisodeFragment
 import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.map
 
 interface RamRepository {
     suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment>
     suspend fun fetchCharacterDetails(id: String): CharacterDetailsQuery.Character
+    fun fetchCharacterDetailsF(id: String): Flow<CharacterDetailsQuery.Character>
     suspend fun fetchLocations(page: Int): PageResponse<LocationFragment>
     suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
     suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment>
@@ -54,6 +58,13 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
             .dataOrThrow
             .character
             ?: throw ApolloException("No result for ${query.name()} query")
+    }
+
+    override fun fetchCharacterDetailsF(id: String): Flow<CharacterDetailsQuery.Character> {
+        val query = CharacterDetailsQuery(id)
+        return service.queryAsFlow(query)
+            .map { it.dataOrThrow.character }
+            .filterNotNull()
     }
 
     @Throws(ApolloException::class)
