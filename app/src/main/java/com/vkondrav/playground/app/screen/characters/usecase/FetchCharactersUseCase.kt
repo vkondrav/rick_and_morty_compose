@@ -20,7 +20,7 @@ class FetchCharactersUseCase(
             favorites = it
         }
 
-        transformer(
+        transformer.characters(
             ramRepository.fetchCharacters(page),
             favorites,
         )

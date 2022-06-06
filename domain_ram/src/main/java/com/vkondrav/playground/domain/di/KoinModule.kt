@@ -33,7 +33,7 @@ val domainModule = module {
         )
     }
     factory {
-        RamLocationDetails.SourceTransformer(
+        RamLocationDetails.SourceConstructor(
             characterSourceConstructor = get(),
             locationSourceConstructor = get(),
         )
@@ -41,6 +41,7 @@ val domainModule = module {
     factory {
         RamPage.SourceConstructor(
             characterSourceConstructor = get(),
+            episodeSourceConstructor = get(),
         )
     }
 }

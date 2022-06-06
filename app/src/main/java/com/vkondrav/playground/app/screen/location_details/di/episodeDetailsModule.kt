@@ -11,7 +11,7 @@ val locationDetailsModule = module {
             ramRepository = get(),
             favoriteLocationsDao = get(),
             favoriteCharactersDao = get(),
-            sourceTransformer = get(),
+            sourceConstructor = get(),
         )
     }
     viewModel {

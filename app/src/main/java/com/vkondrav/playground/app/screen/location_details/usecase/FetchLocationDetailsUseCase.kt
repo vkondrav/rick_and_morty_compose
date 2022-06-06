@@ -9,7 +9,7 @@ class FetchLocationDetailsUseCase(
     private val ramRepository: RamRepository,
     private val favoriteLocationsDao: FavoriteLocationsDao,
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val sourceTransformer: RamLocationDetails.SourceTransformer,
+    private val sourceConstructor: RamLocationDetails.SourceConstructor,
 ) {
     suspend operator fun invoke(
         id: String,
@@ -17,7 +17,7 @@ class FetchLocationDetailsUseCase(
         val favoriteLocations = favoriteLocationsDao.getIds().toSet()
         val favoriteCharacters = favoriteCharactersDao.getIds().toSet()
 
-        sourceTransformer(
+        sourceConstructor(
             ramRepository.fetchLocationDetails(id),
             favoriteLocations,
             favoriteCharacters,

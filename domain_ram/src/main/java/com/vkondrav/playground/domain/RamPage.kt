@@ -1,6 +1,8 @@
 package com.vkondrav.playground.domain
 
-import com.vkondrav.playground.graphql.ram.CharactersResponse
+import com.vkondrav.graphql.ram.fragment.CharacterFragment
+import com.vkondrav.graphql.ram.fragment.EpisodeFragment
+import com.vkondrav.playground.graphql.ram.PageResponse
 import timber.log.Timber
 
 data class RamPage<T>(
@@ -11,15 +13,32 @@ data class RamPage<T>(
 
     class SourceConstructor(
         private val characterSourceConstructor: RamCharacter.SourceConstructor,
+        private val episodeSourceConstructor: RamEpisode.SourceConstructor,
     ) {
-        operator fun invoke(response: CharactersResponse, favorites: Set<String>) =
+
+        fun characters(response: PageResponse<CharacterFragment>, favorites: Set<String>) =
             with(response) {
                 RamPage(
                     info.prev,
                     info.next,
-                    characters.mapNotNull { fragment ->
+                    items.mapNotNull { fragment ->
                         runCatching {
                            characterSourceConstructor(fragment, favorites)
+                        }.onFailure {
+                            Timber.e(it)
+                        }.getOrNull()
+                    },
+                )
+            }
+
+        fun episodes(response: PageResponse<EpisodeFragment>, favorites: Set<String>) =
+            with(response) {
+                RamPage(
+                    info.prev,
+                    info.next,
+                    items.mapNotNull { fragment ->
+                        runCatching {
+                            episodeSourceConstructor(fragment, favorites)
                         }.onFailure {
                             Timber.e(it)
                         }.getOrNull()

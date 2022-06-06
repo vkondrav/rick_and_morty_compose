@@ -6,6 +6,7 @@ import com.vkondrav.playground.app.screen.episodes.usecase.HandleEpisodeFavorite
 import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.TransformEpisodesUseCase
+import com.vkondrav.playground.app.screen.episodes.usecase.EpisodesSource
 import com.vkondrav.playground.app.screen.episodes.viewmodel.EpisodesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -15,7 +16,7 @@ val episodesModule = module {
         FetchEpisodesUseCase(
             ramRepository = get(),
             favoriteEpisodesDao = get(),
-            sourceTransformer = get(),
+            sourceConstructor = get(),
         )
     }
     factory {
@@ -49,10 +50,15 @@ val episodesModule = module {
             handleEpisodeFavoritesUseCase = get(),
         )
     }
-    viewModel {
-        EpisodesViewModel(
+    factory {
+        EpisodesSource(
             fetchEpisodesUseCase = get(),
             transformEpisodesUseCase = get(),
+        )
+    }
+    viewModel {
+        EpisodesViewModel(
+            episodesSource = get(),
             dispatcher = get(),
         )
     }

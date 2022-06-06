@@ -1,5 +1,8 @@
 query EpisodesQuery($page: Int!) {
     episodes(page: $page) {
+        info {
+            ... InfoFragment
+        }
         results {
             ... EpisodeFragment
         }

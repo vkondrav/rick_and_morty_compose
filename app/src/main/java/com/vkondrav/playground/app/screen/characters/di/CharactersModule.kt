@@ -58,8 +58,6 @@ val charactersModule = module {
     }
     viewModel {
         CharactersViewModel(
-            fetchCharactersUseCase = get(),
-            transformCharactersUseCase = get(),
             charactersSource = get(),
             dispatcher = get(),
         )

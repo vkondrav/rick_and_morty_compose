@@ -9,7 +9,7 @@ data class RamLocationDetails(
     val residents: List<RamCharacter>,
 ) {
 
-    class SourceTransformer(
+    class SourceConstructor(
         private val characterSourceConstructor: RamCharacter.SourceConstructor,
         private val locationSourceConstructor: RamLocation.SourceConstructor,
     ) {
