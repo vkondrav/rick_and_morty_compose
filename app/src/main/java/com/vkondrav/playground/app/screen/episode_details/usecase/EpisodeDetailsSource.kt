@@ -8,6 +8,7 @@ import com.vkondrav.playground.app.screen.characters.usecase.CharactersViewItemC
 import com.vkondrav.playground.domain.RamEpisodeDetails
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.take
 
 class EpisodeDetailsSource(
     private val fetchEpisodeDetailsUseCase: FetchEpisodeDetailsUseCase,
@@ -27,7 +28,11 @@ class EpisodeDetailsSource(
     private val RamEpisodeDetails.charactersList
         get() = CollapsableViewItem(
             title = TextResource.Resource(R.string.characters),
-            items = charactersViewItemConstructor(characters),
+            items = charactersViewItemConstructor(characters.take(MAX_CHARACTERS_COUNT)),
             open = true,
         )
+
+    companion object {
+        private const val MAX_CHARACTERS_COUNT = 5
+    }
 }
