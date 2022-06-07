@@ -6,7 +6,7 @@ object Plugins {
 
     object Android {
         const val gradle =
-            "com.android.tools.build:gradle:${Libs.androidVersion}"
+            "com.android.tools.build:gradle:${Libs.gradleVersion}"
     }
 
     object Gradle {

@@ -79,6 +79,7 @@ android {
             "androidx.compose.animation.ExperimentalAnimationApi",
             "com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi",
             "androidx.compose.material.ExperimentalMaterialApi",
+            "kotlinx.coroutines.ExperimentalCoroutinesApi",
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
@@ -94,10 +95,15 @@ dependencies {
     implementation(project(Module.domainRam))
     implementation(project(Module.roomRam))
 
-    implementation(Libs.Androidx.coreKtx)
-    implementation(Libs.Androidx.appcompat)
-    implementation(Libs.Androidx.constrainLayoutCompose)
-    implementation(Libs.Androidx.coreSplashscreen)
+    implementation(Libs.AndroidX.ktx)
+    implementation(Libs.AndroidX.appcompat)
+    implementation(Libs.AndroidX.constraintLayoutCompose)
+    implementation(Libs.AndroidX.splashscreen)
+    implementation(Libs.AndroidX.navigationCompose)
+    implementation(Libs.AndroidX.lifecycle)
+    implementation(Libs.AndroidX.pagingRuntime)
+    implementation(Libs.AndroidX.pagingCompose)
+    implementation(Libs.AndroidX.activityCompose)
 
     implementation(Libs.Material.core)
 
@@ -109,19 +115,11 @@ dependencies {
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
 
-    implementation(Libs.Paging.core)
-    implementation(Libs.Paging.compose)
-
-    implementation(Libs.Navigation.compose)
 
     implementation(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.navMaterial)
     implementation(Libs.Accompanist.pager)
     implementation(Libs.Accompanist.indicators)
-
-    implementation(Libs.Lifecycle.lifecycles)
-
-    implementation(Libs.Activity.compose)
 
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
