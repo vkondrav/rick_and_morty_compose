@@ -14,12 +14,12 @@ abstract class BaseViewModel(private val dispatcher: CoroutineDispatcher) :
     override val coroutineContext: CoroutineContext
         get() = dispatcher + exceptionHandler
 
-    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Timber.e(throwable)
-    }
-
     override fun onCleared() {
         super.onCleared()
         coroutineContext.cancel()
+    }
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Timber.e(throwable)
     }
 }

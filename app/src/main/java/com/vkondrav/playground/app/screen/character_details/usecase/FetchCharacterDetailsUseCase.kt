@@ -14,7 +14,7 @@ class FetchCharacterDetailsUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
     private val favoriteLocationsDao: FavoriteLocationsDao,
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val transformer: RamCharacterDetails.SourceConstructor,
+    private val sourceConstructor: RamCharacterDetails.SourceConstructor,
 ) {
 
     operator fun invoke(id: String): Result<Flow<RamCharacterDetails>> = runCatching {
@@ -29,7 +29,7 @@ class FetchCharacterDetailsUseCase(
             favoriteEpisodesFlow,
             favoriteLocationsFlow,
         ) { details, favoriteCharacters, favoriteEpisodes, favoriteLocations ->
-            transformer(
+            sourceConstructor(
                 details,
                 favoriteCharacters,
                 favoriteEpisodes,
