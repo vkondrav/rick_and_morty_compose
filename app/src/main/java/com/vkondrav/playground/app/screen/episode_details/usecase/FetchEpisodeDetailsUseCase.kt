@@ -18,20 +18,20 @@ class FetchEpisodeDetailsUseCase(
     operator fun invoke(
         id: String,
     ): Result<Flow<RamEpisodeDetails>> = runCatching {
-        val favoriteCharactersFlow = favoriteCharactersDao.getIdsAsFlow().map { it.toSet() }
-        val favoriteEpisodesFlow = favoriteEpisodesDao.getIdsAsFlow().map { it.toSet() }
         val episodeDetailsFlow = ramRepository.fetchEpisodeDetails(id)
+        val favoriteEpisodesFlow = favoriteEpisodesDao.getIdsAsFlow().map { it.toSet() }
+        val favoriteCharactersFlow = favoriteCharactersDao.getIdsAsFlow().map { it.toSet() }
 
         combine(
             episodeDetailsFlow,
-            favoriteCharactersFlow,
             favoriteEpisodesFlow,
-        ) { episodeDetails, favoriteCharacters, favoriteEpisodes ->
+            favoriteCharactersFlow,
+        ) { episodeDetails, favoriteEpisodes, favoriteCharacters ->
 
             sourceConstructor(
                 episodeDetails,
-                favoriteCharacters,
                 favoriteEpisodes,
+                favoriteCharacters,
             )
 
         }

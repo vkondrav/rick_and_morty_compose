@@ -21,8 +21,8 @@ data class RamCharacterDetails(
         operator fun invoke(
             character: CharacterDetailsQuery.Character,
             favoriteCharacters: Set<String>,
-            favoriteLocations: Set<String>,
             favoriteEpisodes: Set<String>,
+            favoriteLocations: Set<String>,
         ) = RamCharacterDetails(
             character = characterSourceConstructor(character.characterFragment, favoriteCharacters),
             origin = character.origin?.locationFragment?.let {
