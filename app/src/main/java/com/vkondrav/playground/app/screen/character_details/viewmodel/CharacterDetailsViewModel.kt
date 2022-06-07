@@ -9,13 +9,9 @@ import com.vkondrav.playground.app.screen.character_details.usecase.CharacterDet
 import com.vkondrav.playground.app.base.viewmodel.ScreenState
 import com.vkondrav.playground.app.base.viewmodel.ScreenStateViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.mapLatest
-import kotlinx.coroutines.flow.stateIn
 
 class CharacterDetailsViewModel(
     characterId: String,
@@ -32,12 +28,16 @@ class CharacterDetailsViewModel(
             emptyFlow()
         }.catch {
             _screenState.value = ScreenState.Error(PageErrorViewItem(it))
-        }.mapLatest { characterDetails ->
-            _screenState.value = ScreenState.Content
-            characterDetails
-        }.distinctUntilChanged().stateIn(
-            scope = this,
-            started = SharingStarted.WhileSubscribed(),
-            initialValue = emptyList(),
-        )
+        }.mapState(initialValue = emptyList()) { items ->
+
+            _screenState.value = when {
+                items.isEmpty() -> ScreenState.Error(
+                    PageErrorViewItem(
+                        Exception("Empty Data"),
+                    ),
+                )
+                else -> ScreenState.Content
+            }
+
+        }
 }
