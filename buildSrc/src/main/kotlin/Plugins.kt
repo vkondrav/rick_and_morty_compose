@@ -14,4 +14,9 @@ object Plugins {
         const val gradle =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Libs.gradlePluginVersion}"
     }
+
+    object DependencyUpdate {
+        const val plugin = "com.github.ben-manes.versions"
+        const val gradle = "com.github.ben-manes:gradle-versions-plugin:+"
+    }
 }

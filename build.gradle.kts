@@ -2,6 +2,8 @@ plugins {
     detekt()
 }
 
+apply(plugin = Plugins.DependencyUpdate.plugin)
+
 buildscript {
     repositories {
         gradlePluginPortal()
@@ -12,6 +14,7 @@ buildscript {
         classpath(Plugins.Android.gradle)
         classpath(Plugins.Kotlin.gradle)
         classpath(Plugins.Gradle.gradle)
+        classpath(Plugins.DependencyUpdate.gradle)
     }
 }
 
