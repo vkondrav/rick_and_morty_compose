@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.screen.episode_details.viewmodel
 
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
@@ -8,27 +9,35 @@ import com.vkondrav.playground.app.screen.episode_details.usecase.EpisodeDetails
 import com.vkondrav.playground.app.base.viewmodel.ScreenState
 import com.vkondrav.playground.app.base.viewmodel.ScreenStateViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
 class EpisodeDetailsViewModel(
-    private val episodeId: String,
-    private val episodeDetailsSource: EpisodeDetailsSource,
+    episodeId: String,
+    episodeDetailsSource: EpisodeDetailsSource,
     dispatcher: CoroutineDispatcher,
 ) : BaseViewModel(dispatcher), ScreenStateViewModel {
 
-    override var screenState = mutableStateOf<ScreenState>(ScreenState.Loading())
+    private var _screenState = mutableStateOf<ScreenState>(ScreenState.Loading())
+    override val screenState: State<ScreenState> = _screenState
 
-    override val items: Flow<List<ComposableItem>>
-        get() = episodeDetailsSource(episodeId).getOrElse {
-            screenState.value = ScreenState.Error(PageErrorViewItem(it))
+    override val items: StateFlow<List<ComposableItem>> =
+        episodeDetailsSource(episodeId).getOrElse {
+            _screenState.value = ScreenState.Error(PageErrorViewItem(it))
             emptyFlow()
         }.catch {
-            screenState.value = ScreenState.Error(PageErrorViewItem(it))
+            _screenState.value = ScreenState.Error(PageErrorViewItem(it))
         }.map { characterDetails ->
-            screenState.value = ScreenState.Content
+            _screenState.value = ScreenState.Content
             characterDetails
-        }
+        }.distinctUntilChanged().stateIn(
+            scope = this,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = emptyList(),
+        )
 }

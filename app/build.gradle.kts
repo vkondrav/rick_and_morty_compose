@@ -26,6 +26,7 @@ android {
 
     buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -82,6 +83,10 @@ android {
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
     }
+
+    androidResources {
+        additionalParameters.add("--warn-manifest-validation")
+    }
 }
 
 dependencies {
@@ -134,4 +139,5 @@ dependencies {
     testApi(project(Module.apollo))
 
     debugImplementation(TestLibs.Compose.manifest)
+    debugImplementation(TestLibs.LeakCanary.core)
 }
