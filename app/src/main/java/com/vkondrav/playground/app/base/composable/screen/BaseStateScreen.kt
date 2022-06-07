@@ -15,11 +15,6 @@ fun BaseStateScreen(
     val items by viewModel.items.collectAsState()
     val screenState by viewModel.screenState
 
-    LazyColumn {
-        items(items) { item ->
-            item.Composable()
-        }
-    }
     when (val state = screenState) {
         is ScreenState.Error -> {
             state.item.Composable()
@@ -27,8 +22,12 @@ fun BaseStateScreen(
         is ScreenState.Loading -> {
             state.item.Composable()
         }
-        else -> {
-            //no-op
+        is ScreenState.Content -> {
+            LazyColumn {
+                items(items) { item ->
+                    item.Composable()
+                }
+            }
         }
     }
 }
