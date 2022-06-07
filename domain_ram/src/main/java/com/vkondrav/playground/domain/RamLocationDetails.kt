@@ -6,7 +6,7 @@ import timber.log.Timber
 
 data class RamLocationDetails(
     val location: RamLocation,
-    val residents: List<RamCharacter>,
+    val characters: List<RamCharacter>,
 ) {
 
     class SourceConstructor(
@@ -20,7 +20,7 @@ data class RamLocationDetails(
             favoriteCharacters: Set<String>,
         ) = RamLocationDetails(
             location = locationSourceConstructor(location.locationFragment, favoriteLocation),
-            residents = location.residents.asSequence().filterNotNull().mapNotNull {
+            characters = location.residents.asSequence().filterNotNull().mapNotNull {
                 try {
                     characterSourceConstructor(it.characterFragment, favoriteCharacters)
                 } catch (e: InvalidDataException) {

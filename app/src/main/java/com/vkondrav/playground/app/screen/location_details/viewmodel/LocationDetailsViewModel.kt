@@ -1,39 +1,34 @@
 package com.vkondrav.playground.app.screen.location_details.viewmodel
 
+import androidx.compose.runtime.mutableStateOf
+import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
-import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
+import com.vkondrav.playground.app.base.viewmodel.ScreenState
+import com.vkondrav.playground.app.base.viewmodel.ScreenStateViewModel
 import com.vkondrav.playground.app.common.composable.PageErrorViewItem
-import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.screen.location_details.composable.LocationDetailsViewItem
-import com.vkondrav.playground.app.screen.location_details.usecase.FetchLocationDetailsUseCase
+import com.vkondrav.playground.app.screen.location_details.usecase.LocationDetailsSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.map
 
 class LocationDetailsViewModel(
-    private val fetchLocationDetailsUseCase: FetchLocationDetailsUseCase,
+    private val locationId: String,
+    private val locationDetailsSource: LocationDetailsSource,
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel(dispatcher), ScreenEventViewModel {
+) : BaseViewModel(dispatcher), ScreenStateViewModel {
 
-    private val _screenEvent = MutableStateFlow<ScreenEvent?>(null)
-    override val screenEvent: Flow<ScreenEvent> = _screenEvent.filterNotNull()
+    override var screenState = mutableStateOf<ScreenState>(ScreenState.Loading())
 
-    fun fetchLocationDetails(id: String) {
-        launch {
-            _screenEvent.value = ScreenEvent.Loading()
-            fetchLocationDetailsUseCase(id)
-                .onSuccess { details ->
-                    _screenEvent.value = ScreenEvent.Content(
-                        LocationDetailsViewItem(
-                            location = details.location,
-                        ),
-                    )
-                }
-                .onFailure { error ->
-                    _screenEvent.value = ScreenEvent.Error(PageErrorViewItem(error))
-                }
+    override val items: Flow<List<ComposableItem>>
+        get() = locationDetailsSource(locationId).getOrElse {
+            screenState.value = ScreenState.Error(PageErrorViewItem(it))
+            emptyFlow()
+        }.catch {
+            screenState.value = ScreenState.Error(PageErrorViewItem(it))
+        }.map { characterDetails ->
+            screenState.value = ScreenState.Content
+            characterDetails
         }
-    }
 }

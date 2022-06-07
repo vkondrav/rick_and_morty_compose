@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
+import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.design.DlsTheme
 
 @Composable
@@ -27,7 +28,7 @@ fun DrawerMenuView(item: DrawerMenuViewItem) {
                 },
         ) {
             Text(
-                text = item.title,
+                text = item.title.string(),
                 color = DlsTheme.colors.text,
                 style = DlsTheme.typography.headline1,
                 modifier = Modifier
@@ -39,7 +40,7 @@ fun DrawerMenuView(item: DrawerMenuViewItem) {
 }
 
 data class DrawerMenuViewItem(
-    val title: String,
+    val title: TextResource,
     val onClickAction: () -> Unit,
 ) : ComposableItem {
     @Composable
@@ -50,7 +51,7 @@ data class DrawerMenuViewItem(
 @Composable
 private fun Preview() {
     DrawerMenuViewItem(
-        title = "Title",
+        title = TextResource.Literal("Title"),
         onClickAction = { },
     ).Composable()
 }

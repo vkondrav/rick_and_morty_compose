@@ -12,18 +12,20 @@ import com.vkondrav.graphql.ram.LocationsQuery
 import com.vkondrav.graphql.ram.fragment.CharacterFragment
 import com.vkondrav.graphql.ram.fragment.EpisodeFragment
 import com.vkondrav.graphql.ram.fragment.LocationFragment
-import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 
 interface RamRepository {
+
     suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment>
-    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
     suspend fun fetchLocations(page: Int): PageResponse<LocationFragment>
-    suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location
     suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment>
+
+    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
+    fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location>
     fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
+
 }
 
 internal class RamRepositoryImp(private val service: Service) : RamRepository {
@@ -79,13 +81,10 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override suspend fun fetchLocationDetails(id: String): LocationDetailsQuery.Location {
-        val query = LocationDetailsQuery(id)
-        return service.query(query)
-            .dataOrThrow
-            .location
-            ?: throw InvalidDataException("No result for ${query.name()} query")
-    }
+    override fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location>
+        = service.queryAsFlow(LocationDetailsQuery(id))
+            .map { it.dataOrThrow.location }
+            .filterNotNull()
 
     override suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment> {
         val query = EpisodesQuery(page)

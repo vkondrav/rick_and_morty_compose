@@ -1,41 +1,26 @@
 package com.vkondrav.playground.app.screen.drawer.viewmodel
 
-import com.vkondrav.playground.app.base.item.ContentViewItem
+import androidx.compose.runtime.mutableStateOf
+import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.base.viewmodel.BaseViewModel
-import com.vkondrav.playground.app.base.viewmodel.ScreenEventViewModel
-import com.vkondrav.playground.app.common.event.ScreenEvent
-import com.vkondrav.playground.app.screen.drawer.composable.DrawerMenuViewItem
-import com.vkondrav.playground.app.screen.drawer.domain.DrawerMenuItem
-import com.vkondrav.playground.app.screen.drawer.usecase.DrawerMenuUseCase
-import com.vkondrav.playground.app.screen.drawer.usecase.NavigateToRouteUseCase
+import com.vkondrav.playground.app.base.viewmodel.ScreenState
+import com.vkondrav.playground.app.base.viewmodel.ScreenStateViewModel
+import com.vkondrav.playground.app.screen.drawer.usecase.DrawerMenuSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.map
 
 class DrawerViewModel(
-    private val drawerMenuUseCase: DrawerMenuUseCase,
-    private val navigateToRouteUseCase: NavigateToRouteUseCase,
+    private val drawerMenuSource: DrawerMenuSource,
     dispatcher: CoroutineDispatcher,
-) : BaseViewModel(dispatcher), ScreenEventViewModel {
+) : BaseViewModel(dispatcher), ScreenStateViewModel {
 
-    private val _screenEvent = MutableStateFlow<ScreenEvent?>(null)
-    override val screenEvent: Flow<ScreenEvent> = _screenEvent.filterNotNull()
+    override var screenState = mutableStateOf<ScreenState>(ScreenState.Loading())
 
-    fun fetchMenu() {
-        _screenEvent.value = ScreenEvent.Content(
-            ContentViewItem(
-                items = drawerMenuUseCase().viewItems,
-            ),
-        )
-    }
+    override val items: Flow<List<ComposableItem>>
+        get() = drawerMenuSource().map { drawerMenu ->
+            screenState.value = ScreenState.Content
+            drawerMenu
+        }
 
-    private val List<DrawerMenuItem>.viewItems get() = map {
-        DrawerMenuViewItem(
-            title = it.title,
-            onClickAction = {
-                navigateToRouteUseCase(it.route)
-            },
-        )
-    }
 }
