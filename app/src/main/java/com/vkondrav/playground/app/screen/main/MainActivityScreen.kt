@@ -42,7 +42,7 @@ fun MainActivityScreen() {
             color = DlsTheme.colors.background,
         ) {
             CustomDrawer(drawerState) {
-                Box {
+                Box(modifier = Modifier.fillMaxSize()) {
                     Column {
                         CustomAppBar(navController)
                         AnimatedNavHost(

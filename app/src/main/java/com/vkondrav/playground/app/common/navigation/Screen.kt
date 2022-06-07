@@ -1,11 +1,10 @@
 package com.vkondrav.playground.app.common.navigation
 
 import android.os.Bundle
-import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavGraphBuilder
@@ -34,22 +33,18 @@ val allScreens = listOf(
     favoriteCharactersScreen,
 )
 
-private const val ANIMATION_TWEEN = 700
-
 fun NavGraphBuilder.defineGraph() {
     allScreens.forEach { screen ->
         composable(
             route = screen.route,
             enterTransition = {
-                slideIntoContainer(
-                    AnimatedContentScope.SlideDirection.Left,
-                    animationSpec = tween(ANIMATION_TWEEN),
+                fadeIn(
+                    animationSpec = spring(stiffness = Spring.StiffnessMedium),
                 )
             },
             exitTransition = {
-                slideOutOfContainer(
-                    AnimatedContentScope.SlideDirection.Right,
-                    animationSpec = tween(ANIMATION_TWEEN),
+                fadeOut(
+                    animationSpec = spring(stiffness = Spring.StiffnessMedium),
                 )
             },
             popEnterTransition = {
