@@ -8,6 +8,7 @@ import com.vkondrav.playground.room.ram.FavoriteLocationsDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
+import timber.log.Timber
 
 class FetchCharacterDetailsUseCase(
     private val ramRepository: RamRepository,
@@ -29,6 +30,9 @@ class FetchCharacterDetailsUseCase(
             favoriteEpisodesFlow,
             favoriteLocationsFlow,
         ) { details, favoriteCharacters, favoriteEpisodes, favoriteLocations ->
+
+            Timber.d("$favoriteCharacters|$favoriteEpisodes|$favoriteLocations")
+
             sourceConstructor(
                 details,
                 favoriteCharacters,
