@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,9 +51,8 @@ fun EpisodeView(item: EpisodeViewItem) {
         }
 
         Favorite(
-            fav = item.episode.isFavorite,
+            favorite = item.episode.isFavorite,
             onClickAction = { isFavorite ->
-                item.episode.isFavorite = isFavorite
                 item.onFavoriteAction(isFavorite)
             },
         )

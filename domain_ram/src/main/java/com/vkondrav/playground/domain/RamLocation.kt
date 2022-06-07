@@ -7,7 +7,7 @@ data class RamLocation(
     val id: String,
     val name: String,
     val dimension: String?,
-    var isFavorite: Boolean,
+    val isFavorite: Boolean,
 ) {
 
     object SourceConstructor {

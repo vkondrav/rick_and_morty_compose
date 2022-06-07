@@ -50,9 +50,8 @@ fun LocationView(item: LocationViewItem) {
         }
 
         Favorite(
-            fav = item.location.isFavorite,
+            favorite = item.location.isFavorite,
             onClickAction = { isFavorite ->
-                item.location.isFavorite = isFavorite
                 item.onFavoriteAction(isFavorite)
             },
         )

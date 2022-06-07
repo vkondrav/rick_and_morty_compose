@@ -7,7 +7,7 @@ data class RamEpisode(
     val id: String,
     val title: String,
     val airDate: String?,
-    var isFavorite: Boolean,
+    val isFavorite: Boolean,
 ) {
 
     object SourceConstructor {

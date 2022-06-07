@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,9 +63,8 @@ fun CharacterView(item: CharacterViewItem) {
         }
 
         Favorite(
-            fav = item.character.isFavorite,
+            favorite = item.character.isFavorite,
             onClickAction = { isFavorite ->
-                item.character.isFavorite = isFavorite
                 item.onFavoriteAction(isFavorite)
             },
         )

@@ -10,7 +10,7 @@ data class RamCharacter(
     val status: String?,
     val species: String?,
     val image: String?,
-    var isFavorite: Boolean,
+    val isFavorite: Boolean,
 ) {
 
     object SourceConstructor {
