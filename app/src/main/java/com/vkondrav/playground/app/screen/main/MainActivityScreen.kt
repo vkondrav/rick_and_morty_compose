@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.DrawerValue
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Surface
+import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -14,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
+import com.vkondrav.playground.app.common.bottom_sheet.composable.BottomSheet
 import com.vkondrav.playground.app.common.navigation.defineGraph
 import com.vkondrav.playground.app.common.state.LoadAppStateIntoKoin
 import com.vkondrav.playground.app.design.DlsTheme
@@ -25,6 +27,7 @@ import com.vkondrav.playground.app.snackbar.SnackbarHost
 fun MainActivityScreen() {
     val navController = rememberAnimatedNavController()
     val snackbarHostState = remember { SnackbarHostState() }
+    val bottomSheetState = rememberBottomSheetScaffoldState()
 
     val drawerState = rememberDrawerState(
         initialValue = DrawerValue.Closed,
@@ -34,6 +37,7 @@ fun MainActivityScreen() {
         navController,
         snackbarHostState,
         drawerState,
+        bottomSheetState,
     )
 
     DlsTheme {
@@ -43,13 +47,15 @@ fun MainActivityScreen() {
         ) {
             CustomDrawer(drawerState) {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    Column {
-                        CustomAppBar(navController)
-                        AnimatedNavHost(
-                            navController = navController,
-                            startDestination = charactersScreen.route,
-                        ) {
-                            defineGraph()
+                    BottomSheet(bottomSheetState) {
+                        Column {
+                            CustomAppBar(navController)
+                            AnimatedNavHost(
+                                navController = navController,
+                                startDestination = charactersScreen.route,
+                            ) {
+                                defineGraph()
+                            }
                         }
                     }
                     SnackbarHost(snackbarHostState)

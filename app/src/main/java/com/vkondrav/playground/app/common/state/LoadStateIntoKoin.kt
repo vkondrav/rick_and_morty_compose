@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.common.state
 
+import androidx.compose.material.BottomSheetScaffoldState
 import androidx.compose.material.DrawerState
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ fun LoadAppStateIntoKoin(
     navController: NavController,
     snackbarHostState: SnackbarHostState,
     drawerState: DrawerState,
+    bottomSheetScaffoldState: BottomSheetScaffoldState,
 ) {
     val coroutineScope = rememberCoroutineScope()
 
@@ -23,6 +25,7 @@ fun LoadAppStateIntoKoin(
                     navController = navController,
                     snackbarHostState = snackbarHostState,
                     drawerState = drawerState,
+                    bottomSheetScaffoldState = bottomSheetScaffoldState,
                     coroutineScope = coroutineScope,
                 )
             }

@@ -6,7 +6,6 @@ import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
 import com.vkondrav.playground.app.screen.drawer.composable.DrawerMenuViewItem
 import com.vkondrav.playground.app.screen.episodes.nav.episodesScreen
-import com.vkondrav.playground.app.screen.favorite_characters.nav.favoriteCharactersScreen
 import com.vkondrav.playground.app.screen.locations.nav.locationsScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -21,7 +20,6 @@ class DrawerMenuSource(
                 TextResource.Resource(R.string.characters) to charactersScreen.route,
                 TextResource.Resource(R.string.episodes) to episodesScreen.route,
                 TextResource.Resource(R.string.locations) to locationsScreen.route,
-                TextResource.Literal("Favorite Character") to favoriteCharactersScreen.route,
             ).map { (title, route) ->
                 DrawerMenuViewItem(
                     title = title,
