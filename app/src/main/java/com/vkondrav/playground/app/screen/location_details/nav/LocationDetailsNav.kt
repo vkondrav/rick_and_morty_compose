@@ -1,8 +1,8 @@
 package com.vkondrav.playground.app.screen.location_details.nav
 
-import com.vkondrav.playground.app.common.nav.NAV_ID
-import com.vkondrav.playground.app.common.nav.NAV_TITLE
-import com.vkondrav.playground.app.common.nav.id
+import com.vkondrav.playground.app.common.navigation.NAV_ID
+import com.vkondrav.playground.app.common.navigation.NAV_TITLE
+import com.vkondrav.playground.app.common.navigation.id
 import com.vkondrav.playground.app.common.navigation.NavigationException
 import com.vkondrav.playground.app.common.navigation.Screen
 import com.vkondrav.playground.app.screen.location_details.composable.LocationDetailsScreen

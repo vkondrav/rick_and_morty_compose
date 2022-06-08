@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetScaffoldState
-import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,10 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.R
-import com.vkondrav.playground.app.base.composable.screen.BaseStateScreen
 import com.vkondrav.playground.app.design.DlsTheme
-import com.vkondrav.playground.app.screen.favorite_characters.viewmodel.FavoriteCharactersViewModel
-import org.koin.androidx.compose.getViewModel
+import com.vkondrav.playground.app.tabs.composable.FavoriteTabsScreen
 
 @Composable
 fun BottomSheet(
@@ -35,14 +33,15 @@ fun BottomSheet(
             ) {
                 Text(
                     text = stringResource(id = R.string.favorites),
-                    style = DlsTheme.typography.headline3,
+                    style = DlsTheme.typography.headline5,
                     color = DlsTheme.colors.text,
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(
+                            top = 8.dp,
+                        ),
                 )
-                Divider()
-                BaseStateScreen(
-                    viewModel = getViewModel<FavoriteCharactersViewModel>(),
-                )
+                FavoriteTabsScreen()
             }
         },
         sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),

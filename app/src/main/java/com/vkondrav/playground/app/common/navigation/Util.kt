@@ -1,4 +1,4 @@
-package com.vkondrav.playground.app.common.nav
+package com.vkondrav.playground.app.common.navigation
 
 import android.os.Bundle
 

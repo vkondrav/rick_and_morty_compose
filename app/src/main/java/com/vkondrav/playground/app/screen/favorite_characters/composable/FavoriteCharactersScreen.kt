@@ -6,8 +6,8 @@ import com.vkondrav.playground.app.screen.favorite_characters.viewmodel.Favorite
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun FavoriteCharactersScreen(
-    viewModel: FavoriteCharactersViewModel = getViewModel(),
-) {
-    BaseStateScreen(viewModel = viewModel)
+fun FavoriteCharactersScreen() {
+    BaseStateScreen(
+        viewModel = getViewModel<FavoriteCharactersViewModel>(),
+    )
 }
