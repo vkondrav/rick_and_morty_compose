@@ -65,6 +65,7 @@ object Libs {
 
         const val runtime = "$base:apollo-runtime:$version"
         const val api = "$base:apollo-api:$version"
+        const val cache = "$base:apollo-normalized-cache:$version"
     }
 
     object Timber {

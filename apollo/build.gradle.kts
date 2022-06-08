@@ -45,5 +45,6 @@ android {
 
 dependencies {
     api(Libs.Apollo.runtime)
+    api(Libs.Apollo.cache)
     api(Libs.Koin.core)
 }
