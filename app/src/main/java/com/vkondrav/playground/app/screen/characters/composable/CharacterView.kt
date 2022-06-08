@@ -61,7 +61,7 @@ fun CharacterView(item: CharacterViewItem) {
             }
         }
 
-        val favorite by item.character.isFavorite.collectAsState(initial = false)
+        val favorite by item.character.isFavorite. collectAsState(initial = false)
 
         Favorite(
             favorite = favorite,

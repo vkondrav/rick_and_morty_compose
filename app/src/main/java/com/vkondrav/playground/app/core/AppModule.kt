@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.core
 
+import com.vkondrav.playground.app.common.collapsable_drawer.di.collapsableDrawerModule
 import com.vkondrav.playground.app.screen.character_details.di.characterDetailsModule
 import com.vkondrav.playground.app.screen.characters.di.charactersModule
 import com.vkondrav.playground.app.screen.drawer.di.drawerModule
@@ -18,6 +19,7 @@ fun KoinApplication.appModules() = modules(
         ramModules,
         listOf(
             coreModule,
+            collapsableDrawerModule,
             roomModule,
             charactersModule,
             characterDetailsModule,

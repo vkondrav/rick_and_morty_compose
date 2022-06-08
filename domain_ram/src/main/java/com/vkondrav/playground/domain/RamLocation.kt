@@ -3,6 +3,7 @@ package com.vkondrav.playground.domain
 import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 
 data class RamLocation(
@@ -20,7 +21,7 @@ data class RamLocation(
                 id = fragment.id ?: throw InvalidDataException("Missing Id"),
                 name = fragment.name ?: throw InvalidDataException("Missing Name"),
                 dimension = fragment.dimension,
-                isFavorite = favorites.map { it.contains(fragment.id) },
+                isFavorite = favorites.map { it.contains(fragment.id) }.distinctUntilChanged(),
             )
     }
 }

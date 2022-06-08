@@ -1,4 +1,4 @@
-package com.vkondrav.playground.app.common.composable
+package com.vkondrav.playground.app.common.collapsable_drawer.composable
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
@@ -14,10 +14,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,17 +24,21 @@ import com.vkondrav.playground.app.base.item.Composable
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.design.DlsTheme
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun CollapsableView(item: CollapsableViewItem) {
-    var drawerOpen by remember { mutableStateOf(item.open) }
+    val drawerOpen by item.open.collectAsState(initial = false)
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
-                .clickable { drawerOpen = !drawerOpen },
+                .clickable {
+                    item.onClickAction(!drawerOpen)
+                },
         ) {
             ConstraintLayout(
                 modifier = Modifier
@@ -48,10 +50,10 @@ fun CollapsableView(item: CollapsableViewItem) {
                 Text(
                     modifier = Modifier
                         .constrainAs(title) {
-                        top.linkTo(parent.top)
-                        bottom.linkTo(parent.bottom)
-                        start.linkTo(parent.start, margin = 8.dp)
-                    },
+                            top.linkTo(parent.top)
+                            bottom.linkTo(parent.bottom)
+                            start.linkTo(parent.start, margin = 8.dp)
+                        },
                     text = item.title.string(),
                     style = DlsTheme.typography.headline3,
                     color = DlsTheme.colors.text,
@@ -67,13 +69,14 @@ fun CollapsableView(item: CollapsableViewItem) {
                         .width(32.dp),
                     imageVector = if (drawerOpen) {
                         Icons.Default.ArrowUpward
-                    }else {
+                    } else {
                         Icons.Default.ArrowDownward
                     },
                     contentDescription = null,
                 )
             }
         }
+
         AnimatedVisibility(visible = drawerOpen) {
             Column {
                 item.items.Composable()
@@ -86,16 +89,20 @@ fun CollapsableView(item: CollapsableViewItem) {
 @Composable
 private fun Preview() {
     CollapsableViewItem(
+        id = "d1",
         title = TextResource.Literal("Collapsable"),
-        open = true,
+        open = emptyFlow(),
         items = emptyList(),
+        onClickAction = { },
     )
 }
 
 data class CollapsableViewItem(
+    val id: String,
     val title: TextResource,
-    val open: Boolean,
+    val open: Flow<Boolean>,
     val items: List<ComposableItem>,
+    val onClickAction: (Boolean) -> Unit,
 ) : ComposableItem {
     @Composable
     override fun Composable() = CollapsableView(this)

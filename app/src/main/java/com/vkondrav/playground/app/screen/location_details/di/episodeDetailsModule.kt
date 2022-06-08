@@ -18,6 +18,8 @@ val locationDetailsModule = module {
     factory {
         LocationDetailsSource(
             fetchLocationDetailsUseCase = get(),
+            fetchCollapsableDrawerState = get(),
+            handleCollapsableDrawerUseCase = get(),
             charactersViewItemConstructor = get(),
         )
     }

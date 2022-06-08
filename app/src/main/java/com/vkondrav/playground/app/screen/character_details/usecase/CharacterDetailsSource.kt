@@ -2,7 +2,9 @@ package com.vkondrav.playground.app.screen.character_details.usecase
 
 import com.vkondrav.playground.app.R
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.common.composable.CollapsableViewItem
+import com.vkondrav.playground.app.common.collapsable_drawer.composable.CollapsableViewItem
+import com.vkondrav.playground.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
+import com.vkondrav.playground.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.playground.app.common.utils.TextResource
 import com.vkondrav.playground.app.screen.character_details.composable.CharacterDetailsViewItem
 import com.vkondrav.playground.app.screen.episodes.usecase.EpisodeViewItemsConstructor
@@ -14,6 +16,8 @@ import kotlinx.coroutines.flow.map
 
 class CharacterDetailsSource(
     private val fetchCharacterDetailsUseCase: FetchCharacterDetailsUseCase,
+    private val fetchCollapsableDrawerState: FetchCollapsableDrawerStateUseCase,
+    private val handleCollapsableDrawerUseCase: HandleCollapsableDrawerUseCase,
     private val locationViewItemsConstructor: LocationViewItemsConstructor,
     private val episodeViewItemsConstructor: EpisodeViewItemsConstructor,
 ) {
@@ -38,25 +42,39 @@ class CharacterDetailsSource(
 
     private val RamCharacterDetails.currentLocation
         get() = location?.run {
-            locationItem(TextResource.Resource(R.string.current_location))
+            locationItem(
+                "character_${character.id}_location",
+                TextResource.Resource(R.string.current_location),
+            )
         }
 
     private val RamCharacterDetails.originLocation
         get() = origin?.run {
-            locationItem(TextResource.Resource(R.string.origin))
+            locationItem("character_${character.id}_origin", TextResource.Resource(R.string.origin))
         }
 
-    private val RamCharacterDetails.episodesList
-        get() = CollapsableViewItem(
-            title = TextResource.Resource(R.string.episodes),
-            items = episodeViewItemsConstructor(episodes.takeLast(MAX_EPISODES).reversed()),
-            open = false,
-        )
+    private val RamCharacterDetails.episodesList: ComposableItem
+        get() {
+            val id = "character_${character.id}_episodes"
+            return CollapsableViewItem(
+                id = id,
+                title = TextResource.Resource(R.string.episodes),
+                items = episodeViewItemsConstructor(episodes.takeLast(MAX_EPISODES).reversed()),
+                open = fetchCollapsableDrawerState(id),
+                onClickAction = { isOpen ->
+                    handleCollapsableDrawerUseCase(id, isOpen)
+                },
+            )
+        }
 
-    private fun RamLocation.locationItem(title: TextResource) = CollapsableViewItem(
+    private fun RamLocation.locationItem(id: String, title: TextResource) = CollapsableViewItem(
+        id = id,
         title = title,
         items = listOf(locationViewItemsConstructor(this)),
-        open = false,
+        open = fetchCollapsableDrawerState(id),
+        onClickAction = { isOpen ->
+            handleCollapsableDrawerUseCase(id, isOpen)
+        },
     )
 
     companion object {

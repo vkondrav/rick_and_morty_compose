@@ -2,16 +2,19 @@ package com.vkondrav.playground.app.screen.location_details.usecase
 
 import com.vkondrav.playground.app.R
 import com.vkondrav.playground.app.base.item.ComposableItem
-import com.vkondrav.playground.app.common.composable.CollapsableViewItem
+import com.vkondrav.playground.app.common.collapsable_drawer.composable.CollapsableViewItem
 import com.vkondrav.playground.app.common.utils.TextResource
+import com.vkondrav.playground.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
+import com.vkondrav.playground.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.playground.app.screen.characters.usecase.CharactersViewItemConstructor
 import com.vkondrav.playground.domain.RamLocationDetails
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.take
 
 class LocationDetailsSource(
     private val fetchLocationDetailsUseCase: FetchLocationDetailsUseCase,
+    private val fetchCollapsableDrawerState: FetchCollapsableDrawerStateUseCase,
+    private val handleCollapsableDrawerUseCase: HandleCollapsableDrawerUseCase,
     private val charactersViewItemConstructor: CharactersViewItemConstructor,
 ) {
 
@@ -25,12 +28,19 @@ class LocationDetailsSource(
         }
     }
 
-    private val RamLocationDetails.charactersList
-        get() = CollapsableViewItem(
-            title = TextResource.Resource(R.string.characters),
-            items = charactersViewItemConstructor(characters.take(MAX_CHARACTERS_COUNT)),
-            open = true,
-        )
+    private val RamLocationDetails.charactersList: ComposableItem
+        get() {
+            val id = "location_${location.id}_characters"
+            return CollapsableViewItem(
+                id = id,
+                title = TextResource.Resource(R.string.characters),
+                items = charactersViewItemConstructor(characters.take(MAX_CHARACTERS_COUNT)),
+                open = fetchCollapsableDrawerState(id),
+                onClickAction = { isOpen ->
+                    handleCollapsableDrawerUseCase(id, isOpen)
+                },
+            )
+        }
 
     companion object {
         private const val MAX_CHARACTERS_COUNT = 5

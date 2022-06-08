@@ -19,6 +19,8 @@ val characterDetailsModule = module {
     factory {
         CharacterDetailsSource(
             fetchCharacterDetailsUseCase = get(),
+            fetchCollapsableDrawerState = get(),
+            handleCollapsableDrawerUseCase = get(),
             locationViewItemsConstructor = get(),
             episodeViewItemsConstructor = get(),
         )

@@ -18,6 +18,8 @@ val episodeDetailsModule = module {
     factory {
         EpisodeDetailsSource(
             fetchEpisodeDetailsUseCase = get(),
+            fetchCollapsableDrawerState = get(),
+            handleCollapsableDrawerUseCase = get(),
             charactersViewItemConstructor = get(),
         )
     }
