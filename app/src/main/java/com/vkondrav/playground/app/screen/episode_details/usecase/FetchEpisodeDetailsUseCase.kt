@@ -4,6 +4,7 @@ import com.vkondrav.playground.domain.RamEpisodeDetails
 import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 import com.vkondrav.playground.room.ram.FavoriteEpisodesDao
+import com.vkondrav.playground.room.ram.mapToSet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -15,10 +16,10 @@ class FetchEpisodeDetailsUseCase(
 ) {
 
     private val favoriteEpisodesFlow by lazy {
-        favoriteEpisodesDao.getIds().map { it.toSet() }
+        favoriteEpisodesDao.getIds().mapToSet()
     }
     private val favoriteCharactersFlow by lazy {
-        favoriteCharactersDao.getIds().map { it.toSet() }
+        favoriteCharactersDao.getIds().mapToSet()
     }
 
     operator fun invoke(

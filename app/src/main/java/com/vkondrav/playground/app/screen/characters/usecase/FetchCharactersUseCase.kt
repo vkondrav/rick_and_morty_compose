@@ -1,10 +1,10 @@
 package com.vkondrav.playground.app.screen.characters.usecase
 
 import com.vkondrav.playground.domain.RamCharacter
-import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.domain.RamPage
+import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
-import kotlinx.coroutines.flow.map
+import com.vkondrav.playground.room.ram.mapToSet
 
 class FetchCharactersUseCase(
     private val ramRepository: RamRepository,
@@ -12,7 +12,7 @@ class FetchCharactersUseCase(
     private val transformer: RamPage.SourceConstructor,
 ) {
 
-    private val favorites by lazy { favoriteCharactersDao.getIds().map { it.toSet() } }
+    private val favorites by lazy { favoriteCharactersDao.getIds().mapToSet() }
 
     suspend operator fun invoke(
         page: Int,

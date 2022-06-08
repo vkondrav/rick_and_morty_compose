@@ -4,7 +4,7 @@ import com.vkondrav.playground.domain.RamEpisode
 import com.vkondrav.playground.domain.RamPage
 import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.room.ram.FavoriteEpisodesDao
-import kotlinx.coroutines.flow.map
+import com.vkondrav.playground.room.ram.mapToSet
 
 class FetchEpisodesUseCase(
     private val ramRepository: RamRepository,
@@ -12,7 +12,7 @@ class FetchEpisodesUseCase(
     private val sourceConstructor: RamPage.SourceConstructor,
 ) {
 
-    private val favorites by lazy { favoriteEpisodesDao.getIds().map { it.toSet() } }
+    private val favorites by lazy { favoriteEpisodesDao.getIds().mapToSet() }
 
     suspend operator fun invoke(
         page: Int,
