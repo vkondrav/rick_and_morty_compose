@@ -4,6 +4,7 @@ import com.vkondrav.graphql.ram.fragment.CharacterFragment
 import com.vkondrav.graphql.ram.fragment.EpisodeFragment
 import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.playground.graphql.ram.PageResponse
+import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 
 data class RamPage<T>(
@@ -18,7 +19,7 @@ data class RamPage<T>(
         private val locationSourceConstructor: RamLocation.SourceConstructor,
     ) {
 
-        fun characters(response: PageResponse<CharacterFragment>, favorites: Set<String>) =
+        fun characters(response: PageResponse<CharacterFragment>, favorites: Flow<Set<String>>) =
             with(response) {
                 RamPage(
                     info.prev,
@@ -33,7 +34,7 @@ data class RamPage<T>(
                 )
             }
 
-        fun episodes(response: PageResponse<EpisodeFragment>, favorites: Set<String>) =
+        fun episodes(response: PageResponse<EpisodeFragment>, favorites: Flow<Set<String>>) =
             with(response) {
                 RamPage(
                     info.prev,
@@ -48,7 +49,7 @@ data class RamPage<T>(
                 )
             }
 
-        fun locations(response: PageResponse<LocationFragment>, favorites: Set<String>) =
+        fun locations(response: PageResponse<LocationFragment>, favorites: Flow<Set<String>>) =
             with(response) {
                 RamPage(
                     info.prev,

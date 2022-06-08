@@ -11,10 +11,7 @@ interface FavoriteEpisodesDao {
     suspend fun getAll(): List<FavoriteEpisode>
 
     @Query("SELECT id FROM favorite_episode")
-    suspend fun getIds(): List<String>
-
-    @Query("SELECT id FROM favorite_episode")
-    fun getIdsAsFlow(): Flow<List<String>>
+    fun getIds(): Flow<List<String>>
 
     @Insert
     suspend fun insert(favoriteEpisode: FavoriteEpisode)

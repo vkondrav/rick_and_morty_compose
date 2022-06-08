@@ -9,8 +9,8 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,6 +22,7 @@ import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.app.design.dlsDarkColorPalette
 import com.vkondrav.playground.app.design.dlsLightColorPalette
 import com.vkondrav.playground.domain.RamCharacter
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun CharacterView(item: CharacterViewItem) {
@@ -60,8 +61,10 @@ fun CharacterView(item: CharacterViewItem) {
             }
         }
 
+        val favorite by item.character.isFavorite.collectAsState(initial = false)
+
         Favorite(
-            favorite = item.character.isFavorite,
+            favorite = favorite,
             onClickAction = { isFavorite ->
                 item.onFavoriteAction(isFavorite)
             },
@@ -90,7 +93,7 @@ private fun PreviewItem() {
                 status = "alive",
                 species = "human",
                 image = null,
-                isFavorite = false,
+                isFavorite = emptyFlow(),
             ),
             onClickAction = { },
             onFavoriteAction = { },

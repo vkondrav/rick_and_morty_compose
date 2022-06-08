@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,6 +20,7 @@ import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.app.design.dlsDarkColorPalette
 import com.vkondrav.playground.app.design.dlsLightColorPalette
 import com.vkondrav.playground.domain.RamLocation
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun LocationView(item: LocationViewItem) {
@@ -49,8 +52,10 @@ fun LocationView(item: LocationViewItem) {
             }
         }
 
+        val favorite by item.location.isFavorite.collectAsState(initial = false)
+
         Favorite(
-            favorite = item.location.isFavorite,
+            favorite = favorite,
             onClickAction = { isFavorite ->
                 item.onFavoriteAction(isFavorite)
             },
@@ -77,7 +82,7 @@ private fun PreviewItem(isFavorite: Boolean) {
                 id = "0",
                 name = "Earth",
                 dimension = "C-137",
-                isFavorite = isFavorite,
+                isFavorite = emptyFlow(),
             ),
             onClickAction = { },
             onFavoriteAction = { },

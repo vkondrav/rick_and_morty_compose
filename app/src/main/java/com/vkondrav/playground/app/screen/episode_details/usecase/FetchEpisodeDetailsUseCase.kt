@@ -5,7 +5,6 @@ import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 import com.vkondrav.playground.room.ram.FavoriteEpisodesDao
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 
 class FetchEpisodeDetailsUseCase(
@@ -15,25 +14,22 @@ class FetchEpisodeDetailsUseCase(
     private val sourceConstructor: RamEpisodeDetails.SourceConstructor,
 ) {
 
+    private val favoriteEpisodesFlow by lazy {
+        favoriteEpisodesDao.getIds().map { it.toSet() }
+    }
+    private val favoriteCharactersFlow by lazy {
+        favoriteCharactersDao.getIds().map { it.toSet() }
+    }
+
     operator fun invoke(
         id: String,
     ): Result<Flow<RamEpisodeDetails>> = runCatching {
-        val episodeDetailsFlow = ramRepository.fetchEpisodeDetails(id)
-        val favoriteEpisodesFlow = favoriteEpisodesDao.getIdsAsFlow().map { it.toSet() }
-        val favoriteCharactersFlow = favoriteCharactersDao.getIdsAsFlow().map { it.toSet() }
-
-        combine(
-            episodeDetailsFlow,
-            favoriteEpisodesFlow,
-            favoriteCharactersFlow,
-        ) { episodeDetails, favoriteEpisodes, favoriteCharacters ->
-
+        ramRepository.fetchEpisodeDetails(id).map {
             sourceConstructor(
-                episodeDetails,
-                favoriteEpisodes,
-                favoriteCharacters,
+                it,
+                favoriteEpisodesFlow,
+                favoriteCharactersFlow,
             )
-
         }
     }
 

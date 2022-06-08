@@ -2,6 +2,7 @@ package com.vkondrav.playground.domain
 
 import com.vkondrav.graphql.ram.LocationDetailsQuery
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 
 data class RamLocationDetails(
@@ -16,8 +17,8 @@ data class RamLocationDetails(
         @Throws(InvalidDataException::class)
         operator fun invoke(
             location: LocationDetailsQuery.Location,
-            favoriteLocation: Set<String>,
-            favoriteCharacters: Set<String>,
+            favoriteLocation: Flow<Set<String>>,
+            favoriteCharacters: Flow<Set<String>>,
         ) = RamLocationDetails(
             location = locationSourceConstructor(location.locationFragment, favoriteLocation),
             characters = location.residents.asSequence().filterNotNull().mapNotNull {

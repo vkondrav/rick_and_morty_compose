@@ -8,6 +8,7 @@ import com.vkondrav.playground.domain.RamCharacter
 import com.vkondrav.playground.room.ram.FavoriteCharacter
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
 class FetchFavoriteCharactersUseCase(
@@ -24,7 +25,7 @@ class FetchFavoriteCharactersUseCase(
     }
 
     private val FavoriteCharacter.viewItem
-        get() = with(sourceConstructor(this)) {
+        get() = with(sourceConstructor(this, flowOf(setOf(id)))) {
             CharacterViewItem(
                 character = this,
                 onClickAction = {

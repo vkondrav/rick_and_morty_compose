@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.common.composable.Favorite
 import com.vkondrav.playground.app.design.DlsTheme
 import com.vkondrav.playground.domain.RamEpisode
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun EpisodeView(item: EpisodeViewItem) {
@@ -48,8 +50,10 @@ fun EpisodeView(item: EpisodeViewItem) {
             }
         }
 
+        val favorite by item.episode.isFavorite.collectAsState(initial = false)
+
         Favorite(
-            favorite = item.episode.isFavorite,
+            favorite = favorite,
             onClickAction = { isFavorite ->
                 item.onFavoriteAction(isFavorite)
             },
@@ -74,7 +78,7 @@ private fun Preview() {
             id = "1",
             title = "Episode 1",
             airDate = "1/2/2022",
-            isFavorite = false,
+            isFavorite = emptyFlow(),
         ),
         onClickAction = { },
         onFavoriteAction = { },

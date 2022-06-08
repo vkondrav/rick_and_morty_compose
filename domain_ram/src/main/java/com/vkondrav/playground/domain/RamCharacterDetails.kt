@@ -2,6 +2,7 @@ package com.vkondrav.playground.domain
 
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 
 data class RamCharacterDetails(
@@ -20,9 +21,9 @@ data class RamCharacterDetails(
         @Throws(InvalidDataException::class)
         operator fun invoke(
             character: CharacterDetailsQuery.Character,
-            favoriteCharacters: Set<String>,
-            favoriteEpisodes: Set<String>,
-            favoriteLocations: Set<String>,
+            favoriteCharacters: Flow<Set<String>>,
+            favoriteEpisodes: Flow<Set<String>>,
+            favoriteLocations: Flow<Set<String>>,
         ) = RamCharacterDetails(
             character = characterSourceConstructor(character.characterFragment, favoriteCharacters),
             origin = character.origin?.locationFragment?.let {

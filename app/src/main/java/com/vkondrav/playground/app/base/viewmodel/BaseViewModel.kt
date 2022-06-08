@@ -30,9 +30,9 @@ abstract class BaseViewModel(private val dispatcher: CoroutineDispatcher) :
 
     protected fun <T> Flow<T>.mapState(
         initialValue: T,
-        onEach: (T) -> Unit,
+        onEach: ((T) -> Unit)? = null,
     ): StateFlow<T> = mapLatest {
-        onEach(it)
+        onEach?.invoke(it)
         it
     }.stateIn(
         scope = this@BaseViewModel,

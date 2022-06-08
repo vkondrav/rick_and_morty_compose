@@ -4,6 +4,7 @@ import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.domain.RamLocation
 import com.vkondrav.playground.domain.RamPage
 import com.vkondrav.playground.room.ram.FavoriteLocationsDao
+import kotlinx.coroutines.flow.map
 
 class FetchLocationsUseCase(
     private val ramRepository: RamRepository,
@@ -11,15 +12,11 @@ class FetchLocationsUseCase(
     private val sourceConstructor: RamPage.SourceConstructor,
 ) {
 
-    private var favorites: Set<String>? = null
+    private val favorites by lazy { favoriteLocationsDao.getIds().map { it.toSet() } }
 
     suspend operator fun invoke(
         page: Int,
     ): Result<RamPage<RamLocation>> = runCatching {
-        val favorites = favorites ?: favoriteLocationsDao.getIds().toSet().also {
-            favorites = it
-        }
-
         sourceConstructor.locations(
             ramRepository.fetchLocations(page),
             favorites,

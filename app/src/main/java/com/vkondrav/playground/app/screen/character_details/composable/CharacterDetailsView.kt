@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.app.common.composable.Avatar
 import com.vkondrav.playground.domain.RamCharacter
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun CharacterDetailsView(
@@ -51,7 +52,7 @@ private fun Preview() {
             status = null,
             species = null,
             image = null,
-            isFavorite = false,
+            isFavorite = emptyFlow(),
         ),
     ).Composable()
 }

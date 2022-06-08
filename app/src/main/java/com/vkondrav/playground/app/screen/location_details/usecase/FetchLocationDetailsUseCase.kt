@@ -5,7 +5,6 @@ import com.vkondrav.playground.graphql.ram.RamRepository
 import com.vkondrav.playground.room.ram.FavoriteCharactersDao
 import com.vkondrav.playground.room.ram.FavoriteLocationsDao
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 
 class FetchLocationDetailsUseCase(
@@ -14,22 +13,22 @@ class FetchLocationDetailsUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
     private val sourceConstructor: RamLocationDetails.SourceConstructor,
 ) {
+
+    private val favoriteLocationsFlow by lazy {
+        favoriteLocationsDao.getIds().map { it.toSet() }
+    }
+    private val favoriteCharactersFlow by lazy {
+        favoriteCharactersDao.getIds().map { it.toSet() }
+    }
+
     operator fun invoke(
         id: String,
     ): Result<Flow<RamLocationDetails>> = runCatching {
-        val locationDetailsFlow = ramRepository.fetchLocationDetails(id)
-        val favoriteLocationsFlow = favoriteLocationsDao.getIdsAsFlow().map { it.toSet() }
-        val favoriteCharactersFlow = favoriteCharactersDao.getIdsAsFlow().map { it.toSet() }
-
-        combine(
-            locationDetailsFlow,
-            favoriteLocationsFlow,
-            favoriteCharactersFlow,
-        ) { locationDetails, favoriteLocations, favoriteCharacters ->
+        ramRepository.fetchLocationDetails(id).map {
             sourceConstructor(
-                locationDetails,
-                favoriteLocations,
-                favoriteCharacters,
+                it,
+                favoriteLocationsFlow,
+                favoriteCharactersFlow,
             )
         }
     }

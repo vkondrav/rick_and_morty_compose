@@ -11,10 +11,7 @@ interface FavoriteLocationsDao {
     suspend fun getAll(): List<FavoriteLocation>
 
     @Query("SELECT id FROM favorite_location")
-    suspend fun getIds(): List<String>
-
-    @Query("SELECT id FROM favorite_location")
-    fun getIdsAsFlow(): Flow<List<String>>
+    fun getIds(): Flow<List<String>>
 
     @Insert
     suspend fun insert(favoriteLocation: FavoriteLocation)

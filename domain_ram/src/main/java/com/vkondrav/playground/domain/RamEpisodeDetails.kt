@@ -2,6 +2,7 @@ package com.vkondrav.playground.domain
 
 import com.vkondrav.graphql.ram.EpisodeDetailsQuery
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 
 data class RamEpisodeDetails(
@@ -15,8 +16,8 @@ data class RamEpisodeDetails(
     ) {
         operator fun invoke(
             episode: EpisodeDetailsQuery.Episode,
-            favoriteEpisodes: Set<String>,
-            favoriteCharacters: Set<String>,
+            favoriteEpisodes: Flow<Set<String>>,
+            favoriteCharacters: Flow<Set<String>>,
         ) = RamEpisodeDetails(
             episode = episodeSourceConstructor(episode.episodeFragment, favoriteEpisodes),
             characters = episode.characters.asSequence().filterNotNull().mapNotNull {

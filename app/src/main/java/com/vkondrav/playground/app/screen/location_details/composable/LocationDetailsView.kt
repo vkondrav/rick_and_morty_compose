@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.base.item.ComposableItem
 import com.vkondrav.playground.domain.RamLocation
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun LocationDetailsView(
@@ -62,7 +63,7 @@ private fun Preview() {
             id = "1",
             name = "Morty",
             dimension = null,
-            isFavorite = false,
+            isFavorite = emptyFlow(),
         ),
     ).Composable()
 }
