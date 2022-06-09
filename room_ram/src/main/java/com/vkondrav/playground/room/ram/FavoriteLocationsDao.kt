@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FavoriteLocationsDao {
     @Query("SELECT * FROM favorite_location")
-    suspend fun getAll(): List<FavoriteLocation>
+    fun getAll(): Flow<List<FavoriteLocation>>
 
     @Query("SELECT id FROM favorite_location")
     fun getIds(): Flow<List<String>>

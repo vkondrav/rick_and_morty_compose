@@ -2,6 +2,7 @@ package com.vkondrav.playground.domain
 
 import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.playground.graphql.ram.error.InvalidDataException
+import com.vkondrav.playground.room.ram.FavoriteLocation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -23,5 +24,16 @@ data class RamLocation(
                 dimension = fragment.dimension,
                 isFavorite = favorites.map { it.contains(fragment.id) }.distinctUntilChanged(),
             )
+
+        @Throws(InvalidDataException::class)
+        operator fun invoke(favoriteLocation: FavoriteLocation, favorites: Flow<Set<String>>) =
+            with(favoriteLocation) {
+                RamLocation(
+                    id = id,
+                    name = name,
+                    dimension = dimension,
+                    isFavorite = favorites.map { it.contains(id) }.distinctUntilChanged(),
+                )
+            }
     }
 }

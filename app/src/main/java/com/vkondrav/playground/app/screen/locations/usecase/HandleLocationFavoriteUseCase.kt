@@ -6,7 +6,7 @@ class HandleLocationFavoriteUseCase(
     private val addLocationToFavoritesUseCase: AddLocationToFavoritesUseCase,
     private val removeLocationToFavoritesUseCase: RemoveLocationFromFavoritesUseCase,
 ) {
-    operator fun invoke(isFavorite: Boolean, location: RamLocation) {
+    operator fun invoke(location: RamLocation, isFavorite: Boolean) {
         when (isFavorite) {
             true -> addLocationToFavoritesUseCase(location)
             false -> removeLocationToFavoritesUseCase(location)

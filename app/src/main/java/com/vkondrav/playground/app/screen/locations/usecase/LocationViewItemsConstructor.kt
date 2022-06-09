@@ -25,7 +25,7 @@ class LocationViewItemsConstructor(
             )
         },
         onFavoriteAction = { isFavorite ->
-            handleLocationFavoriteUseCase(isFavorite, this)
+            handleLocationFavoriteUseCase(this, isFavorite)
         },
     )
 

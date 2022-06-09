@@ -4,11 +4,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetScaffoldState
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DragHandle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,15 +33,18 @@ fun BottomSheet(
                     .fillMaxWidth()
                     .height(MAX_SHEET_HEIGHT),
             ) {
+                Icon(
+                    imageVector = Icons.Default.DragHandle,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally),
+                )
                 Text(
                     text = stringResource(id = R.string.favorites),
                     style = DlsTheme.typography.headline5,
                     color = DlsTheme.colors.text,
                     modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .padding(
-                            top = 8.dp,
-                        ),
+                        .align(Alignment.CenterHorizontally),
                 )
                 FavoriteTabsScreen()
             }
@@ -51,4 +56,4 @@ fun BottomSheet(
 }
 
 private val MAX_SHEET_HEIGHT = 300.dp
-private val PEEK_HEIGHT = 80.dp
+private val PEEK_HEIGHT = 100.dp
