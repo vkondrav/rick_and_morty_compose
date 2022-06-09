@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.playground.app.common.appbar.CustomAppBar
-import com.vkondrav.playground.app.common.bottom_sheet.composable.BottomSheet
+import com.vkondrav.playground.app.common.bottom_sheet.BottomSheet
 import com.vkondrav.playground.app.common.navigation.defineGraph
 import com.vkondrav.playground.app.common.state.LoadAppStateIntoKoin
 import com.vkondrav.playground.app.design.DlsTheme

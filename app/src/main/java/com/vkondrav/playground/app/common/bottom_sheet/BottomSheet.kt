@@ -1,4 +1,4 @@
-package com.vkondrav.playground.app.common.bottom_sheet.composable
+package com.vkondrav.playground.app.common.bottom_sheet
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
