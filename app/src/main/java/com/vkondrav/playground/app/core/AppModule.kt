@@ -7,6 +7,7 @@ import com.vkondrav.playground.app.screen.drawer.di.drawerModule
 import com.vkondrav.playground.app.screen.episode_details.di.episodeDetailsModule
 import com.vkondrav.playground.app.screen.episodes.di.episodesModule
 import com.vkondrav.playground.app.screen.favorite_characters.di.favoriteCharactersModule
+import com.vkondrav.playground.app.screen.favorite_episodes.di.favoriteEpisodesModule
 import com.vkondrav.playground.app.screen.favorite_locations.di.favoriteLocationsModule
 import com.vkondrav.playground.app.screen.location_details.di.locationDetailsModule
 import com.vkondrav.playground.app.screen.locations.di.locationsModule
@@ -32,6 +33,7 @@ fun KoinApplication.appModules() = modules(
             domainModule,
             favoriteCharactersModule,
             favoriteLocationsModule,
+            favoriteEpisodesModule,
         ),
     ).flatten(),
 )

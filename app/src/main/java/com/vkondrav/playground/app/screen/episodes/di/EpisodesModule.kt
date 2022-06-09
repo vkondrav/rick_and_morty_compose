@@ -2,7 +2,7 @@ package com.vkondrav.playground.app.screen.episodes.di
 
 import com.vkondrav.playground.app.screen.episodes.usecase.AddEpisodeToFavoritesUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.FetchEpisodesUseCase
-import com.vkondrav.playground.app.screen.episodes.usecase.HandleEpisodeFavoritesUseCase
+import com.vkondrav.playground.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
 import com.vkondrav.playground.app.screen.episodes.usecase.EpisodeViewItemsConstructor
@@ -39,7 +39,7 @@ val episodesModule = module {
         )
     }
     factory {
-        HandleEpisodeFavoritesUseCase(
+        HandleEpisodeFavoriteUseCase(
             addEpisodeToFavoriteUseCase = get(),
             removeEpisodeFromFavoritesUseCase = get(),
         )
@@ -47,7 +47,7 @@ val episodesModule = module {
     factory {
         EpisodeViewItemsConstructor(
             navigateToEpisodeDetailsUseCase = get(),
-            handleEpisodeFavoritesUseCase = get(),
+            handleEpisodeFavoriteUseCase = get(),
         )
     }
     factory {

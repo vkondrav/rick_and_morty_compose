@@ -6,7 +6,7 @@ import com.vkondrav.playground.domain.RamEpisode
 
 class EpisodeViewItemsConstructor(
     private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,
-    private val handleEpisodeFavoritesUseCase: HandleEpisodeFavoritesUseCase,
+    private val handleEpisodeFavoriteUseCase: HandleEpisodeFavoriteUseCase,
 ) {
 
     operator fun invoke(episode: RamEpisode): ComposableItem = episode.viewItem
@@ -24,7 +24,7 @@ class EpisodeViewItemsConstructor(
                 )
             },
             onFavoriteAction = { isFavorite ->
-                handleEpisodeFavoritesUseCase(isFavorite, episode = this)
+                handleEpisodeFavoriteUseCase(this, isFavorite)
             },
         )
 }
