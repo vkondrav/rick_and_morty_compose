@@ -1,4 +1,4 @@
-rootProject.name = "Playground"
+rootProject.name = "Rick and Morty Compose"
 include(":app")
 include(":graphql_ram")
 include(":apollo")

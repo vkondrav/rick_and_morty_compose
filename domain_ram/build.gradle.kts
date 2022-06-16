@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.playground.domain"
+    namespace = "com.vkondrav.ram.domain"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools

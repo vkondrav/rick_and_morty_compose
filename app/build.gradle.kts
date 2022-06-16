@@ -12,7 +12,7 @@ android {
     buildToolsVersion = Build.buildTools
 
     defaultConfig {
-        applicationId = "com.vkondrav.playground.app"
+        applicationId = "com.vkondrav.ram.app"
 
         minSdk = Build.minSkd
         targetSdk = Build.targetSdk

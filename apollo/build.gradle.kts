@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.playground.apollo"
+    namespace = "com.vkondrav.ram.apollo"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools

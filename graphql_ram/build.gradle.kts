@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.playground.graphql.ram"
+    namespace = "com.vkondrav.ram.graphql.ram"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
