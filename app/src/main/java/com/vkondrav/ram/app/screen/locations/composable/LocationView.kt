@@ -93,7 +93,7 @@ private fun PreviewItem(isFavorite: Boolean) {
 @Preview
 @Composable
 private fun PreviewDark() {
-    DlsTheme(colors = dlsDarkColorPalette()) {
+    DlsTheme(colors = dlsDarkColorPalette) {
         PreviewItem(isFavorite = true)
     }
 }
@@ -101,7 +101,7 @@ private fun PreviewDark() {
 @Preview
 @Composable
 private fun PreviewLight() {
-    DlsTheme(colors = dlsLightColorPalette()) {
+    DlsTheme(colors = dlsLightColorPalette) {
         PreviewItem(isFavorite = false)
     }
 }

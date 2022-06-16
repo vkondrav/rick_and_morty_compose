@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.episodes.usecase
 
-import com.vkondrav.ram.app.common.state.AppState
+import androidx.compose.material.SnackbarHostState
 import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.room.ram.FavoriteEpisodesDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveEpisodeFromFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val appState: AppState,
+    private val snackbarHostState: SnackbarHostState,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -22,12 +22,11 @@ class RemoveEpisodeFromFavoritesUseCase(
     operator fun invoke(episode: RamEpisode) {
         launch {
             favoriteEpisodesDao.delete(episode.id)
-            appState.showSnackbar("${episode.title} added to favorites")
+            snackbarHostState.showSnackbar("${episode.title} added to favorites")
         }
     }
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
-        appState.showSnackbar(throwable.message ?: "unknown error has occurred")
     }
 }

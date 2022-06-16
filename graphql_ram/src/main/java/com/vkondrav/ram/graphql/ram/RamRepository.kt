@@ -1,8 +1,8 @@
 package com.vkondrav.ram.graphql.ram
 
 import com.apollographql.apollo3.exception.ApolloException
-import com.vkondrav.apollo.Service
-import com.vkondrav.apollo.dataOrThrow
+import com.vkondrav.ram.apollo.Service
+import com.vkondrav.ram.apollo.dataOrThrow
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
 import com.vkondrav.graphql.ram.CharactersQuery
 import com.vkondrav.graphql.ram.EpisodeDetailsQuery

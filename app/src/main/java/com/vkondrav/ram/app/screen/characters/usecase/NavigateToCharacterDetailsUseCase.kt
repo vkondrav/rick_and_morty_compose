@@ -1,13 +1,13 @@
 package com.vkondrav.ram.app.screen.characters.usecase
 
-import com.vkondrav.ram.app.common.state.AppState
+import androidx.navigation.NavController
 import com.vkondrav.ram.app.screen.character_details.nav.toCharacterDetailsScreen
 
 class NavigateToCharacterDetailsUseCase(
-    private val appState: AppState,
+    private val navController: NavController,
 ) {
     operator fun invoke(id: String, title: String) {
-        appState.navigate(
+        navController.navigate(
             toCharacterDetailsScreen(
                 id,
                 title,

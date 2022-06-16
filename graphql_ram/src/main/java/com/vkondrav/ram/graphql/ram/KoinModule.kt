@@ -1,7 +1,7 @@
 package com.vkondrav.ram.graphql.ram
 
-import com.vkondrav.apollo.SERVER_URL
-import com.vkondrav.apollo.apolloModule
+import com.vkondrav.ram.apollo.SERVER_URL
+import com.vkondrav.ram.apollo.apolloModule
 import org.koin.dsl.module
 
 val ramModule = module {

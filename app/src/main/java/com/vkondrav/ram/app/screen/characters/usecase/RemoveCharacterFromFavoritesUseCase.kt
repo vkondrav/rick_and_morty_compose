@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.characters.usecase
 
-import com.vkondrav.ram.app.common.state.AppState
+import androidx.compose.material.SnackbarHostState
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.ram.FavoriteCharactersDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveCharacterFromFavoritesUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val appState: AppState,
+    private val snackbarHostState: SnackbarHostState,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,7 +24,7 @@ class RemoveCharacterFromFavoritesUseCase(
     ) {
         launch {
             favoriteCharactersDao.delete(character.id)
-            appState.showSnackbar("${character.name} removed from favorites")
+            snackbarHostState.showSnackbar("${character.name} removed from favorites")
         }
     }
 

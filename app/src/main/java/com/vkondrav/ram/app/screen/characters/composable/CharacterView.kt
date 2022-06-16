@@ -105,7 +105,7 @@ private fun PreviewItem() {
 @Composable
 private fun PreviewDark() {
     DlsTheme(
-        colors = dlsDarkColorPalette(),
+        colors = dlsDarkColorPalette,
     ) {
         PreviewItem()
     }
@@ -115,7 +115,7 @@ private fun PreviewDark() {
 @Composable
 private fun PreviewLight() {
     DlsTheme(
-        colors = dlsLightColorPalette(),
+        colors = dlsLightColorPalette,
     ) {
         PreviewItem()
     }

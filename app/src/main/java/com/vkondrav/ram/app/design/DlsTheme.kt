@@ -9,7 +9,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 @Composable
 fun DlsTheme(
-    colors: DlsColorPalette = dlsDarkColorPalette(),
+    colors: DlsColorPalette = dlsDarkColorPalette,
     typography: DlsTypography = DlsTypography(),
     children: @Composable (PaddingValues) -> Unit,
 ) {
@@ -43,5 +43,5 @@ object DlsTheme {
         get() = DlsSize()
 }
 
-internal val LocalDlsColors = staticCompositionLocalOf { dlsLightColorPalette() }
+internal val LocalDlsColors = staticCompositionLocalOf { dlsLightColorPalette }
 internal val LocalDlsTypography = staticCompositionLocalOf { DlsTypography() }

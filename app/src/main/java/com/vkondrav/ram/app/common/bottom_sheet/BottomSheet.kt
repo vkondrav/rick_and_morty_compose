@@ -26,24 +26,22 @@ import com.vkondrav.ram.app.tabs.composable.FavoriteTabsScreen
 
 @Composable
 fun BottomSheet(
-    bottomSheetState: BottomSheetScaffoldState,
+    bottomSheetScaffoldState: BottomSheetScaffoldState,
     themeState: ThemeState,
     content: @Composable (PaddingValues) -> Unit,
 ) {
-    val isThemeDark = themeState.isThemeDark.value
-
     DlsTheme(
-        colors = when (isThemeDark) {
-            true -> dlsLightColorPalette()
-            false -> dlsDarkColorPalette()
+        colors = when (themeState.isThemeDark.value) {
+            true -> dlsLightColorPalette
+            false -> dlsDarkColorPalette
         },
     ) {
         BottomSheetScaffold(
-            backgroundColor = when (isThemeDark) {
+            backgroundColor = when (themeState.isThemeDark.value) {
                 true -> DlsColors.backgroundReverse
                 false -> DlsColors.background
             },
-            scaffoldState = bottomSheetState,
+            scaffoldState = bottomSheetScaffoldState,
             sheetContent = {
                 Column(
                     modifier = Modifier
@@ -70,9 +68,9 @@ fun BottomSheet(
             sheetPeekHeight = PEEK_HEIGHT,
             content = {
                 DlsTheme(
-                    colors = when (isThemeDark) {
-                        true -> dlsDarkColorPalette()
-                        false -> dlsLightColorPalette()
+                    colors = when (themeState.isThemeDark.value) {
+                        true -> dlsDarkColorPalette
+                        false -> dlsLightColorPalette
                     },
                     children = content,
                 )

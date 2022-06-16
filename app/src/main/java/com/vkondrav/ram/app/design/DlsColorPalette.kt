@@ -22,7 +22,7 @@ interface DlsColorPalette {
     val materialColors: Colors
 }
 
-fun dlsLightColorPalette(): DlsColorPalette = object : DlsColorPalette {
+val dlsLightColorPalette: DlsColorPalette get() = object : DlsColorPalette {
     override val primary: Color = DlsColors.primary
     override val background: Color = DlsColors.background
     override val basic: Color = DlsColors.basic
@@ -45,7 +45,7 @@ fun dlsLightColorPalette(): DlsColorPalette = object : DlsColorPalette {
     )
 }
 
-fun dlsDarkColorPalette(): DlsColorPalette = object : DlsColorPalette {
+val dlsDarkColorPalette: DlsColorPalette get() = object : DlsColorPalette {
     override val primary: Color = DlsColors.primary
     override val background: Color = DlsColors.backgroundReverse
     override val basic: Color = DlsColors.basic

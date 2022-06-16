@@ -1,4 +1,4 @@
-package com.vkondrav.apollo
+package com.vkondrav.ram.apollo
 
 import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.exception.ApolloException
