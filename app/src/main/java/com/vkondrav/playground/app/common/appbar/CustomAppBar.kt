@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.vkondrav.playground.app.common.navigation.title
 import com.vkondrav.playground.app.common.state.AppState
+import com.vkondrav.playground.app.common.utils.TextResource
 import org.koin.androidx.compose.get
 
 @Composable
@@ -21,11 +22,11 @@ fun CustomAppBar(navController: NavController) {
         .currentBackStackEntryAsState()
         .let { state ->
 
-            val title = state.value?.arguments?.title ?: ""
+            val title = state.value?.arguments?.title ?: TextResource.Literal("")
 
             BackStackEntryState(
                 showBackButton = navController.backQueue.size > 2,
-                title = title,
+                title = title.string(),
             )
         }
 

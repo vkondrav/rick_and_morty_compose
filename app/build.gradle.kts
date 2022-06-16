@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     application()
     kotlin()
+    parcelize()
 }
 
 android {
