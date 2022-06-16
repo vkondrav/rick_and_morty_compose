@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.design
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -10,7 +11,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 fun DlsTheme(
     colors: DlsColorPalette = dlsDarkColorPalette(),
     typography: DlsTypography = DlsTypography(),
-    children: @Composable () -> Unit,
+    children: @Composable (PaddingValues) -> Unit,
 ) {
     CompositionLocalProvider(
         LocalDlsColors provides colors,
@@ -20,7 +21,7 @@ fun DlsTheme(
             colors = colors.materialColors,
             typography = typography.materialTypography,
         ) {
-            children()
+            children(PaddingValues())
         }
     }
 }

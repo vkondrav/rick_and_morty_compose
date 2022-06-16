@@ -1,6 +1,7 @@
 package com.vkondrav.playground.app.tabs.composable
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
@@ -36,6 +37,7 @@ fun FavoriteTabsScreen() {
     Column {
         TabRow(
             selectedTabIndex = tabIndex,
+            backgroundColor = MaterialTheme.colors.background,
             indicator = { tabPositions ->
                 TabRowDefaults.Indicator(
                     Modifier.pagerTabIndicatorOffset(

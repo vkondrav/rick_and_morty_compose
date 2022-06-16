@@ -17,42 +17,68 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vkondrav.playground.app.R
+import com.vkondrav.playground.app.design.DlsColors
 import com.vkondrav.playground.app.design.DlsTheme
+import com.vkondrav.playground.app.design.dlsDarkColorPalette
+import com.vkondrav.playground.app.design.dlsLightColorPalette
+import com.vkondrav.playground.app.design.ThemeState
 import com.vkondrav.playground.app.tabs.composable.FavoriteTabsScreen
 
 @Composable
 fun BottomSheet(
     bottomSheetState: BottomSheetScaffoldState,
+    themeState: ThemeState,
     content: @Composable (PaddingValues) -> Unit,
 ) {
-    BottomSheetScaffold(
-        scaffoldState = bottomSheetState,
-        sheetContent = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(MAX_SHEET_HEIGHT),
-            ) {
-                Icon(
-                    imageVector = Icons.Default.DragHandle,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally),
-                )
-                Text(
-                    text = stringResource(id = R.string.favorites),
-                    style = DlsTheme.typography.headline5,
-                    color = DlsTheme.colors.text,
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally),
-                )
-                FavoriteTabsScreen()
-            }
+    val isThemeDark = themeState.isThemeDark.value
+
+    DlsTheme(
+        colors = when (isThemeDark) {
+            true -> dlsLightColorPalette()
+            false -> dlsDarkColorPalette()
         },
-        sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
-        sheetPeekHeight = PEEK_HEIGHT,
-        content = content,
-    )
+    ) {
+        BottomSheetScaffold(
+            backgroundColor = when (isThemeDark) {
+                true -> DlsColors.backgroundReverse
+                false -> DlsColors.background
+            },
+            scaffoldState = bottomSheetState,
+            sheetContent = {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(MAX_SHEET_HEIGHT),
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.DragHandle,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally),
+                    )
+                    Text(
+                        text = stringResource(id = R.string.favorites),
+                        style = DlsTheme.typography.headline5,
+                        color = DlsTheme.colors.text,
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally),
+                    )
+                    FavoriteTabsScreen()
+                }
+            },
+            sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
+            sheetPeekHeight = PEEK_HEIGHT,
+            content = {
+                DlsTheme(
+                    colors = when (isThemeDark) {
+                        true -> dlsDarkColorPalette()
+                        false -> dlsLightColorPalette()
+                    },
+                    children = content,
+                )
+            },
+        )
+    }
 }
 
 private val MAX_SHEET_HEIGHT = 300.dp

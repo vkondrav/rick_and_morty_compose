@@ -9,7 +9,9 @@ val roomModule = module {
             get(),
             AppDatabase::class.java,
             "ram_database",
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigrationOnDowngrade()
+            .build()
     }
     factory {
         get<AppDatabase>().favoriteCharactersDao()

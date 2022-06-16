@@ -1,23 +1,30 @@
 package com.vkondrav.playground.app.common.appbar
 
+import androidx.compose.material.DrawerState
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.vkondrav.playground.app.common.navigation.title
-import com.vkondrav.playground.app.common.state.AppState
 import com.vkondrav.playground.app.common.utils.TextResource
-import org.koin.androidx.compose.get
+import com.vkondrav.playground.app.design.ThemeState
+import kotlinx.coroutines.launch
 
 @Composable
-fun CustomAppBar(navController: NavController) {
-    val appState: AppState = get()
+fun CustomAppBar(
+    navController: NavController,
+    themeState: ThemeState,
+    drawerState: DrawerState,
+) {
     val backStackEntryState = navController
         .currentBackStackEntryAsState()
         .let { state ->
@@ -40,19 +47,35 @@ fun CustomAppBar(navController: NavController) {
             if (backStackEntryState.showBackButton) {
                 IconButton(
                     onClick = {
-                        appState.navigateBack()
+                        navController.popBackStack()
                     },
                 ) {
                     Icon(Icons.Default.ArrowBack, "Back")
                 }
             } else {
+                val coroutineScope = rememberCoroutineScope()
                 IconButton(
                     onClick = {
-                        appState.openDrawer()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     },
                 ) {
                     Icon(Icons.Default.Menu, "Menu")
                 }
+            }
+        },
+        actions = {
+            IconButton(
+                onClick = {
+                    themeState.toggleTheme()
+                },
+            ) {
+                val icon = when (themeState.isThemeDark.value) {
+                    true -> Icons.Default.LightMode
+                    false -> Icons.Default.DarkMode
+                }
+                Icon(icon, null)
             }
         },
     )

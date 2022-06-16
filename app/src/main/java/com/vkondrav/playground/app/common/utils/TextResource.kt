@@ -11,6 +11,7 @@ sealed class TextResource: Parcelable {
 
     @Parcelize
     data class Literal(val source: String): TextResource()
+
     @Parcelize
     data class Resource(@StringRes val source: Int): TextResource()
 

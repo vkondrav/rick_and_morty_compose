@@ -1,5 +1,6 @@
 package com.vkondrav.playground.app.screen.main
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,9 @@ import com.vkondrav.playground.app.common.bottom_sheet.BottomSheet
 import com.vkondrav.playground.app.common.navigation.defineGraph
 import com.vkondrav.playground.app.common.state.LoadAppStateIntoKoin
 import com.vkondrav.playground.app.design.DlsTheme
+import com.vkondrav.playground.app.design.ThemeState
+import com.vkondrav.playground.app.design.dlsDarkColorPalette
+import com.vkondrav.playground.app.design.dlsLightColorPalette
 import com.vkondrav.playground.app.screen.characters.nav.charactersScreen
 import com.vkondrav.playground.app.screen.drawer.composable.CustomDrawer
 import com.vkondrav.playground.app.snackbar.SnackbarHost
@@ -29,6 +33,9 @@ fun MainActivityScreen() {
     val snackbarHostState = remember { SnackbarHostState() }
     val bottomSheetState = rememberBottomSheetScaffoldState()
 
+    val isThemeDark = isSystemInDarkTheme()
+    val themeState = remember { ThemeState(isThemeDark) }
+
     val drawerState = rememberDrawerState(
         initialValue = DrawerValue.Closed,
     )
@@ -37,19 +44,22 @@ fun MainActivityScreen() {
         navController,
         snackbarHostState,
         drawerState,
-        bottomSheetState,
     )
 
-    DlsTheme {
+    DlsTheme(
+        colors = when (themeState.isThemeDark.value) {
+            true -> dlsDarkColorPalette()
+            false -> dlsLightColorPalette()
+        },
+    ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = DlsTheme.colors.background,
         ) {
             CustomDrawer(drawerState) {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    BottomSheet(bottomSheetState) {
+                    BottomSheet(bottomSheetState, themeState) {
                         Column {
-                            CustomAppBar(navController)
+                            CustomAppBar(navController, themeState, drawerState)
                             AnimatedNavHost(
                                 navController = navController,
                                 startDestination = charactersScreen.route,
