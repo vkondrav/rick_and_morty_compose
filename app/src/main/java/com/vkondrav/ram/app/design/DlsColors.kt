@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 
 @SuppressWarnings("MagicNumber")
 object DlsColors {
-    val primary = Color(0xFF3366FF)
-    val background = Color(0xFFFFFFFF)
+    val primary = Color(0xFF607d8b)
+    val background = Color(0xFFeceff1)
     val backgroundReverse = Color(0xFF192038)
     val basic = Color(0xFF8F9BB3)
     val disable = basic.copy(alpha = 0.24f)
