@@ -30,4 +30,16 @@ object TestLibs {
         private const val version = "2.9.1"
         const val core = "com.squareup.leakcanary:leakcanary-android:$version"
     }
+
+    object Apollo {
+        private const val version = Libs.Apollo.version
+        private const val base = Libs.Apollo.base
+
+        const val mockServer = "$base:apollo-mockserver:$version"
+    }
+
+    object Coroutines {
+        private const val version = "1.6.2"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+    }
 }

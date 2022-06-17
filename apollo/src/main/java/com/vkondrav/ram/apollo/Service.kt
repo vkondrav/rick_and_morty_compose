@@ -7,29 +7,18 @@ import com.apollographql.apollo3.cache.normalized.FetchPolicy
 import com.apollographql.apollo3.cache.normalized.fetchPolicy
 import kotlinx.coroutines.flow.Flow
 
-interface Service {
+class Service(private val client: ApolloClient) {
+
     suspend fun <D : Query.Data> query(
         query: Query<D>,
         fetchPolicy: FetchPolicy = FetchPolicy.CacheAndNetwork,
-    ): ApolloResponse<D>
-
-    fun <D : Query.Data> queryAsFlow(
-        query: Query<D>,
-        fetchPolicy: FetchPolicy = FetchPolicy.CacheAndNetwork,
-    ): Flow<ApolloResponse<D>>
-}
-
-internal class ServiceImpl(private val client: ApolloClient) : Service {
-    override suspend fun <D : Query.Data> query(
-        query: Query<D>,
-        fetchPolicy: FetchPolicy,
     ) = client.query(query)
             .fetchPolicy(fetchPolicy)
             .execute()
 
-    override fun <D : Query.Data> queryAsFlow(
+    fun <D : Query.Data> queryAsFlow(
         query: Query<D>,
-        fetchPolicy: FetchPolicy,
+        fetchPolicy: FetchPolicy = FetchPolicy.CacheAndNetwork,
     ): Flow<ApolloResponse<D>> = client.query(query)
         .fetchPolicy(fetchPolicy)
         .toFlow()

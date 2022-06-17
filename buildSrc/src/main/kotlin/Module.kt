@@ -4,4 +4,5 @@ object Module {
     const val graphqlRam = ":graphql_ram"
     const val roomRam = ":room_ram"
     const val domainRam = ":domain_ram"
+    const val commonTest = ":common-test"
 }

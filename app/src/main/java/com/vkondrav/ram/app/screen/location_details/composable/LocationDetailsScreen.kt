@@ -10,12 +10,9 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun LocationDetailsScreen(
     id: String,
+    viewModel: LocationDetailsViewModel = getViewModel { parametersOf(id) },
 ) {
-    BaseStateScreen(
-        viewModel = getViewModel<LocationDetailsViewModel> {
-            parametersOf(id)
-        },
-    )
+    BaseStateScreen(viewModel)
 }
 
 @Preview

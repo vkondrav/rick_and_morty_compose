@@ -1,4 +1,3 @@
-
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -115,7 +114,6 @@ dependencies {
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
-
 
     implementation(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.navMaterial)

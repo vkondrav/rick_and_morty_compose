@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app
+package com.vkondrav.ram.test
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.SemanticsNodeInteraction
@@ -11,7 +11,8 @@ import org.robolectric.annotation.Config
 
 @Config(application = TestApplication::class)
 @RunWith(RobolectricTestRunner::class)
-open class BaseRobolectricTest {
+abstract class BaseRobolectricTest: BaseTest() {
+
     @get:Rule
     val composeTestRule = createComposeRule()
 

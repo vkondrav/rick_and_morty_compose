@@ -9,14 +9,14 @@ val apolloModule = module {
     factory<NormalizedCacheFactory> {
         MemoryCacheFactory(maxSizeBytes = CACHE_SIZE_BYTES)
     }
-    factory<Client> {
-        ClientImpl(
+    factory {
+        Client(
             serverUrl = get(SERVER_URL),
             cache = get(),
         )
     }
-    single<Service> {
-        ServiceImpl(
+    single {
+        Service(
             client = get<Client>().build(),
         )
     }

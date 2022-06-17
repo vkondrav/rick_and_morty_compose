@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     library()
     kotlin()
 }
 
 android {
-    namespace = "com.vkondrav.ram.apollo"
+    namespace = "com.vkondrav.ram.test"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -43,28 +41,13 @@ android {
     lint {
         warningsAsErrors = true
     }
-
-    tasks.withType<KotlinCompile> {
-
-        val optIns = listOf(
-            "kotlinx.coroutines.ExperimentalCoroutinesApi",
-        ).joinToString(separator = ",")
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
-    }
 }
 
 dependencies {
 
-    api(Libs.Apollo.runtime)
-    api(Libs.Apollo.cache)
-    api(Libs.Koin.core)
-
-    testImplementation(project(Module.commonTest))
-
-    testImplementation(TestLibs.JUnit.core)
-    testImplementation(TestLibs.Apollo.mockServer)
-    testImplementation(TestLibs.Coroutines.core)
-    testImplementation(TestLibs.Kotest.assertions)
-    testImplementation(TestLibs.Mockito.core)
+    implementation(TestLibs.JUnit.core)
+    implementation(TestLibs.Compose.jUnit)
+    implementation(TestLibs.Robolectric.core)
+    implementation(TestLibs.Mockito.core)
+    implementation(TestLibs.Kotest.assertions)
 }

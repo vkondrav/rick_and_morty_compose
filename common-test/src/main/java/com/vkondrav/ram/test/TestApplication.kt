@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app
+package com.vkondrav.ram.test
 
 import android.app.Application
 
