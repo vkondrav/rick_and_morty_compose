@@ -79,6 +79,7 @@ captures/
 # IntelliJ
 *.iml
 .idea/*
+!.idea/runConfigurations/
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
