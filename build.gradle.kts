@@ -1,5 +1,6 @@
 plugins {
     detekt()
+    kover()
 }
 
 apply(plugin = Plugins.DependencyUpdate.plugin)

@@ -95,4 +95,9 @@ object Libs {
         const val version = "$kotlinVersion-1.0.5"
         const val base = "com.google.devtools.ksp"
     }
+
+    object Kover {
+        const val version = "0.5.0"
+        const val base = "org.jetbrains.kotlinx.kover"
+    }
 }
