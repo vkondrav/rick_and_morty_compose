@@ -8,3 +8,11 @@ query CharactersQuery($page: Int!) {
         }
     }
 }
+
+query FakeQuery {
+    characters {
+        info {
+            count
+        }
+    }
+}

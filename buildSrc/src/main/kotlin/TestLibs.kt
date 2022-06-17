@@ -42,4 +42,9 @@ object TestLibs {
         private const val version = "1.6.2"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
     }
+
+    object Turbine {
+        private const val version = "0.8.0"
+        const val core = "app.cash.turbine:turbine:$version"
+    }
 }

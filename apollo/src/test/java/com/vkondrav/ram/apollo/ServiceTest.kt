@@ -1,10 +1,6 @@
 package com.vkondrav.ram.apollo
 
-import com.apollographql.apollo3.api.Adapter
-import com.apollographql.apollo3.api.CompiledField
-import com.apollographql.apollo3.api.CustomScalarAdapters
-import com.apollographql.apollo3.api.Query
-import com.apollographql.apollo3.api.json.JsonWriter
+import app.cash.turbine.test
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.mockserver.MockResponse
 import com.apollographql.apollo3.mockserver.MockServer
@@ -14,9 +10,13 @@ import org.junit.Before
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Test
-import org.mockito.kotlin.mock
 
+/**
+ * these test are written with fake graphql objects so this test is never affected by
+ * any changes to actual queries/fragments
+ */
 class ServiceTest : BaseTest() {
+
     private lateinit var mockServer: MockServer
     private lateinit var client: Client
     private lateinit var subject: Service
@@ -34,43 +34,50 @@ class ServiceTest : BaseTest() {
     }
 
     @Test
-    fun `verify basic test`() = runTest {
+    fun `verify a basic query is executed with the correct value parsed`() = runTest {
         mockServer.enqueue(
             MockResponse(
-                body = """
-                { "data: { "id": "id_1" } }
-                """.trimIndent()
-            )
+                body =
+                """
+                {
+                  "data": {
+                    "fake_node": {
+                      "fake_object": {
+                        "fake_value": 117
+                      }
+                    }
+                  }
+                }
+                """,
+            ),
         )
 
-        subject.query(FakeQuery("id_1")).data?.id shouldBe "id_1"
+        subject.query(FakeQuery()).dataOrThrow.fakeNode?.fakeObject?.fakeValue shouldBe 117
     }
 
-    private data class FakeQuery(val id: String) : Query<FakeQuery.Data> {
+    @Test
+    fun `verify a basic flow query is executed with the correct value parsed`() = runTest {
+        mockServer.enqueue(
+            MockResponse(
+                body =
+                """
+                {
+                  "data": {
+                    "fake_node": {
+                      "fake_object": {
+                        "fake_value": 117
+                      }
+                    }
+                  }
+                }
+                """,
+            ),
+        )
 
-        data class Data(
-            val id: String?,
-        ) : Query.Data
-
-        override fun adapter(): Adapter<Data> {
-            TODO("Not yet implemented")
-        }
-
-        override fun document(): String = "fake_query_document"
-
-        override fun id(): String = "fake_query_id"
-
-        override fun name(): String = "fake_query_name"
-
-        override fun rootField(): CompiledField {
-            return mock()
-        }
-
-        override fun serializeVariables(
-            writer: JsonWriter,
-            customScalarAdapters: CustomScalarAdapters
-        ) {
-
+        subject.queryAsFlow(FakeQuery()).test {
+            awaitItem().dataOrThrow.fakeNode?.fakeObject?.fakeValue shouldBe 117
+            awaitComplete()
         }
     }
 }
+
