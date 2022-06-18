@@ -42,4 +42,12 @@ object TestLibs {
         private const val version = "0.8.0"
         const val core = "app.cash.turbine:turbine:$version"
     }
+
+    object Koin {
+
+        private const val base = Libs.Koin.base
+        private const val version = Libs.Koin.version
+
+        const val core = "$base:koin-test:$version"
+    }
 }

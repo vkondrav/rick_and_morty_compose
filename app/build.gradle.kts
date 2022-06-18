@@ -127,11 +127,13 @@ dependencies {
 
     implementation(Libs.Coil.core)
 
+    testImplementation(project(Module.commonTest))
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.Compose.jUnit)
     testImplementation(TestLibs.Mockito.core)
     testImplementation(TestLibs.Kotest.assertions)
+    testImplementation(TestLibs.Koin.core)
 
     testApi(project(Module.apollo))
 
