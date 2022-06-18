@@ -1,7 +1,7 @@
 object Module {
     const val app = ":app"
     const val apollo = ":apollo"
-    const val graphqlRam = ":graphql_ram"
+    const val graphqlRam = ":graphql"
     const val roomRam = ":room_ram"
     const val domainRam = ":domain_ram"
     const val commonTest = ":common-test"

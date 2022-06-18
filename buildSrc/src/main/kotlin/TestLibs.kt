@@ -26,11 +26,6 @@ object TestLibs {
         const val assertions = "io.kotest:kotest-assertions-core:$version"
     }
 
-    object LeakCanary {
-        private const val version = "2.9.1"
-        const val core = "com.squareup.leakcanary:leakcanary-android:$version"
-    }
-
     object Apollo {
         private const val version = Libs.Apollo.version
         private const val base = Libs.Apollo.base

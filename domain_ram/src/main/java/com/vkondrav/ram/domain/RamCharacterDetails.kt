@@ -1,7 +1,7 @@
 package com.vkondrav.ram.domain
 
 import com.vkondrav.graphql.ram.CharacterDetailsQuery
-import com.vkondrav.ram.graphql.ram.error.InvalidDataException
+import com.vkondrav.ram.graphql.error.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 

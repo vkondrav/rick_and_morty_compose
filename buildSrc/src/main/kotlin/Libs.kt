@@ -72,12 +72,6 @@ object Libs {
         const val core = "com.jakewharton.timber:timber:$version"
     }
 
-    object Detekt {
-        const val version = "1.21.0-RC1"
-        const val base = "io.gitlab.arturbosch.detekt"
-        const val formatting = "$base:detekt-formatting:$version"
-    }
-
     object Coil {
         private const val version = "2.1.0"
         const val core = "io.coil-kt:coil-compose:$version"
@@ -89,15 +83,5 @@ object Libs {
         const val runtime = "${base}room-runtime:$version"
         const val compiler = "${base}room-compiler:$version"
         const val ktx = "${base}room-ktx:$version"
-    }
-
-    object Ksp {
-        const val version = "$kotlinVersion-1.0.5"
-        const val base = "com.google.devtools.ksp"
-    }
-
-    object Kover {
-        const val version = "0.5.0"
-        const val base = "org.jetbrains.kotlinx.kover"
     }
 }

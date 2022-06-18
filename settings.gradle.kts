@@ -1,6 +1,6 @@
 rootProject.name = "Rick and Morty Compose"
 include(":app")
-include(":graphql_ram")
+include(":graphql")
 include(":apollo")
 include(":room_ram")
 include(":domain_ram")

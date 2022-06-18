@@ -136,5 +136,5 @@ dependencies {
     testApi(project(Module.apollo))
 
     debugImplementation(TestLibs.Compose.manifest)
-    debugImplementation(TestLibs.LeakCanary.core)
+    debugImplementation(SupportLibs.LeakCanary.core)
 }

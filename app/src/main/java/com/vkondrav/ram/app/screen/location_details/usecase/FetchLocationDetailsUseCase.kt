@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.screen.location_details.usecase
 
 import com.vkondrav.ram.domain.RamLocationDetails
-import com.vkondrav.ram.graphql.ram.RamRepository
+import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.room.ram.FavoriteCharactersDao
 import com.vkondrav.ram.room.ram.FavoriteLocationsDao
 import com.vkondrav.ram.room.ram.mapToSet

@@ -1,7 +1,7 @@
 package com.vkondrav.ram.domain
 
 import com.vkondrav.graphql.ram.fragment.LocationFragment
-import com.vkondrav.ram.graphql.ram.error.InvalidDataException
+import com.vkondrav.ram.graphql.error.InvalidDataException
 import com.vkondrav.ram.room.ram.FavoriteLocation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged

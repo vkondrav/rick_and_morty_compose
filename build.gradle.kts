@@ -20,7 +20,7 @@ buildscript {
 }
 
 allprojects {
-    apply(plugin = Libs.Detekt.base)
+    apply(plugin = SupportLibs.Detekt.base)
 
     repositories {
         google()
@@ -36,7 +36,7 @@ allprojects {
     }
 
     dependencies {
-        detektPlugins(Libs.Detekt.formatting)
+        detektPlugins(SupportLibs.Detekt.formatting)
     }
 }
 

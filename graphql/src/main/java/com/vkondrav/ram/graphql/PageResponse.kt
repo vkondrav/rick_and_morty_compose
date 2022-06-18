@@ -1,4 +1,4 @@
-package com.vkondrav.ram.graphql.ram
+package com.vkondrav.ram.graphql
 
 import com.apollographql.apollo3.api.Fragment
 import com.vkondrav.graphql.ram.fragment.InfoFragment

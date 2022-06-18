@@ -1,4 +1,4 @@
-package com.vkondrav.ram.graphql.ram
+package com.vkondrav.ram.graphql
 
 import com.apollographql.apollo3.exception.ApolloException
 import com.vkondrav.ram.apollo.Service
@@ -16,22 +16,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 
-interface RamRepository {
-
-    suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment>
-    suspend fun fetchLocations(page: Int): PageResponse<LocationFragment>
-    suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment>
-
-    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
-    fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location>
-    fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
-
-}
-
-internal class RamRepositoryImp(private val service: Service) : RamRepository {
+class RamRepository(private val service: Service) {
 
     @Throws(ApolloException::class)
-    override suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment> {
+    suspend fun fetchCharacters(page: Int): PageResponse<CharacterFragment> {
         val query = CharactersQuery(page)
         val response = service.query(query)
             .dataOrThrow
@@ -53,13 +41,13 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
+    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
         = service.queryAsFlow(CharacterDetailsQuery(id))
             .map { it.dataOrThrow.character }
             .filterNotNull()
 
     @Throws(ApolloException::class)
-    override suspend fun fetchLocations(page: Int): PageResponse<LocationFragment> {
+    suspend fun fetchLocations(page: Int): PageResponse<LocationFragment> {
         val query = LocationsQuery(page)
         val response = service.query(query)
             .dataOrThrow
@@ -81,12 +69,13 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location>
+    fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location>
         = service.queryAsFlow(LocationDetailsQuery(id))
             .map { it.dataOrThrow.location }
             .filterNotNull()
 
-    override suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment> {
+    @Throws(ApolloException::class)
+    suspend fun fetchEpisodes(page: Int): PageResponse<EpisodeFragment> {
         val query = EpisodesQuery(page)
 
         val response = service.query(query)
@@ -109,7 +98,7 @@ internal class RamRepositoryImp(private val service: Service) : RamRepository {
     }
 
     @Throws(ApolloException::class)
-    override fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
+    fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
         = service.queryAsFlow(EpisodeDetailsQuery(id))
             .map { it.dataOrThrow.episode }
             .filterNotNull()

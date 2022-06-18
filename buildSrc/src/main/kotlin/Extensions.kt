@@ -11,13 +11,13 @@ fun org.gradle.plugin.use.PluginDependenciesSpec.apollo() =
     id(Libs.Apollo.base).version(Libs.Apollo.version)
 
 fun org.gradle.plugin.use.PluginDependenciesSpec.detekt() =
-    id(Libs.Detekt.base).version(Libs.Detekt.version)
+    id(SupportLibs.Detekt.base).version(SupportLibs.Detekt.version)
 
 fun org.gradle.plugin.use.PluginDependenciesSpec.ksp() =
-    id(Libs.Ksp.base).version(Libs.Ksp.version)
+    id(SupportLibs.Ksp.base).version(SupportLibs.Ksp.version)
 
 fun org.gradle.plugin.use.PluginDependenciesSpec.parcelize() = id("kotlin-parcelize")
 
 fun org.gradle.plugin.use.PluginDependenciesSpec.kover() =
-    id(Libs.Kover.base) version Libs.Kover.version
+    id(SupportLibs.Kover.base) version SupportLibs.Kover.version
 

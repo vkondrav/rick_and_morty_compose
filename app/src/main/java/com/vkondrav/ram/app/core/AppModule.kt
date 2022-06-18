@@ -12,7 +12,7 @@ import com.vkondrav.ram.app.screen.favorite_locations.di.favoriteLocationsModule
 import com.vkondrav.ram.app.screen.location_details.di.locationDetailsModule
 import com.vkondrav.ram.app.screen.locations.di.locationsModule
 import com.vkondrav.ram.domain.di.domainModule
-import com.vkondrav.ram.graphql.ram.ramModules
+import com.vkondrav.ram.graphql.ramModules
 import com.vkondrav.ram.room.ram.roomModule
 import org.koin.core.KoinApplication
 
