@@ -1,4 +1,4 @@
-package com.vkondrav.ram.room.ram
+package com.vkondrav.ram.room
 
 import androidx.room.Room
 import org.koin.dsl.module

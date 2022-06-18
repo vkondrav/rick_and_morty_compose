@@ -1,4 +1,4 @@
-package com.vkondrav.ram.room.ram
+package com.vkondrav.ram.room
 
 import androidx.room.Dao
 import androidx.room.Insert

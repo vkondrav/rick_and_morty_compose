@@ -1,4 +1,4 @@
-package com.vkondrav.ram.room.ram
+package com.vkondrav.ram.room
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

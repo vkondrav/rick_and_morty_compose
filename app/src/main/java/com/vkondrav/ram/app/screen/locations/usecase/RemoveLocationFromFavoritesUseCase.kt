@@ -2,7 +2,7 @@ package com.vkondrav.ram.app.screen.locations.usecase
 
 import androidx.compose.material.SnackbarHostState
 import com.vkondrav.ram.domain.RamLocation
-import com.vkondrav.ram.room.ram.FavoriteLocationsDao
+import com.vkondrav.ram.room.FavoriteLocationsDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope

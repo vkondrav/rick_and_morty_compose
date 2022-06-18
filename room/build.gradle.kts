@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.ram.room.ram"
+    namespace = "com.vkondrav.ram.room"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools

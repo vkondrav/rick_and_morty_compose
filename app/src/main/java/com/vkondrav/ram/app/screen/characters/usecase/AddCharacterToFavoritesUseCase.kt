@@ -2,8 +2,8 @@ package com.vkondrav.ram.app.screen.characters.usecase
 
 import androidx.compose.material.SnackbarHostState
 import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.room.ram.FavoriteCharacter
-import com.vkondrav.ram.room.ram.FavoriteCharactersDao
+import com.vkondrav.ram.room.FavoriteCharacter
+import com.vkondrav.ram.room.FavoriteCharactersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope

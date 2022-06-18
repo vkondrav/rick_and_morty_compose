@@ -5,8 +5,8 @@ import com.vkondrav.ram.app.screen.episodes.composable.EpisodeViewItem
 import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.domain.RamEpisode
-import com.vkondrav.ram.room.ram.FavoriteEpisode
-import com.vkondrav.ram.room.ram.FavoriteEpisodesDao
+import com.vkondrav.ram.room.FavoriteEpisode
+import com.vkondrav.ram.room.FavoriteEpisodesDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map

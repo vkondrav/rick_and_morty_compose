@@ -2,8 +2,8 @@ package com.vkondrav.ram.app.screen.episodes.usecase
 
 import androidx.compose.material.SnackbarHostState
 import com.vkondrav.ram.domain.RamEpisode
-import com.vkondrav.ram.room.ram.FavoriteEpisode
-import com.vkondrav.ram.room.ram.FavoriteEpisodesDao
+import com.vkondrav.ram.room.FavoriteEpisode
+import com.vkondrav.ram.room.FavoriteEpisodesDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope

@@ -2,9 +2,9 @@ package com.vkondrav.ram.app.screen.location_details.usecase
 
 import com.vkondrav.ram.domain.RamLocationDetails
 import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.room.ram.FavoriteCharactersDao
-import com.vkondrav.ram.room.ram.FavoriteLocationsDao
-import com.vkondrav.ram.room.ram.mapToSet
+import com.vkondrav.ram.room.FavoriteCharactersDao
+import com.vkondrav.ram.room.FavoriteLocationsDao
+import com.vkondrav.ram.room.mapToSet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

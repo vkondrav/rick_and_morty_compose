@@ -2,9 +2,9 @@ package com.vkondrav.ram.app.screen.episode_details.usecase
 
 import com.vkondrav.ram.domain.RamEpisodeDetails
 import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.room.ram.FavoriteCharactersDao
-import com.vkondrav.ram.room.ram.FavoriteEpisodesDao
-import com.vkondrav.ram.room.ram.mapToSet
+import com.vkondrav.ram.room.FavoriteCharactersDao
+import com.vkondrav.ram.room.FavoriteEpisodesDao
+import com.vkondrav.ram.room.mapToSet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

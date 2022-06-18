@@ -5,8 +5,8 @@ import com.vkondrav.ram.app.screen.locations.composable.LocationViewItem
 import com.vkondrav.ram.app.screen.locations.usecase.HandleLocationFavoriteUseCase
 import com.vkondrav.ram.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.ram.domain.RamLocation
-import com.vkondrav.ram.room.ram.FavoriteLocation
-import com.vkondrav.ram.room.ram.FavoriteLocationsDao
+import com.vkondrav.ram.room.FavoriteLocation
+import com.vkondrav.ram.room.FavoriteLocationsDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map

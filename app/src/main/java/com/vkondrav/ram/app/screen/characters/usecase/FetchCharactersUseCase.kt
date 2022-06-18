@@ -3,8 +3,8 @@ package com.vkondrav.ram.app.screen.characters.usecase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.domain.RamPage
 import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.room.ram.FavoriteCharactersDao
-import com.vkondrav.ram.room.ram.mapToSet
+import com.vkondrav.ram.room.FavoriteCharactersDao
+import com.vkondrav.ram.room.mapToSet
 
 class FetchCharactersUseCase(
     private val ramRepository: RamRepository,

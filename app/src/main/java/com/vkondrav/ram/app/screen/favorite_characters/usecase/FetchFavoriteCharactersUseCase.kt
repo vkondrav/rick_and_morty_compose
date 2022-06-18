@@ -5,8 +5,8 @@ import com.vkondrav.ram.app.screen.characters.composable.CharacterViewItem
 import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.room.ram.FavoriteCharacter
-import com.vkondrav.ram.room.ram.FavoriteCharactersDao
+import com.vkondrav.ram.room.FavoriteCharacter
+import com.vkondrav.ram.room.FavoriteCharactersDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
