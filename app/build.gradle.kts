@@ -92,8 +92,8 @@ android {
 
 dependencies {
 
-    implementation(project(Module.domainRam))
-    implementation(project(Module.roomRam))
+    implementation(project(Module.domain))
+    implementation(project(Module.room))
 
     implementation(Libs.AndroidX.ktx)
     implementation(Libs.AndroidX.appcompat)

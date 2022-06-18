@@ -41,8 +41,8 @@ android {
 
 dependencies {
 
-    api(project(Module.graphqlRam))
-    api(project(Module.roomRam))
+    api(project(Module.graphql))
+    api(project(Module.room))
 
     api(project(Module.apollo))
     implementation(Libs.Koin.core)
