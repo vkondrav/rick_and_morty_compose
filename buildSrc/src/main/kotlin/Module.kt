@@ -3,6 +3,6 @@ object Module {
     const val apollo = ":apollo"
     const val graphqlRam = ":graphql"
     const val roomRam = ":room"
-    const val domainRam = ":domain_ram"
+    const val domainRam = ":domain"
     const val commonTest = ":common-test"
 }
