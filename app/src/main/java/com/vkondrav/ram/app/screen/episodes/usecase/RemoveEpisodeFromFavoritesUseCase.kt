@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.episodes.usecase
 
-import androidx.compose.material.SnackbarHostState
+import com.vkondrav.ram.app.common.state.SnackbarHostStateWrapper
 import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveEpisodeFromFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val snackbarHostState: SnackbarHostState,
+    private val snackbarHostState: SnackbarHostStateWrapper,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 

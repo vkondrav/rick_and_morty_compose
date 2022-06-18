@@ -11,7 +11,6 @@ val drawerModule =  module {
         NavigateToRouteUseCase(
             navController = get(),
             drawerState = get(),
-            dispatcher = get(),
         )
     }
     factory {

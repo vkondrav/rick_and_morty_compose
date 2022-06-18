@@ -11,7 +11,7 @@ import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.remember
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.vkondrav.ram.app.common.state.loadStateIntoKoin
+import com.vkondrav.ram.app.common.state.LoadStateIntoKoin
 import com.vkondrav.ram.app.design.rememberThemeState
 import com.vkondrav.ram.app.screen.main.MainActivityScreen
 
@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 initialValue = DrawerValue.Closed,
             )
 
-            loadStateIntoKoin(
+            LoadStateIntoKoin(
                 navHostController,
                 snackbarHostState,
                 drawerState,
