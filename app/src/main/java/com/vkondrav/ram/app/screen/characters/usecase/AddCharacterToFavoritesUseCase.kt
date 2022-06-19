@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.characters.usecase
 
-import com.vkondrav.ram.app.common.state.SnackbarHostStateWrapper
+import com.vkondrav.ram.app.common.collapsable_drawer.state.SnackbarMessageStateHolder
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 
 class AddCharacterToFavoritesUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val snackbarHostState: SnackbarHostStateWrapper,
+    private val snackbarMessageStateHolder: SnackbarMessageStateHolder,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -25,7 +25,7 @@ class AddCharacterToFavoritesUseCase(
     ) {
         launch {
             favoriteCharactersDao.insert(character.favoriteCharacter)
-            snackbarHostState.showSnackbar("${character.name} added to favorites")
+            snackbarMessageStateHolder.showSnackbar("${character.name} added to favorites")
         }
     }
 

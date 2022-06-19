@@ -6,12 +6,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetScaffold
-import androidx.compose.material.BottomSheetScaffoldState
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DragHandle
+import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -21,23 +22,23 @@ import com.vkondrav.ram.app.design.DlsColors
 import com.vkondrav.ram.app.design.DlsTheme
 import com.vkondrav.ram.app.design.dlsDarkColorPalette
 import com.vkondrav.ram.app.design.dlsLightColorPalette
-import com.vkondrav.ram.app.design.ThemeState
 import com.vkondrav.ram.app.tabs.composable.FavoriteTabsScreen
 
 @Composable
 fun BottomSheet(
-    bottomSheetScaffoldState: BottomSheetScaffoldState,
-    themeState: ThemeState,
+    isThemeDark: State<Boolean>,
     content: @Composable (PaddingValues) -> Unit,
 ) {
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
+
     DlsTheme(
-        colors = when (themeState.isThemeDark.value) {
+        colors = when (isThemeDark.value) {
             true -> dlsLightColorPalette
             false -> dlsDarkColorPalette
         },
     ) {
         BottomSheetScaffold(
-            backgroundColor = when (themeState.isThemeDark.value) {
+            backgroundColor = when (isThemeDark.value) {
                 true -> DlsColors.backgroundReverse
                 false -> DlsColors.background
             },
@@ -68,7 +69,7 @@ fun BottomSheet(
             sheetPeekHeight = PEEK_HEIGHT,
             content = {
                 DlsTheme(
-                    colors = when (themeState.isThemeDark.value) {
+                    colors = when (isThemeDark.value) {
                         true -> dlsDarkColorPalette
                         false -> dlsLightColorPalette
                     },

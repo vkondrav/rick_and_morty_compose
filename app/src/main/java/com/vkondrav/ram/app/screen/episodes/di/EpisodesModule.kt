@@ -21,20 +21,20 @@ val episodesModule = module {
     }
     factory {
         NavigateToEpisodeDetailsUseCase(
-            navController = get(),
+            navigationStateHolder = get(),
         )
     }
     factory {
         RemoveEpisodeFromFavoritesUseCase(
             favoriteEpisodesDao = get(),
-            snackbarHostState = get(),
+            snackbarMessageStateHolder = get(),
             dispatcher = get(),
         )
     }
     factory {
         AddEpisodeToFavoritesUseCase(
             favoriteEpisodesDao = get(),
-            snackbarHostState = get(),
+            snackbarMessageStateHolder = get(),
             dispatcher = get(),
         )
     }

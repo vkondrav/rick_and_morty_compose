@@ -1,34 +1,14 @@
 package com.vkondrav.ram.app.design
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.rememberSaveable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
-data class ThemeState(
-    private val initialValue: Boolean,
-    var isThemeDark: MutableState<Boolean> = mutableStateOf(initialValue),
-) {
+class ThemeState {
+
+    private val _isDarkTheme = MutableStateFlow(true)
+    val isDarkTheme: Flow<Boolean> = _isDarkTheme
 
     fun toggleTheme() {
-        isThemeDark.value = !isThemeDark.value
-    }
-
-    companion object {
-        fun saver() =
-            Saver<ThemeState, Boolean>(
-                save = { it.isThemeDark.value },
-                restore = { ThemeState(it) },
-            )
-    }
-}
-
-@Composable
-fun rememberThemeState(
-    initialValue: Boolean,
-): ThemeState {
-    return rememberSaveable(saver = ThemeState.saver()) {
-        ThemeState(initialValue)
+        _isDarkTheme.tryEmit(!_isDarkTheme.value)
     }
 }

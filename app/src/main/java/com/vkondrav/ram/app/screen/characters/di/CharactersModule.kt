@@ -21,20 +21,20 @@ val charactersModule = module {
     }
     factory {
         NavigateToCharacterDetailsUseCase(
-            navController = get(),
+            navigationStateHolder = get(),
         )
     }
     factory {
         AddCharacterToFavoritesUseCase(
             favoriteCharactersDao = get(),
-            snackbarHostState = get(),
+            snackbarMessageStateHolder = get(),
             dispatcher = get(),
         )
     }
     factory {
         RemoveCharacterFromFavoritesUseCase(
             favoriteCharactersDao = get(),
-            snackbarHostState = get(),
+            snackbarMessageStateHolder = get(),
             dispatcher = get(),
         )
     }

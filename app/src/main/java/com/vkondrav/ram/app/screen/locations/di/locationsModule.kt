@@ -22,14 +22,14 @@ val locationsModule = module {
     factory {
         RemoveLocationFromFavoritesUseCase(
             favoriteLocationsDao = get(),
-            snackbarHostState = get(),
+            snackbarMessageStateHolder = get(),
             dispatcher = get(),
         )
     }
     factory {
         AddLocationToFavoritesUseCase(
             favoriteLocationsDao = get(),
-            snackbarHostState = get(),
+            snackbarMessageStateHolder = get(),
             dispatcher = get(),
         )
     }
@@ -41,7 +41,7 @@ val locationsModule = module {
     }
     factory {
         NavigateToLocationDetailsUseCase(
-            navController = get(),
+            navigationStateHolder = get(),
         )
     }
     factory {

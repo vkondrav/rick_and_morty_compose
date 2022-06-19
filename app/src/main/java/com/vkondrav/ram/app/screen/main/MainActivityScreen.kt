@@ -1,37 +1,63 @@
 package com.vkondrav.ram.app.screen.main
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.BottomSheetScaffoldState
-import androidx.compose.material.DrawerState
-import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.vkondrav.ram.app.common.appbar.BackStackEntryState
 import com.vkondrav.ram.app.common.appbar.CustomAppBar
 import com.vkondrav.ram.app.common.bottom_sheet.BottomSheet
 import com.vkondrav.ram.app.common.navigation.defineGraph
+import com.vkondrav.ram.app.common.navigation.title
+import com.vkondrav.ram.app.common.state.Nav
+import com.vkondrav.ram.app.common.utils.TextResource
 import com.vkondrav.ram.app.design.DlsTheme
-import com.vkondrav.ram.app.design.ThemeState
 import com.vkondrav.ram.app.design.dlsDarkColorPalette
 import com.vkondrav.ram.app.design.dlsLightColorPalette
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.CustomDrawer
 import com.vkondrav.ram.app.snackbar.SnackbarHost
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun MainActivityScreen(
-    navHostController: NavHostController,
-    snackbarHostState: SnackbarHostState,
-    bottomSheetScaffoldState: BottomSheetScaffoldState,
-    themeState: ThemeState,
-    drawerState: DrawerState,
+    viewModel: MainActivityViewModel = getViewModel(),
 ) {
+    val isThemeDark = viewModel.isDarkTheme.collectAsState(initial = isSystemInDarkTheme())
+
+    val navHostController = rememberAnimatedNavController()
+
+    val backStackEntryState = navHostController
+        .currentBackStackEntryAsState()
+        .let { state ->
+
+            val title = state.value?.arguments?.title ?: TextResource.Literal("")
+
+            BackStackEntryState(
+                showBackButton = navHostController.backQueue.size > 2,
+                title = title.string(),
+            )
+        }
+
+    LaunchedEffect(viewModel) {
+        viewModel.navigation.collect {
+            when (it) {
+                is Nav.Route -> navHostController.navigate(it.destination)
+                is Nav.Back -> navHostController.popBackStack()
+            }
+        }
+    }
+
     DlsTheme(
-        colors = when (themeState.isThemeDark.value) {
+        colors = when (isThemeDark.value) {
             true -> dlsDarkColorPalette
             false -> dlsLightColorPalette
         },
@@ -39,19 +65,26 @@ fun MainActivityScreen(
         Surface(
             modifier = Modifier.fillMaxSize(),
         ) {
-            CustomDrawer(drawerState) {
+            CustomDrawer(viewModel) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     BottomSheet(
-                        bottomSheetScaffoldState = bottomSheetScaffoldState,
-                        themeState = themeState,
+                        isThemeDark = isThemeDark,
                     ) {
                         Column {
                             CustomAppBar(
-                                navController = navHostController,
-                                themeState = themeState,
-                                drawerState = drawerState,
+                                onBackPressed = {
+                                    viewModel.navigateBack()
+                                },
+                                onOpenDrawer = {
+                                    viewModel.openDrawer()
+                                },
+                                onToggleTheme = {
+                                    viewModel.toggleTheme()
+                                },
+                                backStackEntryState = backStackEntryState,
+                                isThemeDark = isThemeDark,
                             )
                             AnimatedNavHost(
                                 navController = navHostController,
@@ -61,7 +94,7 @@ fun MainActivityScreen(
                             }
                         }
                     }
-                    SnackbarHost(snackbarHostState)
+                    SnackbarHost(viewModel.snackbarMessage)
                 }
             }
         }

@@ -1,15 +1,15 @@
 package com.vkondrav.ram.app.screen.drawer.usecase
 
-import androidx.navigation.NavController
-import com.vkondrav.ram.app.common.state.DrawerStateWrapper
+import com.vkondrav.ram.app.common.state.DrawerStateHolder
+import com.vkondrav.ram.app.common.state.NavigationStateHolder
 
 
 class NavigateToRouteUseCase(
-    private val navController: NavController,
-    private val drawerState: DrawerStateWrapper,
+    private val navigationStateHolder: NavigationStateHolder,
+    private val drawerState: DrawerStateHolder,
 ) {
     operator fun invoke(route: String) {
-        navController.navigate(route)
+        navigationStateHolder.navigate(route)
         drawerState.close()
     }
 }

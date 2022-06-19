@@ -1,6 +1,5 @@
 package com.vkondrav.ram.app.common.appbar
 
-import androidx.compose.material.DrawerState
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -11,32 +10,16 @@ import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import com.vkondrav.ram.app.common.navigation.title
-import com.vkondrav.ram.app.common.utils.TextResource
-import com.vkondrav.ram.app.design.ThemeState
-import kotlinx.coroutines.launch
+import androidx.compose.runtime.State
 
 @Composable
 fun CustomAppBar(
-    navController: NavController,
-    themeState: ThemeState,
-    drawerState: DrawerState,
+    onBackPressed: () -> Unit,
+    onOpenDrawer: () -> Unit,
+    onToggleTheme: () -> Unit,
+    backStackEntryState: BackStackEntryState,
+    isThemeDark: State<Boolean>,
 ) {
-    val backStackEntryState = navController
-        .currentBackStackEntryAsState()
-        .let { state ->
-
-            val title = state.value?.arguments?.title ?: TextResource.Literal("")
-
-            BackStackEntryState(
-                showBackButton = navController.backQueue.size > 2,
-                title = title.string(),
-            )
-        }
-
     TopAppBar(
         title = {
             Text(
@@ -47,18 +30,15 @@ fun CustomAppBar(
             if (backStackEntryState.showBackButton) {
                 IconButton(
                     onClick = {
-                        navController.popBackStack()
+                        onBackPressed()
                     },
                 ) {
                     Icon(Icons.Default.ArrowBack, "Back")
                 }
             } else {
-                val coroutineScope = rememberCoroutineScope()
                 IconButton(
                     onClick = {
-                        coroutineScope.launch {
-                            drawerState.open()
-                        }
+                        onOpenDrawer()
                     },
                 ) {
                     Icon(Icons.Default.Menu, "Menu")
@@ -68,10 +48,10 @@ fun CustomAppBar(
         actions = {
             IconButton(
                 onClick = {
-                    themeState.toggleTheme()
+                    onToggleTheme()
                 },
             ) {
-                val icon = when (themeState.isThemeDark.value) {
+                val icon = when (isThemeDark.value) {
                     true -> Icons.Default.LightMode
                     false -> Icons.Default.DarkMode
                 }
@@ -81,7 +61,7 @@ fun CustomAppBar(
     )
 }
 
-private data class BackStackEntryState(
+data class BackStackEntryState(
     val showBackButton: Boolean,
     val title: String,
 )

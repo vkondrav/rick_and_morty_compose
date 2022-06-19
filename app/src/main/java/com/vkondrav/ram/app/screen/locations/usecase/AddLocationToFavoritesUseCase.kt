@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.locations.usecase
 
-import com.vkondrav.ram.app.common.state.SnackbarHostStateWrapper
+import com.vkondrav.ram.app.common.collapsable_drawer.state.SnackbarMessageStateHolder
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao
@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 
 class AddLocationToFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val snackbarHostState: SnackbarHostStateWrapper,
+    private val snackbarMessageStateHolder: SnackbarMessageStateHolder,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -25,7 +25,7 @@ class AddLocationToFavoritesUseCase(
     ) {
         launch {
             favoriteLocationsDao.insert(location.favoriteLocation)
-            snackbarHostState.showSnackbar("${location.name} added to favorites")
+            snackbarMessageStateHolder.showSnackbar("${location.name} added to favorites")
         }
     }
 
