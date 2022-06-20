@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 
 class AddLocationToFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val snackbarMessageStateHolder: SnackbarController,
+    private val snackbarController: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -25,7 +25,7 @@ class AddLocationToFavoritesUseCase(
     ) {
         launch {
             favoriteLocationsDao.insert(location.favoriteLocation)
-            snackbarMessageStateHolder.showMessage("${location.name} added to favorites")
+            snackbarController.showMessage("${location.name} added to favorites")
         }
     }
 

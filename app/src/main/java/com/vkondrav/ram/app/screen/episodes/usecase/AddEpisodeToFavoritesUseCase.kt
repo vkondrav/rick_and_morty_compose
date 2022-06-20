@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 
 class AddEpisodeToFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val snackbarMessageStateHolder: SnackbarController,
+    private val snackbarController: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -23,7 +23,7 @@ class AddEpisodeToFavoritesUseCase(
     operator fun invoke(episode: RamEpisode) {
         launch {
             favoriteEpisodesDao.insert(episode.favoriteEpisode)
-            snackbarMessageStateHolder.showMessage("${episode.title} added to favorites")
+            snackbarController.showMessage("${episode.title} added to favorites")
         }
     }
 

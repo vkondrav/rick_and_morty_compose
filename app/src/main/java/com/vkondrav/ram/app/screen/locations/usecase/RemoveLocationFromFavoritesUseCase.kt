@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveLocationFromFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val snackbarMessageStateHolder: SnackbarController,
+    private val snackbarController: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,7 +24,7 @@ class RemoveLocationFromFavoritesUseCase(
     ) {
         launch {
             favoriteLocationsDao.delete(location.id)
-            snackbarMessageStateHolder.showMessage("${location.name} removed from favorites")
+            snackbarController.showMessage("${location.name} removed from favorites")
         }
     }
 

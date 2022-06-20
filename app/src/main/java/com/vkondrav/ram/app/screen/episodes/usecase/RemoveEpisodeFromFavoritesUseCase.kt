@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveEpisodeFromFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val snackbarMessageStateHolder: SnackbarController,
+    private val snackbarController: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -22,7 +22,7 @@ class RemoveEpisodeFromFavoritesUseCase(
     operator fun invoke(episode: RamEpisode) {
         launch {
             favoriteEpisodesDao.delete(episode.id)
-            snackbarMessageStateHolder.showMessage("${episode.title} added to favorites")
+            snackbarController.showMessage("${episode.title} added to favorites")
         }
     }
 

@@ -27,14 +27,14 @@ val charactersModule = module {
     factory {
         AddCharacterToFavoritesUseCase(
             favoriteCharactersDao = get(),
-            snackbarMessageStateHolder = get(),
+            snackbarController = get(),
             dispatcher = get(),
         )
     }
     factory {
         RemoveCharacterFromFavoritesUseCase(
             favoriteCharactersDao = get(),
-            snackbarMessageStateHolder = get(),
+            snackbarController = get(),
             dispatcher = get(),
         )
     }
