@@ -127,6 +127,8 @@ dependencies {
 
     implementation(Libs.Coil.core)
 
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
     testImplementation(project(Module.commonTest))
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Robolectric.core)

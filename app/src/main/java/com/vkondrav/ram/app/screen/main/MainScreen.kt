@@ -19,7 +19,7 @@ import com.vkondrav.ram.app.common.navigation.Navigator
 import com.vkondrav.ram.app.common.navigation.collectAsState
 import com.vkondrav.ram.app.common.navigation.defineGraph
 import com.vkondrav.ram.app.design.DlsTheme
-import com.vkondrav.ram.app.design.ThemeState
+import com.vkondrav.ram.app.design.ThemeController
 import com.vkondrav.ram.app.design.dlsDarkColorPalette
 import com.vkondrav.ram.app.design.dlsLightColorPalette
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
@@ -28,15 +28,20 @@ import com.vkondrav.ram.app.snackbar.SnackbarHost
 import org.koin.androidx.compose.get
 
 @Composable
-fun MainActivityScreen(
-    themeState: ThemeState = get(),
+fun MainScreen(
     navigator: Navigator = get(),
+    themeController: ThemeController = get(),
     drawerController: DrawerController = get(),
     snackbarController: SnackbarController = get(),
 ) {
-    val isThemeDark = themeState.isDarkTheme.collectAsState(initial = isSystemInDarkTheme())
+    val isSystemInDarkTheme = isSystemInDarkTheme()
+    val isThemeDark = themeController.isThemeDark(
+        initialSystemSetting = isSystemInDarkTheme,
+    ).collectAsState(initial = isSystemInDarkTheme)
 
     val navHostController = rememberAnimatedNavController()
+
+    val appBarState = navigator.observeBackStack(navHostController).collectAsState()
 
     LaunchedEffect(navigator) {
         navigator.handleNavigationCommands(navHostController)
@@ -67,10 +72,9 @@ fun MainActivityScreen(
                                     drawerController.open()
                                 },
                                 onToggleTheme = {
-                                    themeState.toggleTheme()
+                                    themeController.toggleTheme()
                                 },
-                                appBarState = navigator.handleBackStackState(navHostController)
-                                    .collectAsState(),
+                                appBarState = appBarState,
                                 isThemeDark = isThemeDark,
                             )
                             AnimatedNavHost(

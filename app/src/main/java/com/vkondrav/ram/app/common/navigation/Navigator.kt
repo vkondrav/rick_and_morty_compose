@@ -23,7 +23,7 @@ class Navigator {
         }
     }
 
-    fun handleBackStackState(navController: NavController) =
+    fun observeBackStack(navController: NavController) =
         navController.currentBackStackEntryFlow.map { state ->
             AppBarState(
                 showBackButton = navController.backQueue.size > 2,
