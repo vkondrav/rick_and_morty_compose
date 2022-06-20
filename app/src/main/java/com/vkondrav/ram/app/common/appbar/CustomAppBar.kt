@@ -11,23 +11,24 @@ import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import com.vkondrav.ram.app.common.navigation.BackStackEntry
 
 @Composable
 fun CustomAppBar(
     onBackPressed: () -> Unit,
     onOpenDrawer: () -> Unit,
     onToggleTheme: () -> Unit,
-    backStackEntryState: BackStackEntryState,
+    backStackEntry: State<BackStackEntry>,
     isThemeDark: State<Boolean>,
 ) {
     TopAppBar(
         title = {
             Text(
-                text = backStackEntryState.title,
+                text = backStackEntry.value.title.string(),
             )
         },
         navigationIcon = {
-            if (backStackEntryState.showBackButton) {
+            if (backStackEntry.value.showBackButton) {
                 IconButton(
                     onClick = {
                         onBackPressed()
@@ -60,8 +61,3 @@ fun CustomAppBar(
         },
     )
 }
-
-data class BackStackEntryState(
-    val showBackButton: Boolean,
-    val title: String,
-)
