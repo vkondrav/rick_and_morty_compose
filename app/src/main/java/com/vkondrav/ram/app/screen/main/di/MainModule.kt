@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.screen.main.di
 
 import com.vkondrav.ram.app.common.collapsable_drawer.state.SnackbarMessageStateHolder
-import com.vkondrav.ram.app.common.state.DrawerStateHolder
+import com.vkondrav.ram.app.common.drawer.DrawerController
 import com.vkondrav.ram.app.common.navigation.Navigator
 import com.vkondrav.ram.app.design.ThemeState
 import com.vkondrav.ram.app.screen.main.MainActivityViewModel
@@ -19,7 +19,7 @@ val mainModule = module {
         ThemeState()
     }
     single {
-        DrawerStateHolder()
+        DrawerController()
     }
     viewModel {
         MainActivityViewModel(

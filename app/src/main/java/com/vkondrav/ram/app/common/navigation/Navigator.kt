@@ -23,13 +23,11 @@ class Navigator {
         }
     }
 
-    fun backStackState(navController: NavController) =
+    fun appBarState(navController: NavController) =
         navController.currentBackStackEntryFlow.map { state ->
-            val title = state.arguments.title
-
-            BackStackEntry(
+            AppBarState(
                 showBackButton = navController.backQueue.size > 2,
-                title = title,
+                title = state.arguments.title,
             )
         }
 

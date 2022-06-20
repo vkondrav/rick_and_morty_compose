@@ -10,14 +10,14 @@ sealed class NavigationCommand {
     data class NavigateToRoute(val route: String) : NavigationCommand()
 }
 
-data class BackStackEntry(
+data class AppBarState(
     val showBackButton: Boolean,
     val title: TextResource,
 )
 
 @Composable
-fun Flow<BackStackEntry>.collectAsState() = collectAsState(
-    initial = BackStackEntry(
+fun Flow<AppBarState>.collectAsState() = collectAsState(
+    initial = AppBarState(
         showBackButton = false,
         title = TextResource.Literal(""),
     ),

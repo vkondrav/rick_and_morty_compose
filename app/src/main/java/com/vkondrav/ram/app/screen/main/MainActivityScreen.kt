@@ -62,7 +62,7 @@ fun MainActivityScreen(
                                 onToggleTheme = {
                                     viewModel.toggleTheme()
                                 },
-                                backStackEntry = viewModel.backStackState(navHostController)
+                                appBarState = viewModel.appBarState(navHostController)
                                     .collectAsState(),
                                 isThemeDark = isThemeDark,
                             )
