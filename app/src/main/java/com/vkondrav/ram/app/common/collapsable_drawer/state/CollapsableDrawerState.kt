@@ -2,18 +2,6 @@ package com.vkondrav.ram.app.common.collapsable_drawer.state
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.filterNotNull
-
-class SnackbarMessageStateHolder {
-
-    private val _state = MutableStateFlow<String?>(null)
-    val state: Flow<String> = _state.filterNotNull()
-
-    fun showSnackbar(message: String) {
-        _state.tryEmit(message)
-    }
-}
 
 class CollapsableDrawerState {
 

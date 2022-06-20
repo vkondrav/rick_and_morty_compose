@@ -22,19 +22,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.app.design.DlsTheme
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun BoxScope.SnackbarHost(snackbarMessages: Flow<String>) {
+fun BoxScope.SnackbarHost(snackbarController: SnackbarController) {
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(snackbarMessages) {
-        snackbarMessages.collectLatest {
-            snackbarHostState.currentSnackbarData?.dismiss()
-            snackbarHostState.showSnackbar(it)
-        }
+    LaunchedEffect(snackbarController) {
+        snackbarController.handleSnackbarState(snackbarHostState)
     }
 
     SnackbarHost(

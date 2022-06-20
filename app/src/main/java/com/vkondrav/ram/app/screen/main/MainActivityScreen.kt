@@ -13,26 +13,33 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.ram.app.common.appbar.CustomAppBar
 import com.vkondrav.ram.app.common.bottom_sheet.BottomSheet
+import com.vkondrav.ram.app.common.snackbar.SnackbarController
+import com.vkondrav.ram.app.common.drawer.DrawerController
+import com.vkondrav.ram.app.common.navigation.Navigator
 import com.vkondrav.ram.app.common.navigation.collectAsState
 import com.vkondrav.ram.app.common.navigation.defineGraph
 import com.vkondrav.ram.app.design.DlsTheme
+import com.vkondrav.ram.app.design.ThemeState
 import com.vkondrav.ram.app.design.dlsDarkColorPalette
 import com.vkondrav.ram.app.design.dlsLightColorPalette
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.CustomDrawer
 import com.vkondrav.ram.app.snackbar.SnackbarHost
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.get
 
 @Composable
 fun MainActivityScreen(
-    viewModel: MainActivityViewModel = getViewModel(),
+    themeState: ThemeState = get(),
+    navigator: Navigator = get(),
+    drawerController: DrawerController = get(),
+    snackbarController: SnackbarController = get(),
 ) {
-    val isThemeDark = viewModel.isDarkTheme.collectAsState(initial = isSystemInDarkTheme())
+    val isThemeDark = themeState.isDarkTheme.collectAsState(initial = isSystemInDarkTheme())
 
     val navHostController = rememberAnimatedNavController()
 
-    LaunchedEffect(viewModel) {
-        viewModel.handleNavigationCommands(navHostController)
+    LaunchedEffect(navigator) {
+        navigator.handleNavigationCommands(navHostController)
     }
 
     DlsTheme(
@@ -44,7 +51,7 @@ fun MainActivityScreen(
         Surface(
             modifier = Modifier.fillMaxSize(),
         ) {
-            CustomDrawer(viewModel) {
+            CustomDrawer(drawerController) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                 ) {
@@ -54,15 +61,15 @@ fun MainActivityScreen(
                         Column {
                             CustomAppBar(
                                 onBackPressed = {
-                                    viewModel.navigateUp()
+                                    navigator.navigateUp()
                                 },
                                 onOpenDrawer = {
-                                    viewModel.openDrawer()
+                                    drawerController.open()
                                 },
                                 onToggleTheme = {
-                                    viewModel.toggleTheme()
+                                    themeState.toggleTheme()
                                 },
-                                appBarState = viewModel.appBarState(navHostController)
+                                appBarState = navigator.handleBackStackState(navHostController)
                                     .collectAsState(),
                                 isThemeDark = isThemeDark,
                             )
@@ -74,7 +81,7 @@ fun MainActivityScreen(
                             }
                         }
                     }
-                    SnackbarHost(viewModel.snackbarMessage)
+                    SnackbarHost(snackbarController)
                 }
             }
         }

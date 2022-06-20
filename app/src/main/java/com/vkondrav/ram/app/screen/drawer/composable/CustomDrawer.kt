@@ -6,18 +6,18 @@ import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.vkondrav.ram.app.base.composable.screen.BaseStateScreen
+import com.vkondrav.ram.app.common.drawer.DrawerController
 import com.vkondrav.ram.app.screen.drawer.viewmodel.DrawerViewModel
-import com.vkondrav.ram.app.screen.main.MainActivityViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun CustomDrawer(viewModel: MainActivityViewModel, content: @Composable () -> Unit) {
+fun CustomDrawer(drawerController: DrawerController, content: @Composable () -> Unit) {
     val drawerState = rememberDrawerState(
         initialValue = DrawerValue.Closed,
     )
 
-    LaunchedEffect(viewModel) {
-        viewModel.handleDrawerState(drawerState)
+    LaunchedEffect(drawerController) {
+        drawerController.handleDrawerState(drawerState)
     }
 
     ModalDrawer(

@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.characters.usecase
 
-import com.vkondrav.ram.app.common.collapsable_drawer.state.SnackbarMessageStateHolder
+import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveCharacterFromFavoritesUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val snackbarMessageStateHolder: SnackbarMessageStateHolder,
+    private val snackbarMessageStateHolder: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,7 +24,7 @@ class RemoveCharacterFromFavoritesUseCase(
     ) {
         launch {
             favoriteCharactersDao.delete(character.id)
-            snackbarMessageStateHolder.showSnackbar("${character.name} removed from favorites")
+            snackbarMessageStateHolder.showMessage("${character.name} removed from favorites")
         }
     }
 

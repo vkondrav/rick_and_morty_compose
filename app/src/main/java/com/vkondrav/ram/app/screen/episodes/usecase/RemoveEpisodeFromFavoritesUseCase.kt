@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.episodes.usecase
 
-import com.vkondrav.ram.app.common.collapsable_drawer.state.SnackbarMessageStateHolder
+import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveEpisodeFromFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val snackbarMessageStateHolder: SnackbarMessageStateHolder,
+    private val snackbarMessageStateHolder: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -22,7 +22,7 @@ class RemoveEpisodeFromFavoritesUseCase(
     operator fun invoke(episode: RamEpisode) {
         launch {
             favoriteEpisodesDao.delete(episode.id)
-            snackbarMessageStateHolder.showSnackbar("${episode.title} added to favorites")
+            snackbarMessageStateHolder.showMessage("${episode.title} added to favorites")
         }
     }
 

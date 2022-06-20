@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.locations.usecase
 
-import com.vkondrav.ram.app.common.collapsable_drawer.state.SnackbarMessageStateHolder
+import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveLocationFromFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val snackbarMessageStateHolder: SnackbarMessageStateHolder,
+    private val snackbarMessageStateHolder: SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,7 +24,7 @@ class RemoveLocationFromFavoritesUseCase(
     ) {
         launch {
             favoriteLocationsDao.delete(location.id)
-            snackbarMessageStateHolder.showSnackbar("${location.name} removed from favorites")
+            snackbarMessageStateHolder.showMessage("${location.name} removed from favorites")
         }
     }
 
