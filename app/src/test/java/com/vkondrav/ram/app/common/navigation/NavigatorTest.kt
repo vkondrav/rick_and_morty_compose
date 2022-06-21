@@ -45,8 +45,8 @@ class NavigatorTest : BaseTest() {
         val command = async {
             subject.navigate("route_1")
         }
-        navCommands.join()
-        command.join()
+        navCommands.await()
+        command.await()
 
         verify(navController).navigate("route_1")
     }
