@@ -48,4 +48,9 @@ object TestLibs {
         private const val version = "1.12.4"
         const val core = "io.mockk:mockk:$version"
     }
+
+    object ArchCore {
+        private const val version = "2.1.0"
+        const val testing = "androidx.arch.core:core-testing:$version"
+    }
 }

@@ -49,4 +49,5 @@ dependencies {
     implementation(TestLibs.Compose.jUnit)
     implementation(TestLibs.Robolectric.core)
     implementation(TestLibs.Kotest.assertions)
+    implementation(TestLibs.ArchCore.testing)
 }

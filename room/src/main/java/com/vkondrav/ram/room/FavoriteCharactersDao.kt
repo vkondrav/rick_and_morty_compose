@@ -17,5 +17,5 @@ interface FavoriteCharactersDao {
     suspend fun insert(favoriteCharacter: FavoriteCharacter)
 
     @Query("DELETE FROM favorite_character WHERE id = :id")
-    suspend fun delete(id: String)
+    suspend fun delete(id: String): Int
 }
