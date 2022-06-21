@@ -11,16 +11,25 @@ import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import com.vkondrav.ram.app.common.navigation.AppBarState
+import androidx.navigation.NavController
+import com.vkondrav.ram.app.common.navigation.collectAsState
+import com.vkondrav.ram.app.screen.main.usecase.NavigateUpUseCase
+import com.vkondrav.ram.app.screen.main.usecase.FetchAppBarStateUseCase
+import com.vkondrav.ram.app.screen.main.usecase.OpenDrawerUseCase
+import com.vkondrav.ram.app.screen.main.usecase.ToggleThemeUseCase
+import org.koin.androidx.compose.get
 
 @Composable
 fun CustomAppBar(
-    onBackPressed: () -> Unit,
-    onOpenDrawer: () -> Unit,
-    onToggleTheme: () -> Unit,
-    appBarState: State<AppBarState>,
+    navHostController: NavController,
     isThemeDark: State<Boolean>,
+    fetchAppBarStateUseCase: FetchAppBarStateUseCase = get(),
+    navigateUpUseCase: NavigateUpUseCase = get(),
+    openDrawerUseCase: OpenDrawerUseCase = get(),
+    toggleThemeUseCase: ToggleThemeUseCase = get(),
 ) {
+    val appBarState = fetchAppBarStateUseCase(navHostController).collectAsState()
+
     TopAppBar(
         title = {
             Text(
@@ -31,7 +40,7 @@ fun CustomAppBar(
             if (appBarState.value.showBackButton) {
                 IconButton(
                     onClick = {
-                        onBackPressed()
+                        navigateUpUseCase()
                     },
                 ) {
                     Icon(Icons.Default.ArrowBack, "Back")
@@ -39,7 +48,7 @@ fun CustomAppBar(
             } else {
                 IconButton(
                     onClick = {
-                        onOpenDrawer()
+                        openDrawerUseCase()
                     },
                 ) {
                     Icon(Icons.Default.Menu, "Menu")
@@ -49,7 +58,7 @@ fun CustomAppBar(
         actions = {
             IconButton(
                 onClick = {
-                    onToggleTheme()
+                    toggleThemeUseCase()
                 },
             ) {
                 val icon = when (isThemeDark.value) {

@@ -13,38 +13,31 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.ram.app.common.appbar.CustomAppBar
 import com.vkondrav.ram.app.common.bottom_sheet.BottomSheet
-import com.vkondrav.ram.app.common.snackbar.SnackbarController
-import com.vkondrav.ram.app.common.drawer.DrawerController
-import com.vkondrav.ram.app.common.navigation.Navigator
-import com.vkondrav.ram.app.common.navigation.collectAsState
 import com.vkondrav.ram.app.common.navigation.defineGraph
+import com.vkondrav.ram.app.common.snackbar.SnackbarHost
 import com.vkondrav.ram.app.design.DlsTheme
-import com.vkondrav.ram.app.design.ThemeController
 import com.vkondrav.ram.app.design.dlsDarkColorPalette
 import com.vkondrav.ram.app.design.dlsLightColorPalette
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.CustomDrawer
-import com.vkondrav.ram.app.snackbar.SnackbarHost
+import com.vkondrav.ram.app.screen.main.usecase.FetchThemeStateUseCase
+import com.vkondrav.ram.app.screen.main.usecase.HandleNavigationCommandsUseCase
 import org.koin.androidx.compose.get
 
 @Composable
 fun MainScreen(
-    navigator: Navigator = get(),
-    themeController: ThemeController = get(),
-    drawerController: DrawerController = get(),
-    snackbarController: SnackbarController = get(),
+    handleNavigationCommandsUseCase: HandleNavigationCommandsUseCase = get(),
+    fetchThemeStateUseCase: FetchThemeStateUseCase = get(),
 ) {
     val isSystemInDarkTheme = isSystemInDarkTheme()
-    val isThemeDark = themeController.isThemeDark(
+    val isThemeDark = fetchThemeStateUseCase(
         initialSystemSetting = isSystemInDarkTheme,
     ).collectAsState(initial = isSystemInDarkTheme)
 
     val navHostController = rememberAnimatedNavController()
 
-    val appBarState = navigator.observeBackStack(navHostController).collectAsState()
-
-    LaunchedEffect(navigator) {
-        navigator.handleNavigationCommands(navHostController)
+    LaunchedEffect("main_screen") {
+        handleNavigationCommandsUseCase(navHostController)
     }
 
     DlsTheme(
@@ -56,7 +49,7 @@ fun MainScreen(
         Surface(
             modifier = Modifier.fillMaxSize(),
         ) {
-            CustomDrawer(drawerController) {
+            CustomDrawer {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                 ) {
@@ -65,17 +58,8 @@ fun MainScreen(
                     ) {
                         Column {
                             CustomAppBar(
-                                onBackPressed = {
-                                    navigator.navigateUp()
-                                },
-                                onOpenDrawer = {
-                                    drawerController.open()
-                                },
-                                onToggleTheme = {
-                                    themeController.toggleTheme()
-                                },
-                                appBarState = appBarState,
-                                isThemeDark = isThemeDark,
+                                navHostController,
+                                isThemeDark,
                             )
                             AnimatedNavHost(
                                 navController = navHostController,
@@ -85,7 +69,7 @@ fun MainScreen(
                             }
                         }
                     }
-                    SnackbarHost(snackbarController)
+                    SnackbarHost()
                 }
             }
         }
