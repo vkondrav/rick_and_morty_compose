@@ -9,7 +9,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-class FavoriteCharacterTest : BaseRobolectricTest() {
+class FavoriteCharacterDaoTest : BaseRobolectricTest() {
 
     private lateinit var favoriteCharactersDao: FavoriteCharactersDao
     private lateinit var db: AppDatabase
