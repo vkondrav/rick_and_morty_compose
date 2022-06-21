@@ -133,7 +133,7 @@ dependencies {
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.Compose.jUnit)
-    testImplementation(TestLibs.Mockito.core)
+    testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Koin.core)
 

@@ -3,23 +3,25 @@ package com.vkondrav.ram.app.common.navigation
 import androidx.navigation.NavController
 import com.vkondrav.ram.domain.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
+import io.mockk.clearAllMocks
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.verify
 
 class NavigatorTest : BaseTest() {
 
-    private lateinit var navController: NavController
+    private val navController: NavController = mockk(relaxed = true)
     private lateinit var subject: Navigator
 
     @Before
     fun setUp() = runTest {
-        navController = mock()
+        clearAllMocks()
         subject = Navigator(FlowTestWrapper)
     }
 
@@ -29,12 +31,13 @@ class NavigatorTest : BaseTest() {
             subject.handleNavigationCommands(navController)
         }
         val command = async {
+            delay(1)
             subject.navigateUp()
         }
-        navCommands.join()
-        command.join()
+        navCommands.await()
+        command.await()
 
-        verify(navController).navigateUp()
+        verify(exactly = 1) { navController.navigateUp() }
     }
 
     @Test
@@ -43,12 +46,13 @@ class NavigatorTest : BaseTest() {
             subject.handleNavigationCommands(navController)
         }
         val command = async {
+            delay(1)
             subject.navigate("route_1")
         }
         navCommands.await()
         command.await()
 
-        verify(navController).navigate("route_1")
+        verify(exactly = 1) { navController.navigate("route_1") }
     }
 
     private object FlowTestWrapper: FlowWrapper() {

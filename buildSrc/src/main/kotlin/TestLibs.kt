@@ -16,11 +16,6 @@ object TestLibs {
         const val core = "org.robolectric:robolectric:$version"
     }
 
-    object Mockito {
-        private const val version = "4.0.0"
-        const val core = "org.mockito.kotlin:mockito-kotlin:$version"
-    }
-
     object Kotest {
         private const val version = "5.3.0"
         const val assertions = "io.kotest:kotest-assertions-core:$version"
@@ -44,10 +39,13 @@ object TestLibs {
     }
 
     object Koin {
-
         private const val base = Libs.Koin.base
         private const val version = Libs.Koin.version
-
         const val core = "$base:koin-test:$version"
+    }
+
+    object MockK {
+        private const val version = "1.12.4"
+        const val core = "io.mockk:mockk:$version"
     }
 }

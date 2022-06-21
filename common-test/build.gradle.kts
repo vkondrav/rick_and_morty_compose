@@ -48,6 +48,5 @@ dependencies {
     implementation(TestLibs.JUnit.core)
     implementation(TestLibs.Compose.jUnit)
     implementation(TestLibs.Robolectric.core)
-    implementation(TestLibs.Mockito.core)
     implementation(TestLibs.Kotest.assertions)
 }
