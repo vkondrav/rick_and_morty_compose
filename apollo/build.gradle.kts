@@ -66,7 +66,7 @@ dependencies {
 
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Apollo.mockServer)
-    testImplementation(TestLibs.Coroutines.core)
+    testImplementation(TestLibs.KotlinX.coroutines)
     testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Turbine.core)
     testImplementation(TestLibs.MockK.core)

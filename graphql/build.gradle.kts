@@ -50,6 +50,16 @@ android {
     lint {
         warningsAsErrors = true
     }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+
+        val optIns = listOf(
+            "kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "com.apollographql.apollo3.annotations.ApolloExperimental",
+        ).joinToString(separator = ",")
+
+        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
 }
 
 dependencies {
@@ -58,6 +68,9 @@ dependencies {
     implementation(Libs.Koin.core)
     implementation(Libs.Timber.core)
 
+    testImplementation(project(Module.commonTest))
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Kotest.assertions)
+    testImplementation(TestLibs.MockK.core)
+    testImplementation(TestLibs.KotlinX.coroutines)
 }

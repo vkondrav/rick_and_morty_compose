@@ -86,7 +86,12 @@ object Libs {
     }
 
     object KotlinX {
-        private const val version = "1.6.3"
+        const val version = "1.6.3"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+    }
+
+    object DataStore {
+        private const val version = "1.0.0"
+        const val core = "androidx.datastore:datastore-preferences:$version"
     }
 }

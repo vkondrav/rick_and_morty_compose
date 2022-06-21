@@ -28,9 +28,9 @@ object TestLibs {
         const val mockServer = "$base:apollo-mockserver:$version"
     }
 
-    object Coroutines {
-        private const val version = "1.6.2"
-        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+    object KotlinX {
+        private const val version = Libs.KotlinX.version
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
     }
 
     object Turbine {
