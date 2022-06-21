@@ -84,4 +84,9 @@ object Libs {
         const val compiler = "${base}room-compiler:$version"
         const val ktx = "${base}room-ktx:$version"
     }
+
+    object KotlinX {
+        private const val version = "1.6.3"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+    }
 }

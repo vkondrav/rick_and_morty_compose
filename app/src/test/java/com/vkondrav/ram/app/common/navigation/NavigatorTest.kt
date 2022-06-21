@@ -1,12 +1,11 @@
 package com.vkondrav.ram.app.common.navigation
 
 import androidx.navigation.NavController
-import com.vkondrav.ram.domain.util.FlowWrapper
+import com.vkondrav.ram.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

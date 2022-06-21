@@ -2,19 +2,16 @@ package com.vkondrav.ram.app.common.snackbar
 
 import androidx.compose.material.SnackbarData
 import androidx.compose.material.SnackbarHostState
-import com.vkondrav.ram.domain.util.FlowWrapper
+import com.vkondrav.ram.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
-import io.mockk.coVerify
 import io.mockk.coVerifySequence
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verifySequence
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.vkondrav.ram.domain.util
+package com.vkondrav.ram.util
 
 import kotlinx.coroutines.flow.Flow
 

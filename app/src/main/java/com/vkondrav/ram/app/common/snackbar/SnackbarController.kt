@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.common.snackbar
 
 import androidx.compose.material.SnackbarHostState
-import com.vkondrav.ram.domain.util.FlowWrapper
+import com.vkondrav.ram.util.FlowWrapper
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 

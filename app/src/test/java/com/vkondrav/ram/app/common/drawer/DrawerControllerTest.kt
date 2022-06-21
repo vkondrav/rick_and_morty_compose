@@ -1,17 +1,15 @@
 package com.vkondrav.ram.app.common.drawer
 
 import androidx.compose.material.DrawerState
-import com.vkondrav.ram.domain.util.FlowWrapper
+import com.vkondrav.ram.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test

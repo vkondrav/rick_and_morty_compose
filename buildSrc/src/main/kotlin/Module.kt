@@ -5,4 +5,5 @@ object Module {
     const val room = ":room"
     const val domain = ":domain"
     const val commonTest = ":common-test"
+    const val commonUtil = ":common-util"
 }
