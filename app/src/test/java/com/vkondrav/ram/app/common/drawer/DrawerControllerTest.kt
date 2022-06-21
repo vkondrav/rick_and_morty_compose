@@ -4,6 +4,7 @@ import androidx.compose.material.DrawerState
 import com.vkondrav.ram.domain.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
+import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.async
@@ -38,7 +39,7 @@ class DrawerControllerTest: BaseTest() {
         drawerCommands.await()
         command.await()
 
-        verify(exactly = 1) { runBlocking { drawerState.open() } }
+        coVerify(exactly = 1) { drawerState.open() }
     }
 
     @Test
@@ -53,7 +54,7 @@ class DrawerControllerTest: BaseTest() {
         drawerCommands.await()
         command.await()
 
-        verify(exactly = 1) { runBlocking { drawerState.close() } }
+        coVerify(exactly = 1) { drawerState.close() }
     }
 
     private object FlowTestWrapper: FlowWrapper() {

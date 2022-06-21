@@ -5,6 +5,8 @@ import androidx.compose.material.SnackbarHostState
 import com.vkondrav.ram.domain.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
+import io.mockk.coVerify
+import io.mockk.coVerifySequence
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verifySequence
@@ -43,10 +45,10 @@ class SnackbarControllerTest : BaseTest() {
         messageCommands.await()
         command.await()
 
-        verifySequence {
+        coVerifySequence {
             snackbarHostState.currentSnackbarData
             snackbarData.dismiss()
-            runBlocking { snackbarHostState.showSnackbar("hello world") }
+            snackbarHostState.showSnackbar("hello world")
         }
     }
 

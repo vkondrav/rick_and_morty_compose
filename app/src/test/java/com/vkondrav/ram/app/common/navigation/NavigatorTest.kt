@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import com.vkondrav.ram.domain.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
+import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.async
@@ -37,7 +38,7 @@ class NavigatorTest : BaseTest() {
         navCommands.await()
         command.await()
 
-        verify(exactly = 1) { navController.navigateUp() }
+        coVerify(exactly = 1) { navController.navigateUp() }
     }
 
     @Test
@@ -52,7 +53,7 @@ class NavigatorTest : BaseTest() {
         navCommands.await()
         command.await()
 
-        verify(exactly = 1) { navController.navigate("route_1") }
+        coVerify(exactly = 1) { navController.navigate("route_1") }
     }
 
     private object FlowTestWrapper: FlowWrapper() {
