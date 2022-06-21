@@ -1,10 +1,11 @@
 package com.vkondrav.ram.app.common.navigation
 
 import androidx.navigation.NavController
+import com.vkondrav.ram.domain.util.FlowWrapper
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 
-class Navigator {
+class Navigator(private val wrapper: FlowWrapper = FlowWrapper()) {
 
     private val navigationCommands =
         MutableSharedFlow<NavigationCommand>(extraBufferCapacity = Int.MAX_VALUE)
@@ -18,7 +19,7 @@ class Navigator {
     }
 
     suspend fun handleNavigationCommands(navController: NavController) {
-        navigationCommands.collect {
+        wrapper(navigationCommands).collect {
             navController.handle(it)
         }
     }

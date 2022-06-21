@@ -1,9 +1,10 @@
 package com.vkondrav.ram.app.common.drawer
 
 import androidx.compose.material.DrawerState
+import com.vkondrav.ram.domain.util.FlowWrapper
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-class DrawerController {
+class DrawerController(private val wrapper: FlowWrapper = FlowWrapper()) {
 
     private val drawerCommands =
         MutableSharedFlow<DrawerCommand>(extraBufferCapacity = Int.MAX_VALUE)
@@ -17,7 +18,7 @@ class DrawerController {
     }
 
     suspend fun handleDrawerState(drawerState: DrawerState) {
-        drawerCommands.collect {
+        wrapper(drawerCommands).collect {
             drawerState.handle(it)
         }
     }
