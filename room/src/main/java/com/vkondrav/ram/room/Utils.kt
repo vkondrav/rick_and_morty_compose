@@ -1,3 +1,5 @@
+@file:JvmName("Utils")
+
 package com.vkondrav.ram.room
 
 import kotlinx.coroutines.flow.Flow
