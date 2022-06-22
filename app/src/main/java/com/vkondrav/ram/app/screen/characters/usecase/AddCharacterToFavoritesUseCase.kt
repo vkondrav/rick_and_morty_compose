@@ -2,7 +2,6 @@ package com.vkondrav.ram.app.screen.characters.usecase
 
 import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -14,6 +13,7 @@ import kotlin.coroutines.CoroutineContext
 class AddCharacterToFavoritesUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
     private val snackbarController: SnackbarController,
+    private val transformer: RamCharacter.SourceConstructor,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,7 +24,7 @@ class AddCharacterToFavoritesUseCase(
         character: RamCharacter,
     ) {
         launch {
-            favoriteCharactersDao.insert(character.favoriteCharacter)
+            favoriteCharactersDao.insert(transformer.favorite(character))
             snackbarController.showMessage("${character.name} added to favorites")
         }
     }
@@ -32,13 +32,4 @@ class AddCharacterToFavoritesUseCase(
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
     }
-
-    private val RamCharacter.favoriteCharacter
-        get() = FavoriteCharacter(
-            id = id,
-            name = name,
-            status = status,
-            species = species,
-            image = image,
-        )
 }

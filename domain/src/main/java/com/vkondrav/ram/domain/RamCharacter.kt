@@ -45,6 +45,17 @@ data class RamCharacter(
                 )
             }
 
+        fun favorite(ramCharacter: RamCharacter) =
+            with(ramCharacter) {
+                FavoriteCharacter(
+                    id,
+                    name,
+                    status,
+                    species,
+                    image,
+                )
+            }
+
         private fun Flow<Set<String>>.isFavorite(id: String) =
             map { it.contains(id) }.distinctUntilChanged()
     }
