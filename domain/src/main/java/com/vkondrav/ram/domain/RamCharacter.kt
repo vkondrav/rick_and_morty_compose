@@ -21,13 +21,15 @@ data class RamCharacter(
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: CharacterFragment, favorites: Flow<Set<String>>) =
             with(fragment) {
+                val id = id ?: throw InvalidDataException("missing id")
+                val name = name ?: throw InvalidDataException("missing name")
                 RamCharacter(
-                    id = id ?: throw InvalidDataException("missing id"),
-                    name = name ?: throw InvalidDataException("missing name"),
+                    id = id,
+                    name = name,
                     status = status,
                     species = species,
                     image = image,
-                    isFavorite = favorites.map { it.contains(id) }.distinctUntilChanged(),
+                    isFavorite = favorites.isFavorite(id),
                 )
             }
 
@@ -39,8 +41,11 @@ data class RamCharacter(
                     status = status,
                     species = species,
                     image = image,
-                    isFavorite = favorites.map { it.contains(id) }.distinctUntilChanged(),
+                    isFavorite = favorites.isFavorite(id),
                 )
             }
+
+        private fun Flow<Set<String>>.isFavorite(id: String) =
+            map { it.contains(id) }.distinctUntilChanged()
     }
 }

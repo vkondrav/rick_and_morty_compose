@@ -137,6 +137,7 @@ dependencies {
     testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Koin.core)
+    testImplementation(TestLibs.Turbine.core)
 
     testApi(project(Module.apollo))
 
