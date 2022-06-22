@@ -72,27 +72,28 @@ class RamCharacterTest : BaseTest() {
     }
 
     @Test
-    fun `verify isFavorite flow maps the favorites flow based on id (character fragment)`() = runTest {
-        subject(
-            mockk<CharacterFragment>(relaxed = true) {
-                every { id } returns "id_1"
-            },
-            flowOf(
-                setOf("id_1"), //id matches
-                (1..100).setOfIds, //id matches (distinctUntilChanged filters out noise)
-                setOf("id_2"), //no match
-                (2..100).setOfIds, //no matches (distinctUntilChanged filters out noise)
-                setOf("id_2", "id_1"), //id matches
-            ),
-        ).run {
-            isFavorite.test {
-                awaitItem() shouldBe true
-                awaitItem() shouldBe false
-                awaitItem() shouldBe true
-                awaitComplete()
+    fun `verify isFavorite flow maps the favorites flow based on id (character fragment)`() =
+        runTest {
+            subject(
+                mockk<CharacterFragment>(relaxed = true) {
+                    every { id } returns "id_1"
+                },
+                flowOf(
+                    setOf("id_1"), //id matches
+                    (1..100).setOfIds, //id matches (distinctUntilChanged filters out noise)
+                    setOf("id_2"), //no match
+                    (2..100).setOfIds, //no matches (distinctUntilChanged filters out noise)
+                    setOf("id_2", "id_1"), //id matches
+                ),
+            ).run {
+                isFavorite.test {
+                    awaitItem() shouldBe true
+                    awaitItem() shouldBe false
+                    awaitItem() shouldBe true
+                    awaitComplete()
+                }
             }
         }
-    }
 
     @Test
     fun `verify constructor creates a valid domain model from favorite character`() {
@@ -115,27 +116,28 @@ class RamCharacterTest : BaseTest() {
     }
 
     @Test
-    fun `verify isFavorite flow maps the favorites flow based on id (favorite character)`() = runTest {
-        subject(
-            mockk<FavoriteCharacter>(relaxed = true) {
-                every { id } returns "id_1"
-            },
-            flowOf(
-                setOf("id_1"), //id matches
-                (1..100).setOfIds, //id matches (distinctUntilChanged filters out noise)
-                setOf("id_2"), //no match
-                (2..100).setOfIds, //no matches (distinctUntilChanged filters out noise)
-                setOf("id_2", "id_1"), //id matches
-            ),
-        ).run {
-            isFavorite.test {
-                awaitItem() shouldBe true
-                awaitItem() shouldBe false
-                awaitItem() shouldBe true
-                awaitComplete()
+    fun `verify isFavorite flow maps the favorites flow based on id (favorite character)`() =
+        runTest {
+            subject(
+                mockk<FavoriteCharacter>(relaxed = true) {
+                    every { id } returns "id_1"
+                },
+                flowOf(
+                    setOf("id_1"), //id matches
+                    (1..100).setOfIds, //id matches (distinctUntilChanged filters out noise)
+                    setOf("id_2"), //no match
+                    (2..100).setOfIds, //no matches (distinctUntilChanged filters out noise)
+                    setOf("id_2", "id_1"), //id matches
+                ),
+            ).run {
+                isFavorite.test {
+                    awaitItem() shouldBe true
+                    awaitItem() shouldBe false
+                    awaitItem() shouldBe true
+                    awaitComplete()
+                }
             }
         }
-    }
 
     private val IntRange.setOfIds
         get() = map { "id_$it" }
