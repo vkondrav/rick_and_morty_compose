@@ -11,7 +11,7 @@ import org.junit.Test
 
 class FavoriteCharacterDaoTest : BaseRobolectricTest() {
 
-    private lateinit var favoriteCharactersDao: FavoriteCharactersDao
+    private lateinit var subject: FavoriteCharactersDao
     private lateinit var db: AppDatabase
 
     @Before
@@ -19,7 +19,7 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
         db = Room.inMemoryDatabaseBuilder(
             context, AppDatabase::class.java,
         ).build()
-        favoriteCharactersDao = db.favoriteCharactersDao()
+        subject = db.favoriteCharactersDao()
     }
 
     @After
@@ -39,19 +39,19 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
             )
         }
 
-        favoriteCharactersDao.getAll().test {
+        subject.getAll().test {
             awaitItem() shouldBe emptyList()
 
-            favoriteCharactersDao.insert(items[0])
+            subject.insert(items[0])
             awaitItem() shouldBe listOf(items[0])
 
-            favoriteCharactersDao.insert(items[1])
+            subject.insert(items[1])
             awaitItem() shouldBe listOf(items[0], items[1])
 
-            favoriteCharactersDao.insert(items[2])
+            subject.insert(items[2])
             awaitItem() shouldBe listOf(items[0], items[1], items[2])
 
-            cancel()
+            cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
 
@@ -67,19 +67,19 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
             )
         }
 
-        favoriteCharactersDao.getIds().test {
+        subject.getIds().test {
             awaitItem() shouldBe emptyList()
 
-            favoriteCharactersDao.insert(items[0])
+            subject.insert(items[0])
             awaitItem() shouldBe listOf("id_0")
 
-            favoriteCharactersDao.insert(items[1])
+            subject.insert(items[1])
             awaitItem() shouldBe listOf("id_0", "id_1")
 
-            favoriteCharactersDao.insert(items[2])
+            subject.insert(items[2])
             awaitItem() shouldBe listOf("id_0", "id_1", "id_2")
 
-            cancel()
+            cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
 
@@ -94,25 +94,25 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
                 image = "image_$id",
             )
         }
-        favoriteCharactersDao.insert(items[0])
-        favoriteCharactersDao.insert(items[1])
-        favoriteCharactersDao.insert(items[2])
+        subject.insert(items[0])
+        subject.insert(items[1])
+        subject.insert(items[2])
 
-        favoriteCharactersDao.getAll().test {
+        subject.getAll().test {
             awaitItem() shouldBe listOf(items[0], items[1], items[2])
 
-            favoriteCharactersDao.delete(items[0].id) shouldBe 1
+            subject.delete(items[0].id) shouldBe 1
             awaitItem() shouldBe listOf(items[1], items[2])
 
-            favoriteCharactersDao.delete(items[1].id) shouldBe 1
+            subject.delete(items[1].id) shouldBe 1
             awaitItem() shouldBe listOf(items[2])
 
-            favoriteCharactersDao.delete(items[2].id) shouldBe 1
+            subject.delete(items[2].id) shouldBe 1
             awaitItem() shouldBe emptyList()
 
-            favoriteCharactersDao.delete("garbage") shouldBe 0
+            subject.delete("garbage") shouldBe 0
 
-            cancel()
+            cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
 
@@ -127,25 +127,25 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
                 image = "image_$id",
             )
         }
-        favoriteCharactersDao.insert(items[0])
-        favoriteCharactersDao.insert(items[1])
-        favoriteCharactersDao.insert(items[2])
+        subject.insert(items[0])
+        subject.insert(items[1])
+        subject.insert(items[2])
 
-        favoriteCharactersDao.getIds().test {
+        subject.getIds().test {
             awaitItem() shouldBe listOf("id_0", "id_1", "id_2")
 
-            favoriteCharactersDao.delete(items[0].id) shouldBe 1
+            subject.delete(items[0].id) shouldBe 1
             awaitItem() shouldBe listOf("id_1", "id_2")
 
-            favoriteCharactersDao.delete(items[1].id) shouldBe 1
+            subject.delete(items[1].id) shouldBe 1
             awaitItem() shouldBe listOf("id_2")
 
-            favoriteCharactersDao.delete(items[2].id) shouldBe 1
+            subject.delete(items[2].id) shouldBe 1
             awaitItem() shouldBe emptyList()
 
-            favoriteCharactersDao.delete("garbage") shouldBe 0
+            subject.delete("garbage") shouldBe 0
 
-            cancel()
+            cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
 
