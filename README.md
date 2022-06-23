@@ -1,9 +1,6 @@
 Rick And Morty Compose
 =========
 
-https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8cba-8a06b1345e45.mp4
-
-
 This is a Sample App utilizing some of the latest android technologies including
 
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
@@ -12,7 +9,7 @@ This is a Sample App utilizing some of the latest android technologies including
 
 All external data is from [Rick and Morty GraphQL API](https://rickandmortyapi.com/graphql)
 
-
+https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8cba-8a06b1345e45.mp4
 
 ## Module Structure
 Click on each for more info
