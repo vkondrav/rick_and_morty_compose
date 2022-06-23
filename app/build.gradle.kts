@@ -93,7 +93,6 @@ android {
 dependencies {
 
     implementation(project(Module.domain))
-    implementation(project(Module.room))
     implementation(project(Module.commonUtil))
 
     implementation(Libs.AndroidX.ktx)

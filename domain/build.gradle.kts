@@ -44,8 +44,6 @@ dependencies {
     api(project(Module.graphql))
     api(project(Module.room))
 
-    api(project(Module.apollo))
     implementation(Libs.Koin.core)
-
     implementation(Libs.Timber.core)
 }

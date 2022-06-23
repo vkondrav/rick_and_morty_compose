@@ -63,8 +63,9 @@ android {
 }
 
 dependencies {
+    api(project(Module.apollo))
+
     implementation(Libs.Apollo.api)
-    implementation(project(Module.apollo))
     implementation(Libs.Koin.core)
     implementation(Libs.Timber.core)
 
