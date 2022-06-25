@@ -1,14 +1,12 @@
 package com.vkondrav.ram.app.core
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import com.vkondrav.ram.apollo.SERVER_URL
-import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.app.common.drawer.DrawerController
 import com.vkondrav.ram.app.common.navigation.Navigator
+import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.app.design.ThemeController
+import com.vkondrav.ram.datastore.DATASTORE_NAME
 import com.vkondrav.ram.room.DATABASE_NAME
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
@@ -30,9 +28,6 @@ val coreModule = module {
     single {
         DrawerController()
     }
-    factory {
-        get<Context>().dataStore
-    }
     single {
         ThemeController(
             dataStore = get(),
@@ -41,6 +36,6 @@ val coreModule = module {
     }
     factory(SERVER_URL) { "https://rickandmortyapi.com/graphql" }
     factory(DATABASE_NAME) { "ram_database" }
+    factory(DATASTORE_NAME) { "settings" }
 }
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")

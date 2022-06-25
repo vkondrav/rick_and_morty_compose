@@ -1,10 +1,12 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     library()
     kotlin()
 }
 
 android {
-    namespace = "com.vkondrav.ram.domain"
+    namespace = "com.vkondrav.ram.datastore"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -37,14 +39,23 @@ android {
     kotlinOptions {
         jvmTarget = Libs.jvmTarget
     }
+
+    lint {
+        warningsAsErrors = true
+    }
+
+    tasks.withType<KotlinCompile> {
+
+        val optIns = listOf(
+            "kotlinx.coroutines.ExperimentalCoroutinesApi",
+        ).joinToString(separator = ",")
+
+        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
 }
 
 dependencies {
 
-    api(project(Module.graphql))
-    api(project(Module.room))
-    api(project(Module.dataStore))
-
+    implementation(Libs.DataStore.core)
     implementation(Libs.Koin.core)
-    implementation(Libs.Timber.core)
 }

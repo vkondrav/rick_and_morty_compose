@@ -20,11 +20,13 @@ Click on each for more info
       T[Common-Test]
       L[Apollo]-->G[GraphQL]
       R[Room]-->D[Domain];
+      S[Data-Store]-->D;
       G-->D;
       D-->A[App];
       click L "https://github.com/vkondrav/rick_and_morty_compose/tree/main/apollo" "Go to module"
       click G "https://github.com/vkondrav/rick_and_morty_compose/tree/main/graphql" "Go to module"
       click R "https://github.com/vkondrav/rick_and_morty_compose/tree/main/room" "Go to module"
+      click S "https://github.com/vkondrav/rick_and_morty_compose/tree/main/data-store" "Go to module"
       click D "https://github.com/vkondrav/rick_and_morty_compose/tree/main/domain" "Go to module"
       click A "https://github.com/vkondrav/rick_and_morty_compose/tree/main/app" "Go to module"
       click U "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-util" "Go to module"

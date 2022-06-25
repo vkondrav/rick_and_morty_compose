@@ -1,6 +1,5 @@
 package com.vkondrav.ram.graphql
 
-import com.vkondrav.ram.apollo.SERVER_URL
 import com.vkondrav.ram.apollo.apolloModule
 import org.koin.dsl.module
 
