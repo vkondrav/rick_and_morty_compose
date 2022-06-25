@@ -1,6 +1,7 @@
 package com.vkondrav.ram.room
 
 import androidx.room.Room
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val roomModule = module {
@@ -8,7 +9,7 @@ val roomModule = module {
         Room.databaseBuilder(
             get(),
             AppDatabase::class.java,
-            "ram_database",
+            get(DATABASE_NAME),
         ).fallbackToDestructiveMigration()
             .fallbackToDestructiveMigrationOnDowngrade()
             .build()
@@ -23,3 +24,5 @@ val roomModule = module {
         get<AppDatabase>().favoriteEpisodeDao()
     }
 }
+
+val DATABASE_NAME = named("DATABASE_NAME")

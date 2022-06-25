@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.vkondrav.ram.apollo.SERVER_URL
 import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.app.common.drawer.DrawerController
 import com.vkondrav.ram.app.common.navigation.Navigator
 import com.vkondrav.ram.app.design.ThemeController
+import com.vkondrav.ram.room.DATABASE_NAME
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
@@ -37,6 +39,8 @@ val coreModule = module {
             dispatcher = get(),
         )
     }
+    factory(SERVER_URL) { "https://rickandmortyapi.com/graphql" }
+    factory(DATABASE_NAME) { "ram_database" }
 }
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
