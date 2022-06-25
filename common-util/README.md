@@ -1,3 +1,3 @@
 # Common Util
 
-TODO: complete me
+This module is for sharing common functionality across modules.

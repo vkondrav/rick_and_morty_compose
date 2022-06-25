@@ -1,3 +1,3 @@
 # Room
 
-TODO: complete me
+This module defines the database, entities and all of the DAO objects.
