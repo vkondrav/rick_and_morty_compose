@@ -11,14 +11,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  detekt:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          
+
       - name: Cache Gradle and wrapper
         uses: actions/cache@v2
         with:
@@ -31,3 +31,24 @@ jobs:
 
       - name: Run detekt check
         run: ./gradlew detekt
+
+  test_app:
+    needs: [detekt]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Cache Gradle and wrapper
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run app module tests
+        run: ./gradlew :app:test --stacktrace
