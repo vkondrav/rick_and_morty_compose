@@ -19,18 +19,18 @@ jobs:
           with:
             fetch-depth: 0
 
-    - name: Cache Gradle and wrapper
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
+        - name: Cache Gradle and wrapper
+          uses: actions/cache@v2
+          with:
+            path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+            key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+            restore-keys: |
+              ${{ runner.os }}-gradle-
 
-    - name: Build Project
-      run: ./gradlew build --stacktrace
+        - name: Build Project
+          run: ./gradlew build --stacktrace
 
   detekt:
     runs-on: ubuntu-latest
