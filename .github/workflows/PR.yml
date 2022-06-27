@@ -8,7 +8,7 @@ on:
       - '*.md'
       - '*.yml'
     branches: [ main ]
-  workflow_run:
+  workflow_dispatch:
 
 jobs:
   build:
