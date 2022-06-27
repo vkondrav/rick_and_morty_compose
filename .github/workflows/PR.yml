@@ -34,31 +34,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Run detekt check
         run: ./gradlew detekt
-
-      - name: Run tests
-        run: ./gradlew check --stacktrace
-
-      - name: Bundle the build report
-        if: failure()
-        run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-      - name: Upload the build report
-        if: failure()
-        uses: actions/upload-artifact@master
-        with:
-          name: error-report
-          path: build-reports.zip
-
-      - name: Generate android app bundle
-        run: ./gradlew bundle
-
-      - name: Upload AAB Artifact
-        uses: actions/upload-artifact@v2.2.1
-        with:
-          name: debug-apk
-          path: android/build/outputs/bundle/debug/android-debug.aab
