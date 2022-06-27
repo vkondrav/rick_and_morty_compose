@@ -32,7 +32,7 @@ jobs:
       - name: Run detekt check
         run: ./gradlew detekt
 
-  test_app:
+  tests:
     needs: [detekt]
     runs-on: ubuntu-latest
     steps:
@@ -50,5 +50,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Run app module tests
-        run: ./gradlew :app:test --stacktrace
+      - name: Run Tests
+        run: ./gradlew :room:check --stacktrace
