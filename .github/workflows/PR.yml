@@ -47,7 +47,7 @@ jobs:
     needs: [ detekt, build ]
     strategy:
       matrix:
-        module: [ room, apollo ]
+        module: [ room, apollo, graphql, data-store, domain, app ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
