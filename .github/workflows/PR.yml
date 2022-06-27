@@ -11,27 +11,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-        - name: Checkout the repo
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
-
-        - name: Cache Gradle and wrapper
-          uses: actions/cache@v2
-          with:
-            path: |
-              ~/.gradle/caches
-              ~/.gradle/wrapper
-            key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-            restore-keys: |
-              ${{ runner.os }}-gradle-
-
-        - name: Build Project
-          run: ./gradlew build --stacktrace
-
   detekt:
     runs-on: ubuntu-latest
     steps:
@@ -44,7 +23,7 @@ jobs:
         run: ./gradlew detekt
 
   test:
-    needs: [ detekt, build ]
+    needs: [ detekt ]
     strategy:
       matrix:
         module: [ room, apollo, graphql, data-store, domain, app ]
@@ -54,15 +33,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Cache Gradle and wrapper
         uses: actions/cache@v2
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/${{ matrix.module }}/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Run Tests
-        run: ./gradlew :${{ matrix.version }}:check --stacktrace
+        run: ./gradlew :${{ matrix.module }}:check --stacktrace
