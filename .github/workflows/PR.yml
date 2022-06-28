@@ -73,11 +73,33 @@ jobs:
       - name: Run Tests
         run: ./gradlew :${{ matrix.module }}:testDebugUnitTest --stacktrace
 
+      - name: Unit tests results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.module }}-tests-results
+          path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
+          retention-days: 1
+
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
         with:
-          files: ${{ matrix.module }}/build/test-results/**/*.xml
+          files: "artifacts/**/*.xml"
 
   success:
     needs: [test]
