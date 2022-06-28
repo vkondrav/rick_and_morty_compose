@@ -11,8 +11,28 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache Gradle and wrapper
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
+      - name: Build
+        run: ./gradlew buildDebug
+
   detekt:
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
@@ -48,13 +68,42 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/${{ matrix.module }}/*.gradle*', '**/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Run Tests
-        run: ./gradlew :${{ matrix.module }}:check --stacktrace
+        run: ./gradlew :${{ matrix.module }}:testDebugUnitTest --stacktrace
+
+      - name: Unit tests results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.module }}-tests-results
+          path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
+          retention-days: 1
+
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: "artifacts/**/*.xml"
 
   success:
-    needs: [detekt, test]
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - run: echo Success!
