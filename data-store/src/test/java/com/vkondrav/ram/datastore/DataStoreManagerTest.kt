@@ -38,6 +38,12 @@ class DataStoreManagerTest : BaseRobolectricTest() {
             subject.toggleDarkTheme()
             awaitItem() shouldBe false
 
+            subject.toggleDarkTheme()
+            awaitItem() shouldBe true
+
+            subject.toggleDarkTheme()
+            awaitItem() shouldBe false
+
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
