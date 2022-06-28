@@ -74,10 +74,12 @@ jobs:
         run: ./gradlew :${{ matrix.module }}:testDebugUnitTest --stacktrace
 
       - name: Unit tests results
-        uses: actions/upload-artifact@v1
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
         with:
           name: unit-tests-results
-          path: ${{ matrix.module }}/build/reports/tests/testDebugUnitTest/*
+          path: ${{ matrix.module }}/build/reports/tests/testDebugUnitTest/
+          retention-days: 1
 
   success:
     needs: [test]
