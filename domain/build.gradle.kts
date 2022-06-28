@@ -37,6 +37,19 @@ android {
     kotlinOptions {
         jvmTarget = Libs.jvmTarget
     }
+
+    lint {
+        warningsAsErrors = true
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+
+        val optIns = listOf(
+            "kotlinx.coroutines.ExperimentalCoroutinesApi",
+        ).joinToString(separator = ",")
+
+        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
 }
 
 dependencies {
@@ -47,4 +60,11 @@ dependencies {
 
     implementation(Libs.Koin.core)
     implementation(Libs.Timber.core)
+
+    testImplementation(project(Module.commonTest))
+    testImplementation(TestLibs.JUnit.core)
+    testImplementation(TestLibs.KotlinX.coroutines)
+    testImplementation(TestLibs.Turbine.core)
+    testImplementation(TestLibs.Kotest.assertions)
+    testImplementation(TestLibs.MockK.core)
 }

@@ -77,7 +77,7 @@ jobs:
         if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
-          name: unit-tests-results
+          name: ${{ matrix.module }}-tests-results
           path: ${{ matrix.module }}/build/reports/tests/testDebugUnitTest/
           retention-days: 1
 
