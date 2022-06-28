@@ -73,13 +73,11 @@ jobs:
       - name: Run Tests
         run: ./gradlew :${{ matrix.module }}:testDebugUnitTest --stacktrace
 
-      - name: Unit tests results
-        if: success() || failure()
-        uses: actions/upload-artifact@v3
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
         with:
-          name: ${{ matrix.module }}-tests-results
-          path: ${{ matrix.module }}/build/reports/tests/testDebugUnitTest/
-          retention-days: 1
+          files: ${{ matrix.module }}/build/test-results/**/*.xml
 
   success:
     needs: [test]
