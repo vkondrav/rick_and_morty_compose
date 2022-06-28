@@ -14,13 +14,14 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-class DataStoreManager(private val context: Context, name: String) {
+class DataStoreManager(context: Context, name: String) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = name)
+    private val dataStore: DataStore<Preferences> by lazy { context.dataStore }
 
     private val isDarkThemeKey = booleanPreferencesKey("is_dark_theme")
 
     suspend fun setInitialDarkTheme(initialSetting: Boolean) {
-        context.dataStore.edit {
+        dataStore.edit {
             val isDarkTheme = it[isDarkThemeKey]
             if (isDarkTheme == null) {
                 it[isDarkThemeKey] = initialSetting
@@ -29,13 +30,13 @@ class DataStoreManager(private val context: Context, name: String) {
     }
 
     suspend fun toggleDarkTheme() {
-        context.dataStore.edit {
+        dataStore.edit {
             val isDarkTheme = it[isDarkThemeKey] ?: return@edit
             it[isDarkThemeKey] = !isDarkTheme
         }
     }
 
-    fun isDarkTheme(): Flow<Boolean> = context.dataStore.data.catch { e ->
+    fun isDarkTheme(): Flow<Boolean> = dataStore.data.catch { e ->
         if (e is IOException) {
             emit(emptyPreferences())
         } else {
