@@ -71,7 +71,7 @@ class CharactersSourceTest : BaseTest() {
                 previousPage = 0,
                 nextPage = 2,
                 items = characters,
-            )
+            ),
         )
 
         val composables = listOf<ComposableItem>(
