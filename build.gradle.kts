@@ -88,3 +88,12 @@ val detektFormat by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class)
 kover {
     coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
 }
+
+tasks.koverMergedXmlReport {
+    excludes = listOf(
+        "*.BuildConfig",
+        "*.generated.*",
+        "com.vkondrav.ram.util.*",
+        "com.vkondrav.ram.test.*",
+    )
+}
