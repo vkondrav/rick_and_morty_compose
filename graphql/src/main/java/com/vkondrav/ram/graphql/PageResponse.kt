@@ -1,7 +1,7 @@
 package com.vkondrav.ram.graphql
 
 import com.apollographql.apollo3.api.Fragment
-import com.vkondrav.graphql.ram.fragment.InfoFragment
+import com.vkondrav.ram.graphql.generated.fragment.InfoFragment
 
 data class PageResponse<T: Fragment.Data>(
     val info: InfoFragment,

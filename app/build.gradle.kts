@@ -75,14 +75,20 @@ android {
     tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
-            "com.google.accompanist.pager.ExperimentalPagerApi",
-            "androidx.compose.animation.ExperimentalAnimationApi",
-            "com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi",
-            "androidx.compose.material.ExperimentalMaterialApi",
-            "kotlinx.coroutines.ExperimentalCoroutinesApi",
+            Experimental.pager,
+            Experimental.animation,
+            Experimental.navigation,
+            Experimental.material,
+            Experimental.coroutines,
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
+
+    tasks.koverXmlReport {
+        excludes = listOf(
+            "*.BuildConfig",
+        )
     }
 
     androidResources {

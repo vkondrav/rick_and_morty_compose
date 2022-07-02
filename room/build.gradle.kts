@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     library()
     kotlin()
@@ -58,13 +60,19 @@ android {
         }
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
             "kotlinx.coroutines.ExperimentalCoroutinesApi",
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
+
+    tasks.koverXmlReport {
+        excludes = listOf(
+            "*.BuildConfig",
+        )
     }
 
     testOptions  {

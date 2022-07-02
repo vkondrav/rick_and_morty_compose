@@ -1,8 +1,8 @@
 package com.vkondrav.ram.domain
 
 import app.cash.turbine.test
-import com.vkondrav.graphql.ram.fragment.CharacterFragment
 import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.assertions.throwables.shouldThrow
