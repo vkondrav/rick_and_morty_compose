@@ -74,9 +74,16 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Run Tests
-        run: ./gradlew :${{ matrix.module }}:koverXmlReport   --stacktrace
+        run: ./gradlew :${{ matrix.module }}:koverXmlReport --stacktrace
 
-      - name: Unit tests results
+      - name: Upload Coverage Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.module }}-tests-coverage
+          path: ${{ matrix.module }}/build/kover/**/*.ic
+          retention-days: 1
+
+      - name: Upload Unit Test Results
         if: always()
         uses: actions/upload-artifact@v3
         with:
@@ -84,12 +91,69 @@ jobs:
           path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
           retention-days: 1
 
-      - uses: codecov/codecov-action@v3
+  compute-merged-coverage:
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
         with:
-          files: ${{ matrix.module }}/build/reports/kover/project-xml/report.xml
+          fetch-depth: 0
+
+      - name: Cache Gradle and wrapper
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
+      - name: Download App Coverage Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: app-tests-coverage
+          path: app/build/kover/
+
+      - name: Download Domain Coverage Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: domain-tests-coverage
+          path: domain/build/kover/
+
+      - name: Download Room Coverage Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: room-tests-coverage
+          path: room/build/kover/
+
+      - name: Download Data Store Coverage Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: data-store-tests-coverage
+          path: data-store/build/kover/
+
+      - name: Download GraphQL Coverage Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: graphql-tests-coverage
+          path: graphql/build/kover/
+
+      - name: Download Apollo Coverage Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: apollo-tests-coverage
+          path: apollo/build/kover/
+
+      - name: Generate Merged Kover Report
+        run:
+          ./gradlew koverMergedXmlReport -x testReleaseUnitTest
+
+      - name: Upload report to CodeCov
+        uses: codecov/codecov-action@v3
+        with:
+          files: build/reports/kover/report.xml
 
   publish-test-results:
-    name: "Publish Tests Results"
     needs: [ test ]
     runs-on: ubuntu-latest
     permissions:
