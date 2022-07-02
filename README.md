@@ -1,6 +1,8 @@
 Rick And Morty Compose
 =========
 
+[![codecov](https://codecov.io/gh/vkondrav/rick_and_morty_compose/branch/main/graph/badge.svg?token=MX8NPAY19I)](https://codecov.io/gh/vkondrav/rick_and_morty_compose)
+
 This is a Sample App utilizing some of the latest android technologies including
 
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
@@ -32,6 +34,9 @@ Click on each for more info
       click U "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-util" "Go to module"
       click T "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-test" "Go to module"
 ```
+
+### Coverage
+![coverage](https://codecov.io/gh/vkondrav/rick_and_morty_compose/branch/main/graphs/tree.svg?token=MX8NPAY19I)
 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
