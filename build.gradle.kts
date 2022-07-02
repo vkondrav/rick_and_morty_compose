@@ -1,6 +1,7 @@
 plugins {
     detekt()
     kover()
+    taskInfo()
 }
 
 apply(plugin = Plugins.DependencyUpdate.plugin)

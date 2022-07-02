@@ -71,7 +71,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Run Tests
-        run: ./gradlew :${{ matrix.module }}:testDebugUnitTest --stacktrace
+        run: ./gradlew :${{ matrix.module }}:koverXmlReport -x apollo:testReleaseUnitTest --stacktrace
 
       - name: Unit tests results
         if: always()
@@ -80,6 +80,10 @@ jobs:
           name: ${{ matrix.module }}-tests-results
           path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
           retention-days: 1
+
+      - uses: codecov/codecov-action@v3
+        with:
+          files: ${{ matrix.module }}/build/reports/kover/project-xml/report.xml
 
   publish-test-results:
     name: "Publish Tests Results"
