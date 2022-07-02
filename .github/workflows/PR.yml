@@ -74,7 +74,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Run Tests
-        run: ./gradlew :${{ matrix.module }}:koverXmlReport -x apollo:testReleaseUnitTest --stacktrace
+        run: ./gradlew :${{ matrix.module }}:koverXmlReport -x testReleaseUnitTest --stacktrace
 
       - name: Unit tests results
         if: always()
