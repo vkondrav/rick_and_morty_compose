@@ -1,7 +1,7 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.graphql.ram.EpisodeDetailsQuery
 import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.graphql.generated.EpisodeDetailsQuery
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 

@@ -21,3 +21,6 @@ fun org.gradle.plugin.use.PluginDependenciesSpec.parcelize() = id("kotlin-parcel
 fun org.gradle.plugin.use.PluginDependenciesSpec.kover() =
     id(SupportLibs.Kover.base) version SupportLibs.Kover.version
 
+fun org.gradle.plugin.use.PluginDependenciesSpec.taskInfo() =
+    id(SupportLibs.TaskInfo.base) version SupportLibs.TaskInfo.version
+

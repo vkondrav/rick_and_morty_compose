@@ -1,6 +1,7 @@
 plugins {
     detekt()
     kover()
+    taskInfo()
 }
 
 apply(plugin = Plugins.DependencyUpdate.plugin)
@@ -40,6 +41,7 @@ allprojects {
     }
 }
 
+//DETEKT
 val analysisDir = file(projectDir)
 val configFile = file("$rootDir/config/detekt/detekt.yml")
 
@@ -80,4 +82,9 @@ val detektFormat by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class)
         html.required.set(false)
         txt.required.set(false)
     }
+}
+
+//KOVER
+kover {
+    coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
 }

@@ -20,4 +20,9 @@ object SupportLibs {
         const val base = "io.gitlab.arturbosch.detekt"
         const val formatting = "$base:detekt-formatting:$version"
     }
+
+    object TaskInfo {
+        const val version = "1.4.0"
+        const val base = "org.barfuin.gradle.taskinfo"
+    }
 }

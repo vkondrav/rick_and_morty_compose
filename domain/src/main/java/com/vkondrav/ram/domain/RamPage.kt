@@ -1,9 +1,9 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.graphql.ram.fragment.CharacterFragment
-import com.vkondrav.graphql.ram.fragment.EpisodeFragment
-import com.vkondrav.graphql.ram.fragment.LocationFragment
 import com.vkondrav.ram.graphql.PageResponse
+import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
+import com.vkondrav.ram.graphql.generated.fragment.EpisodeFragment
+import com.vkondrav.ram.graphql.generated.fragment.LocationFragment
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 

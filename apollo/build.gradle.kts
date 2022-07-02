@@ -47,10 +47,16 @@ android {
     tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
-            "kotlinx.coroutines.ExperimentalCoroutinesApi",
+            Experimental.coroutines,
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
+
+    tasks.koverXmlReport {
+        excludes = listOf(
+            "*.BuildConfig",
+        )
     }
 }
 

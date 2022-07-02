@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     library()
     kotlin()
@@ -40,7 +42,7 @@ android {
     }
 
     apollo {
-        packageName.set("com.vkondrav.graphql.ram")
+        packageName.set("com.vkondrav.ram.graphql.generated")
         generateKotlinModels.set(true)
         codegenModels.set("operationBased")
         generateAsInternal.set(false)
@@ -51,14 +53,21 @@ android {
         warningsAsErrors = true
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
-            "kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "com.apollographql.apollo3.annotations.ApolloExperimental",
+            Experimental.coroutines,
+            Experimental.apollo,
         ).joinToString(separator = ",")
 
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+    }
+
+    tasks.koverXmlReport {
+        excludes = listOf(
+            "*.BuildConfig",
+            "*.generated.*",
+        )
     }
 }
 

@@ -1,8 +1,8 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.graphql.ram.fragment.CharacterFragment
-import com.vkondrav.graphql.ram.fragment.InfoFragment
 import com.vkondrav.ram.graphql.PageResponse
+import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
+import com.vkondrav.ram.graphql.generated.fragment.InfoFragment
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks

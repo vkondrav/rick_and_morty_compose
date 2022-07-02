@@ -3,11 +3,11 @@ package com.vkondrav.ram.graphql
 import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.exception.ApolloException
 import com.apollographql.apollo3.api.Error as ApolloError
-import com.vkondrav.graphql.ram.CharactersQuery
-import com.vkondrav.graphql.ram.fragment.CharacterFragment
-import com.vkondrav.graphql.ram.fragment.InfoFragment
-import com.vkondrav.graphql.ram.test.CharactersQuery_TestBuilder.Data
 import com.vkondrav.ram.apollo.Service
+import com.vkondrav.ram.graphql.generated.CharactersQuery
+import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
+import com.vkondrav.ram.graphql.generated.fragment.InfoFragment
+import com.vkondrav.ram.graphql.generated.test.CharactersQuery_TestBuilder.Data
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
