@@ -41,6 +41,12 @@ android {
     lint {
         warningsAsErrors = true
     }
+
+    tasks.koverXmlReport {
+        excludes = listOf(
+            "com.vkondrav.ram.test.*",
+        )
+    }
 }
 
 dependencies {
