@@ -5,6 +5,7 @@ import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.mockserver.MockResponse
 import com.apollographql.apollo3.mockserver.MockServer
 import com.vkondrav.ram.test.BaseTest
+import com.vkondrav.ram.util.TargetWrapper
 import io.kotest.matchers.shouldBe
 import org.junit.Before
 import kotlinx.coroutines.test.runTest
@@ -24,7 +25,7 @@ class ServiceTest : BaseTest() {
     @Before
     fun setUp() = runTest {
         mockServer = MockServer()
-        client = Client(mockServer.url(), MemoryCacheFactory(1_000))
+        client = Client(mockServer.url(), MemoryCacheFactory(1_000), TargetWrapper())
         subject = Service(client.build())
     }
 

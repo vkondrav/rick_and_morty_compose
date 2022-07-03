@@ -54,6 +54,7 @@ jobs:
         run: ./gradlew detektFormat
 
   test:
+    name: "Run Tests and Upload Coverage"
     needs: [ detekt ]
     strategy:
       matrix:
@@ -73,8 +74,10 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
-      - name: Run Tests
-        run: ./gradlew :${{ matrix.module }}:koverXmlReport --stacktrace
+      - name: Run Tests and Generate XML Report
+        id: tests
+        run: | 
+          ./gradlew :${{ matrix.module }}:koverXmlReport -x testReleaseUnitTest --stacktrace
 
       - name: Store Test Results as Artifacts
         if: always()
@@ -85,13 +88,19 @@ jobs:
           retention-days: 1
 
       - name: Upload Coverage Report to CodeCov
+        if: ${{ steps.tests.conclusion == 'success' }}
         uses: codecov/codecov-action@v3
         continue-on-error: true
         with:
           files: ${{ matrix.module }}/build/reports/kover/project-xml/report.xml
 
+      - name: Verify Coverage
+        if: ${{ steps.tests.conclusion == 'success' }}
+        run: |
+          ./gradlew :${{ matrix.module }}:koverVerify -x testReleaseUnitTest --stacktrace
+
   publish-test-results:
-    name: "Publish Tests Results"
+    name: "Publish Test Results"
     needs: [ test ]
     runs-on: ubuntu-latest
     permissions:
