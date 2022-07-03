@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
 plugins {
     library()
@@ -92,7 +93,7 @@ android {
                 bound {
                     @SuppressWarnings("MagicNumber")
                     minValue = 100
-                    valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+                    valueType = COVERED_LINES_PERCENTAGE
                 }
             }
         }
