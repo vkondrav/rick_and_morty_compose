@@ -2,6 +2,7 @@ package com.vkondrav.ram.apollo
 
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
+import com.vkondrav.ram.util.TargetWrapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -13,6 +14,7 @@ val apolloModule = module {
         Client(
             serverUrl = get(SERVER_URL),
             cache = get(),
+            wrapper = TargetWrapper(),
         )
     }
     single {

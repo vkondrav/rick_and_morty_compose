@@ -8,7 +8,7 @@ import com.vkondrav.ram.util.TargetWrapper
 class Client(
     private val serverUrl: String,
     private val cache: NormalizedCacheFactory,
-    private val wrapper: TargetWrapper = TargetWrapper(),
+    private val wrapper: TargetWrapper,
 ) {
     fun build() = wrapper(ApolloClient.Builder())
         .serverUrl(serverUrl)

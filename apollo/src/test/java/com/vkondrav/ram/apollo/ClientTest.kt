@@ -39,6 +39,8 @@ class ClientTest: BaseTest() {
         verify { builder.build() }
     }
 
+
+
     private class TestWrapper(private val builder: ApolloClient.Builder): TargetWrapper() {
         override fun <T> invoke(target: T): T = builder as T
     }
