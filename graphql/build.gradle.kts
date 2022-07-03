@@ -69,6 +69,16 @@ android {
             "*.generated.*",
         )
     }
+
+    tasks.koverVerify {
+        rule {
+            name = "100% Coverage Rule"
+            bound {
+                minValue = 100
+                valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+            }
+        }
+    }
 }
 
 dependencies {

@@ -74,7 +74,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Run Tests
-        run: ./gradlew :${{ matrix.module }}:koverXmlReport --stacktrace
+        run:
+          ./gradlew :${{ matrix.module }}:koverXmlReport -x testReleaseUnitTest --stacktrace
+          ./gradlew :${{ matrix.module }}:koverVerify -x testReleaseUnitTest --stacktrace
 
       - name: Store Test Results as Artifacts
         if: always()
