@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
 plugins {
     library()
@@ -53,22 +54,29 @@ android {
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
     }
 
-    val koverExcludes = listOf(
-        "*.BuildConfig",
-    )
+    with(tasks) { // Kover Config
 
-    tasks.koverXmlReport {
-        excludes = koverExcludes
-    }
+        val koverExcludes = listOf(
+            "*.BuildConfig",
+        )
 
-    tasks.koverVerify {
-        excludes = koverExcludes
-        rule {
-            name = "100% Coverage Rule"
-            bound {
-                @SuppressWarnings("MagicNumber")
-                minValue = 100
-                valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+        koverHtmlReport {
+            excludes = koverExcludes
+        }
+
+        koverXmlReport {
+            excludes = koverExcludes
+        }
+
+        koverVerify {
+            excludes = koverExcludes
+            rule {
+                name = "100% Coverage Rule"
+                bound {
+                    @SuppressWarnings("MagicNumber")
+                    minValue = 100
+                    valueType = COVERED_LINES_PERCENTAGE
+                }
             }
         }
     }
