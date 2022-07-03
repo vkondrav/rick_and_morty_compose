@@ -23,7 +23,6 @@ class UtilsTest : BaseTest() {
 
     @Test
     fun `verify dataOrThrow returns an exception when there are errors`() {
-
         val errorCause = Throwable("cause")
         val error = Throwable("oops", errorCause)
         val fakeResponse = mockk<ApolloResponse<FakeQuery.Data>>()
