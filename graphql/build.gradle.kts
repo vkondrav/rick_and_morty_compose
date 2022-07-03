@@ -83,4 +83,5 @@ dependencies {
     testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.KotlinX.coroutines)
+    testImplementation(TestLibs.Koin.core)
 }

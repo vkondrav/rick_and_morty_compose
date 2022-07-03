@@ -1,7 +1,7 @@
 package com.vkondrav.ram.util
 
 /**
- * use this class to wrap inaccessible targets that yuo cannot
+ * use this class to wrap inaccessible targets that you cannot
  * verify attributes off, kind of like shadows from Robolectric
  */
 open class TargetWrapper {

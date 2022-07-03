@@ -1,12 +1,5 @@
-package com.vkondrav.ram.domain.di
+package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.domain.RamCharacterDetails
-import com.vkondrav.ram.domain.RamEpisode
-import com.vkondrav.ram.domain.RamEpisodeDetails
-import com.vkondrav.ram.domain.RamLocation
-import com.vkondrav.ram.domain.RamLocationDetails
-import com.vkondrav.ram.domain.RamPage
 import org.koin.dsl.module
 
 val domainModule = module {

@@ -98,4 +98,5 @@ dependencies {
     testImplementation(TestLibs.KotlinX.coroutines)
     testImplementation(TestLibs.Turbine.core)
     testImplementation(TestLibs.Kotest.assertions)
+    testImplementation(TestLibs.Koin.core)
 }
