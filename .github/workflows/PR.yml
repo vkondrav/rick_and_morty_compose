@@ -73,9 +73,14 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
-      - name: Run Tests
+      - name: Run Tests and Generate XML Report
+        id: tests
         run: | 
           ./gradlew :${{ matrix.module }}:koverXmlReport -x testReleaseUnitTest --stacktrace
+
+      - name: Verify Coverage
+        if: ${{ steps.tests.conclusion == 'success' }}
+        run: |
           ./gradlew :${{ matrix.module }}:koverVerify -x testReleaseUnitTest --stacktrace
 
       - name: Store Test Results as Artifacts
@@ -87,6 +92,7 @@ jobs:
           retention-days: 1
 
       - name: Upload Coverage Report to CodeCov
+        if: ${{ steps.tests.conclusion == 'success' }}
         uses: codecov/codecov-action@v3
         continue-on-error: true
         with:
