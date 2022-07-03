@@ -1,5 +1,6 @@
 package com.vkondrav.ram.datastore
 
+import com.vkondrav.ram.util.FlowWrapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -8,6 +9,7 @@ val dataStoreModule = module {
         DataStoreManager(
             context = get(),
             name = get(DATASTORE_NAME),
+            wrapper = FlowWrapper(),
         )
     }
 }

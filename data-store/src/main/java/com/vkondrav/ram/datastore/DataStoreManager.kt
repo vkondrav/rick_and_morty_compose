@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.vkondrav.ram.util.FlowWrapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -14,7 +15,11 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-class DataStoreManager(context: Context, name: String) {
+class DataStoreManager(
+    context: Context,
+    name: String,
+    private val wrapper: FlowWrapper,
+) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = name)
     private val dataStore: DataStore<Preferences> by lazy { context.dataStore }
 
@@ -36,7 +41,7 @@ class DataStoreManager(context: Context, name: String) {
         }
     }
 
-    fun isDarkTheme(): Flow<Boolean> = dataStore.data.catch { e ->
+    fun isDarkTheme(): Flow<Boolean> = wrapper(dataStore.data).catch { e ->
         if (e is IOException) {
             emit(emptyPreferences())
         } else {
