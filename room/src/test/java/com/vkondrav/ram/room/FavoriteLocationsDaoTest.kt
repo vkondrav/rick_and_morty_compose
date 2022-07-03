@@ -1,41 +1,26 @@
 package com.vkondrav.ram.room
 
-import androidx.room.Room
 import app.cash.turbine.test
-import com.vkondrav.ram.test.BaseRobolectricTest
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
-import org.junit.After
-import org.junit.Before
 import org.junit.Test
 
-class FavoriteCharacterDaoTest : BaseRobolectricTest() {
+class FavoriteLocationsDaoTest : BaseDatabaseTest() {
 
-    private lateinit var subject: FavoriteCharactersDao
-    private lateinit var db: AppDatabase
+    private lateinit var subject: FavoriteLocationsDao
 
-    @Before
-    fun setUp() {
-        db = Room.inMemoryDatabaseBuilder(
-            context, AppDatabase::class.java,
-        ).build()
-        subject = db.favoriteCharactersDao()
-    }
-
-    @After
-    fun tearDown() {
-        db.close()
+    override fun setUp() {
+        super.setUp()
+        subject = db.favoriteLocationsDoa()
     }
 
     @Test
-    fun `verify inserting favorite characters results in getAll flow responses`() = runTest {
+    fun `verify inserting favorite locations results in getAll flow responses`() = runTest {
         val items = (0 until 3).map { id ->
-            FavoriteCharacter(
+            FavoriteLocation(
                 id = "id_$id",
                 name = "name_$id",
-                status = "status_$id",
-                species = "species_$id",
-                image = "image_$id",
+                dimension = "dimension_$id",
             )
         }
 
@@ -56,14 +41,12 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
     }
 
     @Test
-    fun `verify inserting favorite characters results in getIds flow responses`() = runTest {
+    fun `verify inserting favorite locations results in getIds flow responses`() = runTest {
         val items = (0 until 3).map { id ->
-            FavoriteCharacter(
+            FavoriteLocation(
                 id = "id_$id",
                 name = "name_$id",
-                status = "status_$id",
-                species = "species_$id",
-                image = "image_$id",
+                dimension = "dimension_$id",
             )
         }
 
@@ -84,14 +67,12 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
     }
 
     @Test
-    fun `verify deleting favorite characters results in getAll flow responses`() = runTest {
+    fun `verify deleting favorite locations results in getAll flow responses`() = runTest {
         val items = (0 until 3).map { id ->
-            FavoriteCharacter(
+            FavoriteLocation(
                 id = "id_$id",
                 name = "name_$id",
-                status = "status_$id",
-                species = "species_$id",
-                image = "image_$id",
+                dimension = "dimension_$id",
             )
         }
         subject.insert(items[0])
@@ -117,14 +98,12 @@ class FavoriteCharacterDaoTest : BaseRobolectricTest() {
     }
 
     @Test
-    fun `verify deleting favorite characters results in getIds flow responses`() = runTest {
+    fun `verify deleting favorite locations results in getIds flow responses`() = runTest {
         val items = (0 until 3).map { id ->
-            FavoriteCharacter(
+            FavoriteLocation(
                 id = "id_$id",
                 name = "name_$id",
-                status = "status_$id",
-                species = "species_$id",
-                image = "image_$id",
+                dimension = "dimension_$id",
             )
         }
         subject.insert(items[0])

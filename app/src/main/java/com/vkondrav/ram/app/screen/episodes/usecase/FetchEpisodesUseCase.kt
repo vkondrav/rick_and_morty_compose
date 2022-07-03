@@ -4,7 +4,7 @@ import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.domain.RamPage
 import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.room.FavoriteEpisodesDao
-import com.vkondrav.ram.room.mapToSet
+import com.vkondrav.ram.util.mapToSet
 
 class FetchEpisodesUseCase(
     private val ramRepository: RamRepository,

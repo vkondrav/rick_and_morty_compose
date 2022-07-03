@@ -84,7 +84,6 @@ val detektFormat by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class)
     }
 }
 
-//KOVER
 kover {
     coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
 }
