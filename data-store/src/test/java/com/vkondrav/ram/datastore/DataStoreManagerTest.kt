@@ -2,10 +2,14 @@ package com.vkondrav.ram.datastore
 
 import app.cash.turbine.test
 import com.vkondrav.ram.test.BaseRobolectricTest
+import com.vkondrav.ram.util.FlowWrapper
 import io.kotest.matchers.shouldBe
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
+import java.io.IOException
 
 
 class DataStoreManagerTest : BaseRobolectricTest() {
@@ -14,7 +18,7 @@ class DataStoreManagerTest : BaseRobolectricTest() {
 
     @Before
     fun setUp() {
-        subject = DataStoreManager(context, "data-store")
+        subject = DataStoreManager(context, "data-store", FlowWrapper())
     }
 
     @Test
@@ -25,6 +29,15 @@ class DataStoreManagerTest : BaseRobolectricTest() {
             repeat(10) {
                 subject.setInitialDarkTheme(false)
             }
+            cancelAndConsumeRemainingEvents() shouldBe emptyList()
+        }
+    }
+
+    @Test
+    fun `verify toggle dark theme without setting an initial value has no effect`() = runTest {
+        subject.isDarkTheme().test {
+            subject.toggleDarkTheme()
+
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
@@ -45,6 +58,40 @@ class DataStoreManagerTest : BaseRobolectricTest() {
             awaitItem() shouldBe false
 
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
+        }
+    }
+
+    @Test
+    fun `verify IOException is consumed by isDarkTheme`() = runTest {
+        subject = DataStoreManager(
+            context,
+            "data-store",
+            FlowTestWrapper(IOException("oh man")),
+        )
+
+        subject.isDarkTheme().test {
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun `verify other exceptions are thrown by isDarkTheme`() = runTest {
+        val error = TypeCastException("oh man")
+
+        subject = DataStoreManager(
+            context,
+            "data-store",
+            FlowTestWrapper(error),
+        )
+
+        subject.isDarkTheme().test {
+            awaitError() shouldBe error
+        }
+    }
+
+    private class FlowTestWrapper(private val exception: Exception) : FlowWrapper() {
+        override operator fun <T> invoke(flow: Flow<T>) = flow<T> {
+            throw exception
         }
     }
 }
