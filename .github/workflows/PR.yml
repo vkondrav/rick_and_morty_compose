@@ -80,78 +80,16 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.module }}-tests-coverage
-          path: ${{ matrix.module }}/build/kover/**/*.ic
+          path: ${{ matrix.module }}/build/reports/kover/project-xml/**/*.xml
           retention-days: 1
 
-      - name: Upload Unit Test Results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ matrix.module }}-tests-results
-          path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
-          retention-days: 1
-
-  compute-merged-coverage:
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Cache Gradle and wrapper
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-
-      - name: Download App Coverage Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: app-tests-coverage
-          path: app/build/kover/
-
-      - name: Download Domain Coverage Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: domain-tests-coverage
-          path: domain/build/kover/
-
-      - name: Download Room Coverage Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: room-tests-coverage
-          path: room/build/kover/
-
-      - name: Download Data Store Coverage Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: data-store-tests-coverage
-          path: data-store/build/kover/
-
-      - name: Download GraphQL Coverage Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: graphql-tests-coverage
-          path: graphql/build/kover/
-
-      - name: Download Apollo Coverage Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: apollo-tests-coverage
-          path: apollo/build/kover/
-
-      - name: Generate Merged Kover Report
-        run:
-          ./gradlew koverMergedXmlReport -x testReleaseUnitTest
-
-      - name: Upload report to CodeCov
-        uses: codecov/codecov-action@v3
-        with:
-          files: build/reports/kover/report.xml
+#      - name: Upload Unit Test Results
+#        if: always()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: ${{ matrix.module }}-tests-results
+#          path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
+#          retention-days: 1
 
   publish-test-results:
     needs: [ test ]
@@ -168,8 +106,16 @@ jobs:
         with:
           path: artifacts
 
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
+      - name: Display structure of downloaded files
+        run: ls -R
+
+#      - name: Publish Test Results
+#        uses: EnricoMi/publish-unit-test-result-action@v1
+#        with:
+#          files: "artifacts/**/*.xml"
+
+      - name: Upload report to CodeCov
+        uses: codecov/codecov-action@v3
         with:
           files: "artifacts/**/*.xml"
 
