@@ -76,4 +76,5 @@ dependencies {
     testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Turbine.core)
     testImplementation(TestLibs.MockK.core)
+    testImplementation(TestLibs.Koin.core)
 }
