@@ -69,10 +69,33 @@ android {
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
     }
 
-    tasks.koverXmlReport {
-        excludes = listOf(
+    with(tasks) { // Kover Config
+
+        val koverExcludes = listOf(
             "*.BuildConfig",
+            "*_Impl*",
         )
+
+        koverHtmlReport {
+            includes = listOf("com.vkondrav.ram.room.*")
+            excludes = koverExcludes
+        }
+
+        koverXmlReport {
+            excludes = koverExcludes
+        }
+
+        koverVerify {
+            excludes = koverExcludes
+            rule {
+                name = "100% Coverage Rule"
+                bound {
+                    @SuppressWarnings("MagicNumber")
+                    minValue = 100
+                    valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+                }
+            }
+        }
     }
 
     testOptions  {

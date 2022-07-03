@@ -17,5 +17,5 @@ interface FavoriteEpisodesDao {
     suspend fun insert(favoriteEpisode: FavoriteEpisode)
 
     @Query("DELETE FROM favorite_episode WHERE id = :id")
-    suspend fun delete(id: String)
+    suspend fun delete(id: String): Int
 }

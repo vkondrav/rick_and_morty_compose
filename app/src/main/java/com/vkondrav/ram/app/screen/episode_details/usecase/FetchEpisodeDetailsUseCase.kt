@@ -4,7 +4,7 @@ import com.vkondrav.ram.domain.RamEpisodeDetails
 import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.room.FavoriteEpisodesDao
-import com.vkondrav.ram.room.mapToSet
+import com.vkondrav.ram.util.mapToSet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
