@@ -53,13 +53,16 @@ android {
         kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
     }
 
+    val koverExcludes = listOf(
+        "*.BuildConfig",
+    )
+
     tasks.koverXmlReport {
-        excludes = listOf(
-            "*.BuildConfig",
-        )
+        excludes = koverExcludes
     }
 
     tasks.koverVerify {
+        excludes = koverExcludes
         rule {
             name = "100% Coverage Rule"
             bound {

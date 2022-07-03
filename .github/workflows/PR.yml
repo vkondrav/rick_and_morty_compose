@@ -86,7 +86,7 @@ jobs:
           name: ${{ matrix.module }}-tests-results
           path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
           retention-days: 1
-          
+
       - name: Upload Coverage Report to CodeCov
         if: ${{ steps.tests.conclusion == 'success' }}
         uses: codecov/codecov-action@v3
