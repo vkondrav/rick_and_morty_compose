@@ -74,6 +74,7 @@ android {
         rule {
             name = "100% Coverage Rule"
             bound {
+                @SuppressWarnings("MagicNumber")
                 minValue = 100
                 valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
             }
