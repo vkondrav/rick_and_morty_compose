@@ -54,6 +54,7 @@ jobs:
         run: ./gradlew detektFormat
 
   test:
+    name: "Run Tests and Upload Coverage"
     needs: [ detekt ]
     strategy:
       matrix:
@@ -78,11 +79,6 @@ jobs:
         run: | 
           ./gradlew :${{ matrix.module }}:koverXmlReport -x testReleaseUnitTest --stacktrace
 
-      - name: Verify Coverage
-        if: ${{ steps.tests.conclusion == 'success' }}
-        run: |
-          ./gradlew :${{ matrix.module }}:koverVerify -x testReleaseUnitTest --stacktrace
-
       - name: Store Test Results as Artifacts
         if: always()
         uses: actions/upload-artifact@v3
@@ -90,7 +86,7 @@ jobs:
           name: ${{ matrix.module }}-tests-results
           path: ${{ matrix.module }}/build/test-results/testDebugUnitTest/**/*.xml
           retention-days: 1
-
+          
       - name: Upload Coverage Report to CodeCov
         if: ${{ steps.tests.conclusion == 'success' }}
         uses: codecov/codecov-action@v3
@@ -98,8 +94,13 @@ jobs:
         with:
           files: ${{ matrix.module }}/build/reports/kover/project-xml/report.xml
 
+      - name: Verify Coverage
+        if: ${{ steps.tests.conclusion == 'success' }}
+        run: |
+          ./gradlew :${{ matrix.module }}:koverVerify -x testReleaseUnitTest --stacktrace
+
   publish-test-results:
-    name: "Publish Tests Results"
+    name: "Publish Test Results"
     needs: [ test ]
     runs-on: ubuntu-latest
     permissions:
