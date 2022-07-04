@@ -1,6 +1,6 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.EpisodeFragment
 import com.vkondrav.ram.room.FavoriteEpisode
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
 plugins {
     library()
@@ -74,7 +75,7 @@ android {
                 bound {
                     @SuppressWarnings("MagicNumber")
                     minValue = 0 //TODO: update to 100 when ready
-                    valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+                    valueType = COVERED_LINES_PERCENTAGE
                 }
             }
         }
@@ -86,6 +87,8 @@ dependencies {
     api(project(Module.graphql))
     api(project(Module.room))
     api(project(Module.dataStore))
+
+    implementation(project(Module.commonUtil))
 
     implementation(Libs.Koin.core)
     implementation(Libs.Timber.core)
