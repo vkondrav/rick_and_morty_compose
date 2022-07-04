@@ -12,7 +12,7 @@ val locationDetailsModule = module {
             ramRepository = get(),
             favoriteLocationsDao = get(),
             favoriteCharactersDao = get(),
-            adapter = get(),
+            factory = get(),
         )
     }
     factory {

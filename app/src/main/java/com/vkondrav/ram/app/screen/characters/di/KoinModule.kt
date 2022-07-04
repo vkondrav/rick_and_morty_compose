@@ -16,7 +16,7 @@ val charactersModule = module {
         FetchCharactersUseCase(
             ramRepository = get(),
             favoriteCharactersDao = get(),
-            adapter = get(),
+            factory = get(),
         )
     }
     factory {

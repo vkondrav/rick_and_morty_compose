@@ -16,12 +16,12 @@ val episodesModule = module {
         FetchEpisodesUseCase(
             ramRepository = get(),
             favoriteEpisodesDao = get(),
-            adapter = get(),
+            factory = get(),
         )
     }
     factory {
         NavigateToEpisodeDetailsUseCase(
-            navigationStateHolder = get(),
+            navigator = get(),
         )
     }
     factory {
@@ -35,6 +35,7 @@ val episodesModule = module {
         AddEpisodeToFavoritesUseCase(
             favoriteEpisodesDao = get(),
             snackbarController = get(),
+            adapter = get(),
             dispatcher = get(),
         )
     }

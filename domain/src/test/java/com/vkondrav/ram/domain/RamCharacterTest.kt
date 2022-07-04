@@ -17,11 +17,11 @@ import org.junit.Test
 
 class RamCharacterTest : BaseTest() {
 
-    private lateinit var subject: RamCharacter.Adapter
+    private lateinit var subject: RamCharacter.Factory
 
     @Before
     fun setUp() {
-        subject = RamCharacter.Adapter
+        subject = RamCharacter.Factory
     }
 
     @Test

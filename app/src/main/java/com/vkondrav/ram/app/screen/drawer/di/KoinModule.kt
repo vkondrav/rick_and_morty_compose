@@ -9,7 +9,7 @@ import org.koin.dsl.module
 val drawerModule =  module {
     factory {
         NavigateToRouteUseCase(
-            navigationStateHolder = get(),
+            navigator = get(),
             drawerState = get(),
         )
     }

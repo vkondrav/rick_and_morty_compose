@@ -5,11 +5,11 @@ import com.vkondrav.ram.app.common.navigation.Navigator
 
 
 class NavigateToRouteUseCase(
-    private val navigationStateHolder: Navigator,
+    private val navigator: Navigator,
     private val drawerState: DrawerController,
 ) {
     operator fun invoke(route: String) {
-        navigationStateHolder.navigate(route)
+        navigator.navigate(route)
         drawerState.close()
     }
 }

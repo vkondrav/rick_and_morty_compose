@@ -9,7 +9,7 @@ import com.vkondrav.ram.util.mapToSet
 class FetchCharactersUseCase(
     private val ramRepository: RamRepository,
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val adapter: RamPage.Adapter,
+    private val factory: RamPage.Factory,
 ) {
 
     private val favorites by lazy { favoriteCharactersDao.getIds().mapToSet() }
@@ -17,7 +17,7 @@ class FetchCharactersUseCase(
     suspend operator fun invoke(
         page: Int,
     ): Result<RamPage<RamCharacter>> = runCatching {
-        adapter.characters(
+        factory.characters(
             ramRepository.fetchCharacters(page),
             favorites,
         )

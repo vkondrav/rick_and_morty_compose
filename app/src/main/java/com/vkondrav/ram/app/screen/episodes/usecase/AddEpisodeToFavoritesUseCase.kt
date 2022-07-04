@@ -2,7 +2,6 @@ package com.vkondrav.ram.app.screen.episodes.usecase
 
 import com.vkondrav.ram.app.common.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamEpisode
-import com.vkondrav.ram.room.FavoriteEpisode
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -14,6 +13,7 @@ import kotlin.coroutines.CoroutineContext
 class AddEpisodeToFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
     private val snackbarController: SnackbarController,
+    private val adapter: RamEpisode.Adapter,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -22,7 +22,7 @@ class AddEpisodeToFavoritesUseCase(
 
     operator fun invoke(episode: RamEpisode) {
         launch {
-            favoriteEpisodesDao.insert(episode.favoriteEpisode)
+            favoriteEpisodesDao.insert(adapter.favorite(episode))
             snackbarController.showMessage("${episode.title} added to favorites")
         }
     }
@@ -30,11 +30,4 @@ class AddEpisodeToFavoritesUseCase(
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
     }
-
-    private val RamEpisode.favoriteEpisode
-        get() = FavoriteEpisode(
-            id = id,
-            title = title,
-            airDate = airDate,
-        )
 }

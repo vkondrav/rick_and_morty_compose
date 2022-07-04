@@ -15,7 +15,7 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class CharactersViewItemAdapterTest : BaseTest() {
+class CharactersViewItemFactoryTest : BaseTest() {
 
     private val navigateToCharacterDetailsUseCase =
         mockk<NavigateToCharacterDetailsUseCase>(relaxed = true)

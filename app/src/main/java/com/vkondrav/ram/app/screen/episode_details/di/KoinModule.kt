@@ -12,7 +12,7 @@ val episodeDetailsModule = module {
             ramRepository = get(),
             favoriteCharactersDao = get(),
             favoriteEpisodesDao = get(),
-            adapter = get(),
+            factory = get(),
         )
     }
     factory {

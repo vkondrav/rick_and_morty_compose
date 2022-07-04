@@ -17,21 +17,21 @@ import timber.log.Timber
 
 class RamPageTest : BaseTest() {
 
-    private val characterAdapter = mockk<RamCharacter.Adapter>()
-    private val episodeAdapter = mockk<RamEpisode.Adapter>()
-    private val locationAdapter = mockk<RamLocation.Adapter>()
+    private val characterFactory = mockk<RamCharacter.Factory>()
+    private val episodeFactory = mockk<RamEpisode.Factory>()
+    private val locationFactory = mockk<RamLocation.Factory>()
     private val testTree = mockk<Timber.Tree>(relaxed = true)
 
-    private lateinit var subject: RamPage.Adapter
+    private lateinit var subject: RamPage.Factory
 
     @Before
     fun setUp() {
         clearAllMocks()
         Timber.plant(testTree)
-        subject = RamPage.Adapter(
-            characterAdapter,
-            episodeAdapter,
-            locationAdapter,
+        subject = RamPage.Factory(
+            characterFactory,
+            episodeFactory,
+            locationFactory,
         )
     }
 
@@ -58,11 +58,11 @@ class RamPageTest : BaseTest() {
             c2 to t2,
             c3 to t3,
         ).forEach { (c, t) ->
-            every { characterAdapter(c, favorites) } returns t
+            every { characterFactory(c, favorites) } returns t
         }
 
         val error = Exception("oops")
-        every { characterAdapter(c4, favorites) } throws error
+        every { characterFactory(c4, favorites) } throws error
 
         subject.characters(
             PageResponse(
@@ -78,10 +78,10 @@ class RamPageTest : BaseTest() {
             nextPage shouldBe 1
             items shouldBe listOf(t1, t2, t3)
             verifySequence {
-                characterAdapter(c1, favorites)
-                characterAdapter(c2, favorites)
-                characterAdapter(c3, favorites)
-                characterAdapter(c4, favorites)
+                characterFactory(c1, favorites)
+                characterFactory(c2, favorites)
+                characterFactory(c3, favorites)
+                characterFactory(c4, favorites)
                 testTree.e(error)
             }
         }

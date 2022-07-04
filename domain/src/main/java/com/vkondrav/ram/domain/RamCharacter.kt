@@ -1,8 +1,8 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharacter
+import com.vkondrav.ram.util.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -16,7 +16,7 @@ data class RamCharacter(
     val isFavorite: Flow<Boolean>,
 ) {
 
-    object Adapter {
+    object Factory {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: CharacterFragment, favorites: Flow<Set<String>>) =
@@ -45,18 +45,19 @@ data class RamCharacter(
                 )
             }
 
-        fun favorite(ramCharacter: RamCharacter) =
-            with(ramCharacter) {
-                FavoriteCharacter(
-                    id,
-                    name,
-                    status,
-                    species,
-                    image,
-                )
-            }
-
         private fun Flow<Set<String>>.isFavorite(id: String) =
             map { it.contains(id) }.distinctUntilChanged()
+    }
+
+    object Adapter {
+        fun favorite(ramCharacter: RamCharacter) = with(ramCharacter) {
+            FavoriteCharacter(
+                id,
+                name,
+                status,
+                species,
+                image,
+            )
+        }
     }
 }
