@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vkondrav.ram.app.base.item.ComposableItem
-import com.vkondrav.ram.app.common.utils.TextResource
+import com.vkondrav.ram.util.TextResource
 import com.vkondrav.ram.app.design.DlsTheme
 
 @Composable

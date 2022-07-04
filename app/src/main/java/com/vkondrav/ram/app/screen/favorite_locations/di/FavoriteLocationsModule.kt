@@ -9,7 +9,7 @@ val favoriteLocationsModule = module {
     factory {
         FetchFavoriteLocationsUseCase(
             favoriteLocationsDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
             navigateToLocationDetailsUseCase = get(),
             handleLocationFavoriteUseCase = get(),
         )

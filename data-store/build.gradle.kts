@@ -89,6 +89,7 @@ dependencies {
     implementation(Libs.Koin.core)
 
     testImplementation(project(Module.commonTest))
+
     testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.KotlinX.coroutines)

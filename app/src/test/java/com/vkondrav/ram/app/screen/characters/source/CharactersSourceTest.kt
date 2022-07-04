@@ -1,8 +1,10 @@
-package com.vkondrav.ram.app.screen.characters.usecase
+package com.vkondrav.ram.app.screen.characters.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
+import com.vkondrav.ram.app.screen.characters.usecase.FetchCharactersUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.domain.RamPage
 import com.vkondrav.ram.test.BaseTest
@@ -21,7 +23,7 @@ import timber.log.Timber
 class CharactersSourceTest : BaseTest() {
 
     private val fetchCharactersUseCase: FetchCharactersUseCase = mockk(relaxed = true)
-    private val charactersViewItemConstructor: CharactersViewItemConstructor = mockk(relaxed = true)
+    private val charactersViewItemAdapter: CharactersViewItemAdapter = mockk(relaxed = true)
 
     private val testTree = mockk<Timber.Tree>(relaxed = true)
     private lateinit var subject: CharactersSource
@@ -30,7 +32,7 @@ class CharactersSourceTest : BaseTest() {
     fun setUp() {
         clearAllMocks()
         Timber.plant(testTree)
-        subject = CharactersSource(fetchCharactersUseCase, charactersViewItemConstructor)
+        subject = CharactersSource(fetchCharactersUseCase, charactersViewItemAdapter)
     }
 
     @After
@@ -80,7 +82,7 @@ class CharactersSourceTest : BaseTest() {
             mockk(),
         )
 
-        every { charactersViewItemConstructor(characters) } returns composables
+        every { charactersViewItemAdapter(characters) } returns composables
 
         val loadParams = mockk<PagingSource.LoadParams<Int>> {
             every { key } returns null //tests default page

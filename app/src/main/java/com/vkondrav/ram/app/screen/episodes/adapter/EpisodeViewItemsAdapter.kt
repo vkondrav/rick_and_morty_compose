@@ -1,10 +1,12 @@
-package com.vkondrav.ram.app.screen.episodes.usecase
+package com.vkondrav.ram.app.screen.episodes.adapter
 
 import com.vkondrav.ram.app.base.item.ComposableItem
 import com.vkondrav.ram.app.screen.episodes.composable.EpisodeViewItem
+import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
+import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.domain.RamEpisode
 
-class EpisodeViewItemsConstructor(
+class EpisodeViewItemsAdapter(
     private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,
     private val handleEpisodeFavoriteUseCase: HandleEpisodeFavoriteUseCase,
 ) {

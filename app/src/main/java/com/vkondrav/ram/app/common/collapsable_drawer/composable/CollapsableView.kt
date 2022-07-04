@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.vkondrav.ram.app.base.item.Composable
 import com.vkondrav.ram.app.base.item.ComposableItem
-import com.vkondrav.ram.app.common.utils.TextResource
+import com.vkondrav.ram.util.TextResource
 import com.vkondrav.ram.app.design.DlsTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow

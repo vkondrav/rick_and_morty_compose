@@ -1,7 +1,7 @@
 package com.vkondrav.ram.domain
 
 import app.cash.turbine.test
-import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.test.BaseTest
@@ -17,15 +17,15 @@ import org.junit.Test
 
 class RamCharacterTest : BaseTest() {
 
-    private lateinit var subject: RamCharacter.SourceConstructor
+    private lateinit var subject: RamCharacter.Adapter
 
     @Before
     fun setUp() {
-        subject = RamCharacter.SourceConstructor
+        subject = RamCharacter.Adapter
     }
 
     @Test
-    fun `verify constructor throws exception when character fragment has no id`() {
+    fun `verify adapter throws exception when character fragment has no id`() {
         shouldThrow<InvalidDataException> {
             subject(
                 CharacterFragment(
@@ -38,7 +38,7 @@ class RamCharacterTest : BaseTest() {
     }
 
     @Test
-    fun `verify constructor throws exception when character fragment has no name`() {
+    fun `verify adapter throws exception when character fragment has no name`() {
         shouldThrow<InvalidDataException> {
             subject(
                 CharacterFragment(
@@ -52,7 +52,7 @@ class RamCharacterTest : BaseTest() {
     }
 
     @Test
-    fun `verify constructor creates a valid domain model from character fragment`() {
+    fun `verify adapter creates a valid domain model from character fragment`() {
         subject(
             CharacterFragment(
                 "id",
@@ -96,7 +96,7 @@ class RamCharacterTest : BaseTest() {
         }
 
     @Test
-    fun `verify constructor creates a valid domain model from favorite character`() {
+    fun `verify adapter creates a valid domain model from favorite character`() {
         subject(
             FavoriteCharacter(
                 "id",

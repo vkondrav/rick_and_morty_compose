@@ -1,13 +1,15 @@
-package com.vkondrav.ram.app.screen.episodes.usecase
+package com.vkondrav.ram.app.screen.characters.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
+import com.vkondrav.ram.app.screen.characters.usecase.FetchCharactersUseCase
 import timber.log.Timber
 
-class EpisodesSource(
-    private val fetchEpisodesUseCase: FetchEpisodesUseCase,
-    private val episodeViewItemsConstructor: EpisodeViewItemsConstructor,
+class CharactersSource(
+    private val fetchCharactersUseCase: FetchCharactersUseCase,
+    private val charactersViewItemAdapter: CharactersViewItemAdapter,
 ) : PagingSource<Int, ComposableItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ComposableItem>): Int? = state.anchorPosition
@@ -15,10 +17,10 @@ class EpisodesSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ComposableItem> =
         runCatching {
             val nextPage = params.key ?: 1
-            val page = fetchEpisodesUseCase(nextPage).getOrThrow()
+            val page = fetchCharactersUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(
-                data = episodeViewItemsConstructor(page.items),
+                data = charactersViewItemAdapter(page.items),
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )

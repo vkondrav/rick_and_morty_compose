@@ -7,7 +7,7 @@ import androidx.paging.cachedIn
 import com.vkondrav.ram.app.base.item.ComposableItem
 import com.vkondrav.ram.app.base.viewmodel.BaseViewModel
 import com.vkondrav.ram.app.base.viewmodel.PagingViewModel
-import com.vkondrav.ram.app.screen.episodes.usecase.EpisodesSource
+import com.vkondrav.ram.app.screen.episodes.source.EpisodesSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 

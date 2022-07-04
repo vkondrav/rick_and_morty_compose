@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 class AddCharacterToFavoritesUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
     private val snackbarController: SnackbarController,
-    private val transformer: RamCharacter.SourceConstructor,
+    private val adapter: RamCharacter.Adapter,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,7 +24,7 @@ class AddCharacterToFavoritesUseCase(
         character: RamCharacter,
     ) {
         launch {
-            favoriteCharactersDao.insert(transformer.favorite(character))
+            favoriteCharactersDao.insert(adapter.favorite(character))
             snackbarController.showMessage("${character.name} added to favorites")
         }
     }

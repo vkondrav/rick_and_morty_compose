@@ -12,7 +12,7 @@ class FetchLocationDetailsUseCase(
     private val ramRepository: RamRepository,
     private val favoriteLocationsDao: FavoriteLocationsDao,
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val sourceConstructor: RamLocationDetails.SourceConstructor,
+    private val adapter: RamLocationDetails.Adapter,
 ) {
 
     private val favoriteLocationsFlow by lazy {
@@ -26,7 +26,7 @@ class FetchLocationDetailsUseCase(
         id: String,
     ): Result<Flow<RamLocationDetails>> = runCatching {
         ramRepository.fetchLocationDetails(id).map {
-            sourceConstructor(
+            adapter(
                 it,
                 favoriteLocationsFlow,
                 favoriteCharactersFlow,

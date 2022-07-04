@@ -1,6 +1,6 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.CharacterDetailsQuery
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
@@ -12,10 +12,10 @@ data class RamCharacterDetails(
     val episodes: List<RamEpisode>,
 ) {
 
-    class SourceConstructor(
-        private val characterSourceConstructor: RamCharacter.SourceConstructor,
-        private val episodeSourceConstructor: RamEpisode.SourceConstructor,
-        private val locationSourceConstructor: RamLocation.SourceConstructor,
+    class Adapter(
+        private val characterAdapter: RamCharacter.Adapter,
+        private val episodeAdapter: RamEpisode.Adapter,
+        private val locationAdapter: RamLocation.Adapter,
     ) {
 
         @Throws(InvalidDataException::class)
@@ -25,22 +25,22 @@ data class RamCharacterDetails(
             favoriteEpisodes: Flow<Set<String>>,
             favoriteLocations: Flow<Set<String>>,
         ) = RamCharacterDetails(
-            character = characterSourceConstructor(character.characterFragment, favoriteCharacters),
+            character = characterAdapter(character.characterFragment, favoriteCharacters),
             origin = character.origin?.locationFragment?.let {
-                locationSourceConstructor(
+                locationAdapter(
                     it,
                     favoriteLocations,
                 )
             },
             location = character.location?.locationFragment?.let {
-                locationSourceConstructor(
+                locationAdapter(
                     it,
                     favoriteLocations,
                 )
             },
             episodes = character.episode.asSequence().filterNotNull().mapNotNull {
                 try {
-                    episodeSourceConstructor(it.episodeFragment, favoriteEpisodes)
+                    episodeAdapter(it.episodeFragment, favoriteEpisodes)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null

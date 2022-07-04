@@ -5,8 +5,8 @@ import com.vkondrav.ram.app.screen.episodes.usecase.FetchEpisodesUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
-import com.vkondrav.ram.app.screen.episodes.usecase.EpisodeViewItemsConstructor
-import com.vkondrav.ram.app.screen.episodes.usecase.EpisodesSource
+import com.vkondrav.ram.app.screen.episodes.adapter.EpisodeViewItemsAdapter
+import com.vkondrav.ram.app.screen.episodes.source.EpisodesSource
 import com.vkondrav.ram.app.screen.episodes.viewmodel.EpisodesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -16,7 +16,7 @@ val episodesModule = module {
         FetchEpisodesUseCase(
             ramRepository = get(),
             favoriteEpisodesDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
         )
     }
     factory {
@@ -45,7 +45,7 @@ val episodesModule = module {
         )
     }
     factory {
-        EpisodeViewItemsConstructor(
+        EpisodeViewItemsAdapter(
             navigateToEpisodeDetailsUseCase = get(),
             handleEpisodeFavoriteUseCase = get(),
         )
@@ -53,7 +53,7 @@ val episodesModule = module {
     factory {
         EpisodesSource(
             fetchEpisodesUseCase = get(),
-            episodeViewItemsConstructor = get(),
+            episodeViewItemsAdapter = get(),
         )
     }
     viewModel {

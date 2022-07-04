@@ -1,6 +1,8 @@
-package com.vkondrav.ram.app.screen.characters.usecase
+package com.vkondrav.ram.app.screen.characters.adapter
 
 import com.vkondrav.ram.app.screen.characters.composable.CharacterViewItem
+import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
+import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.test.BaseTest
 import com.vkondrav.ram.util.asType
@@ -13,26 +15,26 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class CharactersViewItemConstructorTest : BaseTest() {
+class CharactersViewItemAdapterTest : BaseTest() {
 
     private val navigateToCharacterDetailsUseCase =
         mockk<NavigateToCharacterDetailsUseCase>(relaxed = true)
     private val handleCharacterFavoritesUseCase =
         mockk<HandleCharacterFavoritesUseCase>(relaxed = true)
 
-    private lateinit var subject: CharactersViewItemConstructor
+    private lateinit var subject: CharactersViewItemAdapter
 
     @Before
     fun setUp() {
         clearAllMocks()
-        subject = CharactersViewItemConstructor(
+        subject = CharactersViewItemAdapter(
             navigateToCharacterDetailsUseCase,
             handleCharacterFavoritesUseCase,
         )
     }
 
     @Test
-    fun `verify view item constructor`() {
+    fun `verify view item adapter`() {
         val ramCharacter = mockk<RamCharacter> {
             every { id } returns "id_1"
             every { name } returns "name_1"

@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 
 class FetchFavoriteCharactersUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val sourceConstructor: RamCharacter.SourceConstructor,
+    private val adapter: RamCharacter.Adapter,
     private val navigateToCharacterDetailsUseCase: NavigateToCharacterDetailsUseCase,
     private val handleCharacterFavoritesUseCase: HandleCharacterFavoritesUseCase,
 ) {
@@ -25,7 +25,7 @@ class FetchFavoriteCharactersUseCase(
     }
 
     private val FavoriteCharacter.viewItem
-        get() = with(sourceConstructor(this, flowOf(setOf(id)))) {
+        get() = with(adapter(this, flowOf(setOf(id)))) {
             CharacterViewItem(
                 character = this,
                 onClickAction = {

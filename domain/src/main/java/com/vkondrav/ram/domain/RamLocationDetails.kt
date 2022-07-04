@@ -1,6 +1,6 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.LocationDetailsQuery
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
@@ -10,9 +10,9 @@ data class RamLocationDetails(
     val characters: List<RamCharacter>,
 ) {
 
-    class SourceConstructor(
-        private val characterSourceConstructor: RamCharacter.SourceConstructor,
-        private val locationSourceConstructor: RamLocation.SourceConstructor,
+    class Adapter(
+        private val characterAdapter: RamCharacter.Adapter,
+        private val locationAdapter: RamLocation.Adapter,
     ) {
         @Throws(InvalidDataException::class)
         operator fun invoke(
@@ -20,10 +20,10 @@ data class RamLocationDetails(
             favoriteLocation: Flow<Set<String>>,
             favoriteCharacters: Flow<Set<String>>,
         ) = RamLocationDetails(
-            location = locationSourceConstructor(location.locationFragment, favoriteLocation),
+            location = locationAdapter(location.locationFragment, favoriteLocation),
             characters = location.residents.asSequence().filterNotNull().mapNotNull {
                 try {
-                    characterSourceConstructor(it.characterFragment, favoriteCharacters)
+                    characterAdapter(it.characterFragment, favoriteCharacters)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null

@@ -1,6 +1,6 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.graphql.error.InvalidDataException
+import com.vkondrav.ram.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.LocationFragment
 import com.vkondrav.ram.room.FavoriteLocation
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +14,7 @@ data class RamLocation(
     val isFavorite: Flow<Boolean>,
 ) {
 
-    object SourceConstructor {
+    object Adapter {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: LocationFragment, favorites: Flow<Set<String>>) =

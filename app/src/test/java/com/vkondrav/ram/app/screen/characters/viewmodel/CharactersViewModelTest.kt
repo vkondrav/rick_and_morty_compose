@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.screen.characters.viewmodel
 
 import app.cash.turbine.test
-import com.vkondrav.ram.app.screen.characters.usecase.CharactersSource
+import com.vkondrav.ram.app.screen.characters.source.CharactersSource
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks

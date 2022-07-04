@@ -9,7 +9,7 @@ val favoriteCharactersModule = module {
     factory {
         FetchFavoriteCharactersUseCase(
             favoriteCharactersDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
             navigateToCharacterDetailsUseCase = get(),
             handleCharacterFavoritesUseCase = get(),
         )

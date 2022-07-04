@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.common.navigation
 
 import android.os.Bundle
-import com.vkondrav.ram.app.common.utils.TextResource
+import com.vkondrav.ram.util.TextResource
 
 internal const val NAV_ID = "id"
 internal const val NAV_TITLE = "title"

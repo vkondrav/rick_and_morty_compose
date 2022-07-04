@@ -6,4 +6,5 @@ object Experimental {
     const val material = "androidx.compose.material.ExperimentalMaterialApi"
     const val coroutines = "kotlinx.coroutines.ExperimentalCoroutinesApi"
     const val apollo = "com.apollographql.apollo3.annotations.ApolloExperimental"
+    const val contracts = "kotlin.contracts.ExperimentalContracts"
 }

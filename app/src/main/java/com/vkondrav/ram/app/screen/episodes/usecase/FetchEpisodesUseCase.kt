@@ -9,7 +9,7 @@ import com.vkondrav.ram.util.mapToSet
 class FetchEpisodesUseCase(
     private val ramRepository: RamRepository,
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val sourceConstructor: RamPage.SourceConstructor,
+    private val adapter: RamPage.Adapter,
 ) {
 
     private val favorites by lazy { favoriteEpisodesDao.getIds().mapToSet() }
@@ -17,7 +17,7 @@ class FetchEpisodesUseCase(
     suspend operator fun invoke(
         page: Int,
     ): Result<RamPage<RamEpisode>> = runCatching {
-        sourceConstructor.episodes(
+        adapter.episodes(
             ramRepository.fetchEpisodes(page),
             favorites,
         )

@@ -9,7 +9,7 @@ val favoriteEpisodesModule = module {
     factory {
         FetchFavoriteEpisodesUseCase(
             favoriteEpisodesDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
             navigateToLocationDetailsUseCase = get(),
             handleEpisodeFavoriteUseCase = get(),
         )
