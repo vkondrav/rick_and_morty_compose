@@ -2,7 +2,7 @@ package com.vkondrav.ram.app.common.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import com.vkondrav.ram.app.common.utils.TextResource
+import com.vkondrav.ram.util.TextResource
 import kotlinx.coroutines.flow.Flow
 
 sealed class NavigationCommand {

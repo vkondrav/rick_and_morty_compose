@@ -21,7 +21,7 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
 
     private val favoriteCharactersDao = mockk<FavoriteCharactersDao>(relaxed = true)
     private val snackbarController = mockk<SnackbarController>(relaxed = true)
-    private val transformer = mockk<RamCharacter.SourceConstructor>()
+    private val adapter = mockk<RamCharacter.Adapter>()
     private val testTree = mockk<Timber.Tree>()
 
     private lateinit var subject: AddCharacterToFavoritesUseCase
@@ -33,7 +33,7 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
         subject = AddCharacterToFavoritesUseCase(
             favoriteCharactersDao,
             snackbarController,
-            transformer,
+            adapter,
             Dispatchers.Unconfined,
         )
     }
@@ -49,7 +49,7 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
             every { name } returns "name_1"
         }
         val favorite = mockk<FavoriteCharacter>()
-        every { transformer.favorite(character) } returns favorite
+        every { adapter.favorite(character) } returns favorite
 
         subject(character)
         coVerifySequence {
@@ -63,7 +63,7 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
         val character = mockk<RamCharacter>()
 
         val error = Exception("oops")
-        every { transformer.favorite(character) } throws error
+        every { adapter.favorite(character) } throws error
 
         subject(character)
         verify { testTree.e(error) }

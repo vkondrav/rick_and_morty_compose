@@ -13,7 +13,7 @@ val characterDetailsModule = module {
             favoriteCharactersDao = get(),
             favoriteLocationsDao = get(),
             favoriteEpisodesDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
         )
     }
     factory {
@@ -21,8 +21,8 @@ val characterDetailsModule = module {
             fetchCharacterDetailsUseCase = get(),
             fetchCollapsableDrawerState = get(),
             handleCollapsableDrawerUseCase = get(),
-            locationViewItemsConstructor = get(),
-            episodeViewItemsConstructor = get(),
+            locationViewItemsAdapter = get(),
+            episodeViewItemsAdapter = get(),
         )
     }
     viewModel { params ->

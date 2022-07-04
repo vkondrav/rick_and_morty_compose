@@ -1,12 +1,12 @@
 package com.vkondrav.ram.app.screen.characters.di
 
 import com.vkondrav.ram.app.screen.characters.usecase.AddCharacterToFavoritesUseCase
-import com.vkondrav.ram.app.screen.characters.usecase.CharactersSource
+import com.vkondrav.ram.app.screen.characters.source.CharactersSource
 import com.vkondrav.ram.app.screen.characters.usecase.FetchCharactersUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.RemoveCharacterFromFavoritesUseCase
-import com.vkondrav.ram.app.screen.characters.usecase.CharactersViewItemConstructor
+import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
 import com.vkondrav.ram.app.screen.characters.viewmodel.CharactersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -16,7 +16,7 @@ val charactersModule = module {
         FetchCharactersUseCase(
             ramRepository = get(),
             favoriteCharactersDao = get(),
-            transformer = get(),
+            adapter = get(),
         )
     }
     factory {
@@ -28,7 +28,7 @@ val charactersModule = module {
         AddCharacterToFavoritesUseCase(
             favoriteCharactersDao = get(),
             snackbarController = get(),
-            transformer = get(),
+            adapter = get(),
             dispatcher = get(),
         )
     }
@@ -46,7 +46,7 @@ val charactersModule = module {
         )
     }
     factory {
-        CharactersViewItemConstructor(
+        CharactersViewItemAdapter(
             navigateToCharacterDetailsUseCase = get(),
             handleCharacterFavoritesUseCase = get(),
         )
@@ -54,7 +54,7 @@ val charactersModule = module {
     factory {
         CharactersSource(
             fetchCharactersUseCase = get(),
-            charactersViewItemConstructor = get(),
+            charactersViewItemAdapter = get(),
         )
     }
     viewModel {

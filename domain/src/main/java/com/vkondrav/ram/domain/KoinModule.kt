@@ -4,38 +4,38 @@ import org.koin.dsl.module
 
 val domainModule = module {
     factory {
-        RamCharacter.SourceConstructor
+        RamCharacter.Adapter
     }
     factory {
-        RamEpisode.SourceConstructor
+        RamEpisode.Adapter
     }
     factory {
-        RamLocation.SourceConstructor
+        RamLocation.Adapter
     }
     factory {
-        RamCharacterDetails.SourceConstructor(
-            characterSourceConstructor = get(),
-            episodeSourceConstructor = get(),
-            locationSourceConstructor = get(),
+        RamCharacterDetails.Adapter(
+            characterAdapter = get(),
+            episodeAdapter = get(),
+            locationAdapter = get(),
         )
     }
     factory {
-        RamEpisodeDetails.SourceConstructor(
-            episodeSourceConstructor = get(),
-            characterSourceConstructor = get(),
+        RamEpisodeDetails.Adapter(
+            episodeAdapter = get(),
+            characterAdapter = get(),
         )
     }
     factory {
-        RamLocationDetails.SourceConstructor(
-            characterSourceConstructor = get(),
-            locationSourceConstructor = get(),
+        RamLocationDetails.Adapter(
+            characterAdapter = get(),
+            locationAdapter = get(),
         )
     }
     factory {
-        RamPage.SourceConstructor(
-            characterSourceConstructor = get(),
-            episodeSourceConstructor = get(),
-            locationSourceConstructor = get(),
+        RamPage.Adapter(
+            characterAdapter = get(),
+            episodeAdapter = get(),
+            locationAdapter = get(),
         )
     }
 }

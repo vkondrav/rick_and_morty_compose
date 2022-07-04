@@ -17,21 +17,21 @@ import timber.log.Timber
 
 class RamPageTest : BaseTest() {
 
-    private val characterSourceConstructor = mockk<RamCharacter.SourceConstructor>()
-    private val episodeSourceConstructor = mockk<RamEpisode.SourceConstructor>()
-    private val locationSourceConstructor = mockk<RamLocation.SourceConstructor>()
+    private val characterAdapter = mockk<RamCharacter.Adapter>()
+    private val episodeAdapter = mockk<RamEpisode.Adapter>()
+    private val locationAdapter = mockk<RamLocation.Adapter>()
     private val testTree = mockk<Timber.Tree>(relaxed = true)
 
-    private lateinit var subject: RamPage.SourceConstructor
+    private lateinit var subject: RamPage.Adapter
 
     @Before
     fun setUp() {
         clearAllMocks()
         Timber.plant(testTree)
-        subject = RamPage.SourceConstructor(
-            characterSourceConstructor,
-            episodeSourceConstructor,
-            locationSourceConstructor,
+        subject = RamPage.Adapter(
+            characterAdapter,
+            episodeAdapter,
+            locationAdapter,
         )
     }
 
@@ -58,11 +58,11 @@ class RamPageTest : BaseTest() {
             c2 to t2,
             c3 to t3,
         ).forEach { (c, t) ->
-            every { characterSourceConstructor(c, favorites) } returns t
+            every { characterAdapter(c, favorites) } returns t
         }
 
         val error = Exception("oops")
-        every { characterSourceConstructor(c4, favorites) } throws error
+        every { characterAdapter(c4, favorites) } throws error
 
         subject.characters(
             PageResponse(
@@ -78,10 +78,10 @@ class RamPageTest : BaseTest() {
             nextPage shouldBe 1
             items shouldBe listOf(t1, t2, t3)
             verifySequence {
-                characterSourceConstructor(c1, favorites)
-                characterSourceConstructor(c2, favorites)
-                characterSourceConstructor(c3, favorites)
-                characterSourceConstructor(c4, favorites)
+                characterAdapter(c1, favorites)
+                characterAdapter(c2, favorites)
+                characterAdapter(c3, favorites)
+                characterAdapter(c4, favorites)
                 testTree.e(error)
             }
         }

@@ -9,7 +9,7 @@ import com.vkondrav.ram.util.mapToSet
 class FetchLocationsUseCase(
     private val ramRepository: RamRepository,
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val sourceConstructor: RamPage.SourceConstructor,
+    private val adapter: RamPage.Adapter,
 ) {
 
     private val favorites by lazy { favoriteLocationsDao.getIds().mapToSet() }
@@ -17,7 +17,7 @@ class FetchLocationsUseCase(
     suspend operator fun invoke(
         page: Int,
     ): Result<RamPage<RamLocation>> = runCatching {
-        sourceConstructor.locations(
+        adapter.locations(
             ramRepository.fetchLocations(page),
             favorites,
         )

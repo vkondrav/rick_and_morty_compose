@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.utils
+package com.vkondrav.ram.util
 
 import android.os.Parcelable
 import androidx.annotation.StringRes

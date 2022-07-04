@@ -14,7 +14,7 @@ class FetchCharacterDetailsUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
     private val favoriteLocationsDao: FavoriteLocationsDao,
     private val favoriteEpisodesDao: FavoriteEpisodesDao,
-    private val sourceConstructor: RamCharacterDetails.SourceConstructor,
+    private val adapter: RamCharacterDetails.Adapter,
 ) {
 
     private val favoriteCharactersFlow by lazy {
@@ -29,7 +29,7 @@ class FetchCharacterDetailsUseCase(
 
     operator fun invoke(id: String): Result<Flow<RamCharacterDetails>> = runCatching {
         ramRepository.fetchCharacterDetails(id).map {
-            sourceConstructor(
+            adapter(
                 it,
                 favoriteCharactersFlow,
                 favoriteEpisodesFlow,

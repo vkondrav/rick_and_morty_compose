@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 
 class FetchFavoriteLocationsUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val sourceConstructor: RamLocation.SourceConstructor,
+    private val adapter: RamLocation.Adapter,
     private val navigateToLocationDetailsUseCase: NavigateToLocationDetailsUseCase,
     private val handleLocationFavoriteUseCase: HandleLocationFavoriteUseCase,
 ) {
@@ -25,7 +25,7 @@ class FetchFavoriteLocationsUseCase(
     }
 
     private val FavoriteLocation.viewItem
-        get() = with(sourceConstructor(this, flowOf(setOf(id)))) {
+        get() = with(adapter(this, flowOf(setOf(id)))) {
             LocationViewItem(
                 location = this,
                 onClickAction = {

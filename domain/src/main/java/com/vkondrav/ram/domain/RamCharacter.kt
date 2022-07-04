@@ -16,7 +16,7 @@ data class RamCharacter(
     val isFavorite: Flow<Boolean>,
 ) {
 
-    object SourceConstructor {
+    object Adapter {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: CharacterFragment, favorites: Flow<Set<String>>) =

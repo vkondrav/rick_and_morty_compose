@@ -5,8 +5,8 @@ import com.vkondrav.ram.app.screen.locations.usecase.HandleLocationFavoriteUseCa
 import com.vkondrav.ram.app.screen.locations.usecase.RemoveLocationFromFavoritesUseCase
 import com.vkondrav.ram.app.screen.locations.usecase.FetchLocationsUseCase
 import com.vkondrav.ram.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
-import com.vkondrav.ram.app.screen.locations.usecase.LocationViewItemsConstructor
-import com.vkondrav.ram.app.screen.locations.usecase.LocationsSource
+import com.vkondrav.ram.app.screen.locations.adapter.LocationViewItemsAdapter
+import com.vkondrav.ram.app.screen.locations.source.LocationsSource
 import com.vkondrav.ram.app.screen.locations.viewmodel.LocationsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -16,7 +16,7 @@ val locationsModule = module {
         FetchLocationsUseCase(
             ramRepository = get(),
             favoriteLocationsDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
         )
     }
     factory {
@@ -45,7 +45,7 @@ val locationsModule = module {
         )
     }
     factory {
-        LocationViewItemsConstructor(
+        LocationViewItemsAdapter(
             navigateToLocationDetailsUseCase = get(),
             handleLocationFavoriteUseCase = get(),
         )
@@ -53,7 +53,7 @@ val locationsModule = module {
     factory {
         LocationsSource(
             fetchLocationsUseCase = get(),
-            locationViewItemsConstructor = get(),
+            locationViewItemsAdapter = get(),
         )
     }
     viewModel {

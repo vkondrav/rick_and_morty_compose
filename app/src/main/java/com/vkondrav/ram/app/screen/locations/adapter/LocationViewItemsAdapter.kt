@@ -1,10 +1,12 @@
-package com.vkondrav.ram.app.screen.locations.usecase
+package com.vkondrav.ram.app.screen.locations.adapter
 
 import com.vkondrav.ram.app.base.item.ComposableItem
 import com.vkondrav.ram.app.screen.locations.composable.LocationViewItem
+import com.vkondrav.ram.app.screen.locations.usecase.HandleLocationFavoriteUseCase
+import com.vkondrav.ram.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.ram.domain.RamLocation
 
-class LocationViewItemsConstructor(
+class LocationViewItemsAdapter(
     private val navigateToLocationDetailsUseCase: NavigateToLocationDetailsUseCase,
     private val handleLocationFavoriteUseCase: HandleLocationFavoriteUseCase,
 ) {

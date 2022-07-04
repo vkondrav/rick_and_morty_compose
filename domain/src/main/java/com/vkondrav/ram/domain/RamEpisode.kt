@@ -14,7 +14,7 @@ data class RamEpisode(
     val isFavorite: Flow<Boolean>,
 ) {
 
-    object SourceConstructor {
+    object Adapter {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: EpisodeFragment, favorites: Flow<Set<String>>) =

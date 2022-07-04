@@ -23,7 +23,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
 
     private val ramRepository = mockk<RamRepository>()
     private val favoriteCharactersDao = mockk<FavoriteCharactersDao>()
-    private val transformer = mockk<RamPage.SourceConstructor>()
+    private val adapter = mockk<RamPage.Adapter>()
 
     private lateinit var subject: FetchCharactersUseCase
 
@@ -33,7 +33,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
         subject = FetchCharactersUseCase(
             ramRepository,
             favoriteCharactersDao,
-            transformer,
+            adapter,
         )
     }
 
@@ -51,7 +51,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
         every { favoriteCharactersDao.getIds() } returns favoriteCharactersList
 
         val ramPage = mockk<RamPage<RamCharacter>>()
-        every { transformer.characters(pageResponse, favoriteCharactersSet) } returns ramPage
+        every { adapter.characters(pageResponse, favoriteCharactersSet) } returns ramPage
 
         subject.invoke(0) shouldBe Result.success(ramPage)
     }
@@ -105,7 +105,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
         every { favoriteCharactersDao.getIds() } returns favoriteCharactersList
 
         val error = Exception("oops")
-        every { transformer.characters(pageResponse, favoriteCharactersSet) } throws error
+        every { adapter.characters(pageResponse, favoriteCharactersSet) } throws error
 
         subject.invoke(0) shouldBe Result.failure(error)
     }

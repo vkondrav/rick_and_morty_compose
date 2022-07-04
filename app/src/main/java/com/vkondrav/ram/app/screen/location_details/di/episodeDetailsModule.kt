@@ -12,7 +12,7 @@ val locationDetailsModule = module {
             ramRepository = get(),
             favoriteLocationsDao = get(),
             favoriteCharactersDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
         )
     }
     factory {
@@ -20,7 +20,7 @@ val locationDetailsModule = module {
             fetchLocationDetailsUseCase = get(),
             fetchCollapsableDrawerState = get(),
             handleCollapsableDrawerUseCase = get(),
-            charactersViewItemConstructor = get(),
+            charactersViewItemAdapter = get(),
         )
     }
     viewModel { params ->

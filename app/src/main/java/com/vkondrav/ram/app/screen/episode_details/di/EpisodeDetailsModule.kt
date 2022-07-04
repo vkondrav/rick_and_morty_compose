@@ -12,7 +12,7 @@ val episodeDetailsModule = module {
             ramRepository = get(),
             favoriteCharactersDao = get(),
             favoriteEpisodesDao = get(),
-            sourceConstructor = get(),
+            adapter = get(),
         )
     }
     factory {
@@ -20,7 +20,7 @@ val episodeDetailsModule = module {
             fetchEpisodeDetailsUseCase = get(),
             fetchCollapsableDrawerState = get(),
             handleCollapsableDrawerUseCase = get(),
-            charactersViewItemConstructor = get(),
+            charactersViewItemAdapter = get(),
         )
     }
     viewModel { params ->
