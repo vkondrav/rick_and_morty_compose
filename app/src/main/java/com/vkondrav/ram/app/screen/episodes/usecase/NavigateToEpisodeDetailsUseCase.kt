@@ -4,10 +4,10 @@ import com.vkondrav.ram.app.common.navigation.Navigator
 import com.vkondrav.ram.app.screen.episode_details.nav.toEpisodeDetailsScreen
 
 class NavigateToEpisodeDetailsUseCase(
-    private val navigationStateHolder: Navigator,
+    private val navigator: Navigator,
 ) {
     operator fun invoke(id: String, title: String) {
-        navigationStateHolder.navigate(
+        navigator.navigate(
             toEpisodeDetailsScreen(
                 id,
                 title,

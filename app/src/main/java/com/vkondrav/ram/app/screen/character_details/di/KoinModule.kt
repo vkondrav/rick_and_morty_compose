@@ -13,7 +13,7 @@ val characterDetailsModule = module {
             favoriteCharactersDao = get(),
             favoriteLocationsDao = get(),
             favoriteEpisodesDao = get(),
-            adapter = get(),
+            factory = get(),
         )
     }
     factory {

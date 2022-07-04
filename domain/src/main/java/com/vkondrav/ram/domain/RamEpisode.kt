@@ -14,7 +14,7 @@ data class RamEpisode(
     val isFavorite: Flow<Boolean>,
 ) {
 
-    object Adapter {
+    object Factory {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: EpisodeFragment, favorites: Flow<Set<String>>) =
@@ -35,5 +35,15 @@ data class RamEpisode(
                     isFavorite = favorites.map { it.contains(id) }.distinctUntilChanged(),
                 )
             }
+    }
+
+    object Adapter {
+        fun favorite(ramEpisode: RamEpisode) = with(ramEpisode) {
+            FavoriteEpisode(
+                id = id,
+                title = title,
+                airDate = airDate,
+            )
+        }
     }
 }

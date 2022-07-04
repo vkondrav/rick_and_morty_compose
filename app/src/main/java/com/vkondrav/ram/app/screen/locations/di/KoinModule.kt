@@ -16,7 +16,7 @@ val locationsModule = module {
         FetchLocationsUseCase(
             ramRepository = get(),
             favoriteLocationsDao = get(),
-            adapter = get(),
+            factory = get(),
         )
     }
     factory {
@@ -30,6 +30,7 @@ val locationsModule = module {
         AddLocationToFavoritesUseCase(
             favoriteLocationsDao = get(),
             snackbarController = get(),
+            adapter = get(),
             dispatcher = get(),
         )
     }
@@ -41,7 +42,7 @@ val locationsModule = module {
     }
     factory {
         NavigateToLocationDetailsUseCase(
-            navigationStateHolder = get(),
+            navigator = get(),
         )
     }
     factory {

@@ -12,10 +12,10 @@ data class RamCharacterDetails(
     val episodes: List<RamEpisode>,
 ) {
 
-    class Adapter(
-        private val characterAdapter: RamCharacter.Adapter,
-        private val episodeAdapter: RamEpisode.Adapter,
-        private val locationAdapter: RamLocation.Adapter,
+    class Factory(
+        private val characterFactory: RamCharacter.Factory,
+        private val episodeFactory: RamEpisode.Factory,
+        private val locationFactory: RamLocation.Factory,
     ) {
 
         @Throws(InvalidDataException::class)
@@ -25,22 +25,22 @@ data class RamCharacterDetails(
             favoriteEpisodes: Flow<Set<String>>,
             favoriteLocations: Flow<Set<String>>,
         ) = RamCharacterDetails(
-            character = characterAdapter(character.characterFragment, favoriteCharacters),
+            character = characterFactory(character.characterFragment, favoriteCharacters),
             origin = character.origin?.locationFragment?.let {
-                locationAdapter(
+                locationFactory(
                     it,
                     favoriteLocations,
                 )
             },
             location = character.location?.locationFragment?.let {
-                locationAdapter(
+                locationFactory(
                     it,
                     favoriteLocations,
                 )
             },
             episodes = character.episode.asSequence().filterNotNull().mapNotNull {
                 try {
-                    episodeAdapter(it.episodeFragment, favoriteEpisodes)
+                    episodeFactory(it.episodeFragment, favoriteEpisodes)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null

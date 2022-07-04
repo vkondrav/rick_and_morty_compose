@@ -13,10 +13,10 @@ data class RamPage<T>(
     val items: List<T>,
 ) {
 
-    class Adapter(
-        private val characterAdapter: RamCharacter.Adapter,
-        private val episodeAdapter: RamEpisode.Adapter,
-        private val locationAdapter: RamLocation.Adapter,
+    class Factory(
+        private val characterFactory: RamCharacter.Factory,
+        private val episodeFactory: RamEpisode.Factory,
+        private val locationFactory: RamLocation.Factory,
     ) {
 
         fun characters(response: PageResponse<CharacterFragment>, favorites: Flow<Set<String>>) =
@@ -26,7 +26,7 @@ data class RamPage<T>(
                     info.next,
                     items.mapNotNull { fragment ->
                         runCatching {
-                            characterAdapter(fragment, favorites)
+                            characterFactory(fragment, favorites)
                         }.onFailure {
                             Timber.e(it)
                         }.getOrNull()
@@ -41,7 +41,7 @@ data class RamPage<T>(
                     info.next,
                     items.mapNotNull { fragment ->
                         runCatching {
-                            episodeAdapter(fragment, favorites)
+                            episodeFactory(fragment, favorites)
                         }.onFailure {
                             Timber.e(it)
                         }.getOrNull()
@@ -56,7 +56,7 @@ data class RamPage<T>(
                     info.next,
                     items.mapNotNull { fragment ->
                         runCatching {
-                            locationAdapter(fragment, favorites)
+                            locationFactory(fragment, favorites)
                         }.onFailure {
                             Timber.e(it)
                         }.getOrNull()

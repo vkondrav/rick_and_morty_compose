@@ -14,7 +14,7 @@ data class RamLocation(
     val isFavorite: Flow<Boolean>,
 ) {
 
-    object Adapter {
+    object Factory {
 
         @Throws(InvalidDataException::class)
         operator fun invoke(fragment: LocationFragment, favorites: Flow<Set<String>>) =
@@ -35,5 +35,16 @@ data class RamLocation(
                     isFavorite = favorites.map { it.contains(id) }.distinctUntilChanged(),
                 )
             }
+    }
+
+    object Adapter {
+
+        fun favorite(ramLocation: RamLocation) = with(ramLocation) {
+            FavoriteLocation(
+                id = id,
+                name = name,
+                dimension = dimension,
+            )
+        }
     }
 }

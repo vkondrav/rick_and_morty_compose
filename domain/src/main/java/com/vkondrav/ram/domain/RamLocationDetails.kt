@@ -10,9 +10,9 @@ data class RamLocationDetails(
     val characters: List<RamCharacter>,
 ) {
 
-    class Adapter(
-        private val characterAdapter: RamCharacter.Adapter,
-        private val locationAdapter: RamLocation.Adapter,
+    class Factory(
+        private val characterFactory: RamCharacter.Factory,
+        private val locationFactory: RamLocation.Factory,
     ) {
         @Throws(InvalidDataException::class)
         operator fun invoke(
@@ -20,10 +20,10 @@ data class RamLocationDetails(
             favoriteLocation: Flow<Set<String>>,
             favoriteCharacters: Flow<Set<String>>,
         ) = RamLocationDetails(
-            location = locationAdapter(location.locationFragment, favoriteLocation),
+            location = locationFactory(location.locationFragment, favoriteLocation),
             characters = location.residents.asSequence().filterNotNull().mapNotNull {
                 try {
-                    characterAdapter(it.characterFragment, favoriteCharacters)
+                    characterFactory(it.characterFragment, favoriteCharacters)
                 } catch (e: InvalidDataException) {
                     Timber.e(e)
                     null
