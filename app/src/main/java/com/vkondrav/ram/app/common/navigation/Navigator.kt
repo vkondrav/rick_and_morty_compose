@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.common.navigation
 
 import androidx.navigation.NavController
-import com.vkondrav.ram.util.FlowWrapper
+import com.vkondrav.ram.common.util.FlowWrapper
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 

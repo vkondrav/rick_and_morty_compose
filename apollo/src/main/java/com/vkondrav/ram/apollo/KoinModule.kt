@@ -2,7 +2,7 @@ package com.vkondrav.ram.apollo
 
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
-import com.vkondrav.ram.util.TargetWrapper
+import com.vkondrav.ram.common.util.TargetWrapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

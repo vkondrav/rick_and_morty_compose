@@ -1,4 +1,4 @@
-package com.vkondrav.ram.util
+package com.vkondrav.ram.common.util
 
 import kotlinx.coroutines.flow.Flow
 

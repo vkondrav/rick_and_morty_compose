@@ -5,7 +5,7 @@ import com.vkondrav.ram.app.base.item.ComposableItem
 import com.vkondrav.ram.app.common.collapsable_drawer.composable.CollapsableViewItem
 import com.vkondrav.ram.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
-import com.vkondrav.ram.util.TextResource
+import com.vkondrav.ram.common.ui.TextResource
 import com.vkondrav.ram.app.screen.character_details.composable.CharacterDetailsViewItem
 import com.vkondrav.ram.app.screen.episodes.adapter.EpisodeViewItemsAdapter
 import com.vkondrav.ram.app.screen.locations.adapter.LocationViewItemsAdapter

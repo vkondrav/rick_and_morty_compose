@@ -1,6 +1,6 @@
 package com.vkondrav.ram.datastore
 
-import com.vkondrav.ram.util.FlowWrapper
+import com.vkondrav.ram.common.util.FlowWrapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

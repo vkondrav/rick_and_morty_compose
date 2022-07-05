@@ -2,7 +2,7 @@ package com.vkondrav.ram.datastore
 
 import app.cash.turbine.test
 import com.vkondrav.ram.test.BaseRobolectricTest
-import com.vkondrav.ram.util.FlowWrapper
+import com.vkondrav.ram.common.util.FlowWrapper
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

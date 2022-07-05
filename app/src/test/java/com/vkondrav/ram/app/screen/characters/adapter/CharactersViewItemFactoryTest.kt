@@ -5,7 +5,7 @@ import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUs
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.test.BaseTest
-import com.vkondrav.ram.util.asType
+import com.vkondrav.ram.common.util.asType
 import io.kotest.matchers.shouldBe
 import io.mockk.Called
 import io.mockk.clearAllMocks

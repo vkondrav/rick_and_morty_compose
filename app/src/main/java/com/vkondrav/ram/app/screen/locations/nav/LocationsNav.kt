@@ -4,7 +4,7 @@ import androidx.navigation.navArgument
 import com.vkondrav.ram.app.R
 import com.vkondrav.ram.app.common.navigation.NAV_TITLE
 import com.vkondrav.ram.app.common.navigation.Screen
-import com.vkondrav.ram.util.TextResource
+import com.vkondrav.ram.common.ui.TextResource
 import com.vkondrav.ram.app.screen.locations.composable.LocationsScreen
 
 val locationsScreen = Screen(

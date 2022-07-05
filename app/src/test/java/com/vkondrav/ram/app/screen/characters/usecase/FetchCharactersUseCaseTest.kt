@@ -7,7 +7,7 @@ import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.test.BaseTest
-import com.vkondrav.ram.util.mapToSet
+import com.vkondrav.ram.common.util.mapToSet
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks
 import io.mockk.coEvery

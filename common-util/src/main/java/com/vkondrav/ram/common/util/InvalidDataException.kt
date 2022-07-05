@@ -1,3 +1,3 @@
-package com.vkondrav.ram.util
+package com.vkondrav.ram.common.util
 
 data class InvalidDataException(override val message: String) : Throwable(message)

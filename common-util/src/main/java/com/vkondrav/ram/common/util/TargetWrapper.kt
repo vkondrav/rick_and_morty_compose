@@ -1,4 +1,4 @@
-package com.vkondrav.ram.util
+package com.vkondrav.ram.common.util
 
 /**
  * use this class to wrap inaccessible targets that you cannot

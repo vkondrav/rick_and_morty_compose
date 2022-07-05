@@ -122,6 +122,7 @@ dependencies {
 
     implementation(project(Module.domain))
     implementation(project(Module.commonUtil))
+    implementation(project(Module.commonUi))
 
     implementation(Libs.AndroidX.ktx)
     implementation(Libs.AndroidX.appcompat)
