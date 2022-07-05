@@ -1,3 +1,5 @@
+@file:JvmName("Utils")
+
 package com.vkondrav.ram.navigation
 
 import android.os.Bundle

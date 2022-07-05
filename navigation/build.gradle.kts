@@ -94,7 +94,9 @@ dependencies {
     implementation(Libs.Koin.core)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.JUnit.core)
+
     testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.KotlinX.coroutines)
+    testImplementation(TestLibs.Koin.core)
+    testImplementation(TestLibs.Turbine.core)
 }

@@ -157,11 +157,10 @@ dependencies {
     implementation(Libs.DataStore.core)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.JUnit.core)
+
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.Compose.jUnit)
     testImplementation(TestLibs.MockK.core)
-    testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Koin.core)
     testImplementation(TestLibs.Turbine.core)
 

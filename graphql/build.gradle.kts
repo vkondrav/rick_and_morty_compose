@@ -101,8 +101,7 @@ dependencies {
     implementation(Libs.Timber.core)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.JUnit.core)
-    testImplementation(TestLibs.Kotest.assertions)
+
     testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.KotlinX.coroutines)
     testImplementation(TestLibs.Koin.core)
