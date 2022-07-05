@@ -24,7 +24,7 @@ val navigationModule = module {
     }
     single {
         Navigator(
-            flowWrapper = FlowWrapper()
+            flowWrapper = FlowWrapper(),
         )
     }
 }

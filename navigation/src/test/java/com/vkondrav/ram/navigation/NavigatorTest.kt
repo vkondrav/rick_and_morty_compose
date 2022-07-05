@@ -65,7 +65,6 @@ class NavigatorTest : BaseTest() {
 
     @Test
     fun `verify back stack observers state and maps to app bar state`() = runTest {
-
         mockkStatic("com.vkondrav.ram.navigation.Utils")
 
         val flow = MutableStateFlow<NavBackStackEntry?>(null)
@@ -73,15 +72,16 @@ class NavigatorTest : BaseTest() {
         every { navController.currentBackStackEntryFlow } returns flow.filterNotNull()
 
         subject.observeBackStack(navController).test {
-
             every { navController.backQueue } returns mockk {
                 every { size } returns 1
             }
-            flow.emit(mockk {
-                every { arguments } returns mockk {
-                    every { title } returns TextResource.Literal("Title_1")
-                }
-            })
+            flow.emit(
+                mockk {
+                    every { arguments } returns mockk {
+                        every { title } returns TextResource.Literal("Title_1")
+                    }
+                },
+            )
 
             awaitItem() shouldBe AppBarState(
                 showBackButton = false,
@@ -91,11 +91,13 @@ class NavigatorTest : BaseTest() {
             every { navController.backQueue } returns mockk {
                 every { size } returns 3
             }
-            flow.emit(mockk {
-                every { arguments } returns mockk {
-                    every { title } returns TextResource.Literal("Title_2")
-                }
-            })
+            flow.emit(
+                mockk {
+                    every { arguments } returns mockk {
+                        every { title } returns TextResource.Literal("Title_2")
+                    }
+                },
+            )
 
             awaitItem() shouldBe AppBarState(
                 showBackButton = true,
