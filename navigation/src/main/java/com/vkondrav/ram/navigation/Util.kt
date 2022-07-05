@@ -1,13 +1,13 @@
-package com.vkondrav.ram.app.common.navigation
+package com.vkondrav.ram.navigation
 
 import android.os.Bundle
 import com.vkondrav.ram.common.ui.TextResource
 
-internal const val NAV_ID = "id"
-internal const val NAV_TITLE = "title"
+const val NAV_ID = "id"
+const val NAV_TITLE = "title"
 
-internal val Bundle.id: String? get() = getString(NAV_ID)
-internal val Bundle?.title: TextResource
+val Bundle.id: String? get() = getString(NAV_ID)
+val Bundle?.title: TextResource
     get() = this?.getString(NAV_TITLE)?.let {
         TextResource.Literal(it)
     } ?: this?.getParcelable(NAV_TITLE)

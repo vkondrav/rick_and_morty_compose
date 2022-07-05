@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.navigation
+package com.vkondrav.ram.navigation
 
 import androidx.navigation.NavController
 import com.vkondrav.ram.common.util.FlowWrapper

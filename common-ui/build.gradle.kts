@@ -45,6 +45,5 @@ android {
 }
 
 dependencies {
-    implementation(Libs.KotlinX.coroutines)
     implementation(Libs.Compose.foundation)
 }

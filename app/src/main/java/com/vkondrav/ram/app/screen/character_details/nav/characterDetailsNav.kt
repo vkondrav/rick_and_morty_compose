@@ -1,11 +1,11 @@
 package com.vkondrav.ram.app.screen.character_details.nav
 
-import com.vkondrav.ram.app.common.navigation.NAV_ID
-import com.vkondrav.ram.app.common.navigation.NAV_TITLE
-import com.vkondrav.ram.app.common.navigation.id
-import com.vkondrav.ram.app.common.navigation.NavigationException
-import com.vkondrav.ram.app.common.navigation.Screen
+import com.vkondrav.ram.navigation.NAV_ID
+import com.vkondrav.ram.navigation.NAV_TITLE
+import com.vkondrav.ram.navigation.id
+import com.vkondrav.ram.navigation.NavigationException
 import com.vkondrav.ram.app.screen.character_details.composable.CharacterDetailsScreen
+import com.vkondrav.ram.navigation.Screen
 
 private const val NAV_CHARACTER_DETAILS = "character_details"
 

@@ -1,7 +1,7 @@
-package com.vkondrav.ram.app.screen.main.usecase
+package com.vkondrav.ram.navigation.usecase
 
 import androidx.navigation.NavController
-import com.vkondrav.ram.app.common.navigation.Navigator
+import com.vkondrav.ram.navigation.Navigator
 
 class FetchAppBarStateUseCase(
     private val navigator: Navigator,

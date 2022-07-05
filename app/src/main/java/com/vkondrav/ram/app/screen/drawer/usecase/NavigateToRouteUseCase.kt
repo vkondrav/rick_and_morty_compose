@@ -1,8 +1,7 @@
 package com.vkondrav.ram.app.screen.drawer.usecase
 
 import com.vkondrav.ram.app.common.drawer.DrawerController
-import com.vkondrav.ram.app.common.navigation.Navigator
-
+import com.vkondrav.ram.navigation.Navigator
 
 class NavigateToRouteUseCase(
     private val navigator: Navigator,
