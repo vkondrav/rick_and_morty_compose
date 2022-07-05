@@ -9,13 +9,15 @@ import com.vkondrav.ram.navigation.NavigationException
 
 private const val NAV_EPISODE_DETAILS = "episode_details"
 
-val episodeDetailsScreen = Screen(
-    route = "$NAV_EPISODE_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
-) { bundle ->
-    EpisodeDetailsScreen(
-        id = bundle?.id
-            ?: throw NavigationException("Navigating to episode details screen with no id"),
-    )
+val episodeDetailsScreen by lazy {
+    Screen(
+        route = "$NAV_EPISODE_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
+    ) { bundle ->
+        EpisodeDetailsScreen(
+            id = bundle?.id
+                ?: throw NavigationException("Navigating to episode details screen with no id"),
+        )
+    }
 }
 
 fun toEpisodeDetailsScreen(id: String, title: String) = "$NAV_EPISODE_DETAILS/$id?$NAV_TITLE=$title"

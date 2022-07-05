@@ -9,13 +9,15 @@ import com.vkondrav.ram.navigation.Screen
 
 private const val NAV_CHARACTER_DETAILS = "character_details"
 
-val characterDetailsScreen = Screen(
-    route = "$NAV_CHARACTER_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
-) { bundle ->
-    CharacterDetailsScreen(
-        id = bundle?.id
-            ?: throw NavigationException("Navigating to character details screen with no id"),
-    )
+val characterDetailsScreen by lazy {
+    Screen(
+        route = "$NAV_CHARACTER_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
+    ) { bundle ->
+        CharacterDetailsScreen(
+            id = bundle?.id
+                ?: throw NavigationException("Navigating to character details screen with no id"),
+        )
+    }
 }
 
 fun toCharacterDetailsScreen(id: String, title: String) =
