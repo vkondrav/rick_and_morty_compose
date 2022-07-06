@@ -17,6 +17,7 @@ import com.vkondrav.ram.domain.domainModule
 import com.vkondrav.ram.graphql.ramModules
 import com.vkondrav.ram.navigation.navigationModule
 import com.vkondrav.ram.room.roomModule
+import com.vkondrav.ram.snackbar.snackbarModule
 import org.koin.core.KoinApplication
 
 fun KoinApplication.appModules() = modules(
@@ -25,6 +26,7 @@ fun KoinApplication.appModules() = modules(
         listOf(
             coreModule,
             navigationModule,
+            snackbarModule,
             mainModule,
             collapsableDrawerModule,
             roomModule,

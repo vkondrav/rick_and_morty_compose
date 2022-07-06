@@ -2,7 +2,7 @@ package com.vkondrav.ram.character.all.usecase
 
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
-import com.vkondrav.ram.snackbar.SnackbarController
+import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class AddCharacterToFavoritesUseCase(
     private val favoriteCharactersDao: FavoriteCharactersDao,
-    private val snackbarController: SnackbarController,
+    private val showSnackbarMessageUseCase: ShowSnackbarMessageUseCase,
     private val adapter: RamCharacter.Adapter,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
@@ -25,7 +25,7 @@ class AddCharacterToFavoritesUseCase(
     ) {
         launch {
             favoriteCharactersDao.insert(adapter.favorite(character))
-            snackbarController.showMessage("${character.name} added to favorites")
+            showSnackbarMessageUseCase("${character.name} added to favorites")
         }
     }
 

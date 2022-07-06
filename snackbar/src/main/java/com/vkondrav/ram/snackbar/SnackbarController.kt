@@ -5,7 +5,7 @@ import com.vkondrav.ram.common.util.FlowWrapper
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 
-class SnackbarController(private val wrapper: FlowWrapper = FlowWrapper()) {
+internal class SnackbarController(private val wrapper: FlowWrapper = FlowWrapper()) {
 
     private val messages = MutableSharedFlow<String>(extraBufferCapacity = Int.MAX_VALUE)
 

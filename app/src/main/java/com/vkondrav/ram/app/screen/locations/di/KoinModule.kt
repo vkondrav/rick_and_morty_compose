@@ -22,14 +22,14 @@ val locationsModule = module {
     factory {
         RemoveLocationFromFavoritesUseCase(
             favoriteLocationsDao = get(),
-            snackbarController = get(),
+            showSnackbarMessageUseCase = get(),
             dispatcher = get(),
         )
     }
     factory {
         AddLocationToFavoritesUseCase(
             favoriteLocationsDao = get(),
-            snackbarController = get(),
+            showSnackbarMessageUseCase = get(),
             adapter = get(),
             dispatcher = get(),
         )
