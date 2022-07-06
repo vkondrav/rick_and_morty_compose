@@ -1,9 +1,9 @@
-package com.vkondrav.ram.collapsable.drawer.data
+package com.vkondrav.ram.collapsable.drawer
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-class CollapsableDrawerState {
+internal class CollapsableDrawerState {
 
     private val openDrawers = mutableSetOf<String>()
 

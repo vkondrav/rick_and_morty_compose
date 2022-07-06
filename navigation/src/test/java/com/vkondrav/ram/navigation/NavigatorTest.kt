@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import app.cash.turbine.test
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.common.util.FlowWrapper
+import com.vkondrav.ram.navigation.data.AppBarState
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks

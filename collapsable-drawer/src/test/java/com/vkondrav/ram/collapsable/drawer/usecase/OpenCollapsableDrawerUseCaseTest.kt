@@ -1,6 +1,6 @@
 package com.vkondrav.ram.collapsable.drawer.usecase
 
-import com.vkondrav.ram.collapsable.drawer.data.CollapsableDrawerState
+import com.vkondrav.ram.collapsable.drawer.CollapsableDrawerState
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.confirmVerified
 import io.mockk.mockk
@@ -12,7 +12,7 @@ class OpenCollapsableDrawerUseCaseTest: BaseTest() {
     @Test
     fun `verify use case`() {
         val state = mockk<CollapsableDrawerState>(relaxed = true)
-        OpenCollapsableDrawerUseCase(state)("id")
+        openCollapsableDrawerUseCase(state)("id")
         verify(exactly = 1) { state.open("id") }
         confirmVerified(state)
     }

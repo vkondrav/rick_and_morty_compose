@@ -1,4 +1,4 @@
-package com.vkondrav.ram.navigation
+package com.vkondrav.ram.navigation.data
 
 import com.vkondrav.ram.common.ui.data.TextResource
 

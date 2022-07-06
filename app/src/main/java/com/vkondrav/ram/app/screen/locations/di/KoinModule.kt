@@ -42,7 +42,7 @@ val locationsModule = module {
     }
     factory {
         NavigateToLocationDetailsUseCase(
-            navigator = get(),
+            navigateToRouteUseCase = get(),
         )
     }
     factory {

@@ -5,7 +5,7 @@ import com.vkondrav.ram.app.R
 import com.vkondrav.ram.navigation.NAV_TITLE
 import com.vkondrav.ram.app.screen.characters.composable.CharactersScreen
 import com.vkondrav.ram.common.ui.data.TextResource
-import com.vkondrav.ram.navigation.Screen
+import com.vkondrav.ram.navigation.data.Screen
 
 val charactersScreen by lazy {
     Screen(
