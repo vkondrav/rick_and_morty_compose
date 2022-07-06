@@ -4,7 +4,7 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.cache.normalized.normalizedCache
 import com.vkondrav.ram.test.BaseTest
-import com.vkondrav.ram.util.TargetWrapper
+import com.vkondrav.ram.common.util.TargetWrapper
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk

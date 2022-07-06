@@ -2,7 +2,7 @@ package com.vkondrav.ram.domain
 
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharacter
-import com.vkondrav.ram.util.InvalidDataException
+import com.vkondrav.ram.common.util.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map

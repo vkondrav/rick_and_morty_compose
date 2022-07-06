@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.locations.usecase
 
-import com.vkondrav.ram.app.common.navigation.Navigator
+import com.vkondrav.ram.navigation.Navigator
 import com.vkondrav.ram.app.screen.location_details.nav.toLocationDetailsScreen
 
 class NavigateToLocationDetailsUseCase(

@@ -5,7 +5,7 @@ import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.mockserver.MockResponse
 import com.apollographql.apollo3.mockserver.MockServer
 import com.vkondrav.ram.test.BaseTest
-import com.vkondrav.ram.util.TargetWrapper
+import com.vkondrav.ram.common.util.TargetWrapper
 import io.kotest.matchers.shouldBe
 import org.junit.Before
 import kotlinx.coroutines.test.runTest

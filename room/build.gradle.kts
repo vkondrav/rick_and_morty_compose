@@ -117,10 +117,9 @@ dependencies {
     ksp(Libs.Room.compiler)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.JUnit.core)
+
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.KotlinX.coroutines)
     testImplementation(TestLibs.Turbine.core)
-    testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Koin.core)
 }

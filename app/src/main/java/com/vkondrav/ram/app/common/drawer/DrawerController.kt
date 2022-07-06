@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.common.drawer
 
 import androidx.compose.material.DrawerState
-import com.vkondrav.ram.util.FlowWrapper
+import com.vkondrav.ram.common.util.FlowWrapper
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 class DrawerController(private val wrapper: FlowWrapper = FlowWrapper()) {

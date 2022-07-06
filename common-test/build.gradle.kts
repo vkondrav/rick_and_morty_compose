@@ -44,10 +44,10 @@ android {
 }
 
 dependencies {
-
-    implementation(TestLibs.JUnit.core)
     implementation(TestLibs.Compose.jUnit)
     implementation(TestLibs.Robolectric.core)
-    implementation(TestLibs.Kotest.assertions)
     implementation(TestLibs.ArchCore.testing)
+
+    api(TestLibs.JUnit.core)
+    api(TestLibs.Kotest.assertions)
 }

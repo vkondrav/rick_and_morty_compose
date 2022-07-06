@@ -1,7 +1,6 @@
 plugins {
     library()
     kotlin()
-    parcelize()
 }
 
 android {
@@ -46,5 +45,4 @@ android {
 
 dependencies {
     implementation(Libs.KotlinX.coroutines)
-    implementation(Libs.Compose.foundation)
 }

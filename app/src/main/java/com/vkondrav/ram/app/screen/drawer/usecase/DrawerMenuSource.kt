@@ -2,7 +2,7 @@ package com.vkondrav.ram.app.screen.drawer.usecase
 
 import com.vkondrav.ram.app.R
 import com.vkondrav.ram.app.base.item.ComposableItem
-import com.vkondrav.ram.util.TextResource
+import com.vkondrav.ram.common.ui.TextResource
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.DrawerMenuViewItem
 import com.vkondrav.ram.app.screen.episodes.nav.episodesScreen

@@ -13,15 +13,16 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.ram.app.common.appbar.CustomAppBar
 import com.vkondrav.ram.app.common.bottom_sheet.BottomSheet
-import com.vkondrav.ram.app.common.navigation.defineGraph
 import com.vkondrav.ram.app.common.snackbar.SnackbarHost
 import com.vkondrav.ram.app.design.DlsTheme
 import com.vkondrav.ram.app.design.dlsDarkColorPalette
 import com.vkondrav.ram.app.design.dlsLightColorPalette
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.CustomDrawer
+import com.vkondrav.ram.app.screen.main.navigation.allScreens
 import com.vkondrav.ram.app.screen.main.usecase.FetchThemeStateUseCase
-import com.vkondrav.ram.app.screen.main.usecase.HandleNavigationCommandsUseCase
+import com.vkondrav.ram.navigation.defineGraph
+import com.vkondrav.ram.navigation.usecase.HandleNavigationCommandsUseCase
 import org.koin.androidx.compose.get
 
 @Composable
@@ -65,7 +66,7 @@ fun MainScreen(
                                 navController = navHostController,
                                 startDestination = charactersScreen.route,
                             ) {
-                                defineGraph()
+                                defineGraph(allScreens)
                             }
                         }
                     }

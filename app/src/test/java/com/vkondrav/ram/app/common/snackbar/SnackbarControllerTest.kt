@@ -2,7 +2,7 @@ package com.vkondrav.ram.app.common.snackbar
 
 import androidx.compose.material.SnackbarData
 import androidx.compose.material.SnackbarHostState
-import com.vkondrav.ram.util.FlowWrapper
+import com.vkondrav.ram.common.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.coVerifySequence

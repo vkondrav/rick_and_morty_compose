@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.characters.usecase
 
-import com.vkondrav.ram.app.common.navigation.Navigator
+import com.vkondrav.ram.navigation.Navigator
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.mockk

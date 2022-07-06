@@ -92,10 +92,8 @@ dependencies {
 
     testImplementation(project(Module.commonTest))
 
-    testImplementation(TestLibs.JUnit.core)
     testImplementation(TestLibs.Apollo.mockServer)
     testImplementation(TestLibs.KotlinX.coroutines)
-    testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Turbine.core)
     testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.Koin.core)

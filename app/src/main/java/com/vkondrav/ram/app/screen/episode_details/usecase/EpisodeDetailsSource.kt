@@ -3,7 +3,7 @@ package com.vkondrav.ram.app.screen.episode_details.usecase
 import com.vkondrav.ram.app.R
 import com.vkondrav.ram.app.base.item.ComposableItem
 import com.vkondrav.ram.app.common.collapsable_drawer.composable.CollapsableViewItem
-import com.vkondrav.ram.util.TextResource
+import com.vkondrav.ram.common.ui.TextResource
 import com.vkondrav.ram.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter

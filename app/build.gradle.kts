@@ -122,12 +122,13 @@ dependencies {
 
     implementation(project(Module.domain))
     implementation(project(Module.commonUtil))
+    implementation(project(Module.commonUi))
+    implementation(project(Module.navigation))
 
     implementation(Libs.AndroidX.ktx)
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintLayoutCompose)
     implementation(Libs.AndroidX.splashscreen)
-    implementation(Libs.AndroidX.navigationCompose)
     implementation(Libs.AndroidX.lifecycle)
     implementation(Libs.AndroidX.pagingRuntime)
     implementation(Libs.AndroidX.pagingCompose)
@@ -143,8 +144,6 @@ dependencies {
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
 
-    implementation(Libs.Accompanist.navAnimation)
-    implementation(Libs.Accompanist.navMaterial)
     implementation(Libs.Accompanist.pager)
     implementation(Libs.Accompanist.indicators)
 
@@ -158,11 +157,10 @@ dependencies {
     implementation(Libs.DataStore.core)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.JUnit.core)
+
     testImplementation(TestLibs.Robolectric.core)
     testImplementation(TestLibs.Compose.jUnit)
     testImplementation(TestLibs.MockK.core)
-    testImplementation(TestLibs.Kotest.assertions)
     testImplementation(TestLibs.Koin.core)
     testImplementation(TestLibs.Turbine.core)
 

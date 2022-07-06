@@ -7,4 +7,6 @@ object Module {
     const val domain = ":domain"
     const val commonTest = ":common-test"
     const val commonUtil = ":common-util"
+    const val commonUi = ":common-ui"
+    const val navigation = ":navigation"
 }

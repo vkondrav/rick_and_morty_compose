@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.common.drawer
 
 import androidx.compose.material.DrawerState
-import com.vkondrav.ram.util.FlowWrapper
+import com.vkondrav.ram.common.util.FlowWrapper
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.coVerify

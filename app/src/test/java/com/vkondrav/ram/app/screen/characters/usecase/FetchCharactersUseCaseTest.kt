@@ -7,7 +7,7 @@ import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.test.BaseTest
-import com.vkondrav.ram.util.mapToSet
+import com.vkondrav.ram.common.util.mapToSet
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
@@ -39,7 +39,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
 
     @Test
     fun `verify happy path use case`() = runTest {
-        mockkStatic("com.vkondrav.ram.util.Utils")
+        mockkStatic("com.vkondrav.ram.common.util.Utils")
 
         val pageResponse = mockk<PageResponse<CharacterFragment>>()
         coEvery { ramRepository.fetchCharacters(0) } returns pageResponse
@@ -77,7 +77,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
 
     @Test
     fun `verify exception thrown by mapToSet is handled`() = runTest {
-        mockkStatic("com.vkondrav.ram.util.Utils")
+        mockkStatic("com.vkondrav.ram.common.util.Utils")
 
         val pageResponse = mockk<PageResponse<CharacterFragment>>()
         coEvery { ramRepository.fetchCharacters(0) } returns pageResponse
@@ -93,7 +93,7 @@ class FetchCharactersUseCaseTest : BaseTest() {
 
     @Test
     fun `verify exception thrown by transformer is handled`() = runTest {
-        mockkStatic("com.vkondrav.ram.util.Utils")
+        mockkStatic("com.vkondrav.ram.common.util.Utils")
 
         val pageResponse = mockk<PageResponse<CharacterFragment>>()
         coEvery { ramRepository.fetchCharacters(0) } returns pageResponse

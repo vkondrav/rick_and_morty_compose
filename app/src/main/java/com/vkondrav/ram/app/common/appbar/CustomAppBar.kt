@@ -12,11 +12,11 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.navigation.NavController
-import com.vkondrav.ram.app.common.navigation.collectAsState
-import com.vkondrav.ram.app.screen.main.usecase.NavigateUpUseCase
-import com.vkondrav.ram.app.screen.main.usecase.FetchAppBarStateUseCase
+import com.vkondrav.ram.navigation.usecase.NavigateUpUseCase
+import com.vkondrav.ram.navigation.usecase.FetchAppBarStateUseCase
 import com.vkondrav.ram.app.screen.main.usecase.OpenDrawerUseCase
 import com.vkondrav.ram.app.screen.main.usecase.ToggleThemeUseCase
+import com.vkondrav.ram.navigation.collectAsState
 import org.koin.androidx.compose.get
 
 @Composable
