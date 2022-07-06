@@ -1,10 +1,10 @@
-package com.vkondrav.ram.app.common.collapsable_drawer.di
+package com.vkondrav.ram.collapsable.drawer
 
-import com.vkondrav.ram.app.common.collapsable_drawer.state.CollapsableDrawerState
-import com.vkondrav.ram.app.common.collapsable_drawer.usecase.CloseCollapsableDrawerUseCase
-import com.vkondrav.ram.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
-import com.vkondrav.ram.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
-import com.vkondrav.ram.app.common.collapsable_drawer.usecase.OpenCollapsableDrawerUseCase
+import com.vkondrav.ram.collapsable.drawer.data.CollapsableDrawerState
+import com.vkondrav.ram.collapsable.drawer.usecase.CloseCollapsableDrawerUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.OpenCollapsableDrawerUseCase
 import org.koin.dsl.module
 
 val collapsableDrawerModule = module {

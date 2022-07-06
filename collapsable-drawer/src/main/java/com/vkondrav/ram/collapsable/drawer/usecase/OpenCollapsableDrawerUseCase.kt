@@ -1,6 +1,6 @@
-package com.vkondrav.ram.app.common.collapsable_drawer.usecase
+package com.vkondrav.ram.collapsable.drawer.usecase
 
-import com.vkondrav.ram.app.common.collapsable_drawer.state.CollapsableDrawerState
+import com.vkondrav.ram.collapsable.drawer.data.CollapsableDrawerState
 
 class OpenCollapsableDrawerUseCase(
     private val state: CollapsableDrawerState,

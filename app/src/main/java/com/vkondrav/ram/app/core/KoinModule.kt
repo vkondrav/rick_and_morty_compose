@@ -1,6 +1,5 @@
 package com.vkondrav.ram.app.core
 
-import com.vkondrav.ram.app.common.collapsable_drawer.di.collapsableDrawerModule
 import com.vkondrav.ram.app.screen.character_details.di.characterDetailsModule
 import com.vkondrav.ram.app.screen.characters.di.charactersModule
 import com.vkondrav.ram.app.screen.drawer.di.drawerModule
@@ -12,6 +11,7 @@ import com.vkondrav.ram.app.screen.favorite_locations.di.favoriteLocationsModule
 import com.vkondrav.ram.app.screen.location_details.di.locationDetailsModule
 import com.vkondrav.ram.app.screen.locations.di.locationsModule
 import com.vkondrav.ram.app.screen.main.di.mainModule
+import com.vkondrav.ram.collapsable.drawer.collapsableDrawerModule
 import com.vkondrav.ram.datastore.dataStoreModule
 import com.vkondrav.ram.domain.domainModule
 import com.vkondrav.ram.graphql.ramModules

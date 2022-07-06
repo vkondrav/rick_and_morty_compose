@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.collapsable_drawer.usecase
+package com.vkondrav.ram.collapsable.drawer.usecase
 
 class HandleCollapsableDrawerUseCase(
     private val openCollapsableDrawerUseCase: OpenCollapsableDrawerUseCase,

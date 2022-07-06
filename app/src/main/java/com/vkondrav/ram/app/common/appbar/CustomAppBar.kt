@@ -11,12 +11,15 @@ import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavController
 import com.vkondrav.ram.navigation.usecase.NavigateUpUseCase
 import com.vkondrav.ram.navigation.usecase.FetchAppBarStateUseCase
 import com.vkondrav.ram.app.screen.main.usecase.OpenDrawerUseCase
 import com.vkondrav.ram.app.screen.main.usecase.ToggleThemeUseCase
-import com.vkondrav.ram.navigation.collectAsState
+import com.vkondrav.ram.common.ui.data.TextResource
+import com.vkondrav.ram.navigation.AppBarState
+import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.get
 
 @Composable
@@ -70,3 +73,11 @@ fun CustomAppBar(
         },
     )
 }
+
+@Composable
+private fun Flow<AppBarState>.collectAsState() = collectAsState(
+    initial = AppBarState(
+        showBackButton = false,
+        title = TextResource.Literal(""),
+    ),
+)

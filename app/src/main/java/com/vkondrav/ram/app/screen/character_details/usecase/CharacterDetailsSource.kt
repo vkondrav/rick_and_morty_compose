@@ -2,13 +2,13 @@ package com.vkondrav.ram.app.screen.character_details.usecase
 
 import com.vkondrav.ram.app.R
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.common.collapsable_drawer.composable.CollapsableViewItem
-import com.vkondrav.ram.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
-import com.vkondrav.ram.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.app.screen.character_details.composable.CharacterDetailsViewItem
 import com.vkondrav.ram.app.screen.episodes.factory.EpisodeViewItemFactory
 import com.vkondrav.ram.app.screen.locations.factory.LocationViewItemFactory
+import com.vkondrav.ram.collapsable.drawer.view.CollapsableViewItem
 import com.vkondrav.ram.domain.RamCharacterDetails
 import com.vkondrav.ram.domain.RamLocation
 import kotlinx.coroutines.flow.Flow

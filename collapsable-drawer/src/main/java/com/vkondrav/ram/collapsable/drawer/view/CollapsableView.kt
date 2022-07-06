@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.collapsable_drawer.composable
+package com.vkondrav.ram.collapsable.drawer.view
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
