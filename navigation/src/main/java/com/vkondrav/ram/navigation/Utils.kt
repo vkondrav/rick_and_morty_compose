@@ -3,7 +3,7 @@
 package com.vkondrav.ram.navigation
 
 import android.os.Bundle
-import com.vkondrav.ram.common.ui.TextResource
+import com.vkondrav.ram.common.ui.data.TextResource
 
 const val NAV_ID = "id"
 const val NAV_TITLE = "title"

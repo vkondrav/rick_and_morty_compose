@@ -131,14 +131,10 @@ dependencies {
     implementation(Libs.AndroidX.splashscreen)
     implementation(Libs.AndroidX.lifecycle)
     implementation(Libs.AndroidX.pagingRuntime)
-    implementation(Libs.AndroidX.pagingCompose)
     implementation(Libs.AndroidX.activityCompose)
 
     implementation(Libs.Material.core)
 
-    implementation(Libs.Compose.ui)
-    implementation(Libs.Compose.uiTooling)
-    implementation(Libs.Compose.foundation)
     implementation(Libs.Compose.material)
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)

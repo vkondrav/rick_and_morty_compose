@@ -2,14 +2,14 @@ package com.vkondrav.ram.app.screen.characters.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.vkondrav.ram.app.base.item.ComposableItem
-import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
+import com.vkondrav.ram.common.ui.view.ComposableItem
+import com.vkondrav.ram.app.screen.characters.factory.CharacterViewItemFactory
 import com.vkondrav.ram.app.screen.characters.usecase.FetchCharactersUseCase
 import timber.log.Timber
 
 class CharactersSource(
     private val fetchCharactersUseCase: FetchCharactersUseCase,
-    private val charactersViewItemAdapter: CharactersViewItemAdapter,
+    private val characterViewItemFactory: CharacterViewItemFactory,
 ) : PagingSource<Int, ComposableItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ComposableItem>): Int? = state.anchorPosition
@@ -20,7 +20,7 @@ class CharactersSource(
             val page = fetchCharactersUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(
-                data = charactersViewItemAdapter(page.items),
+                data = characterViewItemFactory(page.items),
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )

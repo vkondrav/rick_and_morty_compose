@@ -1,12 +1,12 @@
-package com.vkondrav.ram.app.screen.characters.adapter
+package com.vkondrav.ram.app.screen.characters.factory
 
-import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.app.screen.characters.composable.CharacterViewItem
 import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
 
-class CharactersViewItemAdapter(
+class CharacterViewItemFactory(
     private val navigateToCharacterDetailsUseCase: NavigateToCharacterDetailsUseCase,
     private val handleCharacterFavoritesUseCase: HandleCharacterFavoritesUseCase,
 ) {

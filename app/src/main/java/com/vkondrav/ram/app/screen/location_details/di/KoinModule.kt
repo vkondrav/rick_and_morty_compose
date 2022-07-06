@@ -20,7 +20,7 @@ val locationDetailsModule = module {
             fetchLocationDetailsUseCase = get(),
             fetchCollapsableDrawerState = get(),
             handleCollapsableDrawerUseCase = get(),
-            charactersViewItemAdapter = get(),
+            characterViewItemFactory = get(),
         )
     }
     viewModel { params ->

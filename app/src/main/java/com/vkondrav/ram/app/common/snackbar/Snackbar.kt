@@ -22,7 +22,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.vkondrav.ram.app.design.DlsTheme
+import com.vkondrav.ram.common.ui.design.DlsTheme
 import com.vkondrav.ram.app.screen.main.usecase.HandleSnackbarStateUseCase
 import org.koin.androidx.compose.get
 

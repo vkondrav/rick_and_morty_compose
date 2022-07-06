@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.favorite_characters.usecase
 
-import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.app.screen.characters.composable.CharacterViewItem
 import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase

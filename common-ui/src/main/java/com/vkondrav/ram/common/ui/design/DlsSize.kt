@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.design
+package com.vkondrav.ram.common.ui.design
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

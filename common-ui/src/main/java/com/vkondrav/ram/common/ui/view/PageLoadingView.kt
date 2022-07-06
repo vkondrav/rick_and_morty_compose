@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.composable
+package com.vkondrav.ram.common.ui.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.vkondrav.ram.app.base.item.ComposableItem
 
 @Composable
 fun PageLoadingView() {

@@ -1,12 +1,12 @@
-package com.vkondrav.ram.app.base.composable.screen
+package com.vkondrav.ram.common.ui.screen
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.vkondrav.ram.app.base.viewmodel.ScreenState
-import com.vkondrav.ram.app.base.viewmodel.ScreenStateViewModel
+import com.vkondrav.ram.common.ui.data.ScreenState
+import com.vkondrav.ram.common.ui.viewmodel.ScreenStateViewModel
 
 @Composable
 fun BaseStateScreen(

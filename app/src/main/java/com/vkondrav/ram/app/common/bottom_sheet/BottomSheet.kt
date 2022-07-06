@@ -18,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vkondrav.ram.app.R
-import com.vkondrav.ram.app.design.DlsColors
-import com.vkondrav.ram.app.design.DlsTheme
-import com.vkondrav.ram.app.design.dlsDarkColorPalette
-import com.vkondrav.ram.app.design.dlsLightColorPalette
+import com.vkondrav.ram.common.ui.design.DlsColors
+import com.vkondrav.ram.common.ui.design.DlsTheme
+import com.vkondrav.ram.common.ui.design.dlsDarkColorPalette
+import com.vkondrav.ram.common.ui.design.dlsLightColorPalette
 import com.vkondrav.ram.app.tabs.composable.FavoriteTabsScreen
 
 @Composable

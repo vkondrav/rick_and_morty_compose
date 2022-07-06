@@ -5,7 +5,7 @@ import androidx.compose.material.ModalDrawer
 import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import com.vkondrav.ram.app.base.composable.screen.BaseStateScreen
+import com.vkondrav.ram.common.ui.screen.BaseStateScreen
 import com.vkondrav.ram.app.screen.drawer.viewmodel.DrawerViewModel
 import com.vkondrav.ram.app.screen.main.usecase.HandleDrawerStateUseCase
 import org.koin.androidx.compose.get

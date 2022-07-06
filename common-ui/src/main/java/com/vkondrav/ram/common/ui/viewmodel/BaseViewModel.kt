@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.base.viewmodel
+package com.vkondrav.ram.common.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineDispatcher

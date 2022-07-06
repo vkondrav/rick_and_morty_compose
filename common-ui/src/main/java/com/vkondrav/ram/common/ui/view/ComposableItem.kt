@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.base.item
+package com.vkondrav.ram.common.ui.view
 
 import androidx.compose.runtime.Composable
 

@@ -12,9 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.vkondrav.ram.app.base.item.ComposableItem
-import com.vkondrav.ram.common.ui.TextResource
-import com.vkondrav.ram.app.design.DlsTheme
+import com.vkondrav.ram.common.ui.view.ComposableItem
+import com.vkondrav.ram.common.ui.data.TextResource
+import com.vkondrav.ram.common.ui.design.DlsTheme
 
 @Composable
 fun DrawerMenuView(item: DrawerMenuViewItem) {
