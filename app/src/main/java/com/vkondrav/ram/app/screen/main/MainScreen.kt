@@ -14,9 +14,9 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.vkondrav.ram.app.common.appbar.CustomAppBar
 import com.vkondrav.ram.app.common.bottom_sheet.BottomSheet
 import com.vkondrav.ram.app.common.snackbar.SnackbarHost
-import com.vkondrav.ram.app.design.DlsTheme
-import com.vkondrav.ram.app.design.dlsDarkColorPalette
-import com.vkondrav.ram.app.design.dlsLightColorPalette
+import com.vkondrav.ram.common.ui.design.DlsTheme
+import com.vkondrav.ram.common.ui.design.dlsDarkColorPalette
+import com.vkondrav.ram.common.ui.design.dlsLightColorPalette
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.CustomDrawer
 import com.vkondrav.ram.app.screen.main.navigation.allScreens

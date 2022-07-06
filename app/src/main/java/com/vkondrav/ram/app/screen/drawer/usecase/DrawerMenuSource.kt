@@ -1,8 +1,8 @@
 package com.vkondrav.ram.app.screen.drawer.usecase
 
 import com.vkondrav.ram.app.R
-import com.vkondrav.ram.common.ui.ComposableItem
-import com.vkondrav.ram.common.ui.TextResource
+import com.vkondrav.ram.common.ui.view.ComposableItem
+import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.app.screen.characters.nav.charactersScreen
 import com.vkondrav.ram.app.screen.drawer.composable.DrawerMenuViewItem
 import com.vkondrav.ram.app.screen.episodes.nav.episodesScreen

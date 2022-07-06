@@ -17,7 +17,7 @@ import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import coil.request.ImageRequest
-import com.vkondrav.ram.app.design.DlsTheme
+import com.vkondrav.ram.common.ui.design.DlsTheme
 
 object Avatar {
     sealed class SizeVariant {

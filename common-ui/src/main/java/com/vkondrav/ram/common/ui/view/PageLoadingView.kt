@@ -1,4 +1,4 @@
-package com.vkondrav.ram.common.ui
+package com.vkondrav.ram.common.ui.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight

@@ -69,6 +69,8 @@ dependencies {
     api(Libs.Compose.foundation)
 
     implementation(Libs.Compose.material)
+    implementation(Libs.Compose.iconsCore)
+    implementation(Libs.Compose.iconsExt)
 
     implementation(Libs.AndroidX.pagingRuntime)
     implementation(Libs.AndroidX.pagingCompose)

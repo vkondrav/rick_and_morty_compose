@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.design
+package com.vkondrav.ram.common.ui.design
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.MaterialTheme

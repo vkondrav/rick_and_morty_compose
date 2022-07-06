@@ -4,9 +4,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.vkondrav.ram.common.ui.ComposableItem
-import com.vkondrav.ram.common.ui.BaseViewModel
-import com.vkondrav.ram.common.ui.PagingViewModel
+import com.vkondrav.ram.common.ui.view.ComposableItem
+import com.vkondrav.ram.common.ui.viewmodel.BaseViewModel
+import com.vkondrav.ram.common.ui.viewmodel.PagingViewModel
 import com.vkondrav.ram.app.screen.locations.source.LocationsSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

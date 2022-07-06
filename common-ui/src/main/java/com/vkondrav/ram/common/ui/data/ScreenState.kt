@@ -1,4 +1,7 @@
-package com.vkondrav.ram.common.ui
+package com.vkondrav.ram.common.ui.data
+
+import com.vkondrav.ram.common.ui.view.ComposableItem
+import com.vkondrav.ram.common.ui.view.PageLoadingViewItem
 
 sealed class ScreenState {
     data class Loading(val item: ComposableItem = PageLoadingViewItem) : ScreenState()

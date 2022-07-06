@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.design
+package com.vkondrav.ram.common.ui.design
 
 import androidx.compose.material.Colors
 import androidx.compose.material.darkColors
@@ -22,7 +22,8 @@ interface DlsColorPalette {
     val materialColors: Colors
 }
 
-val dlsLightColorPalette: DlsColorPalette get() = object : DlsColorPalette {
+val dlsLightColorPalette: DlsColorPalette
+    get() = object : DlsColorPalette {
     override val primary: Color = DlsColors.primary
     override val background: Color = DlsColors.background
     override val basic: Color = DlsColors.basic
@@ -45,7 +46,8 @@ val dlsLightColorPalette: DlsColorPalette get() = object : DlsColorPalette {
     )
 }
 
-val dlsDarkColorPalette: DlsColorPalette get() = object : DlsColorPalette {
+val dlsDarkColorPalette: DlsColorPalette
+    get() = object : DlsColorPalette {
     override val primary: Color = DlsColors.primary
     override val background: Color = DlsColors.backgroundReverse
     override val basic: Color = DlsColors.basic
