@@ -20,11 +20,21 @@ Click on each for more info
   graph TD;
       U[Common-Util]
       T[Common-Test]
-      L[Apollo]-->G[GraphQL]
-      R[Room]-->D[Domain];
-      S[Data-Store]-->D;
+      I[Common-UI]
+      L[Apollo]
+      G[GraphQL]
+      R[Room]
+      D[Domain]
+      S[Data-Store]
+      N[Navigation]
+      A[App]
+      L-->G;
+      R-->D;
+      S-->D;
       G-->D;
-      D-->A[App];
+      I-->A;
+      N-->A;
+      D-->A;
       click L "https://github.com/vkondrav/rick_and_morty_compose/tree/main/apollo" "Go to module"
       click G "https://github.com/vkondrav/rick_and_morty_compose/tree/main/graphql" "Go to module"
       click R "https://github.com/vkondrav/rick_and_morty_compose/tree/main/room" "Go to module"
@@ -33,6 +43,8 @@ Click on each for more info
       click A "https://github.com/vkondrav/rick_and_morty_compose/tree/main/app" "Go to module"
       click U "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-util" "Go to module"
       click T "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-test" "Go to module"
+      click I "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-ui" "Go to module"
+      click N "https://github.com/vkondrav/rick_and_morty_compose/tree/main/navigation" "Go to module"
 ```
 
 ### Coverage
