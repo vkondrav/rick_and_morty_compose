@@ -6,7 +6,7 @@ import com.vkondrav.ram.app.common.collapsable_drawer.composable.CollapsableView
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.app.common.collapsable_drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.app.common.collapsable_drawer.usecase.HandleCollapsableDrawerUseCase
-import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
+import com.vkondrav.ram.app.screen.characters.factory.CharacterViewItemFactory
 import com.vkondrav.ram.domain.RamEpisodeDetails
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -15,7 +15,7 @@ class EpisodeDetailsSource(
     private val fetchEpisodeDetailsUseCase: FetchEpisodeDetailsUseCase,
     private val fetchCollapsableDrawerState: FetchCollapsableDrawerStateUseCase,
     private val handleCollapsableDrawerUseCase: HandleCollapsableDrawerUseCase,
-    private val charactersViewItemAdapter: CharactersViewItemAdapter,
+    private val characterViewItemFactory: CharacterViewItemFactory,
 ) {
 
     operator fun invoke(id: String): Result<Flow<List<ComposableItem>>> = runCatching {
@@ -35,7 +35,7 @@ class EpisodeDetailsSource(
             return CollapsableViewItem(
                 id = id,
                 title = TextResource.Resource(R.string.characters),
-                items = charactersViewItemAdapter(characters.take(MAX_CHARACTERS_COUNT)),
+                items = characterViewItemFactory(characters.take(MAX_CHARACTERS_COUNT)),
                 open = fetchCollapsableDrawerState(id),
                 onClickAction = { isOpen ->
                     handleCollapsableDrawerUseCase(id, isOpen)

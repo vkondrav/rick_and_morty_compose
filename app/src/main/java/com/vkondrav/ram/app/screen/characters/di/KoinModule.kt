@@ -6,7 +6,7 @@ import com.vkondrav.ram.app.screen.characters.usecase.FetchCharactersUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.RemoveCharacterFromFavoritesUseCase
-import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
+import com.vkondrav.ram.app.screen.characters.factory.CharacterViewItemFactory
 import com.vkondrav.ram.app.screen.characters.viewmodel.CharactersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -46,7 +46,7 @@ val charactersModule = module {
         )
     }
     factory {
-        CharactersViewItemAdapter(
+        CharacterViewItemFactory(
             navigateToCharacterDetailsUseCase = get(),
             handleCharacterFavoritesUseCase = get(),
         )

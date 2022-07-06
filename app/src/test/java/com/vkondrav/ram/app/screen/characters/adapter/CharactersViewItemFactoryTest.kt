@@ -1,6 +1,7 @@
 package com.vkondrav.ram.app.screen.characters.adapter
 
 import com.vkondrav.ram.app.screen.characters.composable.CharacterViewItem
+import com.vkondrav.ram.app.screen.characters.factory.CharacterViewItemFactory
 import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
@@ -22,12 +23,12 @@ class CharactersViewItemFactoryTest : BaseTest() {
     private val handleCharacterFavoritesUseCase =
         mockk<HandleCharacterFavoritesUseCase>(relaxed = true)
 
-    private lateinit var subject: CharactersViewItemAdapter
+    private lateinit var subject: CharacterViewItemFactory
 
     @Before
     fun setUp() {
         clearAllMocks()
-        subject = CharactersViewItemAdapter(
+        subject = CharacterViewItemFactory(
             navigateToCharacterDetailsUseCase,
             handleCharacterFavoritesUseCase,
         )

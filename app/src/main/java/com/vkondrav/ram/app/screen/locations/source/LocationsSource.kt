@@ -3,13 +3,13 @@ package com.vkondrav.ram.app.screen.locations.source
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.screen.locations.adapter.LocationViewItemsAdapter
+import com.vkondrav.ram.app.screen.locations.factory.LocationViewItemFactory
 import com.vkondrav.ram.app.screen.locations.usecase.FetchLocationsUseCase
 import timber.log.Timber
 
 class LocationsSource(
     private val fetchLocationsUseCase: FetchLocationsUseCase,
-    private val locationViewItemsAdapter: LocationViewItemsAdapter,
+    private val locationViewItemFactory: LocationViewItemFactory,
 ) : PagingSource<Int, ComposableItem>() {
 
     override fun getRefreshKey(state: PagingState<Int, ComposableItem>): Int? = state.anchorPosition
@@ -20,7 +20,7 @@ class LocationsSource(
             val page = fetchLocationsUseCase(nextPage).getOrThrow()
 
             LoadResult.Page(
-                data = locationViewItemsAdapter(page.items),
+                data = locationViewItemFactory(page.items),
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )

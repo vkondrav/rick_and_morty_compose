@@ -5,7 +5,7 @@ import com.vkondrav.ram.app.screen.episodes.usecase.FetchEpisodesUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
-import com.vkondrav.ram.app.screen.episodes.adapter.EpisodeViewItemsAdapter
+import com.vkondrav.ram.app.screen.episodes.factory.EpisodeViewItemFactory
 import com.vkondrav.ram.app.screen.episodes.source.EpisodesSource
 import com.vkondrav.ram.app.screen.episodes.viewmodel.EpisodesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -46,7 +46,7 @@ val episodesModule = module {
         )
     }
     factory {
-        EpisodeViewItemsAdapter(
+        EpisodeViewItemFactory(
             navigateToEpisodeDetailsUseCase = get(),
             handleEpisodeFavoriteUseCase = get(),
         )
