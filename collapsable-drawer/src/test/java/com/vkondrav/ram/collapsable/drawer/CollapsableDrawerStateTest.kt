@@ -1,4 +1,4 @@
-package com.vkondrav.ram.collapsable.drawer.data
+package com.vkondrav.ram.collapsable.drawer
 
 import app.cash.turbine.test
 import com.vkondrav.ram.test.BaseTest

@@ -1,10 +1,9 @@
 package com.vkondrav.ram.collapsable.drawer
 
-import com.vkondrav.ram.collapsable.drawer.data.CollapsableDrawerState
-import com.vkondrav.ram.collapsable.drawer.usecase.CloseCollapsableDrawerUseCase
-import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
-import com.vkondrav.ram.collapsable.drawer.usecase.OpenCollapsableDrawerUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.closeCollapsableDrawerUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.fetchCollapsableDrawerStateUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.openCollapsableDrawerUseCase
 import org.koin.dsl.module
 
 val collapsableDrawerModule = module {
@@ -12,17 +11,17 @@ val collapsableDrawerModule = module {
         CollapsableDrawerState()
     }
     factory {
-        FetchCollapsableDrawerStateUseCase(
+        fetchCollapsableDrawerStateUseCase(
             state = get(),
         )
     }
     factory {
-        OpenCollapsableDrawerUseCase(
+        openCollapsableDrawerUseCase(
             state = get(),
         )
     }
     factory {
-        CloseCollapsableDrawerUseCase(
+        closeCollapsableDrawerUseCase(
             state = get(),
         )
     }

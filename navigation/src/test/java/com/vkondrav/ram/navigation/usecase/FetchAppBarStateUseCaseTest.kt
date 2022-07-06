@@ -1,7 +1,7 @@
 package com.vkondrav.ram.navigation.usecase
 
 import androidx.navigation.NavController
-import com.vkondrav.ram.navigation.AppBarState
+import com.vkondrav.ram.navigation.data.AppBarState
 import com.vkondrav.ram.navigation.Navigator
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.matchers.shouldBe
@@ -20,7 +20,7 @@ class FetchAppBarStateUseCaseTest: BaseTest() {
     @Before
     fun setUp() {
         clearAllMocks()
-        subject = FetchAppBarStateUseCase(navigator)
+        subject = fetchAppBarStateUseCase(navigator)
     }
 
     @Test

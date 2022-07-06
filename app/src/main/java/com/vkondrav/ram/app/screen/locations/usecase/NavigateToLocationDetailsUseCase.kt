@@ -1,13 +1,13 @@
 package com.vkondrav.ram.app.screen.locations.usecase
 
-import com.vkondrav.ram.navigation.Navigator
 import com.vkondrav.ram.app.screen.location_details.nav.toLocationDetailsScreen
+import com.vkondrav.ram.navigation.usecase.NavigateToRouteUseCase
 
 class NavigateToLocationDetailsUseCase(
-    private val navigator: Navigator,
+    private val navigateToRouteUseCase: NavigateToRouteUseCase,
 ) {
     operator fun invoke(id: String, title: String) {
-        navigator.navigate(
+        navigateToRouteUseCase(
             toLocationDetailsScreen(
                 id,
                 title,

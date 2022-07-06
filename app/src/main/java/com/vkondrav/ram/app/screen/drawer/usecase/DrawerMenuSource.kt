@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class DrawerMenuSource(
-    private val navigateToRouteUseCase: NavigateToRouteUseCase,
+    private val navigateToRouteFromDrawerUseCase: NavigateToRouteFromDrawerUseCase,
 ) {
 
     operator fun invoke(): Flow<List<ComposableItem>> = flow {
@@ -24,7 +24,7 @@ class DrawerMenuSource(
                 DrawerMenuViewItem(
                     title = title,
                     onClickAction = {
-                        navigateToRouteUseCase(route)
+                        navigateToRouteFromDrawerUseCase(route)
                     },
                 )
             },

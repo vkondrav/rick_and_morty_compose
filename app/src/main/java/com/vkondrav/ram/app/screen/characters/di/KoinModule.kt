@@ -21,7 +21,7 @@ val charactersModule = module {
     }
     factory {
         NavigateToCharacterDetailsUseCase(
-            navigator = get(),
+            navigateToRouteUseCase = get(),
         )
     }
     factory {
