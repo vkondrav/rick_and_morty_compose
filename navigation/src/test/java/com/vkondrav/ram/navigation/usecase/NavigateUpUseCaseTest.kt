@@ -4,7 +4,6 @@ import com.vkondrav.ram.navigation.Navigator
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.mockk
-import io.mockk.slot
 import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
