@@ -6,10 +6,11 @@ import com.vkondrav.ram.navigation.NAV_TITLE
 import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.app.screen.locations.composable.LocationsScreen
+import com.vkondrav.ram.navigation.Routes
 
 val locationsScreen by lazy {
     Screen(
-        route = "locations?$NAV_TITLE={$NAV_TITLE}",
+        route = Routes.Locations.All(),
         arguments = listOf(
             navArgument(NAV_TITLE) { defaultValue = TextResource.Resource(R.string.locations) },
         ),

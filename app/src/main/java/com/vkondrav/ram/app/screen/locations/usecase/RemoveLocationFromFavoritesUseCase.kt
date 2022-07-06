@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.locations.usecase
 
-import com.vkondrav.ram.app.common.snackbar.SnackbarController
+import com.vkondrav.ram.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RemoveLocationFromFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
-    private val snackbarController: SnackbarController,
+    private val snackbarController: com.vkondrav.ram.snackbar.SnackbarController,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 

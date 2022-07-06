@@ -1,17 +1,14 @@
 package com.vkondrav.ram.app.screen.character_details.nav
 
-import com.vkondrav.ram.navigation.NAV_ID
-import com.vkondrav.ram.navigation.NAV_TITLE
-import com.vkondrav.ram.navigation.id
-import com.vkondrav.ram.navigation.error.NavigationException
 import com.vkondrav.ram.app.screen.character_details.composable.CharacterDetailsScreen
+import com.vkondrav.ram.navigation.Routes
 import com.vkondrav.ram.navigation.data.Screen
-
-private const val NAV_CHARACTER_DETAILS = "character_details"
+import com.vkondrav.ram.navigation.error.NavigationException
+import com.vkondrav.ram.navigation.id
 
 val characterDetailsScreen by lazy {
     Screen(
-        route = "$NAV_CHARACTER_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
+        route = Routes.Character.Details(),
     ) { bundle ->
         CharacterDetailsScreen(
             id = bundle?.id
@@ -19,6 +16,3 @@ val characterDetailsScreen by lazy {
         )
     }
 }
-
-fun toCharacterDetailsScreen(id: String, title: String) =
-    "$NAV_CHARACTER_DETAILS/$id?$NAV_TITLE=$title"

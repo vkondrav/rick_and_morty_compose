@@ -6,10 +6,11 @@ import com.vkondrav.ram.navigation.NAV_TITLE
 import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.app.screen.episodes.composable.EpisodesScreen
+import com.vkondrav.ram.navigation.Routes
 
 val episodesScreen by lazy {
     Screen(
-        route = "episodes?$NAV_TITLE={$NAV_TITLE}",
+        route = Routes.Episodes.All(),
         arguments = listOf(
             navArgument(NAV_TITLE) { defaultValue = TextResource.Resource(R.string.episodes) },
         ),

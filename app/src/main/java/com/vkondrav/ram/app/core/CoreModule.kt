@@ -3,7 +3,7 @@ package com.vkondrav.ram.app.core
 import android.content.Context
 import com.vkondrav.ram.apollo.SERVER_URL
 import com.vkondrav.ram.app.common.drawer.DrawerController
-import com.vkondrav.ram.app.common.snackbar.SnackbarController
+import com.vkondrav.ram.snackbar.SnackbarController
 import com.vkondrav.ram.app.design.ThemeController
 import com.vkondrav.ram.datastore.DATASTORE_NAME
 import com.vkondrav.ram.room.DATABASE_NAME
@@ -19,7 +19,7 @@ val coreModule = module {
         Dispatchers.Default
     }
     single {
-        SnackbarController()
+        com.vkondrav.ram.snackbar.SnackbarController()
     }
     single {
         DrawerController()
