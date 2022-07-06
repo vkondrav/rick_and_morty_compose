@@ -21,8 +21,8 @@ val characterDetailsModule = module {
             fetchCharacterDetailsUseCase = get(),
             fetchCollapsableDrawerState = get(),
             handleCollapsableDrawerUseCase = get(),
-            locationViewItemsAdapter = get(),
-            episodeViewItemsAdapter = get(),
+            locationViewItemFactory = get(),
+            episodeViewItemFactory = get(),
         )
     }
     viewModel { params ->

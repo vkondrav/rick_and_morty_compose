@@ -54,7 +54,7 @@ val locationsModule = module {
     factory {
         LocationsSource(
             fetchLocationsUseCase = get(),
-            locationViewItemsAdapter = get(),
+            locationViewItemFactory = get(),
         )
     }
     viewModel {

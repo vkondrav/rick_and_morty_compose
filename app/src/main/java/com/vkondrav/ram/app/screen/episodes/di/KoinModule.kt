@@ -54,7 +54,7 @@ val episodesModule = module {
     factory {
         EpisodesSource(
             fetchEpisodesUseCase = get(),
-            episodeViewItemsAdapter = get(),
+            episodeViewItemFactory = get(),
         )
     }
     viewModel {

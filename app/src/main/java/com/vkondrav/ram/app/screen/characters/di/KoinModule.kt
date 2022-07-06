@@ -54,7 +54,7 @@ val charactersModule = module {
     factory {
         CharactersSource(
             fetchCharactersUseCase = get(),
-            charactersViewItemAdapter = get(),
+            characterViewItemFactory = get(),
         )
     }
     viewModel {
