@@ -18,7 +18,7 @@ import com.vkondrav.ram.navigation.usecase.FetchAppBarStateUseCase
 import com.vkondrav.ram.app.screen.main.usecase.OpenDrawerUseCase
 import com.vkondrav.ram.app.screen.main.usecase.ToggleThemeUseCase
 import com.vkondrav.ram.common.ui.data.TextResource
-import com.vkondrav.ram.navigation.AppBarState
+import com.vkondrav.ram.navigation.data.AppBarState
 import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.get
 

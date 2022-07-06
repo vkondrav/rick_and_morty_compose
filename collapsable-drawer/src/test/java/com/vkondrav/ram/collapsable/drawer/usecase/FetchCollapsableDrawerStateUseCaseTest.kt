@@ -1,7 +1,7 @@
 package com.vkondrav.ram.collapsable.drawer.usecase
 
 import app.cash.turbine.test
-import com.vkondrav.ram.collapsable.drawer.data.CollapsableDrawerState
+import com.vkondrav.ram.collapsable.drawer.CollapsableDrawerState
 import com.vkondrav.ram.test.BaseTest
 import io.kotest.matchers.shouldBe
 import io.mockk.every
@@ -23,7 +23,7 @@ class FetchCollapsableDrawerStateUseCaseTest: BaseTest() {
             )
         }
 
-        FetchCollapsableDrawerStateUseCase(state)("id_3").test {
+        fetchCollapsableDrawerStateUseCase(state)("id_3").test {
             awaitItem() shouldBe false
             awaitItem() shouldBe false
             awaitItem() shouldBe true

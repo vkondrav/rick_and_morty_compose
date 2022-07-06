@@ -17,7 +17,7 @@ class HandleNavigationCommandsUseCaseTest {
     @Before
     fun setUp() {
         clearAllMocks()
-        subject = HandleNavigationCommandsUseCase(navigator)
+        subject = handleNavigationCommandsUseCase(navigator)
     }
 
     @Test

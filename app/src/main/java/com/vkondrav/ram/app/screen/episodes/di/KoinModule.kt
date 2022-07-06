@@ -21,7 +21,7 @@ val episodesModule = module {
     }
     factory {
         NavigateToEpisodeDetailsUseCase(
-            navigator = get(),
+            navigateToRouteUseCase = get(),
         )
     }
     factory {

@@ -16,7 +16,7 @@ class NavigateUpUseCaseTest: BaseTest() {
     @Before
     fun setUp() {
         clearAllMocks()
-        subject = NavigateUpUseCase(navigator)
+        subject = navigateUpUseCase(navigator)
     }
 
     @Test

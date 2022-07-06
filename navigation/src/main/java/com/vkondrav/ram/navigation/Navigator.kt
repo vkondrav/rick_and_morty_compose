@@ -2,10 +2,12 @@ package com.vkondrav.ram.navigation
 
 import androidx.navigation.NavController
 import com.vkondrav.ram.common.util.FlowWrapper
+import com.vkondrav.ram.navigation.data.AppBarState
+import com.vkondrav.ram.navigation.data.NavigationCommand
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.map
 
-class Navigator(private val flowWrapper: FlowWrapper) {
+internal class Navigator(private val flowWrapper: FlowWrapper) {
 
     private val navigationCommands =
         MutableSharedFlow<NavigationCommand>(extraBufferCapacity = Int.MAX_VALUE)
