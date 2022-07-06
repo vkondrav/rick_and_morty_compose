@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     library()
     kotlin()
@@ -39,11 +41,37 @@ android {
         jvmTarget = Libs.jvmTarget
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Libs.Compose.version
+    }
+
     lint {
         warningsAsErrors = true
+    }
+
+    tasks.withType<KotlinCompile> {
+
+        val optIns = listOf(
+            Experimental.coroutines,
+        ).joinToString(separator = ",")
+
+        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
     }
 }
 
 dependencies {
-    implementation(Libs.Compose.foundation)
+    api(Libs.Compose.ui)
+    api(Libs.Compose.uiTooling)
+    api(Libs.Compose.foundation)
+
+    implementation(Libs.Compose.material)
+
+    implementation(Libs.AndroidX.pagingRuntime)
+    implementation(Libs.AndroidX.pagingCompose)
+
+    implementation(Libs.Timber.core)
 }

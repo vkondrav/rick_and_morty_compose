@@ -1,7 +1,6 @@
-package com.vkondrav.ram.app.base.viewmodel
+package com.vkondrav.ram.common.ui
 
 import androidx.paging.PagingData
-import com.vkondrav.ram.app.base.item.ComposableItem
 import kotlinx.coroutines.flow.Flow
 
 interface PagingViewModel {

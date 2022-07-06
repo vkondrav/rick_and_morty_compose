@@ -2,7 +2,7 @@ package com.vkondrav.ram.app.screen.characters.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.common.ui.ComposableItem
 import com.vkondrav.ram.app.screen.characters.adapter.CharactersViewItemAdapter
 import com.vkondrav.ram.app.screen.characters.usecase.FetchCharactersUseCase
 import timber.log.Timber

@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.base.composable.screen
+package com.vkondrav.ram.common.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,14 +7,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.vkondrav.ram.app.base.viewmodel.PagingViewModel
-import com.vkondrav.ram.app.common.composable.PageLoadingView
 
 @Composable
 fun BasePagingScreen(

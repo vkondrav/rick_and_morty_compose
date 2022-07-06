@@ -2,12 +2,12 @@ package com.vkondrav.ram.app.screen.episode_details.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import com.vkondrav.ram.app.base.item.ComposableItem
-import com.vkondrav.ram.app.base.viewmodel.BaseViewModel
+import com.vkondrav.ram.common.ui.ComposableItem
+import com.vkondrav.ram.common.ui.BaseViewModel
 import com.vkondrav.ram.app.common.composable.PageErrorViewItem
 import com.vkondrav.ram.app.screen.episode_details.usecase.EpisodeDetailsSource
-import com.vkondrav.ram.app.base.viewmodel.ScreenState
-import com.vkondrav.ram.app.base.viewmodel.ScreenStateViewModel
+import com.vkondrav.ram.common.ui.ScreenState
+import com.vkondrav.ram.common.ui.ScreenStateViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch

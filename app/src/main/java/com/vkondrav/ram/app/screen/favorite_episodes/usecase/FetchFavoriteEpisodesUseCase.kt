@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.screen.favorite_episodes.usecase
 
-import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.common.ui.ComposableItem
 import com.vkondrav.ram.app.screen.episodes.composable.EpisodeViewItem
 import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase

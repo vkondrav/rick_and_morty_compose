@@ -2,7 +2,7 @@ package com.vkondrav.ram.app.screen.locations.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.vkondrav.ram.app.base.item.ComposableItem
+import com.vkondrav.ram.common.ui.ComposableItem
 import com.vkondrav.ram.app.screen.locations.adapter.LocationViewItemsAdapter
 import com.vkondrav.ram.app.screen.locations.usecase.FetchLocationsUseCase
 import timber.log.Timber

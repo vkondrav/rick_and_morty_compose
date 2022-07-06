@@ -20,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.vkondrav.ram.app.base.item.Composable
-import com.vkondrav.ram.app.base.item.ComposableItem
 import com.vkondrav.ram.app.design.DlsTheme
+import com.vkondrav.ram.common.ui.Composable
+import com.vkondrav.ram.common.ui.ComposableItem
 import com.vkondrav.ram.common.ui.TextResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
