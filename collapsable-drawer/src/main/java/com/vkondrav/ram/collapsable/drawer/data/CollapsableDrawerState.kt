@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.collapsable_drawer.state
+package com.vkondrav.ram.collapsable.drawer.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow

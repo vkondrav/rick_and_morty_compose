@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
 plugins {
     library()
     kotlin()
+    parcelize()
 }
 
 android {
-    namespace = "com.vkondrav.ram.navigation"
+    namespace = "com.vkondrav.ram.collapsable.drawer"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -56,8 +56,6 @@ android {
     tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
-            Experimental.navigation,
-            Experimental.animation,
             Experimental.coroutines,
         ).joinToString(separator = ",")
 
@@ -85,7 +83,7 @@ android {
                 bound {
                     @SuppressWarnings("MagicNumber")
                     minValue = 0 //TODO: update to 100 when ready
-                    valueType = COVERED_LINES_PERCENTAGE
+                    valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
                 }
             }
         }
@@ -93,18 +91,18 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.commonUtil))
     implementation(project(Module.commonUi))
 
-    api(Libs.AndroidX.navigationCompose)
-    api(Libs.Accompanist.navAnimation)
-    implementation(Libs.Accompanist.navMaterial)
+    implementation(Libs.Compose.material)
+    implementation(Libs.Compose.iconsCore)
+    implementation(Libs.Compose.iconsExt)
+    implementation(Libs.AndroidX.constraintLayoutCompose)
+
     implementation(Libs.Koin.core)
 
     testImplementation(project(Module.commonTest))
-
-    testImplementation(TestLibs.MockK.core)
-    testImplementation(TestLibs.KotlinX.coroutines)
     testImplementation(TestLibs.Koin.core)
     testImplementation(TestLibs.Turbine.core)
+    testImplementation(TestLibs.KotlinX.coroutines)
+    testImplementation(TestLibs.MockK.core)
 }

@@ -124,6 +124,7 @@ dependencies {
     implementation(project(Module.commonUtil))
     implementation(project(Module.commonUi))
     implementation(project(Module.navigation))
+    implementation(project(Module.collapsableDrawer))
 
     implementation(Libs.AndroidX.ktx)
     implementation(Libs.AndroidX.appcompat)
