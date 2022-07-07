@@ -1,17 +1,14 @@
 package com.vkondrav.ram.app.screen.location_details.nav
 
-import com.vkondrav.ram.navigation.NAV_ID
-import com.vkondrav.ram.navigation.NAV_TITLE
-import com.vkondrav.ram.navigation.id
-import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.app.screen.location_details.composable.LocationDetailsScreen
+import com.vkondrav.ram.navigation.Routes
+import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.navigation.error.NavigationException
-
-private const val NAV_LOCATION_DETAILS = "location_details"
+import com.vkondrav.ram.navigation.id
 
 val locationDetailsScreen by lazy {
     Screen(
-        route = "$NAV_LOCATION_DETAILS/{$NAV_ID}?$NAV_TITLE={$NAV_TITLE}",
+        route = Routes.Locations.Details(),
     ) { bundle ->
         LocationDetailsScreen(
             id = bundle?.id
@@ -19,6 +16,3 @@ val locationDetailsScreen by lazy {
         )
     }
 }
-
-fun toLocationDetailsScreen(id: String, title: String) =
-    "$NAV_LOCATION_DETAILS/$id?$NAV_TITLE=$title"

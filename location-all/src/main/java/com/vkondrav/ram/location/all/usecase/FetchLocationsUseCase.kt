@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.locations.usecase
+package com.vkondrav.ram.location.all.usecase
 
 import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.domain.RamLocation

@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.locations.composable
+package com.vkondrav.ram.location.all.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

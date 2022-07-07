@@ -12,5 +12,6 @@ object Module {
     const val collapsableDrawer = ":collapsable-drawer"
     const val characterAll = ":character-all"
     const val episodeAll = ":episode-all"
+    const val locationAll = ":location-all"
     const val snackbar = ":snackbar"
 }

@@ -1,11 +1,11 @@
-package com.vkondrav.ram.app.screen.locations.nav
+package com.vkondrav.ram.location.all.nav
 
 import androidx.navigation.navArgument
-import com.vkondrav.ram.app.R
 import com.vkondrav.ram.navigation.NAV_TITLE
 import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.common.ui.data.TextResource
-import com.vkondrav.ram.app.screen.locations.composable.LocationsScreen
+import com.vkondrav.ram.location.all.R
+import com.vkondrav.ram.location.all.composable.LocationsScreen
 import com.vkondrav.ram.navigation.Routes
 
 val locationsScreen by lazy {

@@ -62,6 +62,7 @@ jobs:
                   snackbar,
                   character-all,
                   episode-all,
+                  location-all,
                   app ]
     runs-on: ubuntu-latest
     steps:

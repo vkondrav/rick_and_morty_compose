@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.locations.usecase
+package com.vkondrav.ram.location.all.usecase
 
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao
@@ -10,10 +10,9 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
-class AddLocationToFavoritesUseCase(
+class RemoveLocationFromFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,
     private val showSnackbarMessageUseCase: ShowSnackbarMessageUseCase,
-    private val adapter: RamLocation.Adapter,
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
@@ -24,8 +23,8 @@ class AddLocationToFavoritesUseCase(
         location: RamLocation,
     ) {
         launch {
-            favoriteLocationsDao.insert(adapter.favorite(location))
-            showSnackbarMessageUseCase("${location.name} added to favorites")
+            favoriteLocationsDao.delete(location.id)
+            showSnackbarMessageUseCase("${location.name} removed from favorites")
         }
     }
 

@@ -1,9 +1,9 @@
-package com.vkondrav.ram.app.screen.locations.factory
+package com.vkondrav.ram.location.all.factory
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.screen.locations.composable.LocationViewItem
-import com.vkondrav.ram.app.screen.locations.usecase.HandleLocationFavoriteUseCase
-import com.vkondrav.ram.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
+import com.vkondrav.ram.location.all.composable.LocationViewItem
+import com.vkondrav.ram.location.all.usecase.HandleLocationFavoriteUseCase
+import com.vkondrav.ram.location.all.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.ram.domain.RamLocation
 
 class LocationViewItemFactory(

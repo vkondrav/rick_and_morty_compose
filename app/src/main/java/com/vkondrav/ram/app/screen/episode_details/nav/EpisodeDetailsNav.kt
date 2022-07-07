@@ -8,7 +8,7 @@ import com.vkondrav.ram.navigation.id
 
 val episodeDetailsScreen by lazy {
     Screen(
-        route = Routes.Episodes.All(),
+        route = Routes.Episodes.Details(),
     ) { bundle ->
         EpisodeDetailsScreen(
             id = bundle?.id

@@ -1,9 +1,9 @@
 package com.vkondrav.ram.app.screen.favorite_locations.usecase
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.screen.locations.composable.LocationViewItem
-import com.vkondrav.ram.app.screen.locations.usecase.HandleLocationFavoriteUseCase
-import com.vkondrav.ram.app.screen.locations.usecase.NavigateToLocationDetailsUseCase
+import com.vkondrav.ram.location.all.composable.LocationViewItem
+import com.vkondrav.ram.location.all.usecase.HandleLocationFavoriteUseCase
+import com.vkondrav.ram.location.all.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao

@@ -8,7 +8,7 @@ import com.vkondrav.ram.app.screen.favorite_characters.di.favoriteCharactersModu
 import com.vkondrav.ram.app.screen.favorite_episodes.di.favoriteEpisodesModule
 import com.vkondrav.ram.app.screen.favorite_locations.di.favoriteLocationsModule
 import com.vkondrav.ram.app.screen.location_details.di.locationDetailsModule
-import com.vkondrav.ram.app.screen.locations.di.locationsModule
+import com.vkondrav.ram.location.all.di.locationsModule
 import com.vkondrav.ram.app.screen.main.di.mainModule
 import com.vkondrav.ram.character.all.di.charactersModule
 import com.vkondrav.ram.collapsable.drawer.collapsableDrawerModule

@@ -1,8 +1,8 @@
-package com.vkondrav.ram.app.screen.locations.composable
+package com.vkondrav.ram.location.all.composable
 
 import androidx.compose.runtime.Composable
 import com.vkondrav.ram.common.ui.screen.BasePagingScreen
-import com.vkondrav.ram.app.screen.locations.viewmodel.LocationsViewModel
+import com.vkondrav.ram.location.all.viewmodel.LocationsViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
