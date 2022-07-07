@@ -89,6 +89,7 @@ dependencies {
     implementation(project(Module.commonUtil))
     implementation(project(Module.commonUi))
 
+    implementation(Libs.AndroidX.lifecycle)
     api(Libs.AndroidX.navigationCompose)
     api(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.navMaterial)
