@@ -2,12 +2,12 @@ package com.vkondrav.ram.app.core
 
 import com.vkondrav.ram.character.details.di.characterDetailsModule
 import com.vkondrav.ram.app.screen.drawer.di.drawerModule
-import com.vkondrav.ram.app.screen.episode_details.di.episodeDetailsModule
+import com.vkondrav.ram.episode.details.di.episodeDetailsModule
 import com.vkondrav.ram.episode.all.di.episodesModule
 import com.vkondrav.ram.character.favorite.di.favoriteCharactersModule
 import com.vkondrav.ram.episode.favorite.di.favoriteEpisodesModule
 import com.vkondrav.ram.location.favorite.di.favoriteLocationsModule
-import com.vkondrav.ram.app.screen.location_details.di.locationDetailsModule
+import com.vkondrav.ram.location.details.di.locationDetailsModule
 import com.vkondrav.ram.location.all.di.locationsModule
 import com.vkondrav.ram.app.screen.main.di.mainModule
 import com.vkondrav.ram.character.all.di.charactersModule

@@ -15,7 +15,9 @@ object Module {
     const val characterDetails = ":character-details"
     const val episodeAll = ":episode-all"
     const val episodeFavorite = ":episode-favorite"
+    const val episodeDetails = ":episode-details"
     const val locationAll = ":location-all"
     const val locationFavorite = ":location-favorite"
+    const val locationDetails = ":location-details"
     const val snackbar = ":snackbar"
 }
