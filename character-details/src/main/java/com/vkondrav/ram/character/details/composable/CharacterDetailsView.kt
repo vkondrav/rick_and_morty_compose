@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.character_details.composable
+package com.vkondrav.ram.character.details.composable
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

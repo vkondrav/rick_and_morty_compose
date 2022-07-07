@@ -1,11 +1,11 @@
-package com.vkondrav.ram.app.screen.character_details.viewmodel
+package com.vkondrav.ram.character.details.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.common.ui.viewmodel.BaseViewModel
 import com.vkondrav.ram.common.ui.view.PageErrorViewItem
-import com.vkondrav.ram.app.screen.character_details.usecase.CharacterDetailsSource
+import com.vkondrav.ram.character.details.usecase.CharacterDetailsSource
 import com.vkondrav.ram.common.ui.data.ScreenState
 import com.vkondrav.ram.common.ui.viewmodel.ScreenStateViewModel
 import kotlinx.coroutines.CoroutineDispatcher

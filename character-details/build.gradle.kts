@@ -2,32 +2,25 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
 plugins {
-    application()
+    library()
     kotlin()
-    parcelize()
 }
 
 android {
+    namespace = "com.vkondrav.ram.character.details"
+
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
 
     defaultConfig {
-        applicationId = "com.vkondrav.ram.app"
-
         minSdk = Build.minSkd
         targetSdk = Build.targetSdk
 
-        versionCode = Build.Version.code
-        versionName = Build.Version.name
-
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -36,7 +29,6 @@ android {
         }
         getByName("debug") {
             isMinifyEnabled = false
-            applicationIdSuffix = ".debug"
         }
     }
 
@@ -51,35 +43,19 @@ android {
 
     buildFeatures {
         compose = true
-        viewBinding = true
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = Libs.Compose.version
     }
 
-    testOptions {
-        unitTests {
-            isReturnDefaultValues = true
-            isIncludeAndroidResources = true
-        }
-    }
-
     lint {
         warningsAsErrors = true
-    }
-
-    packagingOptions {
-        resources.excludes.add("META-INF/*")
     }
 
     tasks.withType<KotlinCompile> {
 
         val optIns = listOf(
-            Experimental.pager,
-            Experimental.animation,
-            Experimental.navigation,
-            Experimental.material,
             Experimental.coroutines,
         ).joinToString(separator = ",")
 
@@ -112,65 +88,34 @@ android {
             }
         }
     }
-
-    androidResources {
-        additionalParameters.add("--warn-manifest-validation")
-    }
 }
 
 dependencies {
-
     implementation(project(Module.commonUtil))
     implementation(project(Module.commonUi))
     implementation(project(Module.domain))
     implementation(project(Module.navigation))
-    implementation(project(Module.collapsableDrawer))
-    implementation(project(Module.characterAll))
-    implementation(project(Module.characterFavorite))
-    implementation(project(Module.characterDetails))
-    implementation(project(Module.episodeAll))
-    implementation(project(Module.episodeFavorite))
-    implementation(project(Module.locationAll))
-    implementation(project(Module.locationFavorite))
     implementation(project(Module.snackbar))
+    implementation(project(Module.characterAll))
+    implementation(project(Module.locationAll))
+    implementation(project(Module.episodeAll))
+    implementation(project(Module.collapsableDrawer))
 
-    implementation(Libs.AndroidX.ktx)
-    implementation(Libs.AndroidX.appcompat)
-    implementation(Libs.AndroidX.constraintLayoutCompose)
-    implementation(Libs.AndroidX.splashscreen)
-    implementation(Libs.AndroidX.lifecycle)
-    implementation(Libs.AndroidX.pagingRuntime)
-    implementation(Libs.AndroidX.activityCompose)
-
-    implementation(Libs.Material.core)
+    implementation(Libs.Timber.core)
 
     implementation(Libs.Compose.material)
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)
-    implementation(Libs.Compose.viewBinding)
-
-    implementation(Libs.Accompanist.pager)
-    implementation(Libs.Accompanist.indicators)
+    implementation(Libs.AndroidX.constraintLayoutCompose)
 
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
 
-    implementation(Libs.Timber.core)
-
-    implementation(Libs.Coil.core)
-
-    implementation(Libs.DataStore.core)
+    implementation(Libs.AndroidX.pagingRuntime)
 
     testImplementation(project(Module.commonTest))
-
-    testImplementation(TestLibs.Robolectric.core)
-    testImplementation(TestLibs.Compose.jUnit)
-    testImplementation(TestLibs.MockK.core)
     testImplementation(TestLibs.Koin.core)
     testImplementation(TestLibs.Turbine.core)
-
-    testApi(project(Module.apollo))
-
-    debugImplementation(TestLibs.Compose.manifest)
-    debugImplementation(SupportLibs.LeakCanary.core)
+    testImplementation(TestLibs.KotlinX.coroutines)
+    testImplementation(TestLibs.MockK.core)
 }

@@ -1,6 +1,6 @@
-package com.vkondrav.ram.app.screen.character_details.nav
+package com.vkondrav.ram.character.details.nav
 
-import com.vkondrav.ram.app.screen.character_details.composable.CharacterDetailsScreen
+import com.vkondrav.ram.character.details.composable.CharacterDetailsScreen
 import com.vkondrav.ram.navigation.Routes
 import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.navigation.error.NavigationException

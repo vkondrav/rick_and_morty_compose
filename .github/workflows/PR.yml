@@ -62,6 +62,7 @@ jobs:
                   snackbar,
                   character-all,
                   character-favorite,
+                  character-details,
                   episode-all,
                   episode-favorite,
                   location-all,

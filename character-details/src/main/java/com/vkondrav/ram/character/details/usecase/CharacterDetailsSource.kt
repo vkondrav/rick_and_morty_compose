@@ -1,11 +1,11 @@
-package com.vkondrav.ram.app.screen.character_details.usecase
+package com.vkondrav.ram.character.details.usecase
 
-import com.vkondrav.ram.app.R
+import com.vkondrav.ram.character.details.R
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.common.ui.data.TextResource
-import com.vkondrav.ram.app.screen.character_details.composable.CharacterDetailsViewItem
+import com.vkondrav.ram.character.details.composable.CharacterDetailsViewItem
 import com.vkondrav.ram.episode.all.factory.EpisodeViewItemFactory
 import com.vkondrav.ram.location.all.factory.LocationViewItemFactory
 import com.vkondrav.ram.collapsable.drawer.view.CollapsableViewItem
