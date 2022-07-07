@@ -3,7 +3,6 @@ package com.vkondrav.ram.episode.favorite.di
 import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.episode.all.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.episode.all.usecase.NavigateToEpisodeDetailsUseCase
-import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.mockk

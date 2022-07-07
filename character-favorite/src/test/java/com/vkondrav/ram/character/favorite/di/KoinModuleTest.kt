@@ -2,13 +2,8 @@ package com.vkondrav.ram.character.favorite.di
 
 import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.character.all.usecase.NavigateToCharacterDetailsUseCase
-import com.vkondrav.ram.character.favorite.di.favoriteCharactersModule
 import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.domain.RamPage
-import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.navigation.usecase.NavigateToRouteUseCase
 import com.vkondrav.ram.room.FavoriteCharactersDao
-import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

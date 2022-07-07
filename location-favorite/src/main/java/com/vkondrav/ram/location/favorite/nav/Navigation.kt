@@ -1,8 +1,8 @@
-package com.vkondrav.ram.app.screen.favorite_locations.nav
+package com.vkondrav.ram.location.favorite.nav
 
-import com.vkondrav.ram.app.R
 import com.vkondrav.ram.common.ui.data.TextResource
-import com.vkondrav.ram.app.screen.favorite_locations.composable.FavoriteLocationsScreen
+import com.vkondrav.ram.location.favorite.R
+import com.vkondrav.ram.location.favorite.composable.FavoriteLocationsScreen
 import com.vkondrav.ram.navigation.data.TabScreen
 
 val favoriteLocationsTab = TabScreen(

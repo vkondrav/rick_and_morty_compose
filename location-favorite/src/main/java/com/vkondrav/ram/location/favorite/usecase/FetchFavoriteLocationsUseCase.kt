@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.favorite_locations.usecase
+package com.vkondrav.ram.location.favorite.usecase
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.location.all.composable.LocationViewItem

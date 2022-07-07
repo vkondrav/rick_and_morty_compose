@@ -1,14 +1,9 @@
-package com.vkondrav.ram.character.favorite.di
+package com.vkondrav.ram.location.favorite.di
 
-import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase
-import com.vkondrav.ram.character.all.usecase.NavigateToCharacterDetailsUseCase
-import com.vkondrav.ram.character.favorite.di.favoriteCharactersModule
-import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.domain.RamPage
-import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.navigation.usecase.NavigateToRouteUseCase
-import com.vkondrav.ram.room.FavoriteCharactersDao
-import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
+import com.vkondrav.ram.domain.RamLocation
+import com.vkondrav.ram.location.all.usecase.HandleLocationFavoriteUseCase
+import com.vkondrav.ram.location.all.usecase.NavigateToLocationDetailsUseCase
+import com.vkondrav.ram.room.FavoriteLocationsDao
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -26,22 +21,22 @@ class KoinModuleTest : BaseTest(), KoinTest {
             modules(
                 module { //components needed from other modules
                     factory {
-                        mockk<FavoriteCharactersDao>()
+                        mockk<FavoriteLocationsDao>()
                     }
                     factory {
-                        mockk<RamCharacter.Factory>()
+                        mockk<RamLocation.Factory>()
                     }
                     factory {
-                        mockk<NavigateToCharacterDetailsUseCase>()
+                        mockk<NavigateToLocationDetailsUseCase>()
                     }
                     factory {
-                        mockk<HandleCharacterFavoritesUseCase>()
+                        mockk<HandleLocationFavoriteUseCase>()
                     }
                     factory {
                         Dispatchers.Unconfined
                     }
                 },
-                favoriteCharactersModule,
+                favoriteLocationsModule,
             )
             checkModules()
         }

@@ -6,7 +6,7 @@ import com.vkondrav.ram.app.screen.episode_details.di.episodeDetailsModule
 import com.vkondrav.ram.episode.all.di.episodesModule
 import com.vkondrav.ram.character.favorite.di.favoriteCharactersModule
 import com.vkondrav.ram.episode.favorite.di.favoriteEpisodesModule
-import com.vkondrav.ram.app.screen.favorite_locations.di.favoriteLocationsModule
+import com.vkondrav.ram.location.favorite.di.favoriteLocationsModule
 import com.vkondrav.ram.app.screen.location_details.di.locationDetailsModule
 import com.vkondrav.ram.location.all.di.locationsModule
 import com.vkondrav.ram.app.screen.main.di.mainModule
