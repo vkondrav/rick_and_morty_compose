@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.ram.domain"
+    namespace = "com.vkondrav.ram.character.details"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -39,6 +39,14 @@ android {
 
     kotlinOptions {
         jvmTarget = Libs.jvmTarget
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Libs.Compose.version
     }
 
     lint {
@@ -78,14 +86,25 @@ android {
 }
 
 dependencies {
-
-    api(project(Module.graphql))
-    api(project(Module.room))
-    api(project(Module.dataStore))
-
     implementation(project(Module.commonUtil))
+    implementation(project(Module.commonUi))
+    implementation(project(Module.domain))
+    implementation(project(Module.navigation))
+    implementation(project(Module.snackbar))
+    implementation(project(Module.characterAll))
+    implementation(project(Module.locationAll))
+    implementation(project(Module.episodeAll))
+    implementation(project(Module.collapsableDrawer))
+
+    implementation(Libs.Compose.material)
+    implementation(Libs.Compose.iconsCore)
+    implementation(Libs.Compose.iconsExt)
+    implementation(Libs.AndroidX.constraintLayoutCompose)
 
     implementation(Libs.Koin.core)
+    implementation(Libs.Koin.compose)
+
+    implementation(Libs.AndroidX.pagingRuntime)
 
     testImplementation(project(Module.commonTest))
 }

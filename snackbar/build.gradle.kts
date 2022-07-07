@@ -90,7 +90,4 @@ dependencies {
     implementation(Libs.Koin.compose)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.MockK.core)
-    testImplementation(TestLibs.KotlinX.coroutines)
-    testImplementation(TestLibs.Koin.core)
 }

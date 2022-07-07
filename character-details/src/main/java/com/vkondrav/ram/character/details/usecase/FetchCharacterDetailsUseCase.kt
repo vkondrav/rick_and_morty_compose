@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.character_details.usecase
+package com.vkondrav.ram.character.details.usecase
 
 import com.vkondrav.ram.domain.RamCharacterDetails
 import com.vkondrav.ram.graphql.RamRepository

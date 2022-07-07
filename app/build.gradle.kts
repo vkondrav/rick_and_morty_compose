@@ -74,16 +74,7 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-
-        val optIns = listOf(
-            Experimental.pager,
-            Experimental.animation,
-            Experimental.navigation,
-            Experimental.material,
-            Experimental.coroutines,
-        ).joinToString(separator = ",")
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+        kotlinOptions.freeCompilerArgs += "-opt-in=${Experimental.optIns}"
     }
 
     with(tasks) { // Kover Config
@@ -127,6 +118,7 @@ dependencies {
     implementation(project(Module.collapsableDrawer))
     implementation(project(Module.characterAll))
     implementation(project(Module.characterFavorite))
+    implementation(project(Module.characterDetails))
     implementation(project(Module.episodeAll))
     implementation(project(Module.episodeFavorite))
     implementation(project(Module.locationAll))
@@ -154,21 +146,7 @@ dependencies {
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
 
-    implementation(Libs.Timber.core)
-
-    implementation(Libs.Coil.core)
-
-    implementation(Libs.DataStore.core)
-
     testImplementation(project(Module.commonTest))
-
-    testImplementation(TestLibs.Robolectric.core)
-    testImplementation(TestLibs.Compose.jUnit)
-    testImplementation(TestLibs.MockK.core)
-    testImplementation(TestLibs.Koin.core)
-    testImplementation(TestLibs.Turbine.core)
-
-    testApi(project(Module.apollo))
 
     debugImplementation(TestLibs.Compose.manifest)
     debugImplementation(SupportLibs.LeakCanary.core)

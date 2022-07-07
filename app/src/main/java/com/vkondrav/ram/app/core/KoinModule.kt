@@ -1,6 +1,6 @@
 package com.vkondrav.ram.app.core
 
-import com.vkondrav.ram.app.screen.character_details.di.characterDetailsModule
+import com.vkondrav.ram.character.details.di.characterDetailsModule
 import com.vkondrav.ram.app.screen.drawer.di.drawerModule
 import com.vkondrav.ram.app.screen.episode_details.di.episodeDetailsModule
 import com.vkondrav.ram.episode.all.di.episodesModule
