@@ -46,12 +46,7 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-
-        val optIns = listOf(
-            Experimental.coroutines,
-        ).joinToString(separator = ",")
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+        kotlinOptions.freeCompilerArgs += "-opt-in=${Experimental.optIns}"
     }
 
     with(tasks) { // Kover Config
@@ -91,11 +86,6 @@ dependencies {
     implementation(project(Module.commonUtil))
 
     implementation(Libs.Koin.core)
-    implementation(Libs.Timber.core)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.KotlinX.coroutines)
-    testImplementation(TestLibs.Turbine.core)
-    testImplementation(TestLibs.MockK.core)
-    testImplementation(TestLibs.Koin.core)
 }

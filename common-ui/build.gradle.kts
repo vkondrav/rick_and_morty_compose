@@ -54,12 +54,7 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-
-        val optIns = listOf(
-            Experimental.coroutines,
-        ).joinToString(separator = ",")
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+        kotlinOptions.freeCompilerArgs += "-opt-in=${Experimental.optIns}"
     }
 }
 

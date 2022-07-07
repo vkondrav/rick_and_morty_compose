@@ -62,12 +62,7 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-
-        val optIns = listOf(
-            "kotlinx.coroutines.ExperimentalCoroutinesApi",
-        ).joinToString(separator = ",")
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+        kotlinOptions.freeCompilerArgs += "-opt-in=${Experimental.optIns}"
     }
 
     with(tasks) { // Kover Config
@@ -78,7 +73,6 @@ android {
         )
 
         koverHtmlReport {
-            includes = listOf("com.vkondrav.ram.room.*")
             excludes = koverExcludes
         }
 
@@ -117,9 +111,4 @@ dependencies {
     ksp(Libs.Room.compiler)
 
     testImplementation(project(Module.commonTest))
-
-    testImplementation(TestLibs.Robolectric.core)
-    testImplementation(TestLibs.KotlinX.coroutines)
-    testImplementation(TestLibs.Turbine.core)
-    testImplementation(TestLibs.Koin.core)
 }

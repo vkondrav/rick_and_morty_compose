@@ -45,4 +45,5 @@ android {
 
 dependencies {
     implementation(Libs.KotlinX.coroutines)
+    api(Libs.Timber.core)
 }

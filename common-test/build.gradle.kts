@@ -44,10 +44,14 @@ android {
 }
 
 dependencies {
-    implementation(TestLibs.Compose.jUnit)
-    implementation(TestLibs.Robolectric.core)
-    implementation(TestLibs.ArchCore.testing)
-
     api(TestLibs.JUnit.core)
     api(TestLibs.Kotest.assertions)
+
+    api(TestLibs.Compose.jUnit)
+    api(TestLibs.Robolectric.core)
+    api(TestLibs.ArchCore.testing)
+    api(TestLibs.KotlinX.coroutines)
+    api(TestLibs.Turbine.core)
+    api(TestLibs.MockK.core)
+    api(TestLibs.Koin.core)
 }

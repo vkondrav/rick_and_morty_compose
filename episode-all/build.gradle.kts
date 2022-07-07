@@ -55,12 +55,7 @@ android {
     }
 
     tasks.withType<KotlinCompile> {
-
-        val optIns = listOf(
-            Experimental.coroutines,
-        ).joinToString(separator = ",")
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=$optIns"
+        kotlinOptions.freeCompilerArgs += "-opt-in=${Experimental.optIns}"
     }
 
     with(tasks) { // Kover Config
@@ -98,8 +93,6 @@ dependencies {
     implementation(project(Module.navigation))
     implementation(project(Module.snackbar))
 
-    implementation(Libs.Timber.core)
-
     implementation(Libs.Compose.material)
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)
@@ -111,8 +104,4 @@ dependencies {
     implementation(Libs.AndroidX.pagingRuntime)
 
     testImplementation(project(Module.commonTest))
-    testImplementation(TestLibs.Koin.core)
-    testImplementation(TestLibs.Turbine.core)
-    testImplementation(TestLibs.KotlinX.coroutines)
-    testImplementation(TestLibs.MockK.core)
 }
