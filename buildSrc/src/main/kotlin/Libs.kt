@@ -1,14 +1,15 @@
 object Libs {
-    const val kotlinVersion = "1.6.21"
+    const val kotlinVersion = "1.7.0"
     const val jvmTarget = "1.8"
     const val gradlePluginVersion = "1.5.21"
-    const val gradleVersion = "7.2.0"
+    const val gradleVersion = "7.2.1"
 
     object Compose {
         private const val base = "androidx.compose"
 
         @SuppressWarnings("version used in app/build.gradle.kts and cannot be private")
-        const val version = "1.2.0-beta03"
+        const val compiler = "1.2.0"
+        const val version = "1.3.0-alpha01"
 
         const val ui = "$base.ui:ui:$version"
         const val uiTooling = "$base.ui:ui-tooling:$version"
@@ -22,16 +23,19 @@ object Libs {
     object AndroidX {
         private const val base = "androidx"
 
-        const val appcompat = "$base.appcompat:appcompat:1.6.0-alpha04"
+        const val appcompat = "$base.appcompat:appcompat:1.6.0-alpha05"
         const val splashscreen = "$base.core:core-splashscreen:1.0.0-rc01"
-        const val ktx = "$base.core:core-ktx:1.9.0-alpha04"
+        const val ktx = "$base.core:core-ktx:1.9.0-alpha05"
         const val constraintLayoutCompose = base +
-                ".constraintlayout:constraintlayout-compose:1.1.0-alpha02"
-        const val lifecycle = "$base.lifecycle:lifecycle-runtime-ktx:2.5.0-rc01"
-        const val navigationCompose = "$base.navigation:navigation-compose:2.5.0-rc01"
+                ".constraintlayout:constraintlayout-compose:1.1.0-alpha03"
+        const val navigationCompose = "$base.navigation:navigation-compose:2.5.0"
         const val pagingCompose = "$base.paging:paging-compose:1.0.0-alpha15"
         const val pagingRuntime = "$base.paging:paging-runtime:3.2.0-alpha01"
-        const val activityCompose = "$base.activity:activity-compose:1.6.0-alpha03"
+        const val activityCompose = "$base.activity:activity-compose:1.6.0-alpha05"
+
+        //due to some weird clash with navigation and pagination, revisit when up updating
+        const val lifeCycleStrictVersion = "2.6.0-alpha01"
+        const val lifecycle = "$base.lifecycle:lifecycle-runtime-ktx:$lifeCycleStrictVersion"
     }
 
     object Koin {
@@ -49,7 +53,7 @@ object Libs {
     }
 
     object Accompanist {
-        private const val version = "0.24.10-beta"
+        private const val version = "0.24.13-rc"
         private const val base = "com.google.accompanist"
 
         const val navAnimation = "$base:accompanist-navigation-animation:$version"
@@ -59,7 +63,7 @@ object Libs {
     }
 
     object Apollo {
-        const val version = "3.3.0"
+        const val version = "3.3.2"
         const val base = "com.apollographql.apollo3"
 
         const val runtime = "$base:apollo-runtime:$version"

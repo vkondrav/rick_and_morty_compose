@@ -46,7 +46,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Compose.version
+        kotlinCompilerExtensionVersion = Libs.Compose.compiler
     }
 
     lint {
@@ -103,8 +103,6 @@ dependencies {
 
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
-
-    implementation(Libs.AndroidX.pagingRuntime)
 
     testImplementation(project(Module.commonTest))
 }

@@ -55,7 +55,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Compose.version
+        kotlinCompilerExtensionVersion = Libs.Compose.compiler
     }
 
     testOptions {
@@ -129,7 +129,11 @@ dependencies {
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintLayoutCompose)
     implementation(Libs.AndroidX.splashscreen)
-    implementation(Libs.AndroidX.lifecycle)
+    implementation(Libs.AndroidX.lifecycle) {
+        version {
+            strictly(Libs.AndroidX.lifeCycleStrictVersion)
+        }
+    }
     implementation(Libs.AndroidX.pagingRuntime)
     implementation(Libs.AndroidX.activityCompose)
 

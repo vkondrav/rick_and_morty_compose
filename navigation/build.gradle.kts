@@ -46,7 +46,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Compose.version
+        kotlinCompilerExtensionVersion = Libs.Compose.compiler
     }
 
     lint {
@@ -88,7 +88,7 @@ android {
 dependencies {
     implementation(project(Module.commonUtil))
     implementation(project(Module.commonUi))
-
+    
     api(Libs.AndroidX.navigationCompose)
     api(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.navMaterial)

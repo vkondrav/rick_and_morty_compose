@@ -11,12 +11,12 @@ object SupportLibs {
     }
 
     object Ksp {
-        const val version = "${Libs.kotlinVersion}-1.0.5"
+        const val version = "${Libs.kotlinVersion}-1.0.6"
         const val base = "com.google.devtools.ksp"
     }
 
     object Detekt {
-        const val version = "1.21.0-RC1"
+        const val version = "1.21.0-RC2"
         const val base = "io.gitlab.arturbosch.detekt"
         const val formatting = "$base:detekt-formatting:$version"
     }
