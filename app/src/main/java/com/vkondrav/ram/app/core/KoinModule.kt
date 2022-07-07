@@ -3,7 +3,7 @@ package com.vkondrav.ram.app.core
 import com.vkondrav.ram.app.screen.character_details.di.characterDetailsModule
 import com.vkondrav.ram.app.screen.drawer.di.drawerModule
 import com.vkondrav.ram.app.screen.episode_details.di.episodeDetailsModule
-import com.vkondrav.ram.app.screen.episodes.di.episodesModule
+import com.vkondrav.ram.episode.all.di.episodesModule
 import com.vkondrav.ram.app.screen.favorite_characters.di.favoriteCharactersModule
 import com.vkondrav.ram.app.screen.favorite_episodes.di.favoriteEpisodesModule
 import com.vkondrav.ram.app.screen.favorite_locations.di.favoriteLocationsModule

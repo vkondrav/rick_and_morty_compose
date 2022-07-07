@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.episodes.composable
+package com.vkondrav.ram.episode.all.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

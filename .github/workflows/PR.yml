@@ -61,6 +61,7 @@ jobs:
                   collapsable-drawer,
                   snackbar,
                   character-all,
+                  episode-all,
                   app ]
     runs-on: ubuntu-latest
     steps:

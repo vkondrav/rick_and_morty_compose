@@ -1,11 +1,11 @@
-package com.vkondrav.ram.app.screen.episodes.nav
+package com.vkondrav.ram.episode.all.nav
 
 import androidx.navigation.navArgument
-import com.vkondrav.ram.app.R
 import com.vkondrav.ram.navigation.NAV_TITLE
 import com.vkondrav.ram.navigation.data.Screen
 import com.vkondrav.ram.common.ui.data.TextResource
-import com.vkondrav.ram.app.screen.episodes.composable.EpisodesScreen
+import com.vkondrav.ram.episode.all.R
+import com.vkondrav.ram.episode.all.composable.EpisodesScreen
 import com.vkondrav.ram.navigation.Routes
 
 val episodesScreen by lazy {
