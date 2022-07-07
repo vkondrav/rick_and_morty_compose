@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.favorite_characters.usecase
+package com.vkondrav.ram.character.favorite.usecase
 
 import com.vkondrav.ram.character.all.composable.CharacterViewItem
 import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase

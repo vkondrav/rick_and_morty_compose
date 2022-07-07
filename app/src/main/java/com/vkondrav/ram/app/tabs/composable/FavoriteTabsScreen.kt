@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.vkondrav.ram.app.screen.favorite_characters.nav.favoriteCharactersTab
+import com.vkondrav.ram.character.favorite.nav.favoriteCharactersTab
 import com.vkondrav.ram.app.screen.favorite_episodes.nav.favoriteEpisodesTab
 import com.vkondrav.ram.app.screen.favorite_locations.nav.favoriteLocationsTab
 import kotlinx.coroutines.launch
@@ -26,7 +26,7 @@ fun FavoriteTabsScreen() {
     var tabIndex by remember { mutableStateOf(0) }
 
     val tabs = listOf(
-        favoriteCharactersTab,
+        com.vkondrav.ram.character.favorite.nav.favoriteCharactersTab,
         favoriteEpisodesTab,
         favoriteLocationsTab,
     )

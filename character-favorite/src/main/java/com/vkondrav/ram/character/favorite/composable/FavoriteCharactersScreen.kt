@@ -1,8 +1,8 @@
-package com.vkondrav.ram.app.screen.favorite_characters.composable
+package com.vkondrav.ram.character.favorite.composable
 
 import androidx.compose.runtime.Composable
 import com.vkondrav.ram.common.ui.screen.BaseStateScreen
-import com.vkondrav.ram.app.screen.favorite_characters.viewmodel.FavoriteCharactersViewModel
+import com.vkondrav.ram.character.favorite.viewmodel.FavoriteCharactersViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable

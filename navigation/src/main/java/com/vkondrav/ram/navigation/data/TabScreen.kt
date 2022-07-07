@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.tabs.nav
+package com.vkondrav.ram.navigation.data
 
 import android.os.Bundle
 import androidx.compose.runtime.Composable

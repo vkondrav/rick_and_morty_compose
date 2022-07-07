@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.favorite_characters.viewmodel
+package com.vkondrav.ram.character.favorite.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -7,7 +7,7 @@ import com.vkondrav.ram.common.ui.viewmodel.BaseViewModel
 import com.vkondrav.ram.common.ui.data.ScreenState
 import com.vkondrav.ram.common.ui.viewmodel.ScreenStateViewModel
 import com.vkondrav.ram.common.ui.view.PageErrorViewItem
-import com.vkondrav.ram.app.screen.favorite_characters.usecase.FetchFavoriteCharactersUseCase
+import com.vkondrav.ram.character.favorite.usecase.FetchFavoriteCharactersUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
