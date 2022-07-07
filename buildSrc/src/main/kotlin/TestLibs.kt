@@ -6,7 +6,7 @@ object TestLibs {
 
     object Compose {
         private const val base = "androidx.compose.ui"
-        private const val version = "1.2.0-beta03"
+        private const val version = Libs.Compose.version
         const val jUnit = "$base:ui-test-junit4:$version"
         const val manifest = "$base:ui-test-manifest:$version"
     }
@@ -17,7 +17,7 @@ object TestLibs {
     }
 
     object Kotest {
-        private const val version = "5.3.0"
+        private const val version = "5.3.2"
         const val assertions = "io.kotest:kotest-assertions-core:$version"
     }
 
