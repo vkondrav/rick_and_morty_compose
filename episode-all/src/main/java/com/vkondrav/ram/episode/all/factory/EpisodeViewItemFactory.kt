@@ -1,9 +1,9 @@
-package com.vkondrav.ram.app.screen.episodes.factory
+package com.vkondrav.ram.episode.all.factory
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.screen.episodes.composable.EpisodeViewItem
-import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
-import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
+import com.vkondrav.ram.episode.all.composable.EpisodeViewItem
+import com.vkondrav.ram.episode.all.usecase.HandleEpisodeFavoriteUseCase
+import com.vkondrav.ram.episode.all.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.domain.RamEpisode
 
 class EpisodeViewItemFactory(

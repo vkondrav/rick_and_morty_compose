@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.episodes.viewmodel
+package com.vkondrav.ram.episode.all.viewmodel
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -7,7 +7,7 @@ import androidx.paging.cachedIn
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.common.ui.viewmodel.BaseViewModel
 import com.vkondrav.ram.common.ui.viewmodel.PagingViewModel
-import com.vkondrav.ram.app.screen.episodes.source.EpisodesSource
+import com.vkondrav.ram.episode.all.source.EpisodesSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 

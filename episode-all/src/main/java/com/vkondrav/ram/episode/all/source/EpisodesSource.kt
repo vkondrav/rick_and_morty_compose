@@ -1,10 +1,10 @@
-package com.vkondrav.ram.app.screen.episodes.source
+package com.vkondrav.ram.episode.all.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.screen.episodes.factory.EpisodeViewItemFactory
-import com.vkondrav.ram.app.screen.episodes.usecase.FetchEpisodesUseCase
+import com.vkondrav.ram.episode.all.factory.EpisodeViewItemFactory
+import com.vkondrav.ram.episode.all.usecase.FetchEpisodesUseCase
 import timber.log.Timber
 
 class EpisodesSource(

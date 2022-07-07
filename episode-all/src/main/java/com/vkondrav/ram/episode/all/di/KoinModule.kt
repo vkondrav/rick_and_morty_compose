@@ -1,13 +1,13 @@
-package com.vkondrav.ram.app.screen.episodes.di
+package com.vkondrav.ram.episode.all.di
 
-import com.vkondrav.ram.app.screen.episodes.usecase.AddEpisodeToFavoritesUseCase
-import com.vkondrav.ram.app.screen.episodes.usecase.FetchEpisodesUseCase
-import com.vkondrav.ram.app.screen.episodes.usecase.HandleEpisodeFavoriteUseCase
-import com.vkondrav.ram.app.screen.episodes.usecase.NavigateToEpisodeDetailsUseCase
-import com.vkondrav.ram.app.screen.episodes.usecase.RemoveEpisodeFromFavoritesUseCase
-import com.vkondrav.ram.app.screen.episodes.factory.EpisodeViewItemFactory
-import com.vkondrav.ram.app.screen.episodes.source.EpisodesSource
-import com.vkondrav.ram.app.screen.episodes.viewmodel.EpisodesViewModel
+import com.vkondrav.ram.episode.all.usecase.AddEpisodeToFavoritesUseCase
+import com.vkondrav.ram.episode.all.usecase.FetchEpisodesUseCase
+import com.vkondrav.ram.episode.all.usecase.HandleEpisodeFavoriteUseCase
+import com.vkondrav.ram.episode.all.usecase.NavigateToEpisodeDetailsUseCase
+import com.vkondrav.ram.episode.all.usecase.RemoveEpisodeFromFavoritesUseCase
+import com.vkondrav.ram.episode.all.factory.EpisodeViewItemFactory
+import com.vkondrav.ram.episode.all.source.EpisodesSource
+import com.vkondrav.ram.episode.all.viewmodel.EpisodesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
