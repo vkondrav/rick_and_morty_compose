@@ -39,7 +39,7 @@ fun KoinApplication.appModules() = modules(
             episodeDetailsModule,
             drawerModule,
             domainModule,
-            com.vkondrav.ram.character.favorite.di.favoriteCharactersModule,
+            favoriteCharactersModule,
             favoriteLocationsModule,
             favoriteEpisodesModule,
         ),
