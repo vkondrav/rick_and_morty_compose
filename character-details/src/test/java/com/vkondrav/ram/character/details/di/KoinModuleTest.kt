@@ -1,11 +1,14 @@
-package com.vkondrav.ram.character.all.di
+package com.vkondrav.ram.character.details.di
 
-import com.vkondrav.ram.domain.RamCharacter
-import com.vkondrav.ram.domain.RamPage
+import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
+import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
+import com.vkondrav.ram.domain.RamCharacterDetails
+import com.vkondrav.ram.episode.all.factory.EpisodeViewItemFactory
 import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.navigation.usecase.NavigateToRouteUseCase
+import com.vkondrav.ram.location.all.factory.LocationViewItemFactory
 import com.vkondrav.ram.room.FavoriteCharactersDao
-import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
+import com.vkondrav.ram.room.FavoriteEpisodesDao
+import com.vkondrav.ram.room.FavoriteLocationsDao
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -23,28 +26,37 @@ class KoinModuleTest : BaseTest(), KoinTest {
             modules(
                 module { //components needed from other modules
                     factory {
-                        mockk<NavigateToRouteUseCase>()
+                        mockk<RamRepository>()
                     }
                     factory {
                         mockk<FavoriteCharactersDao>()
                     }
                     factory {
-                        mockk<ShowSnackbarMessageUseCase>()
+                        mockk<FavoriteLocationsDao>()
                     }
                     factory {
-                        mockk<RamCharacter.Adapter>()
+                        mockk<FavoriteEpisodesDao>()
                     }
                     factory {
-                        mockk<RamRepository>()
+                        mockk<RamCharacterDetails.Factory>()
                     }
                     factory {
-                        mockk<RamPage.Factory>()
+                        mockk<FetchCollapsableDrawerStateUseCase>()
+                    }
+                    factory {
+                        mockk<HandleCollapsableDrawerUseCase>()
+                    }
+                    factory {
+                        mockk<LocationViewItemFactory>()
+                    }
+                    factory {
+                        mockk<EpisodeViewItemFactory>()
                     }
                     factory {
                         Dispatchers.Unconfined
                     }
                 },
-                charactersModule,
+                characterDetailsModule,
             )
             checkModules()
         }
