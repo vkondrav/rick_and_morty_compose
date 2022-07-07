@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.favorite_episodes.usecase
+package com.vkondrav.ram.episode.favorite.usecase
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.episode.all.composable.EpisodeViewItem

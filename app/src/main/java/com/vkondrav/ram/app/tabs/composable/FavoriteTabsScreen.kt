@@ -17,7 +17,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import com.vkondrav.ram.character.favorite.nav.favoriteCharactersTab
-import com.vkondrav.ram.app.screen.favorite_episodes.nav.favoriteEpisodesTab
+import com.vkondrav.ram.episode.favorite.nav.favoriteEpisodesTab
 import com.vkondrav.ram.app.screen.favorite_locations.nav.favoriteLocationsTab
 import kotlinx.coroutines.launch
 

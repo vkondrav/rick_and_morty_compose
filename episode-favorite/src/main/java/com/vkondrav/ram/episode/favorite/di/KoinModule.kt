@@ -1,7 +1,7 @@
-package com.vkondrav.ram.app.screen.favorite_episodes.di
+package com.vkondrav.ram.episode.favorite.di
 
-import com.vkondrav.ram.app.screen.favorite_episodes.usecase.FetchFavoriteEpisodesUseCase
-import com.vkondrav.ram.app.screen.favorite_episodes.viewmodel.FavoriteEpisodesViewModel
+import com.vkondrav.ram.episode.favorite.usecase.FetchFavoriteEpisodesUseCase
+import com.vkondrav.ram.episode.favorite.viewmodel.FavoriteEpisodesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
