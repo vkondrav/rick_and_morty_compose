@@ -1,8 +1,8 @@
 package com.vkondrav.ram.character.all.usecase
 
-import com.vkondrav.ram.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
+import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.Called
 import io.mockk.clearAllMocks
@@ -20,7 +20,7 @@ import timber.log.Timber
 class RemoveCharacterFromFavoritesUseCaseTest : BaseTest() {
 
     private val favoriteCharactersDao = mockk<FavoriteCharactersDao>(relaxed = true)
-    private val snackbarController = mockk<SnackbarController>(relaxed = true)
+    private val showSnackbarMessageUseCase = mockk<ShowSnackbarMessageUseCase>(relaxed = true)
     private val testTree = mockk<Timber.Tree>(relaxed = true)
 
     private lateinit var subject: RemoveCharacterFromFavoritesUseCase
@@ -31,7 +31,7 @@ class RemoveCharacterFromFavoritesUseCaseTest : BaseTest() {
         Timber.plant(testTree)
         subject = RemoveCharacterFromFavoritesUseCase(
             favoriteCharactersDao,
-            snackbarController,
+            showSnackbarMessageUseCase,
             Dispatchers.Unconfined,
         )
     }
@@ -50,7 +50,7 @@ class RemoveCharacterFromFavoritesUseCaseTest : BaseTest() {
         subject(character)
         coVerifySequence {
             favoriteCharactersDao.delete("id_1")
-            snackbarController.showMessage("name_1 removed from favorites")
+            showSnackbarMessageUseCase("name_1 removed from favorites")
         }
     }
 
@@ -63,6 +63,6 @@ class RemoveCharacterFromFavoritesUseCaseTest : BaseTest() {
         coEvery { favoriteCharactersDao.delete("id_1") } throws error
         subject(character)
         verify { testTree.e(error) }
-        verify { snackbarController wasNot Called }
+        verify { showSnackbarMessageUseCase wasNot Called }
     }
 }

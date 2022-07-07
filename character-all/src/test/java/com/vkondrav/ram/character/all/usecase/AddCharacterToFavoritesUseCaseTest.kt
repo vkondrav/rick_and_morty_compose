@@ -1,9 +1,9 @@
 package com.vkondrav.ram.character.all.usecase
 
-import com.vkondrav.ram.snackbar.SnackbarController
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
+import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.Called
 import io.mockk.clearAllMocks
@@ -20,9 +20,9 @@ import timber.log.Timber
 class AddCharacterToFavoritesUseCaseTest : BaseTest() {
 
     private val favoriteCharactersDao = mockk<FavoriteCharactersDao>(relaxed = true)
-    private val snackbarController = mockk<SnackbarController>(relaxed = true)
+    private val showSnackbarMessageUseCase = mockk<ShowSnackbarMessageUseCase>(relaxed = true)
     private val adapter = mockk<RamCharacter.Adapter>()
-    private val testTree = mockk<Timber.Tree>()
+    private val testTree = mockk<Timber.Tree>(relaxed = true)
 
     private lateinit var subject: AddCharacterToFavoritesUseCase
 
@@ -32,7 +32,7 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
         Timber.plant(testTree)
         subject = AddCharacterToFavoritesUseCase(
             favoriteCharactersDao,
-            snackbarController,
+            showSnackbarMessageUseCase,
             adapter,
             Dispatchers.Unconfined,
         )
@@ -54,7 +54,7 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
         subject(character)
         coVerifySequence {
             favoriteCharactersDao.insert(favorite)
-            snackbarController.showMessage("name_1 added to favorites")
+            showSnackbarMessageUseCase("name_1 added to favorites")
         }
     }
 
@@ -68,6 +68,6 @@ class AddCharacterToFavoritesUseCaseTest : BaseTest() {
         subject(character)
         verify { testTree.e(error) }
         verify { favoriteCharactersDao wasNot Called }
-        verify { snackbarController wasNot Called }
+        verify { showSnackbarMessageUseCase wasNot Called }
     }
 }
