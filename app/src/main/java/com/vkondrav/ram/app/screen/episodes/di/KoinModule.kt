@@ -27,14 +27,14 @@ val episodesModule = module {
     factory {
         RemoveEpisodeFromFavoritesUseCase(
             favoriteEpisodesDao = get(),
-            snackbarController = get(),
+            showSnackbarMessageUseCase = get(),
             dispatcher = get(),
         )
     }
     factory {
         AddEpisodeToFavoritesUseCase(
             favoriteEpisodesDao = get(),
-            snackbarController = get(),
+            showSnackbarMessageUseCase = get(),
             adapter = get(),
             dispatcher = get(),
         )

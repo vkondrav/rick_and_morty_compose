@@ -1,7 +1,7 @@
 package com.vkondrav.ram.app.screen.location_details.usecase
 
 import com.vkondrav.ram.app.R
-import com.vkondrav.ram.app.screen.characters.factory.CharacterViewItemFactory
+import com.vkondrav.ram.character.all.factory.CharacterViewItemFactory
 import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.collapsable.drawer.view.CollapsableViewItem

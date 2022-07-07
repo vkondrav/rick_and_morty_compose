@@ -10,4 +10,6 @@ object Module {
     const val commonUi = ":common-ui"
     const val navigation = ":navigation"
     const val collapsableDrawer = ":collapsable-drawer"
+    const val characterAll = ":character-all"
+    const val snackbar = ":snackbar"
 }

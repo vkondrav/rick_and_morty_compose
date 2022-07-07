@@ -1,9 +1,9 @@
 package com.vkondrav.ram.app.screen.favorite_characters.usecase
 
+import com.vkondrav.ram.character.all.composable.CharacterViewItem
+import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase
+import com.vkondrav.ram.character.all.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.app.screen.characters.composable.CharacterViewItem
-import com.vkondrav.ram.app.screen.characters.usecase.HandleCharacterFavoritesUseCase
-import com.vkondrav.ram.app.screen.characters.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao

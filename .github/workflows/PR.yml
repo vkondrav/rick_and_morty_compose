@@ -52,7 +52,16 @@ jobs:
     needs: [ detekt ]
     strategy:
       matrix:
-        module: [ room, apollo, graphql, data-store, domain, navigation, collapsable-drawer, app ]
+        module: [ room,
+                  apollo,
+                  graphql,
+                  data-store,
+                  domain,
+                  navigation,
+                  collapsable-drawer,
+                  snackbar,
+                  character-all,
+                  app ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo

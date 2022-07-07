@@ -76,4 +76,6 @@ dependencies {
     implementation(Libs.AndroidX.pagingCompose)
 
     implementation(Libs.Timber.core)
+
+    implementation(Libs.Coil.core)
 }
