@@ -6,7 +6,7 @@ object SupportLibs {
     }
 
     object Kover {
-        const val version = "0.5.1"
+        const val version = "0.5.0"
         const val base = "org.jetbrains.kotlinx.kover"
     }
 

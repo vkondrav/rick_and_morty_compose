@@ -88,12 +88,7 @@ android {
 dependencies {
     implementation(project(Module.commonUtil))
     implementation(project(Module.commonUi))
-
-    implementation(Libs.AndroidX.lifecycle) {
-        version {
-            strictly("2.6.0-alpha01")
-        }
-    }
+    
     api(Libs.AndroidX.navigationCompose)
     api(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.navMaterial)
