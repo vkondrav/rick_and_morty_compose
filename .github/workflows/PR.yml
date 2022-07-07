@@ -65,8 +65,10 @@ jobs:
                   character-details,
                   episode-all,
                   episode-favorite,
+                  episode-details,
                   location-all,
                   location-favorite,
+                  location-details,
                   app ]
     runs-on: ubuntu-latest
     steps:
