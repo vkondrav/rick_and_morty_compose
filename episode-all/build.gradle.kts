@@ -101,6 +101,11 @@ dependencies {
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
 
+    implementation(Libs.AndroidX.lifecycle) {
+        version {
+            strictly("2.6.0-alpha01")
+        }
+    }
     implementation(Libs.AndroidX.pagingRuntime)
 
     testImplementation(project(Module.commonTest))

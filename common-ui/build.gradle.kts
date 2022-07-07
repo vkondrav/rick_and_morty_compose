@@ -67,6 +67,11 @@ dependencies {
     implementation(Libs.Compose.iconsCore)
     implementation(Libs.Compose.iconsExt)
 
+    implementation(Libs.AndroidX.lifecycle) {
+        version {
+            strictly("2.6.0-alpha01")
+        }
+    }
     implementation(Libs.AndroidX.pagingRuntime)
     implementation(Libs.AndroidX.pagingCompose)
 

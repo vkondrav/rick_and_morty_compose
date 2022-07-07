@@ -129,7 +129,11 @@ dependencies {
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintLayoutCompose)
     implementation(Libs.AndroidX.splashscreen)
-    implementation(Libs.AndroidX.lifecycle)
+    implementation(Libs.AndroidX.lifecycle) {
+        version {
+            strictly("2.6.0-alpha01")
+        }
+    }
     implementation(Libs.AndroidX.pagingRuntime)
     implementation(Libs.AndroidX.activityCompose)
 

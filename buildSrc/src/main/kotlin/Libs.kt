@@ -28,7 +28,7 @@ object Libs {
         const val ktx = "$base.core:core-ktx:1.9.0-alpha05"
         const val constraintLayoutCompose = base +
                 ".constraintlayout:constraintlayout-compose:1.1.0-alpha03"
-        const val lifecycle = "$base.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha1"
+        const val lifecycle = "$base.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha01"
         const val navigationCompose = "$base.navigation:navigation-compose:2.5.0"
         const val pagingCompose = "$base.paging:paging-compose:1.0.0-alpha15"
         const val pagingRuntime = "$base.paging:paging-runtime:3.2.0-alpha01"
