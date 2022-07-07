@@ -131,7 +131,7 @@ dependencies {
     implementation(Libs.AndroidX.splashscreen)
     implementation(Libs.AndroidX.lifecycle) {
         version {
-            strictly("2.6.0-alpha01")
+            strictly(Libs.AndroidX.lifeCycleStrictVersion)
         }
     }
     implementation(Libs.AndroidX.pagingRuntime)
