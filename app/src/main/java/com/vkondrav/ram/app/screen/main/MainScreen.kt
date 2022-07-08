@@ -17,7 +17,7 @@ import com.vkondrav.ram.snackbar.SnackbarHost
 import com.vkondrav.ram.common.ui.design.DlsTheme
 import com.vkondrav.ram.common.ui.design.dlsDarkColorPalette
 import com.vkondrav.ram.common.ui.design.dlsLightColorPalette
-import com.vkondrav.ram.app.screen.drawer.composable.CustomDrawer
+import com.vkondrav.ram.drawer.view.CustomDrawer
 import com.vkondrav.ram.app.screen.main.navigation.allScreens
 import com.vkondrav.ram.app.screen.main.usecase.FetchThemeStateUseCase
 import com.vkondrav.ram.navigation.Routes

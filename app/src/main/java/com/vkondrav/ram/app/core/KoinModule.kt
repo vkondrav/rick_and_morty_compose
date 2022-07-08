@@ -1,7 +1,6 @@
 package com.vkondrav.ram.app.core
 
 import com.vkondrav.ram.character.details.di.characterDetailsModule
-import com.vkondrav.ram.app.screen.drawer.di.drawerModule
 import com.vkondrav.ram.episode.details.di.episodeDetailsModule
 import com.vkondrav.ram.episode.all.di.episodesModule
 import com.vkondrav.ram.character.favorite.di.favoriteCharactersModule
@@ -14,6 +13,7 @@ import com.vkondrav.ram.character.all.di.charactersModule
 import com.vkondrav.ram.collapsable.drawer.collapsableDrawerModule
 import com.vkondrav.ram.datastore.dataStoreModule
 import com.vkondrav.ram.domain.domainModule
+import com.vkondrav.ram.drawer.di.drawerModule
 import com.vkondrav.ram.graphql.ramModules
 import com.vkondrav.ram.navigation.navigationModule
 import com.vkondrav.ram.room.roomModule
@@ -27,6 +27,7 @@ fun KoinApplication.appModules() = modules(
             coreModule,
             navigationModule,
             snackbarModule,
+            drawerModule,
             mainModule,
             collapsableDrawerModule,
             roomModule,
@@ -37,7 +38,6 @@ fun KoinApplication.appModules() = modules(
             locationDetailsModule,
             episodesModule,
             episodeDetailsModule,
-            drawerModule,
             domainModule,
             favoriteCharactersModule,
             favoriteLocationsModule,

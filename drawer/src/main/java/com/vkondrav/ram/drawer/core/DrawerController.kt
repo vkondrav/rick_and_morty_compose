@@ -1,10 +1,11 @@
-package com.vkondrav.ram.app.common.drawer
+package com.vkondrav.ram.drawer.core
 
 import androidx.compose.material.DrawerState
 import com.vkondrav.ram.common.util.FlowWrapper
+import com.vkondrav.ram.drawer.data.DrawerCommand
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-class DrawerController(private val wrapper: FlowWrapper = FlowWrapper()) {
+internal class DrawerController(private val wrapper: FlowWrapper = FlowWrapper()) {
 
     private val drawerCommands =
         MutableSharedFlow<DrawerCommand>(extraBufferCapacity = Int.MAX_VALUE)

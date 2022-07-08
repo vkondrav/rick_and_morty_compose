@@ -20,4 +20,5 @@ object Module {
     const val locationFavorite = ":location-favorite"
     const val locationDetails = ":location-details"
     const val snackbar = ":snackbar"
+    const val drawer = ":drawer"
 }
