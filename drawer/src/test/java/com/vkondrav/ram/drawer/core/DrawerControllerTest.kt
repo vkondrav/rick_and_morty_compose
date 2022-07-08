@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.drawer
+package com.vkondrav.ram.drawer.core
 
 import androidx.compose.material.DrawerState
 import com.vkondrav.ram.common.util.FlowWrapper

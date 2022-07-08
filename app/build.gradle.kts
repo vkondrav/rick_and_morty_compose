@@ -126,6 +126,7 @@ dependencies {
     implementation(project(Module.locationFavorite))
     implementation(project(Module.locationDetails))
     implementation(project(Module.snackbar))
+    implementation(project(Module.drawer))
 
     implementation(Libs.AndroidX.ktx)
     implementation(Libs.AndroidX.appcompat)

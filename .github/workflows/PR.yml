@@ -60,6 +60,7 @@ jobs:
                   navigation,
                   collapsable-drawer,
                   snackbar,
+                  drawer,
                   character-all,
                   character-favorite,
                   character-details,

@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.drawer.composable
+package com.vkondrav.ram.drawer.view
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
