@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.main.navigation
+package com.vkondrav.ram.app
 
 import com.vkondrav.ram.character.details.nav.characterDetailsScreen
 import com.vkondrav.ram.episode.details.nav.episodeDetailsScreen

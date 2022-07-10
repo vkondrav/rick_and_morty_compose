@@ -1,6 +1,5 @@
 package com.vkondrav.ram.app
 
-import com.vkondrav.ram.app.appModules
 import com.vkondrav.ram.test.BaseRobolectricTest
 import org.junit.Test
 import org.koin.android.ext.koin.androidContext

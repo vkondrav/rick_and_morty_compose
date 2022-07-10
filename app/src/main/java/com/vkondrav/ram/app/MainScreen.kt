@@ -18,8 +18,6 @@ import com.vkondrav.ram.common.ui.design.DlsTheme
 import com.vkondrav.ram.common.ui.design.dlsDarkColorPalette
 import com.vkondrav.ram.common.ui.design.dlsLightColorPalette
 import com.vkondrav.ram.drawer.view.CustomDrawer
-import com.vkondrav.ram.app.screen.main.navigation.screens
-import com.vkondrav.ram.app.screen.main.navigation.tabs
 import com.vkondrav.ram.app.theme.controller.usecase.FetchThemeStateUseCase
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.navigation.defineGraph
