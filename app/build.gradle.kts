@@ -127,6 +127,7 @@ dependencies {
     implementation(project(Module.locationDetails))
     implementation(project(Module.snackbar))
     implementation(project(Module.drawer))
+    implementation(project(Module.themeController))
 
     implementation(Libs.AndroidX.ktx)
     implementation(Libs.AndroidX.appcompat)

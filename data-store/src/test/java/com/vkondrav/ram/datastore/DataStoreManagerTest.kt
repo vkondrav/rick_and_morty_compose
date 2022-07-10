@@ -1,5 +1,6 @@
 package com.vkondrav.ram.datastore
 
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import app.cash.turbine.test
 import com.vkondrav.ram.test.BaseRobolectricTest
 import com.vkondrav.ram.common.util.FlowWrapper
@@ -22,39 +23,46 @@ class DataStoreManagerTest : BaseRobolectricTest() {
     }
 
     @Test
-    fun `verify setting initial dark theme can only be done once`() = runTest {
-        subject.isDarkTheme().test {
-            subject.setInitialDarkTheme(true)
+    fun `verify setting initial value can only be done once`() = runTest {
+
+        val key = booleanPreferencesKey("key")
+
+        subject.data(key).test {
+            subject.initial(key, true)
             awaitItem() shouldBe true
             repeat(10) {
-                subject.setInitialDarkTheme(false)
+                subject.initial(key, false)
             }
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
 
     @Test
-    fun `verify toggle dark theme without setting an initial value has no effect`() = runTest {
-        subject.isDarkTheme().test {
-            subject.toggleDarkTheme()
+    fun `verify toggle without setting an initial value has no effect`() = runTest {
+        val key = booleanPreferencesKey("key")
+
+        subject.data(key).test {
+            subject.toggle(key)
 
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
 
     @Test
-    fun `verify toggle dark theme changes the theme`() = runTest {
-        subject.isDarkTheme().test {
-            subject.setInitialDarkTheme(true)
+    fun `verify toggle changes the value`() = runTest {
+        val key = booleanPreferencesKey("key")
+
+        subject.data(key).test {
+            subject.initial(key, true)
             awaitItem() shouldBe true
 
-            subject.toggleDarkTheme()
+            subject.toggle(key)
             awaitItem() shouldBe false
 
-            subject.toggleDarkTheme()
+            subject.toggle(key)
             awaitItem() shouldBe true
 
-            subject.toggleDarkTheme()
+            subject.toggle(key)
             awaitItem() shouldBe false
 
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
@@ -62,20 +70,22 @@ class DataStoreManagerTest : BaseRobolectricTest() {
     }
 
     @Test
-    fun `verify IOException is consumed by isDarkTheme`() = runTest {
+    fun `verify IOException is consumed by flow`() = runTest {
         subject = DataStoreManager(
             context,
             "data-store",
             FlowTestWrapper(IOException("oh man")),
         )
 
-        subject.isDarkTheme().test {
+        val key = booleanPreferencesKey("key")
+
+        subject.data(key).test {
             awaitComplete()
         }
     }
 
     @Test
-    fun `verify other exceptions are thrown by isDarkTheme`() = runTest {
+    fun `verify other exceptions are thrown by flow`() = runTest {
         val error = TypeCastException("oh man")
 
         subject = DataStoreManager(
@@ -83,8 +93,9 @@ class DataStoreManagerTest : BaseRobolectricTest() {
             "data-store",
             FlowTestWrapper(error),
         )
+        val key = booleanPreferencesKey("key")
 
-        subject.isDarkTheme().test {
+        subject.data(key).test {
             awaitError() shouldBe error
         }
     }

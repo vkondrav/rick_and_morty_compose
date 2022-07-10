@@ -1,5 +1,6 @@
-package com.vkondrav.ram.app.theme.controller.core
+package com.vkondrav.ram.theme.controller.core
 
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import com.vkondrav.ram.datastore.DataStoreManager
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -14,23 +15,25 @@ class ThemeController(
     private val dispatcher: CoroutineDispatcher,
 ) : CoroutineScope {
 
+    private val isDarkThemeKey = booleanPreferencesKey("is_dark_theme")
+
     override val coroutineContext: CoroutineContext
         get() = dispatcher + exceptionHandler
 
     fun isThemeDark(initialSystemSetting: Boolean): Flow<Boolean> {
         setInitialPreference(initialSystemSetting)
-        return dataStore.isDarkTheme()
+        return dataStore.data(isDarkThemeKey)
     }
 
     fun toggleTheme() {
         launch {
-            dataStore.toggleDarkTheme()
+            dataStore.toggle(isDarkThemeKey)
         }
     }
 
     private fun setInitialPreference(initialSetting: Boolean) {
         launch {
-            dataStore.setInitialDarkTheme(initialSetting)
+            dataStore.initial(isDarkThemeKey, initialSetting)
         }
     }
 
