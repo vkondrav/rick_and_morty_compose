@@ -147,9 +147,6 @@ dependencies {
     implementation(Libs.Compose.iconsExt)
     implementation(Libs.Compose.viewBinding)
 
-    implementation(Libs.Accompanist.pager)
-    implementation(Libs.Accompanist.indicators)
-
     implementation(Libs.Koin.core)
     implementation(Libs.Koin.compose)
 
