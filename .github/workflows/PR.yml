@@ -61,6 +61,7 @@ jobs:
                   collapsable-drawer,
                   snackbar,
                   drawer,
+                  theme-controller,
                   character-all,
                   character-favorite,
                   character-details,

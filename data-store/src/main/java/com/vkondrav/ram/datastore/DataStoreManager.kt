@@ -3,7 +3,6 @@ package com.vkondrav.ram.datastore
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -18,34 +17,34 @@ import java.io.IOException
 class DataStoreManager(
     context: Context,
     name: String,
-    private val wrapper: FlowWrapper,
+    val wrapper: FlowWrapper,
 ) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = name)
     private val dataStore: DataStore<Preferences> by lazy { context.dataStore }
 
-    private val isDarkThemeKey = booleanPreferencesKey("is_dark_theme")
-
-    suspend fun setInitialDarkTheme(initialSetting: Boolean) {
+    suspend fun initial(key: Preferences.Key<Boolean>, initial: Boolean) {
         dataStore.edit {
-            val isDarkTheme = it[isDarkThemeKey]
-            if (isDarkTheme == null) {
-                it[isDarkThemeKey] = initialSetting
+            val value = it[key]
+            if (value == null) {
+                it[key] = initial
             }
         }
     }
 
-    suspend fun toggleDarkTheme() {
-        dataStore.edit {
-            val isDarkTheme = it[isDarkThemeKey] ?: return@edit
-            it[isDarkThemeKey] = !isDarkTheme
-        }
+    fun data(key: Preferences.Key<Boolean>): Flow<Boolean> {
+        return wrapper(dataStore.data).catch { e ->
+            if (e is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw e
+            }
+        }.map { it[key] }.filterNotNull().distinctUntilChanged()
     }
 
-    fun isDarkTheme(): Flow<Boolean> = wrapper(dataStore.data).catch { e ->
-        if (e is IOException) {
-            emit(emptyPreferences())
-        } else {
-            throw e
+    suspend fun toggle(key: Preferences.Key<Boolean>) {
+        dataStore.edit {
+            val value = it[key] ?: return@edit
+            it[key] = !value
         }
-    }.map { it[isDarkThemeKey] }.filterNotNull().distinctUntilChanged()
+    }
 }

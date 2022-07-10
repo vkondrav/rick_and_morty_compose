@@ -1,13 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
-
 plugins {
     library()
     kotlin()
 }
 
 android {
-    namespace = "com.vkondrav.ram.datastore"
+    namespace = "com.vkondrav.ram.theme.controller"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -41,12 +38,16 @@ android {
         jvmTarget = Libs.jvmTarget
     }
 
-    lint {
-        warningsAsErrors = true
+    buildFeatures {
+        compose = true
     }
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions.freeCompilerArgs += "-opt-in=${Experimental.optIns}"
+    composeOptions {
+        kotlinCompilerExtensionVersion = Libs.Compose.compiler
+    }
+
+    lint {
+        warningsAsErrors = true
     }
 
     with(tasks) { // Kover Config
@@ -69,8 +70,8 @@ android {
                 name = "100% Coverage Rule"
                 bound {
                     @SuppressWarnings("MagicNumber")
-                    minValue = 100
-                    valueType = COVERED_LINES_PERCENTAGE
+                    minValue = 0 //TODO: update to 100 when ready
+                    valueType = kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
                 }
             }
         }
@@ -79,9 +80,15 @@ android {
 
 dependencies {
     implementation(project(Module.commonUtil))
+    implementation(project(Module.commonUi))
+    implementation(project(Module.dataStore))
 
-    api(Libs.DataStore.core)
+    implementation(Libs.Compose.material)
+    implementation(Libs.Compose.iconsCore)
+    implementation(Libs.Compose.iconsExt)
+
     implementation(Libs.Koin.core)
+    implementation(Libs.Koin.compose)
 
     testImplementation(project(Module.commonTest))
 }

@@ -21,4 +21,5 @@ object Module {
     const val locationDetails = ":location-details"
     const val snackbar = ":snackbar"
     const val drawer = ":drawer"
+    const val themeController = ":theme-controller"
 }
