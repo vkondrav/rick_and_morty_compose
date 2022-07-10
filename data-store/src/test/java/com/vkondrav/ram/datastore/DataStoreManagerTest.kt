@@ -24,7 +24,6 @@ class DataStoreManagerTest : BaseRobolectricTest() {
 
     @Test
     fun `verify setting initial value can only be done once`() = runTest {
-
         val key = booleanPreferencesKey("key")
 
         subject.data(key).test {

@@ -32,7 +32,6 @@ class DataStoreManager(
     }
 
     fun data(key: Preferences.Key<Boolean>): Flow<Boolean> {
-
         return wrapper(dataStore.data).catch { e ->
             if (e is IOException) {
                 emit(emptyPreferences())
