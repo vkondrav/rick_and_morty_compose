@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.bottom_sheet
+package com.vkondrav.ram.common.ui.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,18 +15,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.vkondrav.ram.app.R
+import com.vkondrav.ram.common.ui.data.TabScreen
+import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.common.ui.design.DlsColors
 import com.vkondrav.ram.common.ui.design.DlsTheme
 import com.vkondrav.ram.common.ui.design.dlsDarkColorPalette
 import com.vkondrav.ram.common.ui.design.dlsLightColorPalette
-import com.vkondrav.ram.app.tabs.composable.FavoriteTabsScreen
 
 @Composable
 fun BottomSheet(
+    title: TextResource,
     isThemeDark: State<Boolean>,
+    tabs: List<TabScreen>,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState()
@@ -56,13 +57,15 @@ fun BottomSheet(
                             .align(Alignment.CenterHorizontally),
                     )
                     Text(
-                        text = stringResource(id = R.string.favorites),
+                        text = title.string(),
                         style = DlsTheme.typography.headline5,
                         color = DlsTheme.colors.text,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally),
                     )
-                    FavoriteTabsScreen()
+                    TabsScreen(
+                        tabs = tabs,
+                    )
                 }
             },
             sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),

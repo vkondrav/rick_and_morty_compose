@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.common.appbar
+package com.vkondrav.ram.app.appbar
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -16,14 +16,14 @@ import androidx.navigation.NavController
 import com.vkondrav.ram.navigation.usecase.NavigateUpUseCase
 import com.vkondrav.ram.navigation.usecase.FetchAppBarStateUseCase
 import com.vkondrav.ram.drawer.usecase.OpenDrawerUseCase
-import com.vkondrav.ram.app.screen.main.usecase.ToggleThemeUseCase
+import com.vkondrav.ram.app.theme.controller.usecase.ToggleThemeUseCase
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.navigation.data.AppBarState
 import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.get
 
 @Composable
-fun CustomAppBar(
+fun DefaultAppBar(
     navHostController: NavController,
     isThemeDark: State<Boolean>,
     fetchAppBarStateUseCase: FetchAppBarStateUseCase = get(),
@@ -46,7 +46,7 @@ fun CustomAppBar(
                         navigateUpUseCase()
                     },
                 ) {
-                    Icon(Icons.Default.ArrowBack, "Back")
+                    Icon(Icons.Default.ArrowBack, null)
                 }
             } else {
                 IconButton(
@@ -54,7 +54,7 @@ fun CustomAppBar(
                         openDrawerUseCase()
                     },
                 ) {
-                    Icon(Icons.Default.Menu, "Menu")
+                    Icon(Icons.Default.Menu, null)
                 }
             }
         },

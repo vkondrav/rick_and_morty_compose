@@ -70,6 +70,9 @@ dependencies {
     implementation(Libs.AndroidX.pagingRuntime)
     implementation(Libs.AndroidX.pagingCompose)
 
+    implementation(Libs.Accompanist.pager)
+    implementation(Libs.Accompanist.indicators)
+
     implementation(Libs.Timber.core)
 
     implementation(Libs.Coil.core)

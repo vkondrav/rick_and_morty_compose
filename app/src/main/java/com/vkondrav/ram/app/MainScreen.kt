@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.screen.main
+package com.vkondrav.ram.app
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -11,16 +11,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.vkondrav.ram.app.common.appbar.CustomAppBar
-import com.vkondrav.ram.app.common.bottom_sheet.BottomSheet
+import com.vkondrav.ram.app.appbar.DefaultAppBar
+import com.vkondrav.ram.common.ui.screen.BottomSheet
 import com.vkondrav.ram.snackbar.SnackbarHost
 import com.vkondrav.ram.common.ui.design.DlsTheme
 import com.vkondrav.ram.common.ui.design.dlsDarkColorPalette
 import com.vkondrav.ram.common.ui.design.dlsLightColorPalette
 import com.vkondrav.ram.drawer.view.CustomDrawer
-import com.vkondrav.ram.app.screen.main.navigation.allScreens
-import com.vkondrav.ram.app.screen.main.usecase.FetchThemeStateUseCase
-import com.vkondrav.ram.navigation.Routes
+import com.vkondrav.ram.app.theme.controller.usecase.FetchThemeStateUseCase
+import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.navigation.defineGraph
 import com.vkondrav.ram.navigation.usecase.HandleNavigationCommandsUseCase
 import org.koin.androidx.compose.get
@@ -55,18 +54,20 @@ fun MainScreen(
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     BottomSheet(
+                        title = TextResource.Resource(R.string.favorites),
                         isThemeDark = isThemeDark,
+                        tabs = tabs,
                     ) {
                         Column {
-                            CustomAppBar(
+                            DefaultAppBar(
                                 navHostController,
                                 isThemeDark,
                             )
                             AnimatedNavHost(
                                 navController = navHostController,
-                                startDestination = Routes.Character.All(),
+                                startDestination = screens.first().route,
                             ) {
-                                defineGraph(allScreens)
+                                defineGraph(screens)
                             }
                         }
                     }

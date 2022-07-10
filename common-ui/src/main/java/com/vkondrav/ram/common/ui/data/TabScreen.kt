@@ -1,8 +1,7 @@
-package com.vkondrav.ram.navigation.data
+package com.vkondrav.ram.common.ui.data
 
 import android.os.Bundle
 import androidx.compose.runtime.Composable
-import com.vkondrav.ram.common.ui.data.TextResource
 
 data class TabScreen(
     val title: TextResource,

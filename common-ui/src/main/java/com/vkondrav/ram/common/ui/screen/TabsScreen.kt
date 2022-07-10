@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.tabs.composable
+package com.vkondrav.ram.common.ui.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
@@ -16,20 +16,12 @@ import androidx.compose.ui.Modifier
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.vkondrav.ram.character.favorite.nav.favoriteCharactersTab
-import com.vkondrav.ram.episode.favorite.nav.favoriteEpisodesTab
-import com.vkondrav.ram.location.favorite.nav.favoriteLocationsTab
+import com.vkondrav.ram.common.ui.data.TabScreen
 import kotlinx.coroutines.launch
 
 @Composable
-fun FavoriteTabsScreen() {
+fun TabsScreen(tabs: List<TabScreen>) {
     var tabIndex by remember { mutableStateOf(0) }
-
-    val tabs = listOf(
-        com.vkondrav.ram.character.favorite.nav.favoriteCharactersTab,
-        favoriteEpisodesTab,
-        favoriteLocationsTab,
-    )
 
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()

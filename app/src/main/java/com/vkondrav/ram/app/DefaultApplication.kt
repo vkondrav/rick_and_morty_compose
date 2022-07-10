@@ -1,7 +1,6 @@
-package com.vkondrav.ram.app.core
+package com.vkondrav.ram.app
 
 import android.app.Application
-import com.vkondrav.ram.app.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

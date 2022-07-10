@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.core
+package com.vkondrav.ram.app
 
 import com.vkondrav.ram.test.BaseRobolectricTest
 import org.junit.Test

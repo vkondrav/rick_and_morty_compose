@@ -1,6 +1,6 @@
-package com.vkondrav.ram.app.screen.main.usecase
+package com.vkondrav.ram.app.theme.controller.usecase
 
-import com.vkondrav.ram.app.design.ThemeController
+import com.vkondrav.ram.app.theme.controller.core.ThemeController
 
 class FetchThemeStateUseCase(
     private val themeController: ThemeController,

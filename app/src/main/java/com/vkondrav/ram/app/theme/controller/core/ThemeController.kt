@@ -1,4 +1,4 @@
-package com.vkondrav.ram.app.design
+package com.vkondrav.ram.app.theme.controller.core
 
 import com.vkondrav.ram.datastore.DataStoreManager
 import kotlinx.coroutines.CoroutineDispatcher
