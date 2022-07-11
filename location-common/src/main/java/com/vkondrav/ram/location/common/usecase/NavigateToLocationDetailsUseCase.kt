@@ -1,4 +1,4 @@
-package com.vkondrav.ram.location.all.usecase
+package com.vkondrav.ram.location.common.usecase
 
 import com.vkondrav.ram.navigation.Routes
 import com.vkondrav.ram.navigation.usecase.NavigateToRouteUseCase

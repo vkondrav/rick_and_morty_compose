@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.ram.location.details"
+    namespace = "com.vkondrav.ram.location.common"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -91,10 +91,9 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        implementation(project(locationCommon))
-        implementation(project(characterCommon))
-        implementation(project(episodeCommon))
-        api(project(collapsableDrawer))
+        api(project(domain))
+        api(project(navigation))
+        api(project(snackbar))
     }
 
     with(Libs.Compose) {

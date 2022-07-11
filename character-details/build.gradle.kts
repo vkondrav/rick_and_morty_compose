@@ -92,7 +92,7 @@ dependencies {
         implementation(project(commonUtil))
         implementation(project(commonUi))
         implementation(project(characterCommon))
-        api(project(locationAll))
+        implementation(project(locationCommon))
         implementation(project(episodeCommon))
         api(project(collapsableDrawer))
     }

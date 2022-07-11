@@ -1,4 +1,4 @@
-package com.vkondrav.ram.location.all.usecase
+package com.vkondrav.ram.location.common.usecase
 
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao

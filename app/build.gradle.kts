@@ -116,6 +116,8 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
+        implementation(project(domain))
+        implementation(project(snackbar))
         implementation(project(drawer))
         implementation(project(themeController))
         implementation(project(characterAll))
@@ -124,6 +126,7 @@ dependencies {
         implementation(project(episodeAll))
         implementation(project(episodeDetails))
         implementation(project(episodeFavorite))
+        implementation(project(locationAll))
         implementation(project(locationDetails))
         implementation(project(locationFavorite))
     }
