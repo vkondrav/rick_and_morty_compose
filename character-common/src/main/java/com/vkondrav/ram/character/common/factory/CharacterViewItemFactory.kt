@@ -1,9 +1,9 @@
-package com.vkondrav.ram.character.all.factory
+package com.vkondrav.ram.character.common.factory
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.character.all.composable.CharacterViewItem
-import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase
-import com.vkondrav.ram.character.all.usecase.NavigateToCharacterDetailsUseCase
+import com.vkondrav.ram.character.common.composable.CharacterViewItem
+import com.vkondrav.ram.character.common.usecase.HandleCharacterFavoritesUseCase
+import com.vkondrav.ram.character.common.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
 
 class CharacterViewItemFactory(

@@ -118,6 +118,7 @@ dependencies {
         implementation(project(commonUi))
         implementation(project(drawer))
         implementation(project(themeController))
+        implementation(project(characterAll))
         implementation(project(characterDetails))
         implementation(project(characterFavorite))
         implementation(project(episodeDetails))

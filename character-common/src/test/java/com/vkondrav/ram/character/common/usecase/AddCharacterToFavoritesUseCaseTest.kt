@@ -1,5 +1,6 @@
 package com.vkondrav.ram.character.all.usecase
 
+import com.vkondrav.ram.character.common.usecase.AddCharacterToFavoritesUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao

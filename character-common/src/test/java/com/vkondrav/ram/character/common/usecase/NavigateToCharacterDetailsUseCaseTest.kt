@@ -1,5 +1,6 @@
 package com.vkondrav.ram.character.all.usecase
 
+import com.vkondrav.ram.character.common.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.navigation.usecase.NavigateToRouteUseCase
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks

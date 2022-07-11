@@ -1,8 +1,9 @@
 package com.vkondrav.ram.character.all.factory
 
-import com.vkondrav.ram.character.all.composable.CharacterViewItem
-import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase
-import com.vkondrav.ram.character.all.usecase.NavigateToCharacterDetailsUseCase
+import com.vkondrav.ram.character.common.composable.CharacterViewItem
+import com.vkondrav.ram.character.common.usecase.HandleCharacterFavoritesUseCase
+import com.vkondrav.ram.character.common.usecase.NavigateToCharacterDetailsUseCase
+import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.test.BaseTest
 import com.vkondrav.ram.common.util.asType

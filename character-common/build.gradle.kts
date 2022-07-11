@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.ram.character.details"
+    namespace = "com.vkondrav.ram.character.common"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -91,10 +91,9 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        implementation(project(characterCommon))
-        api(project(collapsableDrawer))
-        api(project(locationAll))
-        api(project(episodeAll))
+        api(project(domain))
+        api(project(navigation))
+        api(project(snackbar))
     }
 
     with(Libs.Compose) {
@@ -109,6 +108,8 @@ dependencies {
         implementation(core)
         implementation(compose)
     }
+
+    implementation(Libs.AndroidX.pagingRuntime)
 
     testImplementation(project(Module.commonTest))
 }
