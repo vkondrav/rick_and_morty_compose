@@ -38,6 +38,9 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [MockK](https://mockk.io/)
 - [Kotest](https://kotest.io/)
 
+## Supported By
+
+
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
 ![Summary](/mad_scorecard/jetpack.png?raw=true)
