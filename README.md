@@ -29,6 +29,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [Accompanist](https://github.com/google/accompanist)
 - [Apollo Kotlin](https://www.apollographql.com/docs/kotlin)
 - [Timber](https://github.com/JakeWharton/timber)
+- [Data-Store](https://developer.android.com/topic/libraries/architecture/datastore)
 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
