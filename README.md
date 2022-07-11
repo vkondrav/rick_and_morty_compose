@@ -15,6 +15,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 ## Coverage
 ![coverage](https://codecov.io/gh/vkondrav/rick_and_morty_compose/branch/main/graphs/tree.svg?token=MX8NPAY19I)
 
+## Built With
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
 ![Summary](/mad_scorecard/jetpack.png?raw=true)
