@@ -14,6 +14,7 @@ object Module {
     const val characterCommon = ":character-common"
     const val characterFavorite = ":character-favorite"
     const val characterDetails = ":character-details"
+    const val episodeCommon = ":episode-common"
     const val episodeAll = ":episode-all"
     const val episodeFavorite = ":episode-favorite"
     const val episodeDetails = ":episode-details"

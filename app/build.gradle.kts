@@ -121,6 +121,7 @@ dependencies {
         implementation(project(characterAll))
         implementation(project(characterDetails))
         implementation(project(characterFavorite))
+        implementation(project(episodeAll))
         implementation(project(episodeDetails))
         implementation(project(episodeFavorite))
         implementation(project(locationDetails))

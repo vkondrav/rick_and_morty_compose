@@ -1,11 +1,11 @@
 package com.vkondrav.ram.episode.details.di
 
-import com.vkondrav.ram.character.all.factory.CharacterViewItemFactory
+import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.domain.RamEpisodeDetails
 import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.location.all.factory.LocationViewItemFactory
+import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import com.vkondrav.ram.room.FavoriteLocationsDao

@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.vkondrav.ram.episode.all"
+    namespace = "com.vkondrav.ram.episode.common"
 
     compileSdk = Build.compileSdk
     buildToolsVersion = Build.buildTools
@@ -91,7 +91,9 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        implementation(project(episodeCommon))
+        api(project(domain))
+        api(project(navigation))
+        api(project(snackbar))
     }
 
     with(Libs.Compose) {

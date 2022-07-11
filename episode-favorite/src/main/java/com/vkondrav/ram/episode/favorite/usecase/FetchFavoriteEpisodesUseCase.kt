@@ -1,9 +1,9 @@
 package com.vkondrav.ram.episode.favorite.usecase
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.episode.all.composable.EpisodeViewItem
-import com.vkondrav.ram.episode.all.usecase.HandleEpisodeFavoriteUseCase
-import com.vkondrav.ram.episode.all.usecase.NavigateToEpisodeDetailsUseCase
+import com.vkondrav.ram.episode.common.composable.EpisodeViewItem
+import com.vkondrav.ram.episode.common.usecase.HandleEpisodeFavoriteUseCase
+import com.vkondrav.ram.episode.common.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.room.FavoriteEpisode
 import com.vkondrav.ram.room.FavoriteEpisodesDao

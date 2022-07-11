@@ -1,4 +1,4 @@
-package com.vkondrav.ram.episode.all.usecase
+package com.vkondrav.ram.episode.common.usecase
 
 import com.vkondrav.ram.domain.RamEpisode
 
