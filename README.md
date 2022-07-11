@@ -22,6 +22,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [Room](https://developer.android.com/jetpack/androidx/releases/room)
+- [Coil](https://github.com/coil-kt/coil)
 - 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
