@@ -70,6 +70,7 @@ jobs:
                   episode-all,
                   episode-favorite,
                   episode-details,
+                  location-common,
                   location-all,
                   location-favorite,
                   location-details,
