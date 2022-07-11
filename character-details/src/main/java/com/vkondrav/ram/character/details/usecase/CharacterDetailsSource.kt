@@ -6,8 +6,8 @@ import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUs
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.character.details.composable.CharacterDetailsViewItem
-import com.vkondrav.ram.episode.all.factory.EpisodeViewItemFactory
-import com.vkondrav.ram.location.all.factory.LocationViewItemFactory
+import com.vkondrav.ram.episode.common.factory.EpisodeViewItemFactory
+import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
 import com.vkondrav.ram.collapsable.drawer.view.CollapsableViewItem
 import com.vkondrav.ram.domain.RamCharacterDetails
 import com.vkondrav.ram.domain.RamLocation

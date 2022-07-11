@@ -1,6 +1,6 @@
 package com.vkondrav.ram.location.details.usecase
 
-import com.vkondrav.ram.character.all.factory.CharacterViewItemFactory
+import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.collapsable.drawer.view.CollapsableViewItem

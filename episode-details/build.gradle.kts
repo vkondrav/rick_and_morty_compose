@@ -91,10 +91,10 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        api(project(episodeAll))
+        implementation(project(episodeCommon))
+        implementation(project(characterCommon))
+        implementation(project(locationCommon))
         api(project(collapsableDrawer))
-        api(project(characterAll))
-        api(project(locationAll))
     }
 
     with(Libs.Compose) {

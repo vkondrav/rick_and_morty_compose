@@ -3,7 +3,7 @@ package com.vkondrav.ram.character.all.source
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.character.all.factory.CharacterViewItemFactory
+import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.character.all.usecase.FetchCharactersUseCase
 import timber.log.Timber
 

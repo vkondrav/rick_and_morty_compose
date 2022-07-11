@@ -3,9 +3,9 @@ package com.vkondrav.ram.character.details.di
 import com.vkondrav.ram.collapsable.drawer.usecase.FetchCollapsableDrawerStateUseCase
 import com.vkondrav.ram.collapsable.drawer.usecase.HandleCollapsableDrawerUseCase
 import com.vkondrav.ram.domain.RamCharacterDetails
-import com.vkondrav.ram.episode.all.factory.EpisodeViewItemFactory
+import com.vkondrav.ram.episode.common.factory.EpisodeViewItemFactory
 import com.vkondrav.ram.graphql.RamRepository
-import com.vkondrav.ram.location.all.factory.LocationViewItemFactory
+import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import com.vkondrav.ram.room.FavoriteLocationsDao

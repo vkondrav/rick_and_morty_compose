@@ -1,8 +1,8 @@
 package com.vkondrav.ram.location.favorite.di
 
 import com.vkondrav.ram.domain.RamLocation
-import com.vkondrav.ram.location.all.usecase.HandleLocationFavoriteUseCase
-import com.vkondrav.ram.location.all.usecase.NavigateToLocationDetailsUseCase
+import com.vkondrav.ram.location.common.usecase.HandleLocationFavoriteUseCase
+import com.vkondrav.ram.location.common.usecase.NavigateToLocationDetailsUseCase
 import com.vkondrav.ram.room.FavoriteLocationsDao
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.mockk

@@ -1,7 +1,7 @@
 package com.vkondrav.ram.character.favorite.di
 
-import com.vkondrav.ram.character.all.usecase.HandleCharacterFavoritesUseCase
-import com.vkondrav.ram.character.all.usecase.NavigateToCharacterDetailsUseCase
+import com.vkondrav.ram.character.common.usecase.HandleCharacterFavoritesUseCase
+import com.vkondrav.ram.character.common.usecase.NavigateToCharacterDetailsUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.test.BaseTest

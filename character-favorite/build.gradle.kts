@@ -92,7 +92,7 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        api(project(characterAll))
+        implementation(project(characterCommon))
     }
 
     with(Libs.Compose) {

@@ -91,7 +91,7 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        api(project(locationAll))
+        implementation(project(locationCommon))
     }
 
     with(Libs.Compose) {
