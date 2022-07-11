@@ -44,6 +44,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [Detekt](https://detekt.dev/)
 - [TaskInfo](https://gitlab.com/barfuin/gradle-taskinfo)
 - [Gradle Versions](https://github.com/ben-manes/gradle-versions-plugin)
+- [Dependency Graph Generator](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin)
 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
