@@ -26,7 +26,7 @@ object SupportLibs {
         const val base = "org.barfuin.gradle.taskinfo"
     }
 
-    object DependencyUpdate {
+    object GradleVersions {
         const val plugin = "com.github.ben-manes.versions"
         const val gradle = "com.github.ben-manes:gradle-versions-plugin:+"
     }
