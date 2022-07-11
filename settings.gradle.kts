@@ -1,4 +1,5 @@
 rootProject.name = "Rick and Morty Compose"
+
 include(":app")
 include(":graphql")
 include(":apollo")

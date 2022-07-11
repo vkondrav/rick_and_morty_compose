@@ -1,9 +1,10 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     library()
     kotlin()
-    parcelize()
 }
 
 android {
@@ -88,9 +89,11 @@ android {
 dependencies {
     implementation(project(Module.commonUi))
 
-    implementation(Libs.Compose.material)
-    implementation(Libs.Compose.iconsCore)
-    implementation(Libs.Compose.iconsExt)
+    with(Libs.Compose) {
+        implementation(material)
+        implementation(iconsCore)
+        implementation(iconsExt)
+    }
     implementation(Libs.AndroidX.constraintLayoutCompose)
 
     implementation(Libs.Koin.core)

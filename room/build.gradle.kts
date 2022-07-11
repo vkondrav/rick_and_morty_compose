@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
@@ -101,14 +103,16 @@ android {
 }
 
 dependencies {
+
+    with(Libs.Room) {
+        implementation(runtime)
+        implementation(ktx)
+        annotationProcessor(compiler)
+        ksp(compiler)
+    }
+
     implementation(Libs.Koin.core)
     implementation(Libs.Timber.core)
-
-    implementation(Libs.Room.runtime)
-    implementation(Libs.Room.ktx)
-    annotationProcessor(Libs.Room.compiler)
-
-    ksp(Libs.Room.compiler)
 
     testImplementation(project(Module.commonTest))
 }

@@ -21,31 +21,30 @@ import com.vkondrav.ram.navigation.navigationModule
 import com.vkondrav.ram.room.DATABASE_NAME
 import com.vkondrav.ram.room.roomModule
 import com.vkondrav.ram.snackbar.snackbarModule
+import com.vkondrav.ram.theme.controller.di.themeControllerModule
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.KoinApplication
 import org.koin.dsl.module
 
-val coreModule = module {
-    factory<Context> {
-        androidApplication()
-    }
-    factory {
-        Dispatchers.Default
-    }
-    factory(SERVER_URL) { "https://rickandmortyapi.com/graphql" }
-    factory(DATABASE_NAME) { "ram_database" }
-    factory(DATASTORE_NAME) { "settings" }
-}
 fun KoinApplication.appModules() = modules(
     listOf(
-        ramModules,
         listOf(
-            coreModule,
+            module {
+                factory<Context> {
+                    androidApplication()
+                }
+                factory {
+                    Dispatchers.Default
+                }
+                factory(SERVER_URL) { "https://rickandmortyapi.com/graphql" }
+                factory(DATABASE_NAME) { "ram_database" }
+                factory(DATASTORE_NAME) { "settings" }
+            },
             navigationModule,
             snackbarModule,
             drawerModule,
-            com.vkondrav.ram.theme.controller.di.themeControllerModule,
+            themeControllerModule,
             collapsableDrawerModule,
             roomModule,
             dataStoreModule,
@@ -60,5 +59,6 @@ fun KoinApplication.appModules() = modules(
             favoriteLocationsModule,
             favoriteEpisodesModule,
         ),
+        ramModules,
     ).flatten(),
 )

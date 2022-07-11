@@ -1,10 +1,11 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
 plugins {
     library()
     kotlin()
-    parcelize()
 }
 
 android {
@@ -87,19 +88,25 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.commonUtil))
-    implementation(project(Module.commonUi))
-    implementation(project(Module.domain))
-    implementation(project(Module.navigation))
-    implementation(project(Module.snackbar))
+    with(Module) {
+        implementation(project(commonUtil))
+        implementation(project(commonUi))
+        implementation(project(domain))
+        implementation(project(navigation))
+        implementation(project(snackbar))
+    }
 
-    implementation(Libs.Compose.material)
-    implementation(Libs.Compose.iconsCore)
-    implementation(Libs.Compose.iconsExt)
+    with(Libs.Compose) {
+        implementation(material)
+        implementation(iconsCore)
+        implementation(iconsExt)
+    }
     implementation(Libs.AndroidX.constraintLayoutCompose)
 
-    implementation(Libs.Koin.core)
-    implementation(Libs.Koin.compose)
+    with(Libs.Koin) {
+        implementation(core)
+        implementation(compose)
+    }
 
     implementation(Libs.AndroidX.pagingRuntime)
 

@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
@@ -79,11 +81,12 @@ android {
 
 dependencies {
 
-    api(project(Module.graphql))
-    api(project(Module.room))
-    api(project(Module.dataStore))
+    with(Module) {
+        api(project(graphql))
+        api(project(room))
 
-    implementation(project(Module.commonUtil))
+        implementation(project(commonUtil))
+    }
 
     implementation(Libs.Koin.core)
 
