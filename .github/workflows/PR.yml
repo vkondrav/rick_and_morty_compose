@@ -66,6 +66,7 @@ jobs:
                   character-all,
                   character-favorite,
                   character-details,
+                  episode-common,
                   episode-all,
                   episode-favorite,
                   episode-details,
