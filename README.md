@@ -27,6 +27,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [Material Components for Android](https://github.com/material-components/material-components-android)
 - [Koin](https://insert-koin.io/)
 - [Accompanist](https://github.com/google/accompanist)
+- [Apollo Kotlin](https://www.apollographql.com/docs/kotlin)
 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
