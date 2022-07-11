@@ -84,7 +84,7 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        implementation(project(navigation))
+        api(project(navigation))
     }
 
     with(Libs.Compose) {

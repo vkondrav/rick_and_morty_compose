@@ -91,13 +91,10 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        implementation(project(domain))
-        implementation(project(navigation))
-        implementation(project(snackbar))
-        implementation(project(characterAll))
-        implementation(project(locationAll))
-        implementation(project(episodeAll))
-        implementation(project(collapsableDrawer))
+        api(project(characterAll))
+        api(project(collapsableDrawer))
+        api(project(locationAll))
+        api(project(episodeAll))
     }
 
     with(Libs.Compose) {

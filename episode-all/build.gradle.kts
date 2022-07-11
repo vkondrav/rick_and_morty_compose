@@ -91,9 +91,9 @@ dependencies {
     with(Module) {
         implementation(project(commonUtil))
         implementation(project(commonUi))
-        implementation(project(domain))
-        implementation(project(navigation))
-        implementation(project(snackbar))
+        api(project(domain))
+        api(project(navigation))
+        api(project(snackbar))
     }
 
     with(Libs.Compose) {
