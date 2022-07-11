@@ -14,9 +14,4 @@ object Plugins {
         const val gradle =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Libs.gradlePluginVersion}"
     }
-
-    object DependencyGraphGenerator {
-        const val plugin = "com.vanniktech.dependency.graph.generator"
-        const val gradle = "com.vanniktech:gradle-dependency-graph-generator-plugin:+"
-    }
 }
