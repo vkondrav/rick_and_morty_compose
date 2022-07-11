@@ -25,8 +25,9 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [Room](https://developer.android.com/jetpack/androidx/releases/room)
 - [Coil](https://github.com/coil-kt/coil)
 - [Material Components for Android](https://github.com/material-components/material-components-android)
-- 
 - [Koin](https://insert-koin.io/)
+- [Accompanist](https://github.com/google/accompanist)
+
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
 ![Summary](/mad_scorecard/jetpack.png?raw=true)
