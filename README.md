@@ -18,6 +18,8 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 ## Built With
 - [Kotlin](https://kotlinlang.org/)
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
 ![Summary](/mad_scorecard/jetpack.png?raw=true)
