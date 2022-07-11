@@ -8,7 +8,7 @@ plugins {
     taskInfo()
 }
 
-apply(plugin = Plugins.DependencyUpdate.plugin)
+apply(plugin = SupportLibs.DependencyUpdate.plugin)
 apply(plugin = Plugins.DependencyGraphGenerator.plugin)
 
 buildscript {
@@ -21,7 +21,7 @@ buildscript {
         classpath(Plugins.Android.gradle)
         classpath(Plugins.Kotlin.gradle)
         classpath(Plugins.Gradle.gradle)
-        classpath(Plugins.DependencyUpdate.gradle)
+        classpath(SupportLibs.DependencyUpdate.gradle)
         classpath(Plugins.DependencyGraphGenerator.gradle)
     }
 }
