@@ -43,6 +43,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [Kover](https://github.com/Kotlin/kotlinx-kover)
 - [Detekt](https://detekt.dev/)
 - [TaskInfo](https://gitlab.com/barfuin/gradle-taskinfo)
+- [Dependency Update](https://github.com/ben-manes/gradle-versions-plugin)
 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)
