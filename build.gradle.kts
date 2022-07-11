@@ -9,6 +9,7 @@ plugins {
 }
 
 apply(plugin = Plugins.DependencyUpdate.plugin)
+apply(plugin = Plugins.DependencyGraphGenerator.plugin)
 
 buildscript {
     repositories {
@@ -21,6 +22,7 @@ buildscript {
         classpath(Plugins.Kotlin.gradle)
         classpath(Plugins.Gradle.gradle)
         classpath(Plugins.DependencyUpdate.gradle)
+        classpath(Plugins.DependencyGraphGenerator.gradle)
     }
 }
 
