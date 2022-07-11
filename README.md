@@ -13,41 +13,10 @@ All external data is from [Rick and Morty GraphQL API](https://rickandmortyapi.c
 
 https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8cba-8a06b1345e45.mp4
 
-## Module Structure
-Click on each for more info
+## Project Dependency Graph
+![Graph](project-dependency-graph.svg?raw=true)
 
-```mermaid
-  graph TD;
-      U[Common-Util]
-      T[Common-Test]
-      I[Common-UI]
-      L[Apollo]
-      G[GraphQL]
-      R[Room]
-      D[Domain]
-      S[Data-Store]
-      N[Navigation]
-      A[App]
-      L-->G;
-      R-->D;
-      S-->D;
-      G-->D;
-      I-->A;
-      N-->A;
-      D-->A;
-      click L "https://github.com/vkondrav/rick_and_morty_compose/tree/main/apollo" "Go to module"
-      click G "https://github.com/vkondrav/rick_and_morty_compose/tree/main/graphql" "Go to module"
-      click R "https://github.com/vkondrav/rick_and_morty_compose/tree/main/room" "Go to module"
-      click S "https://github.com/vkondrav/rick_and_morty_compose/tree/main/data-store" "Go to module"
-      click D "https://github.com/vkondrav/rick_and_morty_compose/tree/main/domain" "Go to module"
-      click A "https://github.com/vkondrav/rick_and_morty_compose/tree/main/app" "Go to module"
-      click U "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-util" "Go to module"
-      click T "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-test" "Go to module"
-      click I "https://github.com/vkondrav/rick_and_morty_compose/tree/main/common-ui" "Go to module"
-      click N "https://github.com/vkondrav/rick_and_morty_compose/tree/main/navigation" "Go to module"
-```
-
-### Coverage
+## Coverage
 ![coverage](https://codecov.io/gh/vkondrav/rick_and_morty_compose/branch/main/graphs/tree.svg?token=MX8NPAY19I)
 
 ## MAD Scorecard

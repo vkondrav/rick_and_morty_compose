@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     library()
     kotlin()
@@ -79,15 +81,22 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.commonUtil))
-    implementation(project(Module.commonUi))
 
-    implementation(Libs.Compose.material)
-    implementation(Libs.Compose.iconsCore)
-    implementation(Libs.Compose.iconsExt)
+    with(Module) {
+        implementation(project(commonUtil))
+        implementation(project(commonUi))
+    }
 
-    implementation(Libs.Koin.core)
-    implementation(Libs.Koin.compose)
+    with(Libs.Compose) {
+        implementation(material)
+        implementation(iconsCore)
+        implementation(iconsExt)
+    }
+
+    with(Libs.Koin) {
+        implementation(core)
+        implementation(compose)
+    }
 
     testImplementation(project(Module.commonTest))
 }

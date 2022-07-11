@@ -19,4 +19,9 @@ object Plugins {
         const val plugin = "com.github.ben-manes.versions"
         const val gradle = "com.github.ben-manes:gradle-versions-plugin:+"
     }
+
+    object DependencyGraphGenerator {
+        const val plugin = "com.vanniktech.dependency.graph.generator"
+        const val gradle = "com.vanniktech:gradle-dependency-graph-generator-plugin:+"
+    }
 }

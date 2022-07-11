@@ -1,3 +1,7 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import kotlinx.kover.api.CoverageEngine.INTELLIJ
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+
 plugins {
     detekt()
     kover()
@@ -5,6 +9,7 @@ plugins {
 }
 
 apply(plugin = Plugins.DependencyUpdate.plugin)
+apply(plugin = Plugins.DependencyGraphGenerator.plugin)
 
 buildscript {
     repositories {
@@ -17,6 +22,7 @@ buildscript {
         classpath(Plugins.Kotlin.gradle)
         classpath(Plugins.Gradle.gradle)
         classpath(Plugins.DependencyUpdate.gradle)
+        classpath(Plugins.DependencyGraphGenerator.gradle)
     }
 }
 
@@ -31,8 +37,8 @@ allprojects {
 
     detekt {
         source = objects.fileCollection().from(
-            io.gitlab.arturbosch.detekt.extensions.DetektExtension.DEFAULT_SRC_DIR_KOTLIN,
-            io.gitlab.arturbosch.detekt.extensions.DetektExtension.DEFAULT_TEST_SRC_DIR_KOTLIN,
+            DetektExtension.DEFAULT_SRC_DIR_KOTLIN,
+            DetektExtension.DEFAULT_TEST_SRC_DIR_KOTLIN,
         )
     }
 
@@ -50,7 +56,7 @@ val kotlinScriptFiles = "**/*.kts"
 val resourceFiles = "**/resources/**"
 val buildFiles = "**/build/**"
 
-val detektAll by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class) {
+val detektAll by tasks.registering(Detekt::class) {
     description = "Runs the whole project at once."
     parallel = true
     autoCorrect = false
@@ -67,7 +73,7 @@ val detektAll by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class) {
     }
 }
 
-val detektFormat by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class) {
+val detektFormat by tasks.registering(Detekt::class) {
     description = "Formats whole project."
     parallel = true
     autoCorrect = true
@@ -85,5 +91,5 @@ val detektFormat by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class)
 }
 
 kover {
-    coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
+    coverageEngine.set(INTELLIJ)
 }

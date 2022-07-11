@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
 
@@ -86,12 +88,15 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.commonUtil))
-    implementation(project(Module.commonUi))
+    with(Module) {
+        implementation(project(commonUtil))
+        implementation(project(commonUi))
+    }
     
     api(Libs.AndroidX.navigationCompose)
     api(Libs.Accompanist.navAnimation)
     implementation(Libs.Accompanist.navMaterial)
+
     implementation(Libs.Koin.core)
 
     testImplementation(project(Module.commonTest))

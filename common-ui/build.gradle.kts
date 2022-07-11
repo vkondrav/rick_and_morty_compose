@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -59,19 +61,25 @@ android {
 }
 
 dependencies {
-    api(Libs.Compose.ui)
-    api(Libs.Compose.uiTooling)
-    api(Libs.Compose.foundation)
+    with(Libs.Compose) {
+        api(ui)
+        api(uiTooling)
+        api(foundation)
 
-    implementation(Libs.Compose.material)
-    implementation(Libs.Compose.iconsCore)
-    implementation(Libs.Compose.iconsExt)
+        implementation(material)
+        implementation(iconsCore)
+        implementation(iconsExt)
+    }
 
-    implementation(Libs.AndroidX.pagingRuntime)
-    implementation(Libs.AndroidX.pagingCompose)
+    with(Libs.AndroidX) {
+        implementation(pagingRuntime)
+        implementation(pagingCompose)
+    }
 
-    implementation(Libs.Accompanist.pager)
-    implementation(Libs.Accompanist.indicators)
+    with(Libs.Accompanist) {
+        implementation(pager)
+        implementation(indicators)
+    }
 
     implementation(Libs.Timber.core)
 

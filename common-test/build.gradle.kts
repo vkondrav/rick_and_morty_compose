@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     library()
     kotlin()
@@ -46,7 +48,6 @@ android {
 dependencies {
     api(TestLibs.JUnit.core)
     api(TestLibs.Kotest.assertions)
-
     api(TestLibs.Compose.jUnit)
     api(TestLibs.Robolectric.core)
     api(TestLibs.ArchCore.testing)
