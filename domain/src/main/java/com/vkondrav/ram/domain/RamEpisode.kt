@@ -1,6 +1,5 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.common.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.EpisodeFragment
 import com.vkondrav.ram.room.FavoriteEpisode
 import kotlinx.coroutines.flow.Flow
@@ -16,16 +15,15 @@ data class RamEpisode(
 
     object Factory {
 
-        @Throws(InvalidDataException::class)
+        @Throws(IllegalArgumentException::class)
         operator fun invoke(fragment: EpisodeFragment, favorites: Flow<Set<String>>) =
             RamEpisode(
-                id = fragment.id ?: throw InvalidDataException("missing id"),
-                title = fragment.name ?: throw InvalidDataException("missing name"),
+                id = requireNotNull(fragment.id) { "Missing Id" },
+                title = requireNotNull(fragment.name) { "Missing Name" },
                 airDate = fragment.air_date,
                 isFavorite = favorites.map { it.contains(fragment.id) }.distinctUntilChanged(),
             )
 
-        @Throws(InvalidDataException::class)
         operator fun invoke(favoriteEpisode: FavoriteEpisode, favorites: Flow<Set<String>>) =
             with(favoriteEpisode) {
                 RamEpisode(

@@ -1,6 +1,5 @@
 package com.vkondrav.ram.domain
 
-import com.vkondrav.ram.common.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.LocationFragment
 import com.vkondrav.ram.room.FavoriteLocation
 import kotlinx.coroutines.flow.Flow
@@ -16,16 +15,15 @@ data class RamLocation(
 
     object Factory {
 
-        @Throws(InvalidDataException::class)
+        @Throws(IllegalArgumentException::class)
         operator fun invoke(fragment: LocationFragment, favorites: Flow<Set<String>>) =
             RamLocation(
-                id = fragment.id ?: throw InvalidDataException("Missing Id"),
-                name = fragment.name ?: throw InvalidDataException("Missing Name"),
+                id = requireNotNull(fragment.id) { "Missing Id" },
+                name = requireNotNull(fragment.name) { "Missing Name" },
                 dimension = fragment.dimension,
                 isFavorite = favorites.map { it.contains(fragment.id) }.distinctUntilChanged(),
             )
 
-        @Throws(InvalidDataException::class)
         operator fun invoke(favoriteLocation: FavoriteLocation, favorites: Flow<Set<String>>) =
             with(favoriteLocation) {
                 RamLocation(
