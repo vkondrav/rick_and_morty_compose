@@ -1,7 +1,6 @@
 package com.vkondrav.ram.domain
 
 import app.cash.turbine.test
-import com.vkondrav.ram.common.util.InvalidDataException
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharacter
 import com.vkondrav.ram.test.BaseTest
@@ -26,7 +25,7 @@ class RamCharacterTest : BaseTest() {
 
     @Test
     fun `verify adapter throws exception when character fragment has no id`() {
-        shouldThrow<InvalidDataException> {
+        shouldThrow<IllegalArgumentException> {
             subject(
                 CharacterFragment(
                     id = null,
@@ -34,12 +33,12 @@ class RamCharacterTest : BaseTest() {
                 ),
                 emptyFlow(),
             )
-        }.message shouldBe "missing id"
+        }.message shouldBe "Missing id"
     }
 
     @Test
     fun `verify adapter throws exception when character fragment has no name`() {
-        shouldThrow<InvalidDataException> {
+        shouldThrow<IllegalArgumentException> {
             subject(
                 CharacterFragment(
                     "id",
@@ -48,7 +47,7 @@ class RamCharacterTest : BaseTest() {
                 ),
                 emptyFlow(),
             )
-        }.message shouldBe "missing name"
+        }.message shouldBe "Missing name"
     }
 
     @Test
