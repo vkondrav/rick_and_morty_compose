@@ -2,7 +2,6 @@ package com.vkondrav.ram.domain
 
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment
 import com.vkondrav.ram.room.FavoriteCharacter
-import com.vkondrav.ram.common.util.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -18,14 +17,13 @@ data class RamCharacter(
 
     object Factory {
 
-        @Throws(InvalidDataException::class)
+        @Throws(IllegalArgumentException::class)
         operator fun invoke(fragment: CharacterFragment, favorites: Flow<Set<String>>) =
             with(fragment) {
-                val id = id ?: throw InvalidDataException("missing id")
-                val name = name ?: throw InvalidDataException("missing name")
+                val id = requireNotNull(id) { "Missing id" }
                 RamCharacter(
                     id = id,
-                    name = name,
+                    name = requireNotNull(name) { "Missing name" },
                     status = status,
                     species = species,
                     image = image,
