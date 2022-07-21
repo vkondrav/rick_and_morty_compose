@@ -1,6 +1,5 @@
-package com.vkondrav.ram.character.all.usecase
+package com.vkondrav.ram.character.common.usecase
 
-import com.vkondrav.ram.character.common.usecase.RemoveCharacterFromFavoritesUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
