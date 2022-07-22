@@ -26,3 +26,6 @@ fun PluginDependenciesSpec.kover() =
 fun PluginDependenciesSpec.taskInfo() =
     id(SupportLibs.TaskInfo.base) version SupportLibs.TaskInfo.version
 
+fun PluginDependenciesSpec.ktlint() =
+    id(SupportLibs.KTLint.base) version SupportLibs.KTLint.version
+

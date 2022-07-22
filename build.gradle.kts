@@ -1,11 +1,12 @@
 import io.gitlab.arturbosch.detekt.Detekt
-import kotlinx.kover.api.CoverageEngine.INTELLIJ
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+import kotlinx.kover.api.CoverageEngine.INTELLIJ
 
 plugins {
     detekt()
     kover()
     taskInfo()
+    ktlint()
 }
 
 apply(plugin = SupportLibs.GradleVersions.plugin)
@@ -28,6 +29,7 @@ buildscript {
 
 allprojects {
     apply(plugin = SupportLibs.Detekt.base)
+    apply(plugin = SupportLibs.KTLint.base)
 
     repositories {
         google()
@@ -45,9 +47,14 @@ allprojects {
     dependencies {
         detektPlugins(SupportLibs.Detekt.formatting)
     }
+
+    ktlint {
+        android.set(true)
+        version.set(SupportLibs.KTLint.ktlintVersion)
+    }
 }
 
-//DETEKT
+// DETEKT
 val analysisDir = file(projectDir)
 val configFile = file("$rootDir/config/detekt/detekt.yml")
 
@@ -90,6 +97,7 @@ val detektFormat by tasks.registering(Detekt::class) {
     }
 }
 
+// KOVER
 kover {
     coverageEngine.set(INTELLIJ)
 }
