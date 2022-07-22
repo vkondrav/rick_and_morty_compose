@@ -3,9 +3,9 @@ package com.vkondrav.ram.character.common.factory
 import com.vkondrav.ram.character.common.composable.CharacterViewItem
 import com.vkondrav.ram.character.common.usecase.HandleCharacterFavoritesUseCase
 import com.vkondrav.ram.character.common.usecase.NavigateToCharacterDetailsUseCase
+import com.vkondrav.ram.common.util.asType
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.test.BaseTest
-import com.vkondrav.ram.common.util.asType
 import io.kotest.matchers.shouldBe
 import io.mockk.Called
 import io.mockk.clearAllMocks

@@ -52,7 +52,6 @@ data class LocationDetailsViewItem(
 
     @Composable
     override fun Composable() = LocationDetailsView(this)
-
 }
 
 @Preview

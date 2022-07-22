@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.version
+
 object SupportLibs {
 
     object LeakCanary {
@@ -34,5 +36,11 @@ object SupportLibs {
     object DependencyGraphGenerator {
         const val plugin = "com.vanniktech.dependency.graph.generator"
         const val gradle = "com.vanniktech:gradle-dependency-graph-generator-plugin:+"
+    }
+
+    object KTLint {
+        const val version = "10.3.0"
+        const val ktlintVersion = "0.45.2"
+        const val base = "org.jlleitschuh.gradle.ktlint"
     }
 }

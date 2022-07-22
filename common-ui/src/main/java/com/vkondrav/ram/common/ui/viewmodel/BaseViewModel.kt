@@ -1,6 +1,7 @@
 package com.vkondrav.ram.common.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -11,7 +12,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import timber.log.Timber
-import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel(private val dispatcher: CoroutineDispatcher) :
     ViewModel(), CoroutineScope {

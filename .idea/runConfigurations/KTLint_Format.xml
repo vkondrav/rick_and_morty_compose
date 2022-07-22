@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Lint" type="GradleRunConfiguration" factoryName="Gradle" folderName="Code Style">
+  <configuration default="false" name="KTLint Format" type="GradleRunConfiguration" factoryName="Gradle" folderName="Code Style">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -10,7 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="lint" />
+          <option value="ktlintFormat" />
         </list>
       </option>
       <option name="vmOptions" />

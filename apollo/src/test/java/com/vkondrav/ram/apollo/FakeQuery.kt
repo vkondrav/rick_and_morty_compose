@@ -29,7 +29,7 @@ class FakeQuery : Query<FakeQuery.Data> {
         writer: JsonWriter,
         customScalarAdapters: CustomScalarAdapters,
     ) {
-        //no-op
+        // no-op
     }
 
     override fun adapter(): Adapter<Data> = FakeQueryResponseAdapter.Data.obj()
@@ -74,8 +74,9 @@ object FakeQueryResponseAdapter {
 
             while (true) {
                 when (reader.selectName(RESPONSE_NAMES)) {
-                    0 -> fakeNode =
-                        FakeNode.obj().nullable().fromJson(reader, customScalarAdapters)
+                    0 ->
+                        fakeNode =
+                            FakeNode.obj().nullable().fromJson(reader, customScalarAdapters)
                     else -> break
                 }
             }
@@ -106,8 +107,8 @@ object FakeQueryResponseAdapter {
 
             while (true) {
                 when (reader.selectName(RESPONSE_NAMES)) {
-                    0 -> fakeObject =
-                        FakeObject.obj().nullable().fromJson(reader, customScalarAdapters)
+                    0 -> fakeObject = FakeObject.obj()
+                        .nullable().fromJson(reader, customScalarAdapters)
                     else -> break
                 }
             }

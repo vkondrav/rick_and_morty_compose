@@ -2,6 +2,7 @@ Rick And Morty Compose
 =========
 
 [![codecov](https://codecov.io/gh/vkondrav/rick_and_morty_compose/branch/main/graph/badge.svg?token=MX8NPAY19I)](https://codecov.io/gh/vkondrav/rick_and_morty_compose)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 This is a Sample App utilizing some of the latest android technologies including
 
@@ -45,6 +46,7 @@ https://user-images.githubusercontent.com/4791730/175387256-532cf86b-3a27-4245-8
 - [TaskInfo](https://gitlab.com/barfuin/gradle-taskinfo)
 - [Gradle Versions](https://github.com/ben-manes/gradle-versions-plugin)
 - [Dependency Graph Generator](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin)
+- [KTLint](https://github.com/pinterest/ktlint)
 
 ## MAD Scorecard
 ![Summary](/mad_scorecard/summary.png?raw=true)

@@ -12,5 +12,4 @@ internal fun handleNavigationCommandsUseCase(
 ) = object : HandleNavigationCommandsUseCase {
     override suspend fun invoke(navController: NavController) =
         navigator.handleNavigationCommands(navController)
-
 }

@@ -7,7 +7,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-class CollapsableDrawerStateTest: BaseTest() {
+class CollapsableDrawerStateTest : BaseTest() {
 
     private lateinit var subject: CollapsableDrawerState
 

@@ -3,12 +3,12 @@ package com.vkondrav.ram.location.common.usecase
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.room.FavoriteLocationsDao
 import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
+import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import kotlin.coroutines.CoroutineContext
 
 class AddLocationToFavoritesUseCase(
     private val favoriteLocationsDao: FavoriteLocationsDao,

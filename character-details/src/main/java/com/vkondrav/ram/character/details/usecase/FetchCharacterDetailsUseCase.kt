@@ -1,11 +1,11 @@
 package com.vkondrav.ram.character.details.usecase
 
+import com.vkondrav.ram.common.util.mapToSet
 import com.vkondrav.ram.domain.RamCharacterDetails
 import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.room.FavoriteCharactersDao
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import com.vkondrav.ram.room.FavoriteLocationsDao
-import com.vkondrav.ram.common.util.mapToSet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -127,5 +127,4 @@ class FavoriteEpisodesDaoTest : BaseDatabaseTest() {
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
-
 }

@@ -127,5 +127,4 @@ class FavoriteLocationsDaoTest : BaseDatabaseTest() {
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
-
 }

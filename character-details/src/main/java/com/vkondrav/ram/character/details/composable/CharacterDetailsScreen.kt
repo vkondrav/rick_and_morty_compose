@@ -2,8 +2,8 @@ package com.vkondrav.ram.character.details.composable
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.vkondrav.ram.common.ui.screen.BaseStateScreen
 import com.vkondrav.ram.character.details.viewmodel.CharacterDetailsViewModel
+import com.vkondrav.ram.common.ui.screen.BaseStateScreen
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.parameter.parametersOf
 

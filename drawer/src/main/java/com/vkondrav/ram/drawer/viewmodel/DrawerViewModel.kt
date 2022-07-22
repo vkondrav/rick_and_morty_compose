@@ -2,9 +2,9 @@ package com.vkondrav.ram.drawer.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import com.vkondrav.ram.common.ui.data.ScreenState
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.common.ui.viewmodel.BaseViewModel
-import com.vkondrav.ram.common.ui.data.ScreenState
 import com.vkondrav.ram.common.ui.viewmodel.ScreenStateViewModel
 import com.vkondrav.ram.drawer.source.DrawerMenuSource
 import kotlinx.coroutines.CoroutineDispatcher
@@ -31,5 +31,4 @@ class DrawerViewModel(
             started = SharingStarted.WhileSubscribed(),
             initialValue = emptyList(),
         )
-
 }

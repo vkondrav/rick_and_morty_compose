@@ -9,7 +9,7 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class NavigateToCharacterDetailsUseCaseTest: BaseTest() {
+class NavigateToCharacterDetailsUseCaseTest : BaseTest() {
 
     private val navigateToRouteUseCase = mockk<NavigateToRouteUseCase>(relaxed = true)
     private lateinit var subject: NavigateToCharacterDetailsUseCase

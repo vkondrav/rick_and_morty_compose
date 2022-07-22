@@ -13,8 +13,8 @@ class Service(private val client: ApolloClient) {
         query: Query<D>,
         fetchPolicy: FetchPolicy = FetchPolicy.CacheAndNetwork,
     ) = client.query(query)
-            .fetchPolicy(fetchPolicy)
-            .execute()
+        .fetchPolicy(fetchPolicy)
+        .execute()
 
     fun <D : Query.Data> queryAsFlow(
         query: Query<D>,

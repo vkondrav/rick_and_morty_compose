@@ -20,7 +20,7 @@ val Bundle?.title: TextResource
     get() = this?.getString(NAV_TITLE)?.let {
         TextResource.Literal(it)
     } ?: this?.getParcelable(NAV_TITLE)
-    ?: TextResource.Literal("")
+        ?: TextResource.Literal("")
 
 fun NavGraphBuilder.defineGraph(screens: List<Screen>) {
     screens.forEach { screen ->
@@ -47,7 +47,3 @@ fun NavGraphBuilder.defineGraph(screens: List<Screen>) {
         }
     }
 }
-
-
-
-

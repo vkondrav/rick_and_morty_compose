@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     library()
@@ -95,7 +95,7 @@ android {
         }
     }
 
-    testOptions  {
+    testOptions {
         unitTests {
             isIncludeAndroidResources = true
         }

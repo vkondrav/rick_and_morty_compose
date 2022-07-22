@@ -3,8 +3,8 @@ package com.vkondrav.ram.apollo
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.cache.normalized.normalizedCache
-import com.vkondrav.ram.test.BaseTest
 import com.vkondrav.ram.common.util.TargetWrapper
+import com.vkondrav.ram.test.BaseTest
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
@@ -13,7 +13,7 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class ClientTest: BaseTest() {
+class ClientTest : BaseTest() {
 
     private val builder: ApolloClient.Builder = mockk(relaxed = true)
 
@@ -39,9 +39,7 @@ class ClientTest: BaseTest() {
         verify { builder.build() }
     }
 
-
-
-    private class TestWrapper(private val builder: ApolloClient.Builder): TargetWrapper() {
+    private class TestWrapper(private val builder: ApolloClient.Builder) : TargetWrapper() {
         override fun <T> invoke(target: T): T = builder as T
     }
 }

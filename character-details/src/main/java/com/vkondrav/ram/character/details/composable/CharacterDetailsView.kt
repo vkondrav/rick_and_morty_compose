@@ -39,7 +39,6 @@ data class CharacterDetailsViewItem(
 
     @Composable
     override fun Composable() = CharacterDetailsView(this)
-
 }
 
 @Preview

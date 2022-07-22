@@ -2,9 +2,9 @@ package com.vkondrav.ram.character.all.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.character.all.usecase.FetchCharactersUseCase
+import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
+import com.vkondrav.ram.common.ui.view.ComposableItem
 import timber.log.Timber
 
 class CharactersSource(
@@ -24,10 +24,8 @@ class CharactersSource(
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )
-
         }.getOrElse { exception ->
             Timber.e(exception)
             LoadResult.Error(exception)
         }
-
 }

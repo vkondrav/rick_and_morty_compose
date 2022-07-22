@@ -7,7 +7,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test
 
-class OpenCollapsableDrawerUseCaseTest: BaseTest() {
+class OpenCollapsableDrawerUseCaseTest : BaseTest() {
 
     @Test
     fun `verify use case`() {
