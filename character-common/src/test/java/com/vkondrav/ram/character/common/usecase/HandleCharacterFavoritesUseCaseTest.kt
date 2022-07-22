@@ -1,8 +1,5 @@
-package com.vkondrav.ram.character.all.usecase
+package com.vkondrav.ram.character.common.usecase
 
-import com.vkondrav.ram.character.common.usecase.AddCharacterToFavoritesUseCase
-import com.vkondrav.ram.character.common.usecase.HandleCharacterFavoritesUseCase
-import com.vkondrav.ram.character.common.usecase.RemoveCharacterFromFavoritesUseCase
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.test.BaseTest
 import io.mockk.mockk
