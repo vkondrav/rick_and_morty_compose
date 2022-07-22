@@ -41,8 +41,8 @@ class RamRepository(private val service: Service) {
     }
 
     @Throws(ApolloException::class)
-    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character>
-        = service.queryAsFlow(CharacterDetailsQuery(id))
+    fun fetchCharacterDetails(id: String): Flow<CharacterDetailsQuery.Character> =
+        service.queryAsFlow(CharacterDetailsQuery(id))
             .map { it.dataOrThrow.character }
             .filterNotNull()
 
@@ -69,8 +69,8 @@ class RamRepository(private val service: Service) {
     }
 
     @Throws(ApolloException::class)
-    fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location>
-        = service.queryAsFlow(LocationDetailsQuery(id))
+    fun fetchLocationDetails(id: String): Flow<LocationDetailsQuery.Location> =
+        service.queryAsFlow(LocationDetailsQuery(id))
             .map { it.dataOrThrow.location }
             .filterNotNull()
 
@@ -98,8 +98,8 @@ class RamRepository(private val service: Service) {
     }
 
     @Throws(ApolloException::class)
-    fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode>
-        = service.queryAsFlow(EpisodeDetailsQuery(id))
+    fun fetchEpisodeDetails(id: String): Flow<EpisodeDetailsQuery.Episode> =
+        service.queryAsFlow(EpisodeDetailsQuery(id))
             .map { it.dataOrThrow.episode }
             .filterNotNull()
 }

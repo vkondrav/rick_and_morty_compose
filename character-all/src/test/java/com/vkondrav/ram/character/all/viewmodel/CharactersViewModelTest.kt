@@ -29,8 +29,8 @@ class CharactersViewModelTest : BaseTest() {
     @Test
     fun `verify characters source is used with pager`() = runTest {
         subject.pagingData.test {
-            //paging data has no public method to even confirm anything and
-            //characters source seems to be never called, needs further investigation
+            // paging data has no public method to even confirm anything and
+            // characters source seems to be never called, needs further investigation
             cancelAndConsumeRemainingEvents().size shouldBe 1
         }
     }

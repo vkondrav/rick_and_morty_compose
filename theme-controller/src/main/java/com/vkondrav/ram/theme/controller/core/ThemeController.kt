@@ -2,13 +2,13 @@ package com.vkondrav.ram.theme.controller.core
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import com.vkondrav.ram.datastore.DataStoreManager
+import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import kotlin.coroutines.CoroutineContext
 
 class ThemeController(
     private val dataStore: DataStoreManager,

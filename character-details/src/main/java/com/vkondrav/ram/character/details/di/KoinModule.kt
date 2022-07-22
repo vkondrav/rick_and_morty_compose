@@ -1,7 +1,7 @@
 package com.vkondrav.ram.character.details.di
 
-import com.vkondrav.ram.character.details.usecase.FetchCharacterDetailsUseCase
 import com.vkondrav.ram.character.details.usecase.CharacterDetailsSource
+import com.vkondrav.ram.character.details.usecase.FetchCharacterDetailsUseCase
 import com.vkondrav.ram.character.details.viewmodel.CharacterDetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

@@ -34,7 +34,7 @@ fun BasePagingScreen(
                     item { PagingItemErrorView(exception = state.error) }
                 }
                 else -> {
-                    //no-op
+                    // no-op
                 }
             }
         }
@@ -45,7 +45,7 @@ fun BasePagingScreen(
                 PageLoadingView()
             }
             else -> {
-                //no-op
+                // no-op
             }
         }
     }

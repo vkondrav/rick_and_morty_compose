@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlinx.kover.api.VerificationValueType.COVERED_LINES_PERCENTAGE
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     library()
@@ -79,7 +79,7 @@ android {
                 name = "100% Coverage Rule"
                 bound {
                     @SuppressWarnings("MagicNumber")
-                    minValue = 0 //TODO: update to 100 when ready
+                    minValue = 0 // TODO: update to 100 when ready
                     valueType = COVERED_LINES_PERCENTAGE
                 }
             }

@@ -1,7 +1,7 @@
 package com.vkondrav.ram.episode.details.di
 
-import com.vkondrav.ram.episode.details.usecase.FetchEpisodeDetailsUseCase
 import com.vkondrav.ram.episode.details.usecase.EpisodeDetailsSource
+import com.vkondrav.ram.episode.details.usecase.FetchEpisodeDetailsUseCase
 import com.vkondrav.ram.episode.details.viewmodel.EpisodeDetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

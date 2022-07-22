@@ -135,5 +135,4 @@ class FavoriteCharactersDaoTest : BaseDatabaseTest() {
             cancelAndConsumeRemainingEvents() shouldBe emptyList()
         }
     }
-
 }

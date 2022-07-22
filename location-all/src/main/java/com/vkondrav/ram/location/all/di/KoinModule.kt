@@ -1,13 +1,13 @@
 package com.vkondrav.ram.location.all.di
 
+import com.vkondrav.ram.location.all.source.LocationsSource
+import com.vkondrav.ram.location.all.usecase.FetchLocationsUseCase
+import com.vkondrav.ram.location.all.viewmodel.LocationsViewModel
+import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
 import com.vkondrav.ram.location.common.usecase.AddLocationToFavoritesUseCase
 import com.vkondrav.ram.location.common.usecase.HandleLocationFavoriteUseCase
-import com.vkondrav.ram.location.common.usecase.RemoveLocationFromFavoritesUseCase
-import com.vkondrav.ram.location.all.usecase.FetchLocationsUseCase
 import com.vkondrav.ram.location.common.usecase.NavigateToLocationDetailsUseCase
-import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
-import com.vkondrav.ram.location.all.source.LocationsSource
-import com.vkondrav.ram.location.all.viewmodel.LocationsViewModel
+import com.vkondrav.ram.location.common.usecase.RemoveLocationFromFavoritesUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

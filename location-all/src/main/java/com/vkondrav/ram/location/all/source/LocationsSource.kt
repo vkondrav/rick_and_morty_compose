@@ -3,8 +3,8 @@ package com.vkondrav.ram.location.all.source
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vkondrav.ram.common.ui.view.ComposableItem
-import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
 import com.vkondrav.ram.location.all.usecase.FetchLocationsUseCase
+import com.vkondrav.ram.location.common.factory.LocationViewItemFactory
 import timber.log.Timber
 
 class LocationsSource(
@@ -24,10 +24,8 @@ class LocationsSource(
                 prevKey = page.previousPage,
                 nextKey = page.nextPage,
             )
-
         }.getOrElse { exception ->
             Timber.e(exception)
             LoadResult.Error(exception)
         }
-
 }

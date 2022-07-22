@@ -1,8 +1,8 @@
 package com.vkondrav.ram.graphql
 
 import com.apollographql.apollo3.api.ApolloResponse
-import com.apollographql.apollo3.exception.ApolloException
 import com.apollographql.apollo3.api.Error as ApolloError
+import com.apollographql.apollo3.exception.ApolloException
 import com.vkondrav.ram.apollo.Service
 import com.vkondrav.ram.graphql.generated.CharactersQuery
 import com.vkondrav.ram.graphql.generated.fragment.CharacterFragment

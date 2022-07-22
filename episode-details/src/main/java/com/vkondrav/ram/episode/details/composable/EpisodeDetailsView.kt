@@ -52,7 +52,6 @@ data class EpisodeDetailsViewItem(
 
     @Composable
     override fun Composable() = EpisodeDetailsView(this)
-
 }
 
 @Preview

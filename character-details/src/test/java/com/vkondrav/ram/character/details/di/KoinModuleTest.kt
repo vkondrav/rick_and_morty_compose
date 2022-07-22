@@ -24,7 +24,7 @@ class KoinModuleTest : BaseTest(), KoinTest {
     fun `verify koin module`() {
         koinApplication {
             modules(
-                module { //components needed from other modules
+                module { // components needed from other modules
                     factory {
                         mockk<RamRepository>()
                     }

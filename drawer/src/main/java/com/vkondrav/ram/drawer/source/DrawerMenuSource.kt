@@ -3,8 +3,8 @@ package com.vkondrav.ram.drawer.source
 import com.vkondrav.ram.common.ui.data.TextResource
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.drawer.R
-import com.vkondrav.ram.drawer.view.DrawerMenuViewItem
 import com.vkondrav.ram.drawer.usecase.NavigateToRouteFromDrawerUseCase
+import com.vkondrav.ram.drawer.view.DrawerMenuViewItem
 import com.vkondrav.ram.navigation.Routes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -29,5 +29,4 @@ class DrawerMenuSource(
             },
         )
     }
-
 }

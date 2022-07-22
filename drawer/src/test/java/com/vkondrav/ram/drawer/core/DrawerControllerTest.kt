@@ -14,7 +14,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-class DrawerControllerTest: BaseTest() {
+class DrawerControllerTest : BaseTest() {
 
     private val drawerState: DrawerState = mockk(relaxed = true)
     private lateinit var subject: DrawerController
@@ -55,7 +55,7 @@ class DrawerControllerTest: BaseTest() {
         coVerify(exactly = 1) { drawerState.close() }
     }
 
-    private object FlowTestWrapper: FlowWrapper() {
+    private object FlowTestWrapper : FlowWrapper() {
         override operator fun <T> invoke(flow: Flow<T>) = flow.take(1)
     }
 }

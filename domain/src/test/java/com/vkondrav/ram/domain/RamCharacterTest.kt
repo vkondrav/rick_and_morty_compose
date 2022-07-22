@@ -78,11 +78,11 @@ class RamCharacterTest : BaseTest() {
                     every { id } returns "id_1"
                 },
                 flowOf(
-                    setOf("id_1"), //id matches
-                    (1..100).setOfIds, //id matches (distinctUntilChanged filters out noise)
-                    setOf("id_2"), //no match
-                    (2..100).setOfIds, //no matches (distinctUntilChanged filters out noise)
-                    setOf("id_2", "id_1"), //id matches
+                    setOf("id_1"), // id matches
+                    (1..100).setOfIds, // id matches (distinctUntilChanged filters out noise)
+                    setOf("id_2"), // no match
+                    (2..100).setOfIds, // no matches (distinctUntilChanged filters out noise)
+                    setOf("id_2", "id_1"), // id matches
                 ),
             ).run {
                 isFavorite.test {
@@ -122,11 +122,11 @@ class RamCharacterTest : BaseTest() {
                     every { id } returns "id_1"
                 },
                 flowOf(
-                    setOf("id_1"), //id matches
-                    (1..100).setOfIds, //id matches (distinctUntilChanged filters out noise)
-                    setOf("id_2"), //no match
-                    (2..100).setOfIds, //no matches (distinctUntilChanged filters out noise)
-                    setOf("id_2", "id_1"), //id matches
+                    setOf("id_1"), // id matches
+                    (1..100).setOfIds, // id matches (distinctUntilChanged filters out noise)
+                    setOf("id_2"), // no match
+                    (2..100).setOfIds, // no matches (distinctUntilChanged filters out noise)
+                    setOf("id_2", "id_1"), // id matches
                 ),
             ).run {
                 isFavorite.test {

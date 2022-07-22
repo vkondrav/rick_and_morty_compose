@@ -9,7 +9,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-class HandleCollapsableDrawerUseCaseTest: BaseTest() {
+class HandleCollapsableDrawerUseCaseTest : BaseTest() {
 
     private val openCollapsableDrawerUseCase = mockk<OpenCollapsableDrawerUseCase>(relaxed = true)
     private val closeCollapsableDrawerUseCase = mockk<CloseCollapsableDrawerUseCase>(relaxed = true)

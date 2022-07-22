@@ -3,12 +3,12 @@ package com.vkondrav.ram.episode.common.usecase
 import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.room.FavoriteEpisodesDao
 import com.vkondrav.ram.snackbar.usecase.ShowSnackbarMessageUseCase
+import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import kotlin.coroutines.CoroutineContext
 
 class AddEpisodeToFavoritesUseCase(
     private val favoriteEpisodesDao: FavoriteEpisodesDao,

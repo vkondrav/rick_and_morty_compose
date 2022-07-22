@@ -5,7 +5,7 @@ import com.vkondrav.ram.test.BaseRobolectricTest
 import org.junit.After
 import org.junit.Before
 
-abstract class BaseDatabaseTest: BaseRobolectricTest() {
+abstract class BaseDatabaseTest : BaseRobolectricTest() {
 
     protected lateinit var db: AppDatabase
 

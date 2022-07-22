@@ -1,10 +1,10 @@
 package com.vkondrav.ram.episode.common.factory
 
 import com.vkondrav.ram.common.ui.view.ComposableItem
+import com.vkondrav.ram.domain.RamEpisode
 import com.vkondrav.ram.episode.common.composable.EpisodeViewItem
 import com.vkondrav.ram.episode.common.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.episode.common.usecase.NavigateToEpisodeDetailsUseCase
-import com.vkondrav.ram.domain.RamEpisode
 
 class EpisodeViewItemFactory(
     private val navigateToEpisodeDetailsUseCase: NavigateToEpisodeDetailsUseCase,

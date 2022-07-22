@@ -1,10 +1,10 @@
 package com.vkondrav.ram.location.all.usecase
 
-import com.vkondrav.ram.graphql.RamRepository
+import com.vkondrav.ram.common.util.mapToSet
 import com.vkondrav.ram.domain.RamLocation
 import com.vkondrav.ram.domain.RamPage
+import com.vkondrav.ram.graphql.RamRepository
 import com.vkondrav.ram.room.FavoriteLocationsDao
-import com.vkondrav.ram.common.util.mapToSet
 
 class FetchLocationsUseCase(
     private val ramRepository: RamRepository,

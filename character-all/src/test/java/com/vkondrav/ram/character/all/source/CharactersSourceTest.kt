@@ -2,8 +2,8 @@ package com.vkondrav.ram.character.all.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.character.all.usecase.FetchCharactersUseCase
+import com.vkondrav.ram.character.common.factory.CharacterViewItemFactory
 import com.vkondrav.ram.common.ui.view.ComposableItem
 import com.vkondrav.ram.domain.RamCharacter
 import com.vkondrav.ram.domain.RamPage
@@ -85,7 +85,7 @@ class CharactersSourceTest : BaseTest() {
         every { characterViewItemFactory(characters) } returns composables
 
         val loadParams = mockk<PagingSource.LoadParams<Int>> {
-            every { key } returns null //tests default page
+            every { key } returns null // tests default page
         }
 
         subject.load(loadParams) shouldBe PagingSource.LoadResult.Page(

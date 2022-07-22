@@ -8,7 +8,7 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class NavigateUpUseCaseTest: BaseTest() {
+class NavigateUpUseCaseTest : BaseTest() {
 
     private val navigator: Navigator = mockk(relaxed = true)
     private lateinit var subject: NavigateUpUseCase

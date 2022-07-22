@@ -7,16 +7,16 @@ import androidx.compose.ui.res.stringResource
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-sealed class TextResource: Parcelable {
+sealed class TextResource : Parcelable {
 
     @Parcelize
-    data class Literal(val source: String): TextResource()
+    data class Literal(val source: String) : TextResource()
 
     @Parcelize
-    data class Resource(@StringRes val source: Int): TextResource()
+    data class Resource(@StringRes val source: Int) : TextResource()
 
     @Composable
-    fun string() = when(this) {
+    fun string() = when (this) {
         is Literal -> source
         is Resource -> stringResource(id = source)
     }

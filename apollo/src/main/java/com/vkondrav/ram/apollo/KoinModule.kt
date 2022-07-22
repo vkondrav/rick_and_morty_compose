@@ -25,4 +25,4 @@ val apolloModule = module {
 }
 
 val SERVER_URL = named("SERVER_URL")
-private const val CACHE_SIZE_BYTES = 10 * 1024 * 1024 //10MB
+private const val CACHE_SIZE_BYTES = 10 * 1024 * 1024 // 10MB

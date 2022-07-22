@@ -2,7 +2,7 @@ package com.vkondrav.ram.collapsable.drawer.usecase
 
 import com.vkondrav.ram.collapsable.drawer.CollapsableDrawerState
 
-interface CloseCollapsableDrawerUseCase{
+interface CloseCollapsableDrawerUseCase {
     operator fun invoke(id: String)
 }
 

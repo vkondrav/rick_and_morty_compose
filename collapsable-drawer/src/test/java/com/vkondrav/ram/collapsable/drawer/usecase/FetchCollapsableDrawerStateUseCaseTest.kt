@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
-class FetchCollapsableDrawerStateUseCaseTest: BaseTest() {
+class FetchCollapsableDrawerStateUseCaseTest : BaseTest() {
 
     @Test
     fun `verify use case`() = runTest {

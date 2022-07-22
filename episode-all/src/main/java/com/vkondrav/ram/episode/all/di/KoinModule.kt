@@ -1,13 +1,13 @@
 package com.vkondrav.ram.episode.all.di
 
-import com.vkondrav.ram.episode.common.usecase.AddEpisodeToFavoritesUseCase
+import com.vkondrav.ram.episode.all.source.EpisodesSource
 import com.vkondrav.ram.episode.all.usecase.FetchEpisodesUseCase
+import com.vkondrav.ram.episode.all.viewmodel.EpisodesViewModel
+import com.vkondrav.ram.episode.common.factory.EpisodeViewItemFactory
+import com.vkondrav.ram.episode.common.usecase.AddEpisodeToFavoritesUseCase
 import com.vkondrav.ram.episode.common.usecase.HandleEpisodeFavoriteUseCase
 import com.vkondrav.ram.episode.common.usecase.NavigateToEpisodeDetailsUseCase
 import com.vkondrav.ram.episode.common.usecase.RemoveEpisodeFromFavoritesUseCase
-import com.vkondrav.ram.episode.common.factory.EpisodeViewItemFactory
-import com.vkondrav.ram.episode.all.source.EpisodesSource
-import com.vkondrav.ram.episode.all.viewmodel.EpisodesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

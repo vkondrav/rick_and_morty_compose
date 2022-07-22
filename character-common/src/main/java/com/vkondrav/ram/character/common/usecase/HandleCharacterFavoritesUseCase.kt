@@ -8,7 +8,7 @@ class HandleCharacterFavoritesUseCase(
 ) {
 
     operator fun invoke(character: RamCharacter, isFavorite: Boolean) {
-        when(isFavorite) {
+        when (isFavorite) {
             true -> addCharacterToFavoritesUseCase(character)
             false -> removeCharacterFromFavoritesUseCase(character)
         }
